@@ -17,6 +17,7 @@ namespace ACCG
         public string skin { get; set; }
         public string name { get; set; }
         public string nationality { get; set; }
+        public bool isEdited { get; set; }
 
         public Opponent() 
         {

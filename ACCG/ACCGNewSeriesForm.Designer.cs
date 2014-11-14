@@ -258,13 +258,13 @@ namespace ACCG
             // 
             // btnEditEvent
             // 
-            this.btnEditEvent.Enabled = false;
             this.btnEditEvent.Location = new System.Drawing.Point(406, 82);
             this.btnEditEvent.Name = "btnEditEvent";
             this.btnEditEvent.Size = new System.Drawing.Size(76, 23);
             this.btnEditEvent.TabIndex = 19;
             this.btnEditEvent.Text = "Edit";
             this.btnEditEvent.UseVisualStyleBackColor = true;
+            this.btnEditEvent.Click += new System.EventHandler(this.btnEditEvent_Click);
             // 
             // btnNewEvent
             // 
@@ -325,13 +325,13 @@ namespace ACCG
             // 
             // btnEditOpponent
             // 
-            this.btnEditOpponent.Enabled = false;
             this.btnEditOpponent.Location = new System.Drawing.Point(407, 236);
             this.btnEditOpponent.Name = "btnEditOpponent";
             this.btnEditOpponent.Size = new System.Drawing.Size(75, 23);
             this.btnEditOpponent.TabIndex = 24;
             this.btnEditOpponent.Text = "Edit";
             this.btnEditOpponent.UseVisualStyleBackColor = true;
+            this.btnEditOpponent.Click += new System.EventHandler(this.btnEditOpponent_Click);
             // 
             // btnNewOpponent
             // 

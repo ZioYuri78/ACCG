@@ -12,19 +12,44 @@ namespace ACCG
 {
     public partial class ACCGNewEventForm : Form
     {
+        private Event current_selected_event;
+
         public ACCGNewEventForm()
         {
             InitializeComponent();
         }
 
+        public ACCGNewEventForm(Event current_selected_event)
+        {
+            // TODO: Complete member initialization
+            this.current_selected_event = current_selected_event;
+
+            InitializeComponent();
+        }
+
         private void ckbPractice_CheckedChanged(object sender, EventArgs e)
         {
-            //Console.WriteLine("DEBUG: CheckedChanged");
+            if (!ckbPractice.Checked)
+            {
+                if (current_selected_event != null)
+                {
+                    current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 1));
+                    
+                }
+            }
             tkbPracticeDuration.Enabled = ckbPractice.Checked;
         }
 
         private void ckbQualifying_CheckedChanged(object sender, EventArgs e)
         {
+            if (!ckbQualifying.Checked)
+            {
+                if (current_selected_event != null)
+                {
+                    current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 2));
+                }
+            }
+
             tkbQualifyingDuration.Enabled = ckbQualifying.Checked;
         }
 
@@ -34,13 +59,63 @@ namespace ACCG
 
             tkbQualifyingDuration.Enabled = ckbQualifying.Checked;
 
-            // Populating the Tracks combo box
+             // Populating the Tracks combo box
             foreach (string track in ACCGMainForm.ac_tracks_list)
             {
                 cbTrack.Items.Add(track);
             }
 
-            cbTrack.Text = ACCGMainForm.ac_tracks_list[0];                                      
+            // Editing mode
+            if (current_selected_event != null)
+            {
+                tbName.Text = current_selected_event.name;
+                tbDescription.Text = current_selected_event.description;
+                tkbAmbientTemperature.Value = current_selected_event.ambient_temperature;
+                lblAmbTemperatureValue.Text = tkbAmbientTemperature.Value.ToString() + " °C";
+                tkbTime.Value = current_selected_event.time;
+                // Bad code
+                foreach (KeyValuePair<string, int> pair in ACCGMainForm.time_table)
+                {
+                    if (pair.Value == current_selected_event.time)
+                    {
+                        lblTimeValue.Text = pair.Key;
+                        break;
+                    }
+                }
+                
+                ckbPractice.Checked = current_selected_event.practice;
+
+                if (ckbPractice.Checked)
+                {
+                    tkbPracticeDuration.Value = current_selected_event.session_list.Find(x => x.type == 1).duration_minutes;
+                }
+                
+                lblPracticeDurationValue.Text = tkbPracticeDuration.Value.ToString() + " min";
+                
+                ckbQualifying.Checked = current_selected_event.qualifying;
+
+                if (ckbQualifying.Checked)
+                {
+                    tkbQualifyingDuration.Value = current_selected_event.session_list.Find(x => x.type == 2).duration_minutes;
+                }
+                
+                lblQualifyingDurationValue.Text = tkbQualifyingDuration.Value.ToString() + " min";
+                cbTrack.Text = current_selected_event.track;
+                tkbNumberOfCars.Value = current_selected_event.numberOfCars;
+                lblNumberOfCarsValue.Text = tkbNumberOfCars.Value.ToString() + " cars";
+                tkbNumberOfLaps.Value = current_selected_event.session_list.Find(x => x.type == 3).laps;
+                lblNumberOfLapsValue.Text = tkbNumberOfLaps.Value.ToString() + " laps";
+                ckbPenalties.Checked = current_selected_event.penalties;
+            }
+            else // New event mode
+            {
+                cbTrack.Text = ACCGMainForm.ac_tracks_list[0]; 
+            }
+
+           
+
+           
+            
                            
         }
 
@@ -57,41 +132,60 @@ namespace ACCG
             else
             {
                 // The event
-                Event temp_event = new Event();
+                Event temp_event;
+                int event_index = 0;
 
-                if (ACCGNewSeriesForm.events_global_ID == 0)
+                // Edit mode
+                if (current_selected_event != null)
                 {
-                    temp_event.ID = 1;
-                    ACCGNewSeriesForm.events_global_ID++;
+                    temp_event = current_selected_event;
+                    event_index = ACCGNewSeriesForm.temp_series.events_list.IndexOf(temp_event);
+                    ACCGNewSeriesForm.temp_series.events_list.Remove(current_selected_event);
                 }
-                else
+                else // New event mode
                 {
-                    temp_event.ID = ACCGNewSeriesForm.events_global_ID + 1;
-                    ACCGNewSeriesForm.events_global_ID++;
-                }
+                    temp_event = new Event();
 
+                    if (ACCGNewSeriesForm.events_global_ID == 0)
+                    {
+                        temp_event.ID = 1;
+                        ACCGNewSeriesForm.events_global_ID++;
+                    }
+                    else
+                    {
+                        temp_event.ID = ACCGNewSeriesForm.events_global_ID + 1;
+                        ACCGNewSeriesForm.events_global_ID++;
+                    }
+                }
+                
                 Console.WriteLine("DEBUG: ID = {0}", temp_event.ID);
                 temp_event.name = tbName.Text;
                 temp_event.description = tbDescription.Text;
-                temp_event.ambient_temperature = tkbAmbientTemperature.Value.ToString();
-                temp_event.time = tkbTime.Value.ToString();
+                temp_event.ambient_temperature = tkbAmbientTemperature.Value;
+                temp_event.time = tkbTime.Value;
                 temp_event.track = cbTrack.SelectedItem.ToString();
                 temp_event.numberOfCars = tkbNumberOfCars.Value;
-
-                if (ckbPenalties.Checked) {
-                    temp_event.penalties = 1;
+                temp_event.penalties = ckbPenalties.Checked;
+                                
+                // Sessions of the event
+                // Edit mode
+                if (current_selected_event != null)
+                {
+                    temp_event.session_list = current_selected_event.session_list;
                 }
                 else
                 {
-                    temp_event.penalties = 0;
+                    temp_event.session_list = new List<Session>();
                 }
                 
 
-                // Sessions of the event
-                temp_event.session_list = new List<Session>();
-
                 if (ckbPractice.Checked)
                 {
+                    if (current_selected_event != null)
+                    {
+                        temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 1));
+                    }
+                    
                     temp_event.practice = true;
 
                     Session practice_session = new Session();
@@ -106,6 +200,11 @@ namespace ACCG
 
                 if (ckbQualifying.Checked)
                 {
+                    if (current_selected_event != null)
+                    {
+                        temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 3));
+                    }
+
                     temp_event.qualifying = true;
 
                     Session qualifying_session = new Session();
@@ -128,6 +227,11 @@ namespace ACCG
                 }
 
                 // Race sessions (always present)
+                if (current_selected_event != null)
+                {
+                    temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 3));
+                }
+
                 Session race_session = new Session();
 
                 if (ckbPractice.Checked & !ckbQualifying.Checked)
@@ -153,7 +257,15 @@ namespace ACCG
                 race_session.laps = tkbNumberOfLaps.Value;
                 temp_event.session_list.Add(race_session);
 
-                ACCGNewSeriesForm.temp_series.events_list.Add(temp_event);
+                if (current_selected_event != null)
+                {
+                    ACCGNewSeriesForm.temp_series.events_list.Insert(event_index, temp_event);
+                }
+                else
+                {
+                    ACCGNewSeriesForm.temp_series.events_list.Add(temp_event);
+                }
+                
                 ACCGNewSeriesForm.bs_events_datasource.ResetBindings(false);
 
                 this.Close();

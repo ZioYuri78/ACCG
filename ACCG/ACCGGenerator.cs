@@ -128,6 +128,14 @@ namespace ACCG
                    Console.WriteLine("The process failed: {0}", exc.ToString());
                }
 
+               string penalties = "";
+               if (ev.penalties)
+               {
+                   penalties = "1";
+               }else{
+                   penalties = "0";
+               }
+
                string[] event_file_content = {
                                                  "[EVENT]",
                                                  "NAME=" + ev.name,
@@ -150,7 +158,7 @@ namespace ACCG
                                                  "CARS=" + ev.numberOfCars,
                                                  "AI_LEVEL=100",        // Probably is a "multiplier" of AI opponents, need to ask devs
                                                  "FIXED_SETUP=0",
-                                                 "PENALTIES=" + ev.penalties,
+                                                 "PENALTIES=" + penalties,
                                                  "DRIFT_MODE=0",
                                                  "RACE_LAPS=" + ev.session_list.Find(x => x.type == 3).laps,
                                                  "ARM_FIRST_LAP=0",

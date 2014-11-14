@@ -226,18 +226,8 @@ namespace ACCG
             this.Close();
         }
 
-        private void btnNewEvent_Click(object sender, EventArgs e)
-        {
-            ACCGNewEventForm newEventForm = new ACCGNewEventForm();            
-            newEventForm.ShowDialog();
 
-        }
-
-        private void btnNewOpponent_Click(object sender, EventArgs e)
-        {
-            ACCGNewOpponentForm newOpponentForm = new ACCGNewOpponentForm();
-            newOpponentForm.ShowDialog();
-        }
+       
 
         private void cbCar_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -313,6 +303,28 @@ namespace ACCG
             
         }
 
+
+        private void btnNewEvent_Click(object sender, EventArgs e)
+        {
+            ACCGNewEventForm newEventForm = new ACCGNewEventForm();
+            newEventForm.ShowDialog();
+
+        }
+
+        private void btnEditEvent_Click(object sender, EventArgs e)
+        {
+            if (current_selected_event != null)
+            {
+                ACCGNewEventForm editEventForm = new ACCGNewEventForm(current_selected_event);
+                editEventForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You have to select an event!");
+            }
+
+        }      
+
         private void btnDeleteEvent_Click(object sender, EventArgs e)
         {
             if (current_selected_event == null)
@@ -325,11 +337,39 @@ namespace ACCG
 
                 if (are_you_sure == DialogResult.Yes)
                 {                    
-                    temp_series.events_list.Remove(current_selected_event);                    
+                  
+                    temp_series.events_list.Remove(current_selected_event);
+
+                    for (int i = 0; i < temp_series.events_list.Count; i++)
+                    {
+                        temp_series.events_list[i].ID = i + 1;
+                    }                    
+
                     bs_events_datasource.ResetBindings(false);
                     rtbEventsInfo.ResetText();
                 }
             }
+        }
+
+        private void btnNewOpponent_Click(object sender, EventArgs e)
+        {
+            ACCGNewOpponentForm newOpponentForm = new ACCGNewOpponentForm();
+            newOpponentForm.ShowDialog();
+        }
+
+        private void btnEditOpponent_Click(object sender, EventArgs e)
+        {
+            if (current_selected_opponent != null)
+            {
+                ACCGNewOpponentForm editOpponentForm = new ACCGNewOpponentForm(current_selected_opponent);
+                editOpponentForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You have to select an opponent!");
+            }
+            
+
         }
 
         private void btnDeleteOpponent_Click(object sender, EventArgs e)
@@ -343,13 +383,21 @@ namespace ACCG
                 DialogResult are_you_sure = MessageBox.Show("Are you sure?", "Delete opponent", MessageBoxButtons.YesNo);
 
                 if (are_you_sure == DialogResult.Yes)
-                {
+                {                    
+
                     temp_series.opponents_list.Remove(current_selected_opponent);
+
+                    for (int i = 0; i < temp_series.opponents_list.Count; i++)
+                    {
+                        temp_series.opponents_list[i].ID = i + 1;
+                    }
+                    
                     bs_opponents_datasource.ResetBindings(false);
                     rtbOpponentsInfo.ResetText();
                 }
             }
-        }      
+        }
+
         
     }
 }

@@ -12,21 +12,48 @@ namespace ACCG
 {
     public partial class ACCGNewOpponentForm : Form
     {
+        private Opponent current_selected_opponent;
+
         public ACCGNewOpponentForm()
         {
             InitializeComponent();
         }
 
+        public ACCGNewOpponentForm(Opponent current_selected_opponent)
+        {
+            // TODO: Complete member initialization
+            this.current_selected_opponent = current_selected_opponent;
+
+            InitializeComponent();
+        }
+
         private void ACCGNewOpponentForm_Load(object sender, EventArgs e)
         {
+            // Edit mode
+            if (current_selected_opponent != null)
+            {
+                tbName.Text = current_selected_opponent.name;
+                tbNationality.Text = current_selected_opponent.nationality;
+                tkbAIlevel.Value = current_selected_opponent.ai_level;
+                lblAIlevelValue.Text = current_selected_opponent.ai_level.ToString();
+            }
+
             // Populating cars combo box
             foreach (Car car in ACCGMainForm.ac_cars_list)
             {
                 cbCar.Items.Add(car.model);
             }
 
-            cbCar.Text = ACCGMainForm.ac_cars_list.ElementAt(0).model;
-
+            // Edit mode
+            if (current_selected_opponent != null)
+            {
+                cbCar.Text = current_selected_opponent.model.model;
+            }
+            else // New opponent mode
+            {
+                cbCar.Text = ACCGMainForm.ac_cars_list.ElementAt(0).model;
+            }
+           
             opponent_car = ACCGMainForm.ac_cars_list.Find(x => x.model == cbCar.SelectedItem.ToString());
 
             // Populating the car skins combo box
@@ -35,7 +62,16 @@ namespace ACCG
                 cbSkin.Items.Add(skin);
             }
 
-            cbSkin.Text = opponent_car.skins[0];
+            // Edit mode
+            if (current_selected_opponent != null)
+            {
+                cbSkin.Text = current_selected_opponent.skin;
+            }
+            else // New opponent mode
+            {
+                cbSkin.Text = opponent_car.skins[0];
+            }
+            
         }
 
         private void tkbAIlevel_Scroll(object sender, EventArgs e)
@@ -57,19 +93,32 @@ namespace ACCG
             else
             {
                 // The opponent
-                Opponent temp_opponent = new Opponent();
+                Opponent temp_opponent;
+                int opponent_index = 0;
 
-                if (ACCGNewSeriesForm.opponents_global_ID == 0)
+                // Edit mode
+                if (current_selected_opponent != null)
                 {
-                    temp_opponent.ID = 1;
-                    ACCGNewSeriesForm.opponents_global_ID++;
+                    temp_opponent = current_selected_opponent;
+                    opponent_index = ACCGNewSeriesForm.temp_series.opponents_list.IndexOf(temp_opponent);
+                    ACCGNewSeriesForm.temp_series.opponents_list.Remove(current_selected_opponent);
                 }
-                else
+                else // New opponent mode
                 {
-                    temp_opponent.ID = ACCGNewSeriesForm.opponents_global_ID + 1;
-                    ACCGNewSeriesForm.opponents_global_ID++;
-                }
+                    temp_opponent = new Opponent();
 
+                    if (ACCGNewSeriesForm.opponents_global_ID == 0)
+                    {
+                        temp_opponent.ID = 1;
+                        ACCGNewSeriesForm.opponents_global_ID++;
+                    }
+                    else
+                    {
+                        temp_opponent.ID = ACCGNewSeriesForm.opponents_global_ID + 1;
+                        ACCGNewSeriesForm.opponents_global_ID++;
+                    }
+                }
+                                
                 Console.WriteLine("DEBUG: ID = {0}",temp_opponent.ID);
                 temp_opponent.model = opponent_car;
                 temp_opponent.setup = "";   //temp_opponent.setup = cbSetup.SelectedItem.ToString(); 
@@ -78,7 +127,15 @@ namespace ACCG
                 temp_opponent.name = tbName.Text;
                 temp_opponent.nationality = tbNationality.Text;
 
-                ACCGNewSeriesForm.temp_series.opponents_list.Add(temp_opponent);
+                if (current_selected_opponent != null)
+                {                    
+                    ACCGNewSeriesForm.temp_series.opponents_list.Insert(opponent_index, temp_opponent);
+                }
+                else
+                {
+                    ACCGNewSeriesForm.temp_series.opponents_list.Add(temp_opponent);                
+                }
+                
                 ACCGNewSeriesForm.bs_opponents_datasource.ResetBindings(false);
 
                 this.Close();

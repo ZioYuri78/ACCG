@@ -14,13 +14,14 @@ namespace ACCG
         public int ID { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public string ambient_temperature { get; set; }
-        public string time { get; set; }
+        public int ambient_temperature { get; set; }
+        public int time { get; set; }
         public bool practice { get; set; }
         public bool qualifying { get; set; }
         public string track { get; set; }
         public int numberOfCars { get; set; }
-        public int penalties { get; set; }
+        public bool penalties { get; set; }
+        public bool isEdited { get; set; }
         
        
 
