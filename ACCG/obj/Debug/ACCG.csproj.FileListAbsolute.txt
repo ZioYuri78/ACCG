@@ -1,0 +1,13 @@
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\bin\Debug\ACCG.exe.config
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\bin\Debug\ACCG.exe
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\bin\Debug\ACCG.pdb
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.csprojResolveAssemblyReference.cache
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.ACCGMainForm.resources
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.Properties.Resources.resources
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.csproj.GenerateResource.Cache
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.exe
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.pdb
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.ACCGCredits.resources
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.ACCGNewEventForm.resources
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.ACCGNewSeriesForm.resources
+D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Debug\ACCG.ACCGNewOpponentForm.resources

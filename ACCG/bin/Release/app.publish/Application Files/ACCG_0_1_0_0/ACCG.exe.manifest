@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="ACCG.exe" version="0.1.0.0" publicKeyToken="d20dca4544252a72" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="ACCG" version="0.1.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="ACCG.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opzioni manifesto Controllo account utente
+          Se si desidera modificare il livello di Controllo account utente di Windows, sostituire il 
+          nodo requestedExecutionLevel con uno dei seguenti.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Se si desidera utilizzare Virtualizzazione file system e registro di sistema per la 
+         compatibilità con le versioni precedenti, eliminare il nodo requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="93184">
+      <assemblyIdentity name="ACCG" version="0.1.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>G1vw3CSnNNtdMG53wW83z4wTLtnE+NRlJA2QDMnLZqM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="ACCG.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=Desktop\Yuri Belleri" issuerKeyHash="74b0ed0656ea4d434afc069f3f477d0625768911" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>nMDT/fTCdgNuluYHmYalaYqATSJqs9ihJcdeOvpsMZc=</DigestValue></Reference></SignedInfo><SignatureValue>FjYeIuhSymP/d+DcG/8m8mFuMnMBVBGH9yJLkyLOMYnxY4z9NG4aIqWiibwuqnGOyqmeH+KausPRVjcG7nT1xGZ49H/sq6ajQdeD07lStSAwes/Aft7RFzu7kg+8KFzGbYAsGLkuxXSzhxVI/tj2R1DzFaXJcQhoOEwef26ozSU=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>o3Q7fo5RJ3+LcXtZecqUfNNsMi5/4Z64PQgnPoqKW87vCw9nvQ/9sSCwy4PDLtifVXLA2xtH9ZydVfUdxrCqMtAvijwhB/kWh15UgQIfvrCSYhg3XG40PwmqzZOtXa67LlsB2RYe37fuOMiJI95jIldHsxtFgO9fZfTYunxFQ2s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="97316cfa3a5ec725a1d8b36a224d808a69a5869907e6966e0376c2f4fdd3c09c" Description="" Url=""><as:assemblyIdentity name="ACCG.exe" version="0.1.0.0" publicKeyToken="d20dca4544252a72" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Desktop\Yuri Belleri</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>ZRBEP20FypjbglegoEVBEknXp7ViBu3ElPvbfqGh36g=</DigestValue></Reference></SignedInfo><SignatureValue>auSWkaVjXAmY6403DMHFLQSSc4aV+UhWH7+jZSS/sAU5X8zzz7onUxNQvAxkPFAglh9s+zTUzpBf/6Ilw3wS93eqsfP/77AnqawXQfyKKscVHr9lRHB7MbMP38nVgMzFCxeJU3OiRif0l5yHANvwQEg9ZVsr/Ij+72LNKukoSD0=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>o3Q7fo5RJ3+LcXtZecqUfNNsMi5/4Z64PQgnPoqKW87vCw9nvQ/9sSCwy4PDLtifVXLA2xtH9ZydVfUdxrCqMtAvijwhB/kWh15UgQIfvrCSYhg3XG40PwmqzZOtXa67LlsB2RYe37fuOMiJI95jIldHsxtFgO9fZfTYunxFQ2s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB6TCCAVKgAwIBAgIQYSTgA3Nd5rNFtX5ucrKjcTANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDHigARABlAHMAawB0AG8AcABcAFkAdQByAGkAIABCAGUAbABsAGUAcgBpMB4XDTE0MTExMzE1MTkzOVoXDTE1MTExMzIxMTkzOVowMzExMC8GA1UEAx4oAEQAZQBzAGsAdABvAHAAXABZAHUAcgBpACAAQgBlAGwAbABlAHIAaTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAo3Q7fo5RJ3+LcXtZecqUfNNsMi5/4Z64PQgnPoqKW87vCw9nvQ/9sSCwy4PDLtifVXLA2xtH9ZydVfUdxrCqMtAvijwhB/kWh15UgQIfvrCSYhg3XG40PwmqzZOtXa67LlsB2RYe37fuOMiJI95jIldHsxtFgO9fZfTYunxFQ2sCAwEAATANBgkqhkiG9w0BAQsFAAOBgQCTXFLEooxVdJn35qENfS81PrWjh25/OjpkObqXVXL2X/ocLyCI4w2fga08hHZVMM3KxgHzCQQZDjQvLb1EG9CRZsQbT7NRdMmi/mR8AFLRJ+aeCzsSGHRPdOK0UXwfuoWx/3niITRS6u4oKSNPCrN9+Kz0Hc2tb9h9+nxmAx0zDA==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
