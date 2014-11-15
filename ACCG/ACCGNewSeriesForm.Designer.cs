@@ -534,8 +534,8 @@ namespace ACCG
 
         public static Car champ_player_car {get; set;}
         public static Series temp_series { get; set; }
-        public static int events_global_ID { get; set; }
-        public static int opponents_global_ID { get; set; }
+        //public static int events_global_ID { get; set; }
+        //public static int opponents_global_ID { get; set; }
         public static Event current_selected_event { get; set; }
         public static Opponent current_selected_opponent { get; set; }
         

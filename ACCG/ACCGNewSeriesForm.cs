@@ -14,8 +14,18 @@ namespace ACCG
 {
     public partial class ACCGNewSeriesForm : Form
     {
+        private Series current_selected_series;
+
         public ACCGNewSeriesForm()
         {
+            InitializeComponent();
+        }
+
+        public ACCGNewSeriesForm(Series current_selected_series)
+        {
+            // TODO: Complete member initialization
+            this.current_selected_series = current_selected_series;
+
             InitializeComponent();
         }
 
@@ -41,16 +51,32 @@ namespace ACCG
 
         private void NewSeriesForm_Load(object sender, EventArgs e)
         {
+
+            if (current_selected_series != null)
+            {
+                temp_series = current_selected_series;
+                tbCode.Text = temp_series.code;
+                tbName.Text = temp_series.name;
+                tbDescription.Text = temp_series.description;
+                tbPoints.Text = temp_series.points;
+                tbGoalsPoints.Text = temp_series.goalsPoints;
+            }
+            else
+            {
+                temp_series = new Series();              
+            }
             
-            temp_series = new Series();              
             
             // Manca try catch!
             
             if (rbChampionship.Checked)
             {
-               
-                temp_series.opponents_list = new List<Opponent>();                
-                                            
+
+                if (current_selected_series == null)
+                {
+                    temp_series.opponents_list = new List<Opponent>();                    
+                }
+                                                            
                 tbPoints.Enabled = true;
                 cbCar.Enabled = true;
                 lbOpponents.Enabled = true;
@@ -58,7 +84,7 @@ namespace ACCG
             }
             
 
-            // Populating the series combobox
+            // Populating the requires series combobox
             ac_series_path = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
             
             /*
@@ -78,19 +104,42 @@ namespace ACCG
                 }
             }
 
-            cbRequires.Text = ac_series_path[0].Substring(ac_series_path[0].LastIndexOf(@"\") + 1);                
+            if (current_selected_series != null)
+            {
+                cbRequires.Text = temp_series.requires;
+            }
+            else
+            {
+                cbRequires.Text = ac_series_path[0].Substring(ac_series_path[0].LastIndexOf(@"\") + 1);                
+            }
             
-                        
+                                    
             // Populating the models combobox
             foreach (Car car in ACCGMainForm.ac_cars_list)
             {
                 cbCar.Items.Add(car.model);
             }
 
-            cbCar.Text = ACCGMainForm.ac_cars_list.ElementAt(0).model;                       
+            if (current_selected_series != null)
+            {
+                cbCar.Text = temp_series.model.model;
+            }
+            else
+            {
+                cbCar.Text = ACCGMainForm.ac_cars_list.ElementAt(0).model;                       
+            }
+            
 
             // Set initial car model
-            champ_player_car = ACCGMainForm.ac_cars_list.Find(x => x.model == cbCar.SelectedItem.ToString());
+            if (current_selected_series != null)
+            {
+                champ_player_car = temp_series.model;
+            }
+            else
+            {
+                champ_player_car = ACCGMainForm.ac_cars_list.Find(x => x.model == cbCar.SelectedItem.ToString());
+            }
+            
 
             // Populating the car skins combo box
             foreach (string skin in ACCGNewSeriesForm.champ_player_car.skins)
@@ -98,7 +147,15 @@ namespace ACCG
                 cbSkin.Items.Add(skin);
             }
 
-            cbSkin.Text = ACCGNewSeriesForm.champ_player_car.skins[0];            
+            if (current_selected_series != null)
+            {
+                cbSkin.Text = temp_series.skin;
+            }
+            else
+            {
+                cbSkin.Text = ACCGNewSeriesForm.champ_player_car.skins[0];            
+            }
+            
             
             ShowData();
         }
@@ -151,41 +208,44 @@ namespace ACCG
                 // Very instable code!
                 if (ACCGMainForm.series_global_ID >= 100)
                 {
-                    temp_series.ID = ACCGMainForm.series_global_ID + 1;
-                    ACCGMainForm.series_global_ID++;
-
-                    // Save the new value of global series ID in settings.ini  (very instable code!)              
-                    StringBuilder newFile = new StringBuilder();
-                    //string temp_opponent = "";                  
-                    string settings_file_name = @"cfg\settings.ini";
-
-                    if (File.Exists(settings_file_name))
+                    if (current_selected_series == null)
                     {
-                        string[] file = File.ReadAllLines(settings_file_name);
+                        temp_series.ID = ACCGMainForm.series_global_ID + 1;
+                        ACCGMainForm.series_global_ID++;
 
-                        for (int i = 0; i < file.Length; i++)
+                        // Save the new value of global series ID in settings.ini  (very instable code!)              
+                        StringBuilder newFile = new StringBuilder();
+                        //string temp_opponent = "";                  
+                        string settings_file_name = @"cfg\settings.ini";
+
+                        if (File.Exists(settings_file_name))
                         {
-                            if (file[i].Contains("[SERIES_GLOBAL_ID]"))
+                            string[] file = File.ReadAllLines(settings_file_name);
+
+                            for (int i = 0; i < file.Length; i++)
                             {
+                                if (file[i].Contains("[SERIES_GLOBAL_ID]"))
+                                {
+                                    newFile.Append(file[i] + "\r\n");
+                                    file[i + 1] = ACCGMainForm.series_global_ID.ToString();
+                                    Console.WriteLine("DEBUG: SERIES_GLOBAL_ID" + ACCGMainForm.series_global_ID.ToString());
+
+                                    newFile.Append(file[i + 1]);
+                                    break;
+
+                                }
+
                                 newFile.Append(file[i] + "\r\n");
-                                file[i + 1] = ACCGMainForm.series_global_ID.ToString();
-                                Console.WriteLine("DEBUG: SERIES_GLOBAL_ID" + ACCGMainForm.series_global_ID.ToString());
-
-                                newFile.Append(file[i + 1]);
-                                break;
-
                             }
 
-                            newFile.Append(file[i] + "\r\n");
+                            File.WriteAllText(settings_file_name, newFile.ToString());
                         }
-
-                        File.WriteAllText(settings_file_name, newFile.ToString());
+                        else
+                        {
+                            MessageBox.Show("Missing file \"" + settings_file_name + "\"!");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Missing file \"" + settings_file_name + "\"!");    
-                    }
-                   
+                                                           
                 }
 
                 Console.WriteLine("DEBUG: Code = {0}", temp_series.code);
@@ -199,7 +259,17 @@ namespace ACCG
                 Console.WriteLine("DEBUG: Events = {0}", temp_series.events_list.Count);
 
                 // Add the current series to ACCG main series list
-                ACCGMainForm.accg_series_list.Add(temp_series);
+                if (current_selected_series != null) // Edit mode
+                {
+                    int series_index = ACCGMainForm.accg_series_list.IndexOf(current_selected_series);
+                    ACCGMainForm.accg_series_list.Remove(current_selected_series);
+                    ACCGMainForm.accg_series_list.Insert(series_index,temp_series);
+                }
+                else // New sereis mode
+                {
+                    ACCGMainForm.accg_series_list.Add(temp_series);
+                }
+                
                 // Need datasource
                 ACCGMainForm.bs_series_datasource.ResetBindings(false);
 
@@ -309,6 +379,11 @@ namespace ACCG
             ACCGNewEventForm newEventForm = new ACCGNewEventForm();
             newEventForm.ShowDialog();
 
+            for (int i = 0; i < temp_series.events_list.Count; i++)
+            {
+                temp_series.events_list[i].ID = i + 1;
+            }
+
         }
 
         private void btnEditEvent_Click(object sender, EventArgs e)
@@ -317,6 +392,11 @@ namespace ACCG
             {
                 ACCGNewEventForm editEventForm = new ACCGNewEventForm(current_selected_event);
                 editEventForm.ShowDialog();
+
+                for (int i = 0; i < temp_series.events_list.Count; i++)
+                {
+                    temp_series.events_list[i].ID = i + 1;
+                }
             }
             else
             {
@@ -355,6 +435,11 @@ namespace ACCG
         {
             ACCGNewOpponentForm newOpponentForm = new ACCGNewOpponentForm();
             newOpponentForm.ShowDialog();
+
+            for (int i = 0; i < temp_series.opponents_list.Count; i++)
+            {
+                temp_series.opponents_list[i].ID = i + 1;
+            }
         }
 
         private void btnEditOpponent_Click(object sender, EventArgs e)
@@ -363,6 +448,11 @@ namespace ACCG
             {
                 ACCGNewOpponentForm editOpponentForm = new ACCGNewOpponentForm(current_selected_opponent);
                 editOpponentForm.ShowDialog();
+
+                for (int i = 0; i < temp_series.opponents_list.Count; i++)
+                {
+                    temp_series.opponents_list[i].ID = i + 1;
+                }
             }
             else
             {

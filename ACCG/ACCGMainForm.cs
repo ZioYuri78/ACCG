@@ -270,23 +270,9 @@ namespace ACCG
             }
             else
             {
-               
+                ACCGNewSeriesForm editSeriesForm = new ACCGNewSeriesForm(current_selected_series);
+                editSeriesForm.ShowDialog();
                 
-            }
-            
-        }
-
-        private void btnGenerate_Click(object sender, EventArgs e)
-        {
-            if (current_selected_series == null)
-            {
-                MessageBox.Show("You have to select a series!");
-            }
-            else
-            {
-                ACCGGenerator accg_generator = new ACCGGenerator(current_selected_series, Directory.GetCurrentDirectory());
-                accg_generator.Generate();
-                current_selected_series.isGenerated = true;
             }
             
         }
@@ -337,6 +323,22 @@ namespace ACCG
                 }                
                
             }
+        }
+
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            if (current_selected_series == null)
+            {
+                MessageBox.Show("You have to select a series!");
+            }
+            else
+            {
+                ACCGGenerator accg_generator = new ACCGGenerator(current_selected_series, Directory.GetCurrentDirectory());
+                accg_generator.Generate();
+                current_selected_series.isGenerated = true;
+            }
+
         }
               
     }

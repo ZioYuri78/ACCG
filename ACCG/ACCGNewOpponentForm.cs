@@ -106,7 +106,7 @@ namespace ACCG
                 else // New opponent mode
                 {
                     temp_opponent = new Opponent();
-
+                    /*
                     if (ACCGNewSeriesForm.opponents_global_ID == 0)
                     {
                         temp_opponent.ID = 1;
@@ -116,7 +116,7 @@ namespace ACCG
                     {
                         temp_opponent.ID = ACCGNewSeriesForm.opponents_global_ID + 1;
                         ACCGNewSeriesForm.opponents_global_ID++;
-                    }
+                    }*/
                 }
                                 
                 Console.WriteLine("DEBUG: ID = {0}",temp_opponent.ID);

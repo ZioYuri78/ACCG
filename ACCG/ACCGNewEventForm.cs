@@ -111,12 +111,7 @@ namespace ACCG
             {
                 cbTrack.Text = ACCGMainForm.ac_tracks_list[0]; 
             }
-
-           
-
-           
-            
-                           
+                                                          
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -145,7 +140,7 @@ namespace ACCG
                 else // New event mode
                 {
                     temp_event = new Event();
-
+                    /*
                     if (ACCGNewSeriesForm.events_global_ID == 0)
                     {
                         temp_event.ID = 1;
@@ -155,7 +150,7 @@ namespace ACCG
                     {
                         temp_event.ID = ACCGNewSeriesForm.events_global_ID + 1;
                         ACCGNewSeriesForm.events_global_ID++;
-                    }
+                    }*/
                 }
                 
                 Console.WriteLine("DEBUG: ID = {0}", temp_event.ID);
@@ -168,17 +163,9 @@ namespace ACCG
                 temp_event.penalties = ckbPenalties.Checked;
                                 
                 // Sessions of the event
-                // Edit mode
-                if (current_selected_event != null)
-                {
-                    temp_event.session_list = current_selected_event.session_list;
-                }
-                else
-                {
-                    temp_event.session_list = new List<Session>();
-                }
-                
-
+                                
+                temp_event.session_list = new List<Session>();
+                                              
                 if (ckbPractice.Checked)
                 {
                     if (current_selected_event != null)
