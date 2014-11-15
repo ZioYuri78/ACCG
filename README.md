@@ -1,4 +1,4 @@
 ACCG
 ====
 
-Assetto Corsa Career generator tool
+Assetto Corsa Career Generator tool
