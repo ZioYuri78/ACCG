@@ -145,7 +145,7 @@ namespace ACCG
                                                  "ROAD=33", // Road temperature trackbar not implemented yet
                                                  "AMBIENT=" + ev.ambient_temperature,
                                                  "\n",
-                                                 "[DINAMIC_TRACK]",     // Not implemented yet in ACCG
+                                                 "[DYNAMIC_TRACK]",     // Not implemented yet in ACCG
                                                  "PRESET=4",            //
                                                  "SESSION_START=98",    //
                                                  "RANDOMNESS=2",        //
