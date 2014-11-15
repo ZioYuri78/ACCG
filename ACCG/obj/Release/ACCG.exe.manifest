@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="ACCG.exe" version="0.2.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ACCG" version="0.2.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="ACCG" version="0.2.1.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="ACCG.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,13 +43,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="104960">
-      <assemblyIdentity name="ACCG" version="0.2.0.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="ACCG" version="0.2.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fqHGcWrZ7k2q2mv9D/W5pkAufU3oAIFyW4j9PUClx7A=</dsig:DigestValue>
+        <dsig:DigestValue>6CcxsqxUg6jZ+z1HU6AJPWXrD4XJnZZKplxWIkP61yk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
