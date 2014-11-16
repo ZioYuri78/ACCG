@@ -31,22 +31,21 @@ namespace ACCG
 
         private void rbChampionship_CheckedChanged(object sender, EventArgs e)
         {
-            tbPoints.Enabled = rbChampionship.Enabled;
-            cbCar.Enabled = rbChampionship.Enabled;
-            lbOpponents.Enabled = rbChampionship.Enabled;
-            btnNewOpponent.Enabled = rbChampionship.Enabled;
-            btnEditOpponent.Enabled = rbChampionship.Enabled;
-            btnDeleteOpponent.Enabled = rbChampionship.Enabled;
+            tbPoints.Enabled = rbChampionship.Checked;
+            cbCar.Enabled = rbChampionship.Checked;
+            cbSkin.Enabled = rbChampionship.Checked;
+            tbGoalsPoints.Enabled = rbChampionship.Checked;
+            lbOpponents.Enabled = rbChampionship.Checked;
+            btnNewOpponent.Enabled = rbChampionship.Checked;
+            btnEditOpponent.Enabled = rbChampionship.Checked;
+            btnDeleteOpponent.Enabled = rbChampionship.Checked;
         }
 
         private void rbSingleEvents_CheckedChanged(object sender, EventArgs e)
         {
-            tbPoints.Enabled = false;
-            cbCar.Enabled = false;
-            lbOpponents.Enabled = false;
-            btnNewOpponent.Enabled = false;
-            btnEditOpponent.Enabled = false;
-            btnDeleteOpponent.Enabled = false;
+            tbGoldTier.Enabled = rbSingleEvents.Checked;
+            tbSilverTier.Enabled = rbSingleEvents.Checked;
+            tbBronzeTier.Enabled = rbSingleEvents.Checked;
         }
 
         private void NewSeriesForm_Load(object sender, EventArgs e)
@@ -79,8 +78,25 @@ namespace ACCG
                                                             
                 tbPoints.Enabled = true;
                 cbCar.Enabled = true;
+                cbSkin.Enabled = true;
+                tbGoalsPoints.Enabled = true;
                 lbOpponents.Enabled = true;
 
+                tbGoldTier.Enabled = false;
+                tbSilverTier.Enabled = false;
+                tbBronzeTier.Enabled = false;
+            }
+            else if (rbSingleEvents.Checked)
+            {
+                tbPoints.Enabled = false;
+                cbCar.Enabled = false;
+                cbSkin.Enabled = false;
+                tbGoalsPoints.Enabled = false;
+                lbOpponents.Enabled = false;
+
+                tbGoldTier.Enabled = true;
+                tbSilverTier.Enabled = true;
+                tbBronzeTier.Enabled = true;
             }
             
 
@@ -488,6 +504,9 @@ namespace ACCG
             }
         }
 
-        
+      
+
     }
+
 }
+

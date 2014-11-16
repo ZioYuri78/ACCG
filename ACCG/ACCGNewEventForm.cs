@@ -299,10 +299,56 @@ namespace ACCG
             lblNumberOfLapsValue.Text = tkbNumberOfLaps.Value + " laps";
         }
 
+
+        private void tkbCondition_Scroll(object sender, EventArgs e)
+        {
+            // placeolder code
+            switch (tkbCondition.Value)
+            {
+                case 0:
+                    lblTrackConditionValue.Text = "Dusty";
+                    break;
+
+                case 1:
+                    lblTrackConditionValue.Text = "Old";
+                    break;
+
+                case 2:
+                    lblTrackConditionValue.Text = "Slow";
+                    break;
+
+                case 3:
+                    lblTrackConditionValue.Text = "Green";
+                    break;
+
+                case 4:
+                    lblTrackConditionValue.Text = "Fast";
+                    break;
+
+                case 5:
+                    lblTrackConditionValue.Text = "Optimum";
+                    break;
+                
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+        }
+
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+       
+
+
+
+      
+
+        
+
 
     }
 }

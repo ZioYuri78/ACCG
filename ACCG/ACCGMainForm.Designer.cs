@@ -31,8 +31,8 @@ namespace ACCG
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ACCGMainForm));
-            this.lblSeries = new System.Windows.Forms.Label();
             this.lbSeries = new System.Windows.Forms.ListBox();
             this.btnNewSeries = new System.Windows.Forms.Button();
             this.btnEditSeries = new System.Windows.Forms.Button();
@@ -44,57 +44,55 @@ namespace ACCG
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rtbSeriesInfo = new System.Windows.Forms.RichTextBox();
-            this.lblSeriesInfo = new System.Windows.Forms.Label();
             this.lblCurrentSeries = new System.Windows.Forms.Label();
             this.btnGenerate = new System.Windows.Forms.Button();
+            this.grbSeries = new System.Windows.Forms.GroupBox();
+            this.tltNewSeriesButton = new System.Windows.Forms.ToolTip(this.components);
+            this.tltEditSeriesButton = new System.Windows.Forms.ToolTip(this.components);
+            this.tltDeleteSeriesButton = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
+            this.grbSeries.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblSeries
-            // 
-            this.lblSeries.AutoSize = true;
-            this.lblSeries.Location = new System.Drawing.Point(12, 36);
-            this.lblSeries.Name = "lblSeries";
-            this.lblSeries.Size = new System.Drawing.Size(36, 13);
-            this.lblSeries.TabIndex = 0;
-            this.lblSeries.Text = "Series";
             // 
             // lbSeries
             // 
             this.lbSeries.FormattingEnabled = true;
-            this.lbSeries.Location = new System.Drawing.Point(15, 53);
+            this.lbSeries.Location = new System.Drawing.Point(6, 19);
             this.lbSeries.Name = "lbSeries";
-            this.lbSeries.Size = new System.Drawing.Size(120, 82);
+            this.lbSeries.Size = new System.Drawing.Size(123, 134);
             this.lbSeries.TabIndex = 3;
             this.lbSeries.SelectedIndexChanged += new System.EventHandler(this.lbSeries_SelectedIndexChanged);
             // 
             // btnNewSeries
             // 
-            this.btnNewSeries.Location = new System.Drawing.Point(142, 53);
+            this.btnNewSeries.Image = global::ACCG.Properties.Resources.NewFile_6276;
+            this.btnNewSeries.Location = new System.Drawing.Point(6, 159);
             this.btnNewSeries.Name = "btnNewSeries";
-            this.btnNewSeries.Size = new System.Drawing.Size(75, 23);
+            this.btnNewSeries.Size = new System.Drawing.Size(37, 23);
             this.btnNewSeries.TabIndex = 6;
-            this.btnNewSeries.Text = "New";
+            this.tltNewSeriesButton.SetToolTip(this.btnNewSeries, "New Series");
             this.btnNewSeries.UseVisualStyleBackColor = true;
             this.btnNewSeries.Click += new System.EventHandler(this.btnNewSeries_Click);
             // 
             // btnEditSeries
             // 
-            this.btnEditSeries.Location = new System.Drawing.Point(142, 83);
+            this.btnEditSeries.Image = global::ACCG.Properties.Resources.EditTitleString_357;
+            this.btnEditSeries.Location = new System.Drawing.Point(49, 159);
             this.btnEditSeries.Name = "btnEditSeries";
-            this.btnEditSeries.Size = new System.Drawing.Size(75, 23);
+            this.btnEditSeries.Size = new System.Drawing.Size(37, 23);
             this.btnEditSeries.TabIndex = 7;
-            this.btnEditSeries.Text = "Edit";
+            this.tltEditSeriesButton.SetToolTip(this.btnEditSeries, "Edit Series");
             this.btnEditSeries.UseVisualStyleBackColor = true;
             this.btnEditSeries.Click += new System.EventHandler(this.btnEditSeries_Click);
             // 
             // btnDeleteSeries
             // 
-            this.btnDeleteSeries.Location = new System.Drawing.Point(142, 113);
+            this.btnDeleteSeries.Image = global::ACCG.Properties.Resources.Clearallrequests_8816;
+            this.btnDeleteSeries.Location = new System.Drawing.Point(92, 159);
             this.btnDeleteSeries.Name = "btnDeleteSeries";
-            this.btnDeleteSeries.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteSeries.Size = new System.Drawing.Size(37, 23);
             this.btnDeleteSeries.TabIndex = 8;
-            this.btnDeleteSeries.Text = "Delete";
+            this.tltDeleteSeriesButton.SetToolTip(this.btnDeleteSeries, "Delete Series");
             this.btnDeleteSeries.UseVisualStyleBackColor = true;
             this.btnDeleteSeries.Click += new System.EventHandler(this.btnDeleteSeries_Click);
             // 
@@ -105,7 +103,8 @@ namespace ACCG
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(505, 24);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStrip1.Size = new System.Drawing.Size(426, 24);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -149,27 +148,18 @@ namespace ACCG
             // 
             // rtbSeriesInfo
             // 
-            this.rtbSeriesInfo.Location = new System.Drawing.Point(227, 52);
+            this.rtbSeriesInfo.Location = new System.Drawing.Point(135, 19);
             this.rtbSeriesInfo.Name = "rtbSeriesInfo";
             this.rtbSeriesInfo.ReadOnly = true;
             this.rtbSeriesInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbSeriesInfo.Size = new System.Drawing.Size(262, 164);
+            this.rtbSeriesInfo.Size = new System.Drawing.Size(262, 163);
             this.rtbSeriesInfo.TabIndex = 16;
             this.rtbSeriesInfo.Text = "";
-            // 
-            // lblSeriesInfo
-            // 
-            this.lblSeriesInfo.AutoSize = true;
-            this.lblSeriesInfo.Location = new System.Drawing.Point(224, 36);
-            this.lblSeriesInfo.Name = "lblSeriesInfo";
-            this.lblSeriesInfo.Size = new System.Drawing.Size(25, 13);
-            this.lblSeriesInfo.TabIndex = 17;
-            this.lblSeriesInfo.Text = "Info";
             // 
             // lblCurrentSeries
             // 
             this.lblCurrentSeries.AutoSize = true;
-            this.lblCurrentSeries.Location = new System.Drawing.Point(12, 224);
+            this.lblCurrentSeries.Location = new System.Drawing.Point(9, 220);
             this.lblCurrentSeries.Name = "lblCurrentSeries";
             this.lblCurrentSeries.Size = new System.Drawing.Size(74, 13);
             this.lblCurrentSeries.TabIndex = 18;
@@ -177,28 +167,36 @@ namespace ACCG
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(15, 240);
+            this.btnGenerate.Location = new System.Drawing.Point(12, 236);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(474, 75);
+            this.btnGenerate.Size = new System.Drawing.Size(403, 75);
             this.btnGenerate.TabIndex = 19;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
+            // grbSeries
+            // 
+            this.grbSeries.Controls.Add(this.lbSeries);
+            this.grbSeries.Controls.Add(this.btnNewSeries);
+            this.grbSeries.Controls.Add(this.btnEditSeries);
+            this.grbSeries.Controls.Add(this.rtbSeriesInfo);
+            this.grbSeries.Controls.Add(this.btnDeleteSeries);
+            this.grbSeries.Location = new System.Drawing.Point(12, 27);
+            this.grbSeries.Name = "grbSeries";
+            this.grbSeries.Size = new System.Drawing.Size(403, 188);
+            this.grbSeries.TabIndex = 20;
+            this.grbSeries.TabStop = false;
+            this.grbSeries.Text = "Series";
+            // 
             // ACCGMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 330);
+            this.ClientSize = new System.Drawing.Size(426, 322);
+            this.Controls.Add(this.grbSeries);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.lblCurrentSeries);
-            this.Controls.Add(this.lblSeriesInfo);
-            this.Controls.Add(this.rtbSeriesInfo);
-            this.Controls.Add(this.btnDeleteSeries);
-            this.Controls.Add(this.btnEditSeries);
-            this.Controls.Add(this.btnNewSeries);
-            this.Controls.Add(this.lbSeries);
-            this.Controls.Add(this.lblSeries);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -209,6 +207,7 @@ namespace ACCG
             this.Load += new System.EventHandler(this.ACCGMainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.grbSeries.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,7 +227,6 @@ namespace ACCG
 
         #endregion
 
-        private Label lblSeries;        
         private Button btnNewSeries;
         private Button btnEditSeries;
         private Button btnDeleteSeries;
@@ -239,12 +237,15 @@ namespace ACCG
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem creditsToolStripMenuItem;
         private RichTextBox rtbSeriesInfo;
-        private Label lblSeriesInfo;
         public ListBox lbSeries;
         private Label lblCurrentSeries;
         private Button btnGenerate;
 
         public static BindingSource bs_series_datasource = new BindingSource();
+        private GroupBox grbSeries;
+        private ToolTip tltNewSeriesButton;
+        private ToolTip tltEditSeriesButton;
+        private ToolTip tltDeleteSeriesButton;
        
         public static string ac_path { get; set; }
         public static List<Series> accg_series_list { get; set; }

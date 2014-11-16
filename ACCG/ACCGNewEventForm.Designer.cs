@@ -40,15 +40,12 @@ namespace ACCG
             this.tkbAmbientTemperature = new System.Windows.Forms.TrackBar();
             this.lblTime = new System.Windows.Forms.Label();
             this.tkbTime = new System.Windows.Forms.TrackBar();
-            this.lblPractice = new System.Windows.Forms.Label();
             this.ckbPractice = new System.Windows.Forms.CheckBox();
             this.lblPracticeDuration = new System.Windows.Forms.Label();
             this.tkbPracticeDuration = new System.Windows.Forms.TrackBar();
             this.tkbQualifyingDuration = new System.Windows.Forms.TrackBar();
             this.lblQualifyingDuration = new System.Windows.Forms.Label();
             this.ckbQualifying = new System.Windows.Forms.CheckBox();
-            this.lblQualifying = new System.Windows.Forms.Label();
-            this.lblRace = new System.Windows.Forms.Label();
             this.lblTrack = new System.Windows.Forms.Label();
             this.cbTrack = new System.Windows.Forms.ComboBox();
             this.cbModel = new System.Windows.Forms.ComboBox();
@@ -67,19 +64,42 @@ namespace ACCG
             this.lblQualifyingDurationValue = new System.Windows.Forms.Label();
             this.lblNumberOfCarsValue = new System.Windows.Forms.Label();
             this.lblNumberOfLapsValue = new System.Windows.Forms.Label();
-            this.lblPlaceholder = new System.Windows.Forms.Label();
+            this.grbButtons = new System.Windows.Forms.GroupBox();
+            this.grbEvent = new System.Windows.Forms.GroupBox();
+            this.grbAmbient = new System.Windows.Forms.GroupBox();
+            this.grbTrack = new System.Windows.Forms.GroupBox();
+            this.lblTrackConditionValue = new System.Windows.Forms.Label();
+            this.lblTrackTemperatureValue = new System.Windows.Forms.Label();
+            this.tkbCondition = new System.Windows.Forms.TrackBar();
+            this.tkbTrackTemperature = new System.Windows.Forms.TrackBar();
+            this.lblTrackCondition = new System.Windows.Forms.Label();
+            this.lblTrackTemperature = new System.Windows.Forms.Label();
+            this.grbSessions = new System.Windows.Forms.GroupBox();
+            this.grbPracticeSession = new System.Windows.Forms.GroupBox();
+            this.grbSessionQualifying = new System.Windows.Forms.GroupBox();
+            this.grbSessionRace = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbQualifyingDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfCars)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).BeginInit();
+            this.grbButtons.SuspendLayout();
+            this.grbEvent.SuspendLayout();
+            this.grbAmbient.SuspendLayout();
+            this.grbTrack.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbCondition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).BeginInit();
+            this.grbSessions.SuspendLayout();
+            this.grbPracticeSession.SuspendLayout();
+            this.grbSessionQualifying.SuspendLayout();
+            this.grbSessionRace.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(13, 13);
+            this.lblName.Location = new System.Drawing.Point(6, 19);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 0;
@@ -87,15 +107,15 @@ namespace ACCG
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(79, 10);
+            this.tbName.Location = new System.Drawing.Point(72, 16);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(100, 20);
+            this.tbName.Size = new System.Drawing.Size(169, 20);
             this.tbName.TabIndex = 1;
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(13, 39);
+            this.lblDescription.Location = new System.Drawing.Point(6, 45);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(60, 13);
             this.lblDescription.TabIndex = 2;
@@ -103,28 +123,30 @@ namespace ACCG
             // 
             // tbDescription
             // 
-            this.tbDescription.Location = new System.Drawing.Point(79, 36);
+            this.tbDescription.Location = new System.Drawing.Point(72, 42);
+            this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(100, 20);
+            this.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbDescription.Size = new System.Drawing.Size(169, 107);
             this.tbDescription.TabIndex = 3;
             // 
             // lblAmbTemperature
             // 
             this.lblAmbTemperature.AutoSize = true;
-            this.lblAmbTemperature.Location = new System.Drawing.Point(218, 9);
+            this.lblAmbTemperature.Location = new System.Drawing.Point(6, 22);
             this.lblAmbTemperature.Name = "lblAmbTemperature";
-            this.lblAmbTemperature.Size = new System.Drawing.Size(104, 13);
+            this.lblAmbTemperature.Size = new System.Drawing.Size(67, 13);
             this.lblAmbTemperature.TabIndex = 4;
-            this.lblAmbTemperature.Text = "Ambient temperature";
+            this.lblAmbTemperature.Text = "Temperature";
             // 
             // tkbAmbientTemperature
             // 
-            this.tkbAmbientTemperature.Location = new System.Drawing.Point(328, 3);
+            this.tkbAmbientTemperature.Location = new System.Drawing.Point(79, 19);
             this.tkbAmbientTemperature.Maximum = 36;
             this.tkbAmbientTemperature.Minimum = 10;
             this.tkbAmbientTemperature.Name = "tkbAmbientTemperature";
             this.tkbAmbientTemperature.RightToLeftLayout = true;
-            this.tkbAmbientTemperature.Size = new System.Drawing.Size(104, 45);
+            this.tkbAmbientTemperature.Size = new System.Drawing.Size(123, 45);
             this.tkbAmbientTemperature.TabIndex = 5;
             this.tkbAmbientTemperature.Value = 26;
             this.tkbAmbientTemperature.Scroll += new System.EventHandler(this.tkbAmbientTemperature_Scroll);
@@ -132,7 +154,7 @@ namespace ACCG
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(218, 57);
+            this.lblTime.Location = new System.Drawing.Point(6, 70);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(30, 13);
             this.lblTime.TabIndex = 6;
@@ -141,29 +163,20 @@ namespace ACCG
             // tkbTime
             // 
             this.tkbTime.LargeChange = 8;
-            this.tkbTime.Location = new System.Drawing.Point(328, 57);
+            this.tkbTime.Location = new System.Drawing.Point(79, 67);
             this.tkbTime.Maximum = 80;
             this.tkbTime.Minimum = -80;
             this.tkbTime.Name = "tkbTime";
-            this.tkbTime.Size = new System.Drawing.Size(104, 45);
+            this.tkbTime.Size = new System.Drawing.Size(123, 45);
             this.tkbTime.SmallChange = 8;
-            this.tkbTime.TabIndex = 7;
+            this.tkbTime.TabIndex = 6;
             this.tkbTime.TickFrequency = 8;
             this.tkbTime.Scroll += new System.EventHandler(this.tkbTime_Scroll);
-            // 
-            // lblPractice
-            // 
-            this.lblPractice.AutoSize = true;
-            this.lblPractice.Location = new System.Drawing.Point(13, 111);
-            this.lblPractice.Name = "lblPractice";
-            this.lblPractice.Size = new System.Drawing.Size(46, 13);
-            this.lblPractice.TabIndex = 8;
-            this.lblPractice.Text = "Practice";
             // 
             // ckbPractice
             // 
             this.ckbPractice.AutoSize = true;
-            this.ckbPractice.Location = new System.Drawing.Point(66, 111);
+            this.ckbPractice.Location = new System.Drawing.Point(6, 19);
             this.ckbPractice.Name = "ckbPractice";
             this.ckbPractice.Size = new System.Drawing.Size(15, 14);
             this.ckbPractice.TabIndex = 9;
@@ -173,7 +186,7 @@ namespace ACCG
             // lblPracticeDuration
             // 
             this.lblPracticeDuration.AutoSize = true;
-            this.lblPracticeDuration.Location = new System.Drawing.Point(13, 131);
+            this.lblPracticeDuration.Location = new System.Drawing.Point(3, 41);
             this.lblPracticeDuration.Name = "lblPracticeDuration";
             this.lblPracticeDuration.Size = new System.Drawing.Size(47, 13);
             this.lblPracticeDuration.TabIndex = 10;
@@ -181,7 +194,7 @@ namespace ACCG
             // 
             // tkbPracticeDuration
             // 
-            this.tkbPracticeDuration.Location = new System.Drawing.Point(66, 131);
+            this.tkbPracticeDuration.Location = new System.Drawing.Point(56, 41);
             this.tkbPracticeDuration.Maximum = 90;
             this.tkbPracticeDuration.Minimum = 5;
             this.tkbPracticeDuration.Name = "tkbPracticeDuration";
@@ -192,7 +205,7 @@ namespace ACCG
             // 
             // tkbQualifyingDuration
             // 
-            this.tkbQualifyingDuration.Location = new System.Drawing.Point(271, 131);
+            this.tkbQualifyingDuration.Location = new System.Drawing.Point(56, 42);
             this.tkbQualifyingDuration.Maximum = 60;
             this.tkbQualifyingDuration.Minimum = 5;
             this.tkbQualifyingDuration.Name = "tkbQualifyingDuration";
@@ -204,7 +217,7 @@ namespace ACCG
             // lblQualifyingDuration
             // 
             this.lblQualifyingDuration.AutoSize = true;
-            this.lblQualifyingDuration.Location = new System.Drawing.Point(218, 131);
+            this.lblQualifyingDuration.Location = new System.Drawing.Point(3, 42);
             this.lblQualifyingDuration.Name = "lblQualifyingDuration";
             this.lblQualifyingDuration.Size = new System.Drawing.Size(47, 13);
             this.lblQualifyingDuration.TabIndex = 14;
@@ -213,35 +226,17 @@ namespace ACCG
             // ckbQualifying
             // 
             this.ckbQualifying.AutoSize = true;
-            this.ckbQualifying.Location = new System.Drawing.Point(271, 111);
+            this.ckbQualifying.Location = new System.Drawing.Point(6, 19);
             this.ckbQualifying.Name = "ckbQualifying";
             this.ckbQualifying.Size = new System.Drawing.Size(15, 14);
             this.ckbQualifying.TabIndex = 13;
             this.ckbQualifying.UseVisualStyleBackColor = true;
             this.ckbQualifying.CheckedChanged += new System.EventHandler(this.ckbQualifying_CheckedChanged);
             // 
-            // lblQualifying
-            // 
-            this.lblQualifying.AutoSize = true;
-            this.lblQualifying.Location = new System.Drawing.Point(218, 111);
-            this.lblQualifying.Name = "lblQualifying";
-            this.lblQualifying.Size = new System.Drawing.Size(53, 13);
-            this.lblQualifying.TabIndex = 12;
-            this.lblQualifying.Text = "Qualifying";
-            // 
-            // lblRace
-            // 
-            this.lblRace.AutoSize = true;
-            this.lblRace.Location = new System.Drawing.Point(13, 193);
-            this.lblRace.Name = "lblRace";
-            this.lblRace.Size = new System.Drawing.Size(33, 13);
-            this.lblRace.TabIndex = 16;
-            this.lblRace.Text = "Race";
-            // 
             // lblTrack
             // 
             this.lblTrack.AutoSize = true;
-            this.lblTrack.Location = new System.Drawing.Point(13, 223);
+            this.lblTrack.Location = new System.Drawing.Point(6, 20);
             this.lblTrack.Name = "lblTrack";
             this.lblTrack.Size = new System.Drawing.Size(35, 13);
             this.lblTrack.TabIndex = 17;
@@ -251,9 +246,9 @@ namespace ACCG
             // 
             this.cbTrack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTrack.FormattingEnabled = true;
-            this.cbTrack.Location = new System.Drawing.Point(66, 220);
+            this.cbTrack.Location = new System.Drawing.Point(47, 17);
             this.cbTrack.Name = "cbTrack";
-            this.cbTrack.Size = new System.Drawing.Size(121, 21);
+            this.cbTrack.Size = new System.Drawing.Size(145, 21);
             this.cbTrack.TabIndex = 18;
             // 
             // cbModel
@@ -261,15 +256,15 @@ namespace ACCG
             this.cbModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbModel.Enabled = false;
             this.cbModel.FormattingEnabled = true;
-            this.cbModel.Location = new System.Drawing.Point(66, 247);
+            this.cbModel.Location = new System.Drawing.Point(47, 44);
             this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(121, 21);
+            this.cbModel.Size = new System.Drawing.Size(145, 21);
             this.cbModel.TabIndex = 20;
             // 
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(13, 250);
+            this.lblModel.Location = new System.Drawing.Point(6, 47);
             this.lblModel.Name = "lblModel";
             this.lblModel.Size = new System.Drawing.Size(36, 13);
             this.lblModel.TabIndex = 19;
@@ -278,7 +273,7 @@ namespace ACCG
             // lblNumberOfCars
             // 
             this.lblNumberOfCars.AutoSize = true;
-            this.lblNumberOfCars.Location = new System.Drawing.Point(13, 288);
+            this.lblNumberOfCars.Location = new System.Drawing.Point(6, 74);
             this.lblNumberOfCars.Name = "lblNumberOfCars";
             this.lblNumberOfCars.Size = new System.Drawing.Size(28, 13);
             this.lblNumberOfCars.TabIndex = 21;
@@ -286,7 +281,7 @@ namespace ACCG
             // 
             // tkbNumberOfCars
             // 
-            this.tkbNumberOfCars.Location = new System.Drawing.Point(66, 274);
+            this.tkbNumberOfCars.Location = new System.Drawing.Point(47, 71);
             this.tkbNumberOfCars.Maximum = 24;
             this.tkbNumberOfCars.Minimum = 1;
             this.tkbNumberOfCars.Name = "tkbNumberOfCars";
@@ -298,7 +293,7 @@ namespace ACCG
             // lblPenalties
             // 
             this.lblPenalties.AutoSize = true;
-            this.lblPenalties.Location = new System.Drawing.Point(13, 372);
+            this.lblPenalties.Location = new System.Drawing.Point(6, 164);
             this.lblPenalties.Name = "lblPenalties";
             this.lblPenalties.Size = new System.Drawing.Size(50, 13);
             this.lblPenalties.TabIndex = 23;
@@ -307,15 +302,15 @@ namespace ACCG
             // ckbPenalties
             // 
             this.ckbPenalties.AutoSize = true;
-            this.ckbPenalties.Location = new System.Drawing.Point(66, 372);
+            this.ckbPenalties.Location = new System.Drawing.Point(72, 163);
             this.ckbPenalties.Name = "ckbPenalties";
             this.ckbPenalties.Size = new System.Drawing.Size(15, 14);
-            this.ckbPenalties.TabIndex = 24;
+            this.ckbPenalties.TabIndex = 4;
             this.ckbPenalties.UseVisualStyleBackColor = true;
             // 
             // tkbNumberOfLaps
             // 
-            this.tkbNumberOfLaps.Location = new System.Drawing.Point(66, 325);
+            this.tkbNumberOfLaps.Location = new System.Drawing.Point(51, 122);
             this.tkbNumberOfLaps.Minimum = 2;
             this.tkbNumberOfLaps.Name = "tkbNumberOfLaps";
             this.tkbNumberOfLaps.Size = new System.Drawing.Size(104, 45);
@@ -326,7 +321,7 @@ namespace ACCG
             // lblNumberOfLaps
             // 
             this.lblNumberOfLaps.AutoSize = true;
-            this.lblNumberOfLaps.Location = new System.Drawing.Point(13, 336);
+            this.lblNumberOfLaps.Location = new System.Drawing.Point(6, 125);
             this.lblNumberOfLaps.Name = "lblNumberOfLaps";
             this.lblNumberOfLaps.Size = new System.Drawing.Size(30, 13);
             this.lblNumberOfLaps.TabIndex = 25;
@@ -334,20 +329,20 @@ namespace ACCG
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(377, 403);
+            this.btnCancel.Location = new System.Drawing.Point(87, 19);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 29;
+            this.btnCancel.TabIndex = 47;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(296, 403);
+            this.btnOK.Location = new System.Drawing.Point(6, 19);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 30;
+            this.btnOK.TabIndex = 48;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -355,7 +350,7 @@ namespace ACCG
             // lblAmbTemperatureValue
             // 
             this.lblAmbTemperatureValue.AutoSize = true;
-            this.lblAmbTemperatureValue.Location = new System.Drawing.Point(433, 13);
+            this.lblAmbTemperatureValue.Location = new System.Drawing.Point(208, 22);
             this.lblAmbTemperatureValue.Name = "lblAmbTemperatureValue";
             this.lblAmbTemperatureValue.Size = new System.Drawing.Size(33, 13);
             this.lblAmbTemperatureValue.TabIndex = 31;
@@ -364,7 +359,7 @@ namespace ACCG
             // lblTimeValue
             // 
             this.lblTimeValue.AutoSize = true;
-            this.lblTimeValue.Location = new System.Drawing.Point(439, 68);
+            this.lblTimeValue.Location = new System.Drawing.Point(207, 70);
             this.lblTimeValue.Name = "lblTimeValue";
             this.lblTimeValue.Size = new System.Drawing.Size(34, 13);
             this.lblTimeValue.TabIndex = 32;
@@ -373,7 +368,7 @@ namespace ACCG
             // lblPracticeDurationValue
             // 
             this.lblPracticeDurationValue.AutoSize = true;
-            this.lblPracticeDurationValue.Location = new System.Drawing.Point(166, 141);
+            this.lblPracticeDurationValue.Location = new System.Drawing.Point(166, 41);
             this.lblPracticeDurationValue.Name = "lblPracticeDurationValue";
             this.lblPracticeDurationValue.Size = new System.Drawing.Size(32, 13);
             this.lblPracticeDurationValue.TabIndex = 33;
@@ -382,7 +377,7 @@ namespace ACCG
             // lblQualifyingDurationValue
             // 
             this.lblQualifyingDurationValue.AutoSize = true;
-            this.lblQualifyingDurationValue.Location = new System.Drawing.Point(382, 141);
+            this.lblQualifyingDurationValue.Location = new System.Drawing.Point(166, 42);
             this.lblQualifyingDurationValue.Name = "lblQualifyingDurationValue";
             this.lblQualifyingDurationValue.Size = new System.Drawing.Size(32, 13);
             this.lblQualifyingDurationValue.TabIndex = 34;
@@ -391,7 +386,7 @@ namespace ACCG
             // lblNumberOfCarsValue
             // 
             this.lblNumberOfCarsValue.AutoSize = true;
-            this.lblNumberOfCarsValue.Location = new System.Drawing.Point(174, 284);
+            this.lblNumberOfCarsValue.Location = new System.Drawing.Point(157, 74);
             this.lblNumberOfCarsValue.Name = "lblNumberOfCarsValue";
             this.lblNumberOfCarsValue.Size = new System.Drawing.Size(36, 13);
             this.lblNumberOfCarsValue.TabIndex = 35;
@@ -400,69 +395,195 @@ namespace ACCG
             // lblNumberOfLapsValue
             // 
             this.lblNumberOfLapsValue.AutoSize = true;
-            this.lblNumberOfLapsValue.Location = new System.Drawing.Point(174, 336);
+            this.lblNumberOfLapsValue.Location = new System.Drawing.Point(157, 125);
             this.lblNumberOfLapsValue.Name = "lblNumberOfLapsValue";
             this.lblNumberOfLapsValue.Size = new System.Drawing.Size(35, 13);
             this.lblNumberOfLapsValue.TabIndex = 36;
             this.lblNumberOfLapsValue.Text = "2 laps";
             // 
-            // lblPlaceholder
+            // grbButtons
             // 
-            this.lblPlaceholder.AutoSize = true;
-            this.lblPlaceholder.Location = new System.Drawing.Point(197, 251);
-            this.lblPlaceholder.Name = "lblPlaceholder";
-            this.lblPlaceholder.Size = new System.Drawing.Size(178, 13);
-            this.lblPlaceholder.TabIndex = 37;
-            this.lblPlaceholder.Text = "(placeholder for single events series)";
+            this.grbButtons.Controls.Add(this.btnOK);
+            this.grbButtons.Controls.Add(this.btnCancel);
+            this.grbButtons.Location = new System.Drawing.Point(306, 454);
+            this.grbButtons.Name = "grbButtons";
+            this.grbButtons.Size = new System.Drawing.Size(183, 54);
+            this.grbButtons.TabIndex = 46;
+            this.grbButtons.TabStop = false;
+            // 
+            // grbEvent
+            // 
+            this.grbEvent.Controls.Add(this.lblName);
+            this.grbEvent.Controls.Add(this.tbName);
+            this.grbEvent.Controls.Add(this.lblDescription);
+            this.grbEvent.Controls.Add(this.tbDescription);
+            this.grbEvent.Controls.Add(this.lblPenalties);
+            this.grbEvent.Controls.Add(this.ckbPenalties);
+            this.grbEvent.Location = new System.Drawing.Point(12, 12);
+            this.grbEvent.Name = "grbEvent";
+            this.grbEvent.Size = new System.Drawing.Size(247, 186);
+            this.grbEvent.TabIndex = 39;
+            this.grbEvent.TabStop = false;
+            this.grbEvent.Text = "Event";
+            // 
+            // grbAmbient
+            // 
+            this.grbAmbient.Controls.Add(this.tkbAmbientTemperature);
+            this.grbAmbient.Controls.Add(this.lblAmbTemperature);
+            this.grbAmbient.Controls.Add(this.lblTime);
+            this.grbAmbient.Controls.Add(this.tkbTime);
+            this.grbAmbient.Controls.Add(this.lblAmbTemperatureValue);
+            this.grbAmbient.Controls.Add(this.lblTimeValue);
+            this.grbAmbient.Location = new System.Drawing.Point(12, 204);
+            this.grbAmbient.Name = "grbAmbient";
+            this.grbAmbient.Size = new System.Drawing.Size(247, 114);
+            this.grbAmbient.TabIndex = 40;
+            this.grbAmbient.TabStop = false;
+            this.grbAmbient.Text = "Ambient";
+            // 
+            // grbTrack
+            // 
+            this.grbTrack.Controls.Add(this.lblTrackConditionValue);
+            this.grbTrack.Controls.Add(this.lblTrackTemperatureValue);
+            this.grbTrack.Controls.Add(this.tkbCondition);
+            this.grbTrack.Controls.Add(this.tkbTrackTemperature);
+            this.grbTrack.Controls.Add(this.lblTrackCondition);
+            this.grbTrack.Controls.Add(this.lblTrackTemperature);
+            this.grbTrack.Location = new System.Drawing.Point(12, 324);
+            this.grbTrack.Name = "grbTrack";
+            this.grbTrack.Size = new System.Drawing.Size(247, 124);
+            this.grbTrack.TabIndex = 41;
+            this.grbTrack.TabStop = false;
+            this.grbTrack.Text = "Track";
+            // 
+            // lblTrackConditionValue
+            // 
+            this.lblTrackConditionValue.AutoSize = true;
+            this.lblTrackConditionValue.Location = new System.Drawing.Point(207, 72);
+            this.lblTrackConditionValue.Name = "lblTrackConditionValue";
+            this.lblTrackConditionValue.Size = new System.Drawing.Size(27, 13);
+            this.lblTrackConditionValue.TabIndex = 5;
+            this.lblTrackConditionValue.Text = "Fast";
+            // 
+            // lblTrackTemperatureValue
+            // 
+            this.lblTrackTemperatureValue.AutoSize = true;
+            this.lblTrackTemperatureValue.Location = new System.Drawing.Point(208, 23);
+            this.lblTrackTemperatureValue.Name = "lblTrackTemperatureValue";
+            this.lblTrackTemperatureValue.Size = new System.Drawing.Size(13, 13);
+            this.lblTrackTemperatureValue.TabIndex = 4;
+            this.lblTrackTemperatureValue.Text = "?";
+            // 
+            // tkbCondition
+            // 
+            this.tkbCondition.Enabled = false;
+            this.tkbCondition.Location = new System.Drawing.Point(80, 72);
+            this.tkbCondition.Maximum = 5;
+            this.tkbCondition.Name = "tkbCondition";
+            this.tkbCondition.Size = new System.Drawing.Size(122, 45);
+            this.tkbCondition.TabIndex = 8;
+            this.tkbCondition.Value = 4;
+            this.tkbCondition.Scroll += new System.EventHandler(this.tkbCondition_Scroll);
+            // 
+            // tkbTrackTemperature
+            // 
+            this.tkbTrackTemperature.Enabled = false;
+            this.tkbTrackTemperature.Location = new System.Drawing.Point(81, 20);
+            this.tkbTrackTemperature.Name = "tkbTrackTemperature";
+            this.tkbTrackTemperature.Size = new System.Drawing.Size(121, 45);
+            this.tkbTrackTemperature.TabIndex = 7;
+            // 
+            // lblTrackCondition
+            // 
+            this.lblTrackCondition.AutoSize = true;
+            this.lblTrackCondition.Location = new System.Drawing.Point(6, 72);
+            this.lblTrackCondition.Name = "lblTrackCondition";
+            this.lblTrackCondition.Size = new System.Drawing.Size(51, 13);
+            this.lblTrackCondition.TabIndex = 1;
+            this.lblTrackCondition.Text = "Condition";
+            // 
+            // lblTrackTemperature
+            // 
+            this.lblTrackTemperature.AutoSize = true;
+            this.lblTrackTemperature.Location = new System.Drawing.Point(6, 23);
+            this.lblTrackTemperature.Name = "lblTrackTemperature";
+            this.lblTrackTemperature.Size = new System.Drawing.Size(67, 13);
+            this.lblTrackTemperature.TabIndex = 0;
+            this.lblTrackTemperature.Text = "Temperature";
+            // 
+            // grbSessions
+            // 
+            this.grbSessions.Controls.Add(this.grbSessionRace);
+            this.grbSessions.Controls.Add(this.grbSessionQualifying);
+            this.grbSessions.Controls.Add(this.grbPracticeSession);
+            this.grbSessions.Location = new System.Drawing.Point(265, 12);
+            this.grbSessions.Name = "grbSessions";
+            this.grbSessions.Size = new System.Drawing.Size(224, 436);
+            this.grbSessions.TabIndex = 42;
+            this.grbSessions.TabStop = false;
+            this.grbSessions.Text = "Sessions";
+            // 
+            // grbPracticeSession
+            // 
+            this.grbPracticeSession.Controls.Add(this.tkbPracticeDuration);
+            this.grbPracticeSession.Controls.Add(this.ckbPractice);
+            this.grbPracticeSession.Controls.Add(this.lblPracticeDurationValue);
+            this.grbPracticeSession.Controls.Add(this.lblPracticeDuration);
+            this.grbPracticeSession.Location = new System.Drawing.Point(6, 19);
+            this.grbPracticeSession.Name = "grbPracticeSession";
+            this.grbPracticeSession.Size = new System.Drawing.Size(212, 91);
+            this.grbPracticeSession.TabIndex = 43;
+            this.grbPracticeSession.TabStop = false;
+            this.grbPracticeSession.Text = "Practice";
+            // 
+            // grbSessionQualifying
+            // 
+            this.grbSessionQualifying.Controls.Add(this.tkbQualifyingDuration);
+            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDurationValue);
+            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDuration);
+            this.grbSessionQualifying.Controls.Add(this.ckbQualifying);
+            this.grbSessionQualifying.Location = new System.Drawing.Point(6, 116);
+            this.grbSessionQualifying.Name = "grbSessionQualifying";
+            this.grbSessionQualifying.Size = new System.Drawing.Size(212, 91);
+            this.grbSessionQualifying.TabIndex = 44;
+            this.grbSessionQualifying.TabStop = false;
+            this.grbSessionQualifying.Text = "Qualifying";
+            // 
+            // grbSessionRace
+            // 
+            this.grbSessionRace.Controls.Add(this.lblTrack);
+            this.grbSessionRace.Controls.Add(this.lblModel);
+            this.grbSessionRace.Controls.Add(this.cbTrack);
+            this.grbSessionRace.Controls.Add(this.lblNumberOfLapsValue);
+            this.grbSessionRace.Controls.Add(this.cbModel);
+            this.grbSessionRace.Controls.Add(this.lblNumberOfCarsValue);
+            this.grbSessionRace.Controls.Add(this.lblNumberOfCars);
+            this.grbSessionRace.Controls.Add(this.tkbNumberOfLaps);
+            this.grbSessionRace.Controls.Add(this.tkbNumberOfCars);
+            this.grbSessionRace.Controls.Add(this.lblNumberOfLaps);
+            this.grbSessionRace.Location = new System.Drawing.Point(6, 213);
+            this.grbSessionRace.Name = "grbSessionRace";
+            this.grbSessionRace.Size = new System.Drawing.Size(212, 172);
+            this.grbSessionRace.TabIndex = 45;
+            this.grbSessionRace.TabStop = false;
+            this.grbSessionRace.Text = "Race";
             // 
             // ACCGNewEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 438);
-            this.Controls.Add(this.lblPlaceholder);
-            this.Controls.Add(this.lblNumberOfLapsValue);
-            this.Controls.Add(this.lblNumberOfCarsValue);
-            this.Controls.Add(this.lblQualifyingDurationValue);
-            this.Controls.Add(this.lblPracticeDurationValue);
-            this.Controls.Add(this.lblTimeValue);
-            this.Controls.Add(this.lblAmbTemperatureValue);
-            this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.tkbNumberOfLaps);
-            this.Controls.Add(this.lblNumberOfLaps);
-            this.Controls.Add(this.ckbPenalties);
-            this.Controls.Add(this.lblPenalties);
-            this.Controls.Add(this.tkbNumberOfCars);
-            this.Controls.Add(this.lblNumberOfCars);
-            this.Controls.Add(this.cbModel);
-            this.Controls.Add(this.lblModel);
-            this.Controls.Add(this.cbTrack);
-            this.Controls.Add(this.lblTrack);
-            this.Controls.Add(this.lblRace);
-            this.Controls.Add(this.tkbQualifyingDuration);
-            this.Controls.Add(this.lblQualifyingDuration);
-            this.Controls.Add(this.ckbQualifying);
-            this.Controls.Add(this.lblQualifying);
-            this.Controls.Add(this.tkbPracticeDuration);
-            this.Controls.Add(this.lblPracticeDuration);
-            this.Controls.Add(this.ckbPractice);
-            this.Controls.Add(this.lblPractice);
-            this.Controls.Add(this.tkbTime);
-            this.Controls.Add(this.lblTime);
-            this.Controls.Add(this.tkbAmbientTemperature);
-            this.Controls.Add(this.lblAmbTemperature);
-            this.Controls.Add(this.tbDescription);
-            this.Controls.Add(this.lblDescription);
-            this.Controls.Add(this.tbName);
-            this.Controls.Add(this.lblName);
+            this.ClientSize = new System.Drawing.Size(498, 516);
+            this.Controls.Add(this.grbSessions);
+            this.Controls.Add(this.grbTrack);
+            this.Controls.Add(this.grbAmbient);
+            this.Controls.Add(this.grbEvent);
+            this.Controls.Add(this.grbButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ACCGNewEventForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Event";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.NewEventForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).EndInit();
@@ -470,8 +591,23 @@ namespace ACCG
             ((System.ComponentModel.ISupportInitialize)(this.tkbQualifyingDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfCars)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).EndInit();
+            this.grbButtons.ResumeLayout(false);
+            this.grbEvent.ResumeLayout(false);
+            this.grbEvent.PerformLayout();
+            this.grbAmbient.ResumeLayout(false);
+            this.grbAmbient.PerformLayout();
+            this.grbTrack.ResumeLayout(false);
+            this.grbTrack.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbCondition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).EndInit();
+            this.grbSessions.ResumeLayout(false);
+            this.grbPracticeSession.ResumeLayout(false);
+            this.grbPracticeSession.PerformLayout();
+            this.grbSessionQualifying.ResumeLayout(false);
+            this.grbSessionQualifying.PerformLayout();
+            this.grbSessionRace.ResumeLayout(false);
+            this.grbSessionRace.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -485,15 +621,12 @@ namespace ACCG
         private TrackBar tkbAmbientTemperature;
         private Label lblTime;
         private TrackBar tkbTime;
-        private Label lblPractice;
         private CheckBox ckbPractice;
         private Label lblPracticeDuration;
         private TrackBar tkbPracticeDuration;
         private TrackBar tkbQualifyingDuration;
         private Label lblQualifyingDuration;
         private CheckBox ckbQualifying;
-        private Label lblQualifying;
-        private Label lblRace;
         private Label lblTrack;
         private ComboBox cbTrack;
         private ComboBox cbModel;
@@ -512,7 +645,20 @@ namespace ACCG
         private Label lblQualifyingDurationValue;
         private Label lblNumberOfCarsValue;
         private Label lblNumberOfLapsValue;
-        private Label lblPlaceholder;
+        private GroupBox grbButtons;
+        private GroupBox grbEvent;
+        private GroupBox grbAmbient;
+        private GroupBox grbTrack;
+        private Label lblTrackCondition;
+        private Label lblTrackTemperature;
+        private TrackBar tkbCondition;
+        private TrackBar tkbTrackTemperature;
+        private Label lblTrackConditionValue;
+        private Label lblTrackTemperatureValue;
+        private GroupBox grbSessions;
+        private GroupBox grbSessionRace;
+        private GroupBox grbSessionQualifying;
+        private GroupBox grbPracticeSession;
         
     }
 }
