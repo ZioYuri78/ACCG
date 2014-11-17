@@ -22,6 +22,7 @@ namespace ACCG
         public int numberOfCars { get; set; }
         public bool penalties { get; set; }
         public bool isEdited { get; set; }
+        public int dynamic_track_preset { get; set; }
         
        
 

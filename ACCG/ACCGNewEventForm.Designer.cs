@@ -75,9 +75,9 @@ namespace ACCG
             this.lblTrackCondition = new System.Windows.Forms.Label();
             this.lblTrackTemperature = new System.Windows.Forms.Label();
             this.grbSessions = new System.Windows.Forms.GroupBox();
-            this.grbPracticeSession = new System.Windows.Forms.GroupBox();
-            this.grbSessionQualifying = new System.Windows.Forms.GroupBox();
             this.grbSessionRace = new System.Windows.Forms.GroupBox();
+            this.grbSessionQualifying = new System.Windows.Forms.GroupBox();
+            this.grbPracticeSession = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
@@ -91,9 +91,9 @@ namespace ACCG
             ((System.ComponentModel.ISupportInitialize)(this.tkbCondition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).BeginInit();
             this.grbSessions.SuspendLayout();
-            this.grbPracticeSession.SuspendLayout();
-            this.grbSessionQualifying.SuspendLayout();
             this.grbSessionRace.SuspendLayout();
+            this.grbSessionQualifying.SuspendLayout();
+            this.grbPracticeSession.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblName
@@ -405,7 +405,7 @@ namespace ACCG
             // 
             this.grbButtons.Controls.Add(this.btnOK);
             this.grbButtons.Controls.Add(this.btnCancel);
-            this.grbButtons.Location = new System.Drawing.Point(306, 454);
+            this.grbButtons.Location = new System.Drawing.Point(317, 454);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(183, 54);
             this.grbButtons.TabIndex = 46;
@@ -421,7 +421,7 @@ namespace ACCG
             this.grbEvent.Controls.Add(this.ckbPenalties);
             this.grbEvent.Location = new System.Drawing.Point(12, 12);
             this.grbEvent.Name = "grbEvent";
-            this.grbEvent.Size = new System.Drawing.Size(247, 186);
+            this.grbEvent.Size = new System.Drawing.Size(258, 186);
             this.grbEvent.TabIndex = 39;
             this.grbEvent.TabStop = false;
             this.grbEvent.Text = "Event";
@@ -436,7 +436,7 @@ namespace ACCG
             this.grbAmbient.Controls.Add(this.lblTimeValue);
             this.grbAmbient.Location = new System.Drawing.Point(12, 204);
             this.grbAmbient.Name = "grbAmbient";
-            this.grbAmbient.Size = new System.Drawing.Size(247, 114);
+            this.grbAmbient.Size = new System.Drawing.Size(258, 114);
             this.grbAmbient.TabIndex = 40;
             this.grbAmbient.TabStop = false;
             this.grbAmbient.Text = "Ambient";
@@ -451,7 +451,7 @@ namespace ACCG
             this.grbTrack.Controls.Add(this.lblTrackTemperature);
             this.grbTrack.Location = new System.Drawing.Point(12, 324);
             this.grbTrack.Name = "grbTrack";
-            this.grbTrack.Size = new System.Drawing.Size(247, 124);
+            this.grbTrack.Size = new System.Drawing.Size(258, 124);
             this.grbTrack.TabIndex = 41;
             this.grbTrack.TabStop = false;
             this.grbTrack.Text = "Track";
@@ -470,13 +470,12 @@ namespace ACCG
             this.lblTrackTemperatureValue.AutoSize = true;
             this.lblTrackTemperatureValue.Location = new System.Drawing.Point(208, 23);
             this.lblTrackTemperatureValue.Name = "lblTrackTemperatureValue";
-            this.lblTrackTemperatureValue.Size = new System.Drawing.Size(13, 13);
+            this.lblTrackTemperatureValue.Size = new System.Drawing.Size(33, 13);
             this.lblTrackTemperatureValue.TabIndex = 4;
-            this.lblTrackTemperatureValue.Text = "?";
+            this.lblTrackTemperatureValue.Text = "33 °C";
             // 
             // tkbCondition
             // 
-            this.tkbCondition.Enabled = false;
             this.tkbCondition.Location = new System.Drawing.Point(80, 72);
             this.tkbCondition.Maximum = 5;
             this.tkbCondition.Name = "tkbCondition";
@@ -489,9 +488,12 @@ namespace ACCG
             // 
             this.tkbTrackTemperature.Enabled = false;
             this.tkbTrackTemperature.Location = new System.Drawing.Point(81, 20);
+            this.tkbTrackTemperature.Maximum = 40;
+            this.tkbTrackTemperature.Minimum = 10;
             this.tkbTrackTemperature.Name = "tkbTrackTemperature";
             this.tkbTrackTemperature.Size = new System.Drawing.Size(121, 45);
             this.tkbTrackTemperature.TabIndex = 7;
+            this.tkbTrackTemperature.Value = 33;
             // 
             // lblTrackCondition
             // 
@@ -516,38 +518,12 @@ namespace ACCG
             this.grbSessions.Controls.Add(this.grbSessionRace);
             this.grbSessions.Controls.Add(this.grbSessionQualifying);
             this.grbSessions.Controls.Add(this.grbPracticeSession);
-            this.grbSessions.Location = new System.Drawing.Point(265, 12);
+            this.grbSessions.Location = new System.Drawing.Point(276, 12);
             this.grbSessions.Name = "grbSessions";
             this.grbSessions.Size = new System.Drawing.Size(224, 436);
             this.grbSessions.TabIndex = 42;
             this.grbSessions.TabStop = false;
             this.grbSessions.Text = "Sessions";
-            // 
-            // grbPracticeSession
-            // 
-            this.grbPracticeSession.Controls.Add(this.tkbPracticeDuration);
-            this.grbPracticeSession.Controls.Add(this.ckbPractice);
-            this.grbPracticeSession.Controls.Add(this.lblPracticeDurationValue);
-            this.grbPracticeSession.Controls.Add(this.lblPracticeDuration);
-            this.grbPracticeSession.Location = new System.Drawing.Point(6, 19);
-            this.grbPracticeSession.Name = "grbPracticeSession";
-            this.grbPracticeSession.Size = new System.Drawing.Size(212, 91);
-            this.grbPracticeSession.TabIndex = 43;
-            this.grbPracticeSession.TabStop = false;
-            this.grbPracticeSession.Text = "Practice";
-            // 
-            // grbSessionQualifying
-            // 
-            this.grbSessionQualifying.Controls.Add(this.tkbQualifyingDuration);
-            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDurationValue);
-            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDuration);
-            this.grbSessionQualifying.Controls.Add(this.ckbQualifying);
-            this.grbSessionQualifying.Location = new System.Drawing.Point(6, 116);
-            this.grbSessionQualifying.Name = "grbSessionQualifying";
-            this.grbSessionQualifying.Size = new System.Drawing.Size(212, 91);
-            this.grbSessionQualifying.TabIndex = 44;
-            this.grbSessionQualifying.TabStop = false;
-            this.grbSessionQualifying.Text = "Qualifying";
             // 
             // grbSessionRace
             // 
@@ -568,11 +544,37 @@ namespace ACCG
             this.grbSessionRace.TabStop = false;
             this.grbSessionRace.Text = "Race";
             // 
+            // grbSessionQualifying
+            // 
+            this.grbSessionQualifying.Controls.Add(this.tkbQualifyingDuration);
+            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDurationValue);
+            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDuration);
+            this.grbSessionQualifying.Controls.Add(this.ckbQualifying);
+            this.grbSessionQualifying.Location = new System.Drawing.Point(6, 116);
+            this.grbSessionQualifying.Name = "grbSessionQualifying";
+            this.grbSessionQualifying.Size = new System.Drawing.Size(212, 91);
+            this.grbSessionQualifying.TabIndex = 44;
+            this.grbSessionQualifying.TabStop = false;
+            this.grbSessionQualifying.Text = "Qualifying";
+            // 
+            // grbPracticeSession
+            // 
+            this.grbPracticeSession.Controls.Add(this.tkbPracticeDuration);
+            this.grbPracticeSession.Controls.Add(this.ckbPractice);
+            this.grbPracticeSession.Controls.Add(this.lblPracticeDurationValue);
+            this.grbPracticeSession.Controls.Add(this.lblPracticeDuration);
+            this.grbPracticeSession.Location = new System.Drawing.Point(6, 19);
+            this.grbPracticeSession.Name = "grbPracticeSession";
+            this.grbPracticeSession.Size = new System.Drawing.Size(212, 91);
+            this.grbPracticeSession.TabIndex = 43;
+            this.grbPracticeSession.TabStop = false;
+            this.grbPracticeSession.Text = "Practice";
+            // 
             // ACCGNewEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 516);
+            this.ClientSize = new System.Drawing.Size(510, 516);
             this.Controls.Add(this.grbSessions);
             this.Controls.Add(this.grbTrack);
             this.Controls.Add(this.grbAmbient);
@@ -601,12 +603,12 @@ namespace ACCG
             ((System.ComponentModel.ISupportInitialize)(this.tkbCondition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).EndInit();
             this.grbSessions.ResumeLayout(false);
-            this.grbPracticeSession.ResumeLayout(false);
-            this.grbPracticeSession.PerformLayout();
-            this.grbSessionQualifying.ResumeLayout(false);
-            this.grbSessionQualifying.PerformLayout();
             this.grbSessionRace.ResumeLayout(false);
             this.grbSessionRace.PerformLayout();
+            this.grbSessionQualifying.ResumeLayout(false);
+            this.grbSessionQualifying.PerformLayout();
+            this.grbPracticeSession.ResumeLayout(false);
+            this.grbPracticeSession.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -158,15 +158,15 @@ namespace ACCG
                                                  "DESCRIPTION=" + ev.description,
                                                  "\n",
                                                  "[TEMPERATURE]",
-                                                 "ROAD=33", // Road temperature trackbar not implemented yet
+                                                 "ROAD=33", // Road temperature range ?
                                                  "AMBIENT=" + ev.ambient_temperature,
                                                  "\n",
-                                                 "[DYNAMIC_TRACK]",     // Not implemented yet in ACCG
-                                                 "PRESET=4",            //
-                                                 "SESSION_START=98",    //
-                                                 "RANDOMNESS=2",        //
-                                                 "LAP_GAIN=20",         //
-                                                 "SESSION_TRANSFER=80", //
+                                                 "[DYNAMIC_TRACK]",     
+                                                 "PRESET=" + ev.dynamic_track_preset,            
+                                                 //"SESSION_START=98",    //
+                                                 //"RANDOMNESS=2",        // Need more info from devs
+                                                 //"LAP_GAIN=20",         //
+                                                 //"SESSION_TRANSFER=80", //
                                                  "\n",
                                                  "[RACE]",
                                                  "TRACK=" + ev.track,

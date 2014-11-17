@@ -161,6 +161,7 @@ namespace ACCG
                 temp_event.track = cbTrack.SelectedItem.ToString();
                 temp_event.numberOfCars = tkbNumberOfCars.Value;
                 temp_event.penalties = ckbPenalties.Checked;
+                temp_event.dynamic_track_preset = tkbCondition.Value;
                                 
                 // Sessions of the event
                                 

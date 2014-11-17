@@ -176,8 +176,8 @@ namespace ACCG
             ShowData();
         }
 
-        private void btOK_Click(object sender, EventArgs e)
-        {
+        private void btnOK_Click(object sender, EventArgs e)
+        {            
 
             if (temp_series.events_list.Count == 0)
             {
@@ -190,23 +190,46 @@ namespace ACCG
             else if (tbCode.Text == "")
             {
                 MessageBox.Show("Missing \"Code\" field!");
-
-            }else if(tbName.Text == "") {
-
-                MessageBox.Show("Missing \"Name\" field!");
-
-            }else if(tbDescription.Text == "") {
-
+            }
+            else if(tbName.Text == "") 
+            {
+                MessageBox.Show("Missing \"Name\" field!");            
+            }
+            else if(tbDescription.Text == "") 
+            {
                 MessageBox.Show("Missing \"Description\" field!");
-
-            }else if(tbPoints.Text == "") {
-
+            }
+            else if(tbPoints.Text == "") 
+            {
                 MessageBox.Show("Missing \"Points\" field!");
-
-            }else if(tbGoalsPoints.Text == "") {
-
+            }
+            else if (tbPoints.Text.First() == ',' || tbPoints.Text.Last() == ',')
+            {
+                MessageBox.Show("The points field can't start or finish with \",\"!");            
+            }
+            else if (!IsDigit(tbPoints.Text, ','))
+            {
+                MessageBox.Show("Points field have to contain only numbers!");
+            }
+            else if(tbGoalsPoints.Text == "") 
+            {                
                 MessageBox.Show("Missing \"Goals\" field!");
-
+            }
+            else if(!IsDigit(tbGoalsPoints.Text))
+            {
+                MessageBox.Show("Goals Points field have to contain only numbers!");
+            }
+            else if (!IsDigit(tbGoldTier.Text))
+            {
+                MessageBox.Show("Goals Points field have to contain only numbers!");
+            }
+            else if (!IsDigit(tbSilverTier.Text))
+            {
+                MessageBox.Show("Goals Points field have to contain only numbers!");
+            }
+            else if (!IsDigit(tbBronzeTier.Text))
+            {
+                MessageBox.Show("Goals Points field have to contain only numbers!");
             }
             else
             {
@@ -306,6 +329,8 @@ namespace ACCG
             }
                              
         }
+
+        
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -504,6 +529,33 @@ namespace ACCG
             }
         }
 
+        private bool IsDigit(string text)
+        {
+            foreach (char digit in text)
+            {
+                if (digit < '0' | digit > '9')
+                {
+                    return false;
+                    
+                }
+            }
+
+            return true;
+        }
+
+        private bool IsDigit(string text, char exclude)
+        {
+            foreach (char digit in text)
+            {
+                if (digit < '0' | digit > '9' && digit != exclude)
+                {
+                    return false;
+
+                }
+            }
+
+            return true;
+        }
       
 
     }

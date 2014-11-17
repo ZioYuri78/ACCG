@@ -70,12 +70,12 @@ namespace ACCG
             this.grbSeries = new System.Windows.Forms.GroupBox();
             this.grbCar = new System.Windows.Forms.GroupBox();
             this.grbEvents = new System.Windows.Forms.GroupBox();
-            this.grbOpponents = new System.Windows.Forms.GroupBox();
-            this.grbButtons = new System.Windows.Forms.GroupBox();
-            this.grbCheckButtons = new System.Windows.Forms.GroupBox();
             this.btnNewEvent = new System.Windows.Forms.Button();
             this.btnEditEvent = new System.Windows.Forms.Button();
             this.btnDeleteEvent = new System.Windows.Forms.Button();
+            this.grbOpponents = new System.Windows.Forms.GroupBox();
+            this.grbButtons = new System.Windows.Forms.GroupBox();
+            this.grbCheckButtons = new System.Windows.Forms.GroupBox();
             this.tltNewEventButton = new System.Windows.Forms.ToolTip(this.components);
             this.tltEditEventButton = new System.Windows.Forms.ToolTip(this.components);
             this.tltDeleteEventButton = new System.Windows.Forms.ToolTip(this.components);
@@ -146,7 +146,7 @@ namespace ACCG
             // lblRequires
             // 
             this.lblRequires.AutoSize = true;
-            this.lblRequires.Location = new System.Drawing.Point(6, 102);
+            this.lblRequires.Location = new System.Drawing.Point(6, 186);
             this.lblRequires.Name = "lblRequires";
             this.lblRequires.Size = new System.Drawing.Size(49, 13);
             this.lblRequires.TabIndex = 5;
@@ -155,7 +155,7 @@ namespace ACCG
             // lblPoints
             // 
             this.lblPoints.AutoSize = true;
-            this.lblPoints.Location = new System.Drawing.Point(6, 130);
+            this.lblPoints.Location = new System.Drawing.Point(6, 226);
             this.lblPoints.Name = "lblPoints";
             this.lblPoints.Size = new System.Drawing.Size(36, 13);
             this.lblPoints.TabIndex = 6;
@@ -187,15 +187,17 @@ namespace ACCG
             // tbDescription
             // 
             this.tbDescription.Location = new System.Drawing.Point(66, 72);
+            this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(130, 20);
+            this.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbDescription.Size = new System.Drawing.Size(130, 105);
             this.tbDescription.TabIndex = 11;
             // 
             // cbRequires
             // 
             this.cbRequires.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRequires.FormattingEnabled = true;
-            this.cbRequires.Location = new System.Drawing.Point(66, 99);
+            this.cbRequires.Location = new System.Drawing.Point(66, 183);
             this.cbRequires.Name = "cbRequires";
             this.cbRequires.Size = new System.Drawing.Size(130, 21);
             this.cbRequires.Sorted = true;
@@ -204,7 +206,7 @@ namespace ACCG
             // tbPoints
             // 
             this.tbPoints.Enabled = false;
-            this.tbPoints.Location = new System.Drawing.Point(66, 127);
+            this.tbPoints.Location = new System.Drawing.Point(66, 223);
             this.tbPoints.Name = "tbPoints";
             this.tbPoints.Size = new System.Drawing.Size(130, 20);
             this.tbPoints.TabIndex = 13;
@@ -228,7 +230,7 @@ namespace ACCG
             this.btnOK.TabIndex = 31;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -314,8 +316,9 @@ namespace ACCG
             // tbGoalsPoints
             // 
             this.tbGoalsPoints.Location = new System.Drawing.Point(62, 19);
+            this.tbGoalsPoints.MaxLength = 3;
             this.tbGoalsPoints.Name = "tbGoalsPoints";
-            this.tbGoalsPoints.Size = new System.Drawing.Size(100, 20);
+            this.tbGoalsPoints.Size = new System.Drawing.Size(25, 20);
             this.tbGoalsPoints.TabIndex = 16;
             // 
             // lblGoalsPoints
@@ -348,7 +351,7 @@ namespace ACCG
             // lblDontuseseries0
             // 
             this.lblDontuseseries0.AutoSize = true;
-            this.lblDontuseseries0.Location = new System.Drawing.Point(200, 104);
+            this.lblDontuseseries0.Location = new System.Drawing.Point(63, 207);
             this.lblDontuseseries0.Name = "lblDontuseseries0";
             this.lblDontuseseries0.Size = new System.Drawing.Size(91, 13);
             this.lblDontuseseries0.TabIndex = 39;
@@ -364,9 +367,9 @@ namespace ACCG
             this.grbGoals.Controls.Add(this.lblGoldTier);
             this.grbGoals.Controls.Add(this.tbGoalsPoints);
             this.grbGoals.Controls.Add(this.lblGoalsPoints);
-            this.grbGoals.Location = new System.Drawing.Point(13, 321);
+            this.grbGoals.Location = new System.Drawing.Point(12, 427);
             this.grbGoals.Name = "grbGoals";
-            this.grbGoals.Size = new System.Drawing.Size(169, 129);
+            this.grbGoals.Size = new System.Drawing.Size(94, 129);
             this.grbGoals.TabIndex = 44;
             this.grbGoals.TabStop = false;
             this.grbGoals.Text = "Series Goals";
@@ -425,7 +428,7 @@ namespace ACCG
             // lblPointsExample
             // 
             this.lblPointsExample.AutoSize = true;
-            this.lblPointsExample.Location = new System.Drawing.Point(202, 130);
+            this.lblPointsExample.Location = new System.Drawing.Point(63, 246);
             this.lblPointsExample.Name = "lblPointsExample";
             this.lblPointsExample.Size = new System.Drawing.Size(49, 13);
             this.lblPointsExample.TabIndex = 40;
@@ -447,7 +450,7 @@ namespace ACCG
             this.grbSeries.Controls.Add(this.tbPoints);
             this.grbSeries.Location = new System.Drawing.Point(12, 59);
             this.grbSeries.Name = "grbSeries";
-            this.grbSeries.Size = new System.Drawing.Size(295, 159);
+            this.grbSeries.Size = new System.Drawing.Size(206, 265);
             this.grbSeries.TabIndex = 42;
             this.grbSeries.TabStop = false;
             this.grbSeries.Text = "Series";
@@ -458,7 +461,7 @@ namespace ACCG
             this.grbCar.Controls.Add(this.lblModel);
             this.grbCar.Controls.Add(this.lblSkin);
             this.grbCar.Controls.Add(this.cbSkin);
-            this.grbCar.Location = new System.Drawing.Point(12, 224);
+            this.grbCar.Location = new System.Drawing.Point(12, 330);
             this.grbCar.Name = "grbCar";
             this.grbCar.Size = new System.Drawing.Size(206, 91);
             this.grbCar.TabIndex = 43;
@@ -472,46 +475,12 @@ namespace ACCG
             this.grbEvents.Controls.Add(this.btnEditEvent);
             this.grbEvents.Controls.Add(this.btnDeleteEvent);
             this.grbEvents.Controls.Add(this.rtbEventsInfo);
-            this.grbEvents.Location = new System.Drawing.Point(313, 59);
+            this.grbEvents.Location = new System.Drawing.Point(224, 59);
             this.grbEvents.Name = "grbEvents";
             this.grbEvents.Size = new System.Drawing.Size(352, 177);
             this.grbEvents.TabIndex = 45;
             this.grbEvents.TabStop = false;
             this.grbEvents.Text = "Events";
-            // 
-            // grbOpponents
-            // 
-            this.grbOpponents.Controls.Add(this.lbOpponents);
-            this.grbOpponents.Controls.Add(this.btnDeleteOpponent);
-            this.grbOpponents.Controls.Add(this.rtbOpponentsInfo);
-            this.grbOpponents.Controls.Add(this.btnEditOpponent);
-            this.grbOpponents.Controls.Add(this.btnNewOpponent);
-            this.grbOpponents.Location = new System.Drawing.Point(313, 242);
-            this.grbOpponents.Name = "grbOpponents";
-            this.grbOpponents.Size = new System.Drawing.Size(352, 177);
-            this.grbOpponents.TabIndex = 46;
-            this.grbOpponents.TabStop = false;
-            this.grbOpponents.Text = "Opponents";
-            // 
-            // grbButtons
-            // 
-            this.grbButtons.Controls.Add(this.btnCancel);
-            this.grbButtons.Controls.Add(this.btnOK);
-            this.grbButtons.Location = new System.Drawing.Point(482, 425);
-            this.grbButtons.Name = "grbButtons";
-            this.grbButtons.Size = new System.Drawing.Size(183, 54);
-            this.grbButtons.TabIndex = 47;
-            this.grbButtons.TabStop = false;
-            // 
-            // grbCheckButtons
-            // 
-            this.grbCheckButtons.Controls.Add(this.rbChampionship);
-            this.grbCheckButtons.Controls.Add(this.rbSingleEvents);
-            this.grbCheckButtons.Location = new System.Drawing.Point(12, 5);
-            this.grbCheckButtons.Name = "grbCheckButtons";
-            this.grbCheckButtons.Size = new System.Drawing.Size(196, 48);
-            this.grbCheckButtons.TabIndex = 41;
-            this.grbCheckButtons.TabStop = false;
             // 
             // btnNewEvent
             // 
@@ -546,11 +515,45 @@ namespace ACCG
             this.btnDeleteEvent.UseVisualStyleBackColor = true;
             this.btnDeleteEvent.Click += new System.EventHandler(this.btnDeleteEvent_Click);
             // 
+            // grbOpponents
+            // 
+            this.grbOpponents.Controls.Add(this.lbOpponents);
+            this.grbOpponents.Controls.Add(this.btnDeleteOpponent);
+            this.grbOpponents.Controls.Add(this.rtbOpponentsInfo);
+            this.grbOpponents.Controls.Add(this.btnEditOpponent);
+            this.grbOpponents.Controls.Add(this.btnNewOpponent);
+            this.grbOpponents.Location = new System.Drawing.Point(224, 242);
+            this.grbOpponents.Name = "grbOpponents";
+            this.grbOpponents.Size = new System.Drawing.Size(352, 177);
+            this.grbOpponents.TabIndex = 46;
+            this.grbOpponents.TabStop = false;
+            this.grbOpponents.Text = "Opponents";
+            // 
+            // grbButtons
+            // 
+            this.grbButtons.Controls.Add(this.btnCancel);
+            this.grbButtons.Controls.Add(this.btnOK);
+            this.grbButtons.Location = new System.Drawing.Point(395, 505);
+            this.grbButtons.Name = "grbButtons";
+            this.grbButtons.Size = new System.Drawing.Size(183, 54);
+            this.grbButtons.TabIndex = 47;
+            this.grbButtons.TabStop = false;
+            // 
+            // grbCheckButtons
+            // 
+            this.grbCheckButtons.Controls.Add(this.rbChampionship);
+            this.grbCheckButtons.Controls.Add(this.rbSingleEvents);
+            this.grbCheckButtons.Location = new System.Drawing.Point(12, 5);
+            this.grbCheckButtons.Name = "grbCheckButtons";
+            this.grbCheckButtons.Size = new System.Drawing.Size(196, 48);
+            this.grbCheckButtons.TabIndex = 41;
+            this.grbCheckButtons.TabStop = false;
+            // 
             // ACCGNewSeriesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 484);
+            this.ClientSize = new System.Drawing.Size(585, 566);
             this.Controls.Add(this.grbCheckButtons);
             this.Controls.Add(this.grbButtons);
             this.Controls.Add(this.grbEvents);
