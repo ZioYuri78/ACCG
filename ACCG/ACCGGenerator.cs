@@ -10,8 +10,7 @@ namespace ACCG
    public class ACCGGenerator
     {
 
-       private static ACCGGenerator instance = null;
-       private static Object mutex = new Object();
+       private static ACCGGenerator instance = null;       
 
        private Series series;       
        private string series_path;
