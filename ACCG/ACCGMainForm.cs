@@ -15,7 +15,8 @@ namespace ACCG
     {
         public ACCGMainForm()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            accg_generator = ACCGGenerator.GetInstance();
         }
         
         private void ACCGMainForm_Load(object sender, EventArgs e)
@@ -333,9 +334,8 @@ namespace ACCG
                 MessageBox.Show("You have to select a series!");
             }
             else
-            {
-                ACCGGenerator accg_generator = new ACCGGenerator(current_selected_series, Directory.GetCurrentDirectory());
-                accg_generator.Generate();
+            {                
+                accg_generator.Generate(current_selected_series, Directory.GetCurrentDirectory());
                 current_selected_series.isGenerated = true;
             }
 

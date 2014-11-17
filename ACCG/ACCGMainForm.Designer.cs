@@ -254,6 +254,8 @@ namespace ACCG
         public static List<Car> ac_cars_list { get; set; }        
         public static List<string> ac_tracks_list { get; set; }
         public static Dictionary<string, int> time_table { get; set; }
+
+        public static ACCGGenerator accg_generator;
         
 
 
