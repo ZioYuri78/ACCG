@@ -10,6 +10,9 @@ namespace ACCG
    public class ACCGGenerator
     {
 
+       private static ACCGGenerator instance = null;
+       private static Object mutex = new Object();
+
        private Series series;       
        private string series_path;
        
@@ -17,14 +20,28 @@ namespace ACCG
        private string opponents_ini_filename = "opponents.ini";
        private string event_ini_filename = "event.ini";
 
-       public ACCGGenerator(Series series, string path)
+       private ACCGGenerator()
        {
-           this.series = series;
-           this.series_path = String.Format(path + @"\ACCG_series\series{0}", series.ID);           
+           
        }
 
-       public void Generate()
+       public static ACCGGenerator GetInstance()
        {
+           
+           if (instance == null)
+           {
+               instance = new ACCGGenerator();
+           }
+                         
+           return instance;
+       }
+
+       public void Generate(Series _series, string _path)
+       {
+
+           this.series = _series;
+           this.series_path = String.Format(_path + @"\ACCG_series\series{0}", series.ID);           
+
            // Creating the series folder           
            Console.WriteLine("DEBUG: series path = " + series_path);
 
