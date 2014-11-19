@@ -353,7 +353,7 @@ namespace ACCG
 
                 if (image.Width != 250 && image.Height != 125)
                 {
-                    MessageBox.Show("250x125");
+                    MessageBox.Show("Image size must be 250x125");
                 }
                 else
                 {

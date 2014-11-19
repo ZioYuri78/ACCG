@@ -607,7 +607,7 @@ namespace ACCG
             // 
             // openImageFileDialog
             // 
-            this.openImageFileDialog.FileName = "openFileDialog1";
+            this.openImageFileDialog.Filter = "png files (*.png)|*.png";
             // 
             // ACCGNewEventForm
             // 

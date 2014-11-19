@@ -568,7 +568,7 @@ namespace ACCG
 
                 if(image.Width != 1240 && image.Height != 560){
 
-                    MessageBox.Show("1240x560");
+                    MessageBox.Show("Image size must be 1240x560");
 
                 }
                 else
@@ -591,7 +591,7 @@ namespace ACCG
 
                 if (image.Width != 206 && image.Height != 206)
                 {
-                    MessageBox.Show("206x206");
+                    MessageBox.Show("Image size must be 206x206");
                 }
                 else
                 {
