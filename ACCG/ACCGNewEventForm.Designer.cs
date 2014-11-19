@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace ACCG
 {
@@ -78,6 +79,10 @@ namespace ACCG
             this.grbSessionRace = new System.Windows.Forms.GroupBox();
             this.grbSessionQualifying = new System.Windows.Forms.GroupBox();
             this.grbPracticeSession = new System.Windows.Forms.GroupBox();
+            this.grbImages = new System.Windows.Forms.GroupBox();
+            this.btnOpenPreviewImage = new System.Windows.Forms.Button();
+            this.previewImagePanel = new System.Windows.Forms.Panel();
+            this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
@@ -94,6 +99,7 @@ namespace ACCG
             this.grbSessionRace.SuspendLayout();
             this.grbSessionQualifying.SuspendLayout();
             this.grbPracticeSession.SuspendLayout();
+            this.grbImages.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblName
@@ -405,7 +411,7 @@ namespace ACCG
             // 
             this.grbButtons.Controls.Add(this.btnOK);
             this.grbButtons.Controls.Add(this.btnCancel);
-            this.grbButtons.Location = new System.Drawing.Point(317, 454);
+            this.grbButtons.Location = new System.Drawing.Point(317, 630);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(183, 54);
             this.grbButtons.TabIndex = 46;
@@ -570,11 +576,45 @@ namespace ACCG
             this.grbPracticeSession.TabStop = false;
             this.grbPracticeSession.Text = "Practice";
             // 
+            // grbImages
+            // 
+            this.grbImages.Controls.Add(this.btnOpenPreviewImage);
+            this.grbImages.Controls.Add(this.previewImagePanel);
+            this.grbImages.Location = new System.Drawing.Point(12, 454);
+            this.grbImages.Name = "grbImages";
+            this.grbImages.Size = new System.Drawing.Size(263, 180);
+            this.grbImages.TabIndex = 47;
+            this.grbImages.TabStop = false;
+            this.grbImages.Text = "Images";
+            // 
+            // btnOpenPreviewImage
+            // 
+            this.btnOpenPreviewImage.Image = global::ACCG.Properties.Resources.Open_6529_24;
+            this.btnOpenPreviewImage.Location = new System.Drawing.Point(6, 150);
+            this.btnOpenPreviewImage.Name = "btnOpenPreviewImage";
+            this.btnOpenPreviewImage.Size = new System.Drawing.Size(30, 23);
+            this.btnOpenPreviewImage.TabIndex = 1;
+            this.btnOpenPreviewImage.UseVisualStyleBackColor = true;
+            this.btnOpenPreviewImage.Click += new System.EventHandler(this.btnOpenPreviewImage_Click);
+            // 
+            // previewImagePanel
+            // 
+            this.previewImagePanel.Location = new System.Drawing.Point(6, 19);
+            this.previewImagePanel.Name = "previewImagePanel";
+            this.previewImagePanel.Size = new System.Drawing.Size(250, 125);
+            this.previewImagePanel.TabIndex = 0;
+            this.previewImagePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.previewImagePanel_Paint);
+            // 
+            // openImageFileDialog
+            // 
+            this.openImageFileDialog.FileName = "openFileDialog1";
+            // 
             // ACCGNewEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 516);
+            this.ClientSize = new System.Drawing.Size(510, 696);
+            this.Controls.Add(this.grbImages);
             this.Controls.Add(this.grbSessions);
             this.Controls.Add(this.grbTrack);
             this.Controls.Add(this.grbAmbient);
@@ -609,6 +649,7 @@ namespace ACCG
             this.grbSessionQualifying.PerformLayout();
             this.grbPracticeSession.ResumeLayout(false);
             this.grbPracticeSession.PerformLayout();
+            this.grbImages.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -661,6 +702,12 @@ namespace ACCG
         private GroupBox grbSessionRace;
         private GroupBox grbSessionQualifying;
         private GroupBox grbPracticeSession;
-        
+        private GroupBox grbImages;
+        private Panel previewImagePanel;
+        private Button btnOpenPreviewImage;
+        private OpenFileDialog openImageFileDialog;
+
+        public static Event temp_event { get; set; }
+                        
     }
 }

@@ -68,6 +68,7 @@ namespace ACCG
             // Editing mode
             if (current_selected_event != null)
             {
+                temp_event = current_selected_event;
                 tbName.Text = current_selected_event.name;
                 tbDescription.Text = current_selected_event.description;
                 tkbAmbientTemperature.Value = current_selected_event.ambient_temperature;
@@ -109,6 +110,7 @@ namespace ACCG
             }
             else // New event mode
             {
+                temp_event = new Event();
                 cbTrack.Text = ACCGMainForm.ac_tracks_list[0]; 
             }
                                                           
@@ -127,19 +129,19 @@ namespace ACCG
             else
             {
                 // The event
-                Event temp_event;
+                //Event temp_event;
                 int event_index = 0;
 
                 // Edit mode
                 if (current_selected_event != null)
                 {
-                    temp_event = current_selected_event;
+                    //temp_event = current_selected_event;
                     event_index = ACCGNewSeriesForm.temp_series.events_list.IndexOf(temp_event);
                     ACCGNewSeriesForm.temp_series.events_list.Remove(current_selected_event);
                 }
                 else // New event mode
                 {
-                    temp_event = new Event();
+                    //temp_event = new Event();
                     /*
                     if (ACCGNewSeriesForm.events_global_ID == 0)
                     {
@@ -340,6 +342,65 @@ namespace ACCG
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnOpenPreviewImage_Click(object sender, EventArgs e)
+        {
+            if (openImageFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openImageFileDialog.FileName;
+                Image image = Image.FromFile(filename);
+
+                if (image.Width != 250 && image.Height != 125)
+                {
+                    MessageBox.Show("250x125");
+                }
+                else
+                {
+                    temp_event.previewImage = (Bitmap)image;
+                    
+                }
+
+            }
+
+            this.Refresh();
+        }
+
+        private void previewImagePanel_Paint(object sender, PaintEventArgs e)
+        {
+            if (current_selected_event != null)
+            {
+                if (temp_event.previewImage != null)
+                {
+                    e.Graphics.DrawImage(current_selected_event.previewImage, 0, 0, current_selected_event.previewImage.Width, current_selected_event.previewImage.Height);
+                }
+                else
+                {
+                    e.Graphics.DrawImage(
+                    ACCG.Properties.Resources.placeholder_250_125,
+                    0,
+                    0,
+                    ACCG.Properties.Resources.placeholder_250_125.Width,
+                    ACCG.Properties.Resources.placeholder_250_125.Height
+                    );
+                }
+                
+            }
+            else if (temp_event.previewImage != null)
+            {
+                e.Graphics.DrawImage(temp_event.previewImage, 0, 0, temp_event.previewImage.Width, temp_event.previewImage.Height);
+            }
+            else 
+            {
+                e.Graphics.DrawImage(
+                    ACCG.Properties.Resources.placeholder_250_125,
+                    0,
+                    0,
+                    ACCG.Properties.Resources.placeholder_250_125.Width,
+                    ACCG.Properties.Resources.placeholder_250_125.Height
+                    );
+            }
+
         }
 
        

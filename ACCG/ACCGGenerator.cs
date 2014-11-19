@@ -18,6 +18,9 @@ namespace ACCG
        private string series_ini_filename = "series.ini";
        private string opponents_ini_filename = "opponents.ini";
        private string event_ini_filename = "event.ini";
+       private string series_start_png_filename = "start.png";
+       private string series_preview_png_filename = "preview.png";
+       private string event_preview_png_filename = "preview.png";
 
        private ACCGGenerator()
        {
@@ -54,6 +57,18 @@ namespace ACCG
                Console.WriteLine("The process failed: {0}", exc.ToString());
            }
 
+           // Create the series start.png image
+           if (series.startImage != null)
+           {
+               series.startImage.Save(series_path + @"\" + series_start_png_filename, System.Drawing.Imaging.ImageFormat.Png);
+           }
+                   
+           // Create the series preview.png image
+           if (series.previewImage != null)
+           {
+               series.previewImage.Save(series_path + @"\" + series_preview_png_filename, System.Drawing.Imaging.ImageFormat.Png);
+           }           
+                      
            // Creating the series.ini file
            string[] series_file_content = {
                                 "[SERIES]",
@@ -144,6 +159,12 @@ namespace ACCG
                    Console.WriteLine("The process failed: {0}", exc.ToString());
                }
 
+               // Create event preview.png image
+               if (ev.previewImage != null)
+               {
+                   ev.previewImage.Save(event_folder + @"\" + event_preview_png_filename, System.Drawing.Imaging.ImageFormat.Png);
+               }               
+               
                string penalties = "";
                if (ev.penalties)
                {

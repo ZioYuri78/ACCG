@@ -59,6 +59,7 @@ namespace ACCG
                 tbDescription.Text = temp_series.description;
                 tbPoints.Text = temp_series.points;
                 tbGoalsPoints.Text = temp_series.goalsPoints;
+                this.Refresh();
             }
             else
             {
@@ -230,7 +231,7 @@ namespace ACCG
             else if (!IsDigit(tbBronzeTier.Text))
             {
                 MessageBox.Show("Goals Points field have to contain only numbers!");
-            }
+            }                         
             else
             {
                 temp_series.code = tbCode.Text;
@@ -331,15 +332,12 @@ namespace ACCG
         }
 
         
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-
-       
-
+      
         private void cbCar_SelectionChangeCommitted(object sender, EventArgs e)
         {
             champ_player_car = ACCGMainForm.ac_cars_list.Find(x => x.model == cbCar.SelectedItem.ToString());
@@ -418,6 +416,7 @@ namespace ACCG
         private void btnNewEvent_Click(object sender, EventArgs e)
         {
             ACCGNewEventForm newEventForm = new ACCGNewEventForm();
+            newEventForm.Text = "New Event";
             newEventForm.ShowDialog();
 
             for (int i = 0; i < temp_series.events_list.Count; i++)
@@ -432,6 +431,7 @@ namespace ACCG
             if (current_selected_event != null)
             {
                 ACCGNewEventForm editEventForm = new ACCGNewEventForm(current_selected_event);
+                editEventForm.Text = "Edit Event " + current_selected_event.name;
                 editEventForm.ShowDialog();
 
                 for (int i = 0; i < temp_series.events_list.Count; i++)
@@ -475,6 +475,7 @@ namespace ACCG
         private void btnNewOpponent_Click(object sender, EventArgs e)
         {
             ACCGNewOpponentForm newOpponentForm = new ACCGNewOpponentForm();
+            newOpponentForm.Text = "New Opponent";
             newOpponentForm.ShowDialog();
 
             for (int i = 0; i < temp_series.opponents_list.Count; i++)
@@ -488,6 +489,7 @@ namespace ACCG
             if (current_selected_opponent != null)
             {
                 ACCGNewOpponentForm editOpponentForm = new ACCGNewOpponentForm(current_selected_opponent);
+                editOpponentForm.Text = "Edit Opponent " + current_selected_opponent.name;
                 editOpponentForm.ShowDialog();
 
                 for (int i = 0; i < temp_series.opponents_list.Count; i++)
@@ -556,6 +558,126 @@ namespace ACCG
 
             return true;
         }
+
+        private void btnOpenStartImage_Click(object sender, EventArgs e)
+        {
+            if (openImageFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openImageFileDialog.FileName;                
+                Image image = Image.FromFile(filename);
+
+                if(image.Width != 1240 && image.Height != 560){
+
+                    MessageBox.Show("1240x560");
+
+                }
+                else
+                {
+                    temp_series.startImage = (Bitmap)image;                                                         
+                    startThumbnailImage = (Bitmap)temp_series.startImage.GetThumbnailImage(100, 100, null, new IntPtr());
+                }
+                                
+            }
+
+            this.Refresh();
+        }
+
+        private void btnOpenPreviewImage_Click(object sender, EventArgs e)
+        {
+            if (openImageFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openImageFileDialog.FileName;
+                Image image = Image.FromFile(filename);
+
+                if (image.Width != 206 && image.Height != 206)
+                {
+                    MessageBox.Show("206x206");
+                }
+                else
+                {
+                    temp_series.previewImage = (Bitmap)image;
+                    previewThumbnailImage = (Bitmap)temp_series.previewImage.GetThumbnailImage(100, 100, null, new IntPtr());
+                }
+                
+            }
+
+            this.Refresh();
+        }
+
+        private void startImagePanel_Paint(object sender, PaintEventArgs e)
+        {
+            if (current_selected_series != null)
+            {
+                if (temp_series.startImage != null)
+                {
+                    startThumbnailImage = (Bitmap)temp_series.startImage.GetThumbnailImage(206, 206, null, new IntPtr());
+                }
+                else
+                {
+                    e.Graphics.DrawImage(
+                    ACCG.Properties.Resources.placeholder_1240_560,
+                    0,
+                    0,
+                    ACCG.Properties.Resources.placeholder_1240_560.Width,
+                    ACCG.Properties.Resources.placeholder_1240_560.Height
+                    );
+                }
+            } 
+
+            if (startThumbnailImage != null)
+            {
+                e.Graphics.DrawImage(startThumbnailImage, 0, 0, startThumbnailImage.Width, startThumbnailImage.Height);
+            }
+            else
+            {
+                e.Graphics.DrawImage(
+                    ACCG.Properties.Resources.placeholder_1240_560, 
+                    0, 
+                    0, 
+                    ACCG.Properties.Resources.placeholder_1240_560.Width, 
+                    ACCG.Properties.Resources.placeholder_1240_560.Height
+                    );
+            }
+        }
+
+        private void previewImagePanel_Paint(object sender, PaintEventArgs e)
+        {
+            if (current_selected_series != null)
+            {
+                if (temp_series.previewImage != null)
+                {
+                    previewThumbnailImage = (Bitmap)temp_series.previewImage.GetThumbnailImage(100, 100, null, new IntPtr());
+                }
+                else
+                {
+                    e.Graphics.DrawImage(
+                    ACCG.Properties.Resources.placeholder_206_206,
+                    0,
+                    0,
+                    ACCG.Properties.Resources.placeholder_206_206.Width,
+                    ACCG.Properties.Resources.placeholder_206_206.Height
+                    );
+                }
+            }
+
+            if (previewThumbnailImage != null)
+            {
+                e.Graphics.DrawImage(previewThumbnailImage, 0, 0, previewThumbnailImage.Width, previewThumbnailImage.Height);
+            }
+            else 
+            {
+                e.Graphics.DrawImage(
+                    ACCG.Properties.Resources.placeholder_206_206,
+                    0,
+                    0,
+                    ACCG.Properties.Resources.placeholder_206_206.Width,
+                    ACCG.Properties.Resources.placeholder_206_206.Height
+                    );
+            }
+
+        }
+
+        
       
 
     }

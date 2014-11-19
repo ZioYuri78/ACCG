@@ -260,6 +260,7 @@ namespace ACCG
         private void btnNewSeries_Click(object sender, EventArgs e)
         {
             ACCGNewSeriesForm newSeriesForm = new ACCGNewSeriesForm();
+            newSeriesForm.Text = "New Series";
             newSeriesForm.ShowDialog();
         }
 
@@ -272,6 +273,7 @@ namespace ACCG
             else
             {
                 ACCGNewSeriesForm editSeriesForm = new ACCGNewSeriesForm(current_selected_series);
+                editSeriesForm.Text = "Edit Series " + current_selected_series.name;
                 editSeriesForm.ShowDialog();
                 
             }

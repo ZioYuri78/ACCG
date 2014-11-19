@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,8 @@ namespace ACCG
         public string goalsPoints { get; set; } //placeholder
         public bool isGenerated { get; set; }
         public bool isEdited { get; set; }
+        public Bitmap previewImage { get; set; } // 206x206
+        public Bitmap startImage { get; set; }   // 1240x560
         
 
         public Series()

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 namespace ACCG
 {
     partial class ACCGNewSeriesForm
@@ -50,9 +51,6 @@ namespace ACCG
             this.rtbEventsInfo = new System.Windows.Forms.RichTextBox();
             this.lbEvents = new System.Windows.Forms.ListBox();
             this.rtbOpponentsInfo = new System.Windows.Forms.RichTextBox();
-            this.btnDeleteOpponent = new System.Windows.Forms.Button();
-            this.btnEditOpponent = new System.Windows.Forms.Button();
-            this.btnNewOpponent = new System.Windows.Forms.Button();
             this.lbOpponents = new System.Windows.Forms.ListBox();
             this.tbGoalsPoints = new System.Windows.Forms.TextBox();
             this.lblGoalsPoints = new System.Windows.Forms.Label();
@@ -70,9 +68,6 @@ namespace ACCG
             this.grbSeries = new System.Windows.Forms.GroupBox();
             this.grbCar = new System.Windows.Forms.GroupBox();
             this.grbEvents = new System.Windows.Forms.GroupBox();
-            this.btnNewEvent = new System.Windows.Forms.Button();
-            this.btnEditEvent = new System.Windows.Forms.Button();
-            this.btnDeleteEvent = new System.Windows.Forms.Button();
             this.grbOpponents = new System.Windows.Forms.GroupBox();
             this.grbButtons = new System.Windows.Forms.GroupBox();
             this.grbCheckButtons = new System.Windows.Forms.GroupBox();
@@ -82,6 +77,20 @@ namespace ACCG
             this.tltNewOpponentButton = new System.Windows.Forms.ToolTip(this.components);
             this.tltEditOpponentButton = new System.Windows.Forms.ToolTip(this.components);
             this.tltDeleteOpponentButton = new System.Windows.Forms.ToolTip(this.components);
+            this.grbImages = new System.Windows.Forms.GroupBox();
+            this.btnOpenPreviewImage = new System.Windows.Forms.Button();
+            this.lblPreviewImage = new System.Windows.Forms.Label();
+            this.lblStartImage = new System.Windows.Forms.Label();
+            this.previewImagePanel = new System.Windows.Forms.Panel();
+            this.startImagePanel = new System.Windows.Forms.Panel();
+            this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnOpenStartImage = new System.Windows.Forms.Button();
+            this.btnNewEvent = new System.Windows.Forms.Button();
+            this.btnEditEvent = new System.Windows.Forms.Button();
+            this.btnDeleteEvent = new System.Windows.Forms.Button();
+            this.btnDeleteOpponent = new System.Windows.Forms.Button();
+            this.btnEditOpponent = new System.Windows.Forms.Button();
+            this.btnNewOpponent = new System.Windows.Forms.Button();
             this.grbGoals.SuspendLayout();
             this.grbSeries.SuspendLayout();
             this.grbCar.SuspendLayout();
@@ -89,6 +98,7 @@ namespace ACCG
             this.grbOpponents.SuspendLayout();
             this.grbButtons.SuspendLayout();
             this.grbCheckButtons.SuspendLayout();
+            this.grbImages.SuspendLayout();
             this.SuspendLayout();
             // 
             // rbSingleEvents
@@ -271,39 +281,6 @@ namespace ACCG
             this.rtbOpponentsInfo.TabIndex = 26;
             this.rtbOpponentsInfo.Text = "";
             // 
-            // btnDeleteOpponent
-            // 
-            this.btnDeleteOpponent.Image = global::ACCG.Properties.Resources.Clearallrequests_8816;
-            this.btnDeleteOpponent.Location = new System.Drawing.Point(92, 146);
-            this.btnDeleteOpponent.Name = "btnDeleteOpponent";
-            this.btnDeleteOpponent.Size = new System.Drawing.Size(37, 23);
-            this.btnDeleteOpponent.TabIndex = 29;
-            this.tltDeleteOpponentButton.SetToolTip(this.btnDeleteOpponent, "Delete Opponent");
-            this.btnDeleteOpponent.UseVisualStyleBackColor = true;
-            this.btnDeleteOpponent.Click += new System.EventHandler(this.btnDeleteOpponent_Click);
-            // 
-            // btnEditOpponent
-            // 
-            this.btnEditOpponent.Image = global::ACCG.Properties.Resources.EditTitleString_357;
-            this.btnEditOpponent.Location = new System.Drawing.Point(49, 146);
-            this.btnEditOpponent.Name = "btnEditOpponent";
-            this.btnEditOpponent.Size = new System.Drawing.Size(37, 23);
-            this.btnEditOpponent.TabIndex = 28;
-            this.tltEditOpponentButton.SetToolTip(this.btnEditOpponent, "Edit Opponent");
-            this.btnEditOpponent.UseVisualStyleBackColor = true;
-            this.btnEditOpponent.Click += new System.EventHandler(this.btnEditOpponent_Click);
-            // 
-            // btnNewOpponent
-            // 
-            this.btnNewOpponent.Image = global::ACCG.Properties.Resources.NewFile_6276;
-            this.btnNewOpponent.Location = new System.Drawing.Point(6, 146);
-            this.btnNewOpponent.Name = "btnNewOpponent";
-            this.btnNewOpponent.Size = new System.Drawing.Size(37, 23);
-            this.btnNewOpponent.TabIndex = 27;
-            this.tltNewOpponentButton.SetToolTip(this.btnNewOpponent, "New Opponent");
-            this.btnNewOpponent.UseVisualStyleBackColor = true;
-            this.btnNewOpponent.Click += new System.EventHandler(this.btnNewOpponent_Click);
-            // 
             // lbOpponents
             // 
             this.lbOpponents.FormattingEnabled = true;
@@ -482,6 +459,115 @@ namespace ACCG
             this.grbEvents.TabStop = false;
             this.grbEvents.Text = "Events";
             // 
+            // grbOpponents
+            // 
+            this.grbOpponents.Controls.Add(this.lbOpponents);
+            this.grbOpponents.Controls.Add(this.btnDeleteOpponent);
+            this.grbOpponents.Controls.Add(this.rtbOpponentsInfo);
+            this.grbOpponents.Controls.Add(this.btnEditOpponent);
+            this.grbOpponents.Controls.Add(this.btnNewOpponent);
+            this.grbOpponents.Location = new System.Drawing.Point(224, 242);
+            this.grbOpponents.Name = "grbOpponents";
+            this.grbOpponents.Size = new System.Drawing.Size(352, 177);
+            this.grbOpponents.TabIndex = 46;
+            this.grbOpponents.TabStop = false;
+            this.grbOpponents.Text = "Opponents";
+            // 
+            // grbButtons
+            // 
+            this.grbButtons.Controls.Add(this.btnCancel);
+            this.grbButtons.Controls.Add(this.btnOK);
+            this.grbButtons.Location = new System.Drawing.Point(393, 610);
+            this.grbButtons.Name = "grbButtons";
+            this.grbButtons.Size = new System.Drawing.Size(183, 54);
+            this.grbButtons.TabIndex = 47;
+            this.grbButtons.TabStop = false;
+            // 
+            // grbCheckButtons
+            // 
+            this.grbCheckButtons.Controls.Add(this.rbChampionship);
+            this.grbCheckButtons.Controls.Add(this.rbSingleEvents);
+            this.grbCheckButtons.Location = new System.Drawing.Point(12, 5);
+            this.grbCheckButtons.Name = "grbCheckButtons";
+            this.grbCheckButtons.Size = new System.Drawing.Size(196, 48);
+            this.grbCheckButtons.TabIndex = 41;
+            this.grbCheckButtons.TabStop = false;
+            // 
+            // grbImages
+            // 
+            this.grbImages.Controls.Add(this.btnOpenPreviewImage);
+            this.grbImages.Controls.Add(this.btnOpenStartImage);
+            this.grbImages.Controls.Add(this.lblPreviewImage);
+            this.grbImages.Controls.Add(this.lblStartImage);
+            this.grbImages.Controls.Add(this.previewImagePanel);
+            this.grbImages.Controls.Add(this.startImagePanel);
+            this.grbImages.Location = new System.Drawing.Point(352, 425);
+            this.grbImages.Name = "grbImages";
+            this.grbImages.Size = new System.Drawing.Size(224, 179);
+            this.grbImages.TabIndex = 48;
+            this.grbImages.TabStop = false;
+            this.grbImages.Text = "Images";
+            // 
+            // btnOpenPreviewImage
+            // 
+            this.btnOpenPreviewImage.Image = global::ACCG.Properties.Resources.Open_6529_24;
+            this.btnOpenPreviewImage.Location = new System.Drawing.Point(117, 150);
+            this.btnOpenPreviewImage.Name = "btnOpenPreviewImage";
+            this.btnOpenPreviewImage.Size = new System.Drawing.Size(26, 23);
+            this.btnOpenPreviewImage.TabIndex = 5;
+            this.btnOpenPreviewImage.UseVisualStyleBackColor = true;
+            this.btnOpenPreviewImage.Click += new System.EventHandler(this.btnOpenPreviewImage_Click);
+            // 
+            // lblPreviewImage
+            // 
+            this.lblPreviewImage.AutoSize = true;
+            this.lblPreviewImage.Location = new System.Drawing.Point(114, 22);
+            this.lblPreviewImage.Name = "lblPreviewImage";
+            this.lblPreviewImage.Size = new System.Drawing.Size(45, 13);
+            this.lblPreviewImage.TabIndex = 3;
+            this.lblPreviewImage.Text = "Preview";
+            // 
+            // lblStartImage
+            // 
+            this.lblStartImage.AutoSize = true;
+            this.lblStartImage.Location = new System.Drawing.Point(7, 21);
+            this.lblStartImage.Name = "lblStartImage";
+            this.lblStartImage.Size = new System.Drawing.Size(29, 13);
+            this.lblStartImage.TabIndex = 2;
+            this.lblStartImage.Text = "Start";
+            // 
+            // previewImagePanel
+            // 
+            this.previewImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.previewImagePanel.Location = new System.Drawing.Point(117, 44);
+            this.previewImagePanel.Name = "previewImagePanel";
+            this.previewImagePanel.Size = new System.Drawing.Size(100, 100);
+            this.previewImagePanel.TabIndex = 1;
+            this.previewImagePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.previewImagePanel_Paint);
+            // 
+            // startImagePanel
+            // 
+            this.startImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.startImagePanel.Location = new System.Drawing.Point(6, 44);
+            this.startImagePanel.Name = "startImagePanel";
+            this.startImagePanel.Size = new System.Drawing.Size(100, 100);
+            this.startImagePanel.TabIndex = 0;
+            this.startImagePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.startImagePanel_Paint);
+            // 
+            // openImageFileDialog
+            // 
+            this.openImageFileDialog.FileName = "openFileDialog1";
+            // 
+            // btnOpenStartImage
+            // 
+            this.btnOpenStartImage.Image = global::ACCG.Properties.Resources.Open_6529_24;
+            this.btnOpenStartImage.Location = new System.Drawing.Point(6, 150);
+            this.btnOpenStartImage.Name = "btnOpenStartImage";
+            this.btnOpenStartImage.Size = new System.Drawing.Size(26, 23);
+            this.btnOpenStartImage.TabIndex = 4;
+            this.btnOpenStartImage.UseVisualStyleBackColor = true;
+            this.btnOpenStartImage.Click += new System.EventHandler(this.btnOpenStartImage_Click);
+            // 
             // btnNewEvent
             // 
             this.btnNewEvent.Image = global::ACCG.Properties.Resources.NewFile_6276;
@@ -515,45 +601,45 @@ namespace ACCG
             this.btnDeleteEvent.UseVisualStyleBackColor = true;
             this.btnDeleteEvent.Click += new System.EventHandler(this.btnDeleteEvent_Click);
             // 
-            // grbOpponents
+            // btnDeleteOpponent
             // 
-            this.grbOpponents.Controls.Add(this.lbOpponents);
-            this.grbOpponents.Controls.Add(this.btnDeleteOpponent);
-            this.grbOpponents.Controls.Add(this.rtbOpponentsInfo);
-            this.grbOpponents.Controls.Add(this.btnEditOpponent);
-            this.grbOpponents.Controls.Add(this.btnNewOpponent);
-            this.grbOpponents.Location = new System.Drawing.Point(224, 242);
-            this.grbOpponents.Name = "grbOpponents";
-            this.grbOpponents.Size = new System.Drawing.Size(352, 177);
-            this.grbOpponents.TabIndex = 46;
-            this.grbOpponents.TabStop = false;
-            this.grbOpponents.Text = "Opponents";
+            this.btnDeleteOpponent.Image = global::ACCG.Properties.Resources.Clearallrequests_8816;
+            this.btnDeleteOpponent.Location = new System.Drawing.Point(92, 146);
+            this.btnDeleteOpponent.Name = "btnDeleteOpponent";
+            this.btnDeleteOpponent.Size = new System.Drawing.Size(37, 23);
+            this.btnDeleteOpponent.TabIndex = 29;
+            this.tltDeleteOpponentButton.SetToolTip(this.btnDeleteOpponent, "Delete Opponent");
+            this.btnDeleteOpponent.UseVisualStyleBackColor = true;
+            this.btnDeleteOpponent.Click += new System.EventHandler(this.btnDeleteOpponent_Click);
             // 
-            // grbButtons
+            // btnEditOpponent
             // 
-            this.grbButtons.Controls.Add(this.btnCancel);
-            this.grbButtons.Controls.Add(this.btnOK);
-            this.grbButtons.Location = new System.Drawing.Point(395, 505);
-            this.grbButtons.Name = "grbButtons";
-            this.grbButtons.Size = new System.Drawing.Size(183, 54);
-            this.grbButtons.TabIndex = 47;
-            this.grbButtons.TabStop = false;
+            this.btnEditOpponent.Image = global::ACCG.Properties.Resources.EditTitleString_357;
+            this.btnEditOpponent.Location = new System.Drawing.Point(49, 146);
+            this.btnEditOpponent.Name = "btnEditOpponent";
+            this.btnEditOpponent.Size = new System.Drawing.Size(37, 23);
+            this.btnEditOpponent.TabIndex = 28;
+            this.tltEditOpponentButton.SetToolTip(this.btnEditOpponent, "Edit Opponent");
+            this.btnEditOpponent.UseVisualStyleBackColor = true;
+            this.btnEditOpponent.Click += new System.EventHandler(this.btnEditOpponent_Click);
             // 
-            // grbCheckButtons
+            // btnNewOpponent
             // 
-            this.grbCheckButtons.Controls.Add(this.rbChampionship);
-            this.grbCheckButtons.Controls.Add(this.rbSingleEvents);
-            this.grbCheckButtons.Location = new System.Drawing.Point(12, 5);
-            this.grbCheckButtons.Name = "grbCheckButtons";
-            this.grbCheckButtons.Size = new System.Drawing.Size(196, 48);
-            this.grbCheckButtons.TabIndex = 41;
-            this.grbCheckButtons.TabStop = false;
+            this.btnNewOpponent.Image = global::ACCG.Properties.Resources.NewFile_6276;
+            this.btnNewOpponent.Location = new System.Drawing.Point(6, 146);
+            this.btnNewOpponent.Name = "btnNewOpponent";
+            this.btnNewOpponent.Size = new System.Drawing.Size(37, 23);
+            this.btnNewOpponent.TabIndex = 27;
+            this.tltNewOpponentButton.SetToolTip(this.btnNewOpponent, "New Opponent");
+            this.btnNewOpponent.UseVisualStyleBackColor = true;
+            this.btnNewOpponent.Click += new System.EventHandler(this.btnNewOpponent_Click);
             // 
             // ACCGNewSeriesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 566);
+            this.ClientSize = new System.Drawing.Size(585, 674);
+            this.Controls.Add(this.grbImages);
             this.Controls.Add(this.grbCheckButtons);
             this.Controls.Add(this.grbButtons);
             this.Controls.Add(this.grbEvents);
@@ -580,6 +666,8 @@ namespace ACCG
             this.grbButtons.ResumeLayout(false);
             this.grbCheckButtons.ResumeLayout(false);
             this.grbCheckButtons.PerformLayout();
+            this.grbImages.ResumeLayout(false);
+            this.grbImages.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -660,13 +748,21 @@ namespace ACCG
         private ToolTip tltEditOpponentButton;
         private ToolTip tltNewOpponentButton;
         private ToolTip tltDeleteEventButton;
+        private GroupBox grbImages;
+        private Button btnOpenStartImage;
+        private Label lblPreviewImage;
+        private Label lblStartImage;
+        private Panel previewImagePanel;
+        private Panel startImagePanel;
+        private OpenFileDialog openImageFileDialog;
+        private Button btnOpenPreviewImage;
 
         public static Car champ_player_car {get; set;}
-        public static Series temp_series { get; set; }
-        //public static int events_global_ID { get; set; }
-        //public static int opponents_global_ID { get; set; }
+        public static Series temp_series { get; set; }        
         public static Event current_selected_event { get; set; }
         public static Opponent current_selected_opponent { get; set; }
+        public Bitmap startThumbnailImage { get; set; }
+        public Bitmap previewThumbnailImage { get; set; } 
         
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace ACCG
         public bool penalties { get; set; }
         public bool isEdited { get; set; }
         public int dynamic_track_preset { get; set; }
+        public Bitmap previewImage { get; set; } // 250x125
         
        
 
