@@ -22,10 +22,7 @@ namespace ACCG
        private string series_preview_png_filename = "preview.png";
        private string event_preview_png_filename = "preview.png";
 
-       private ACCGGenerator()
-       {
-           
-       }
+       private ACCGGenerator() { }
 
        public static ACCGGenerator GetInstance()
        {

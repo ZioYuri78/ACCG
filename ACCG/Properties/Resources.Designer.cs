@@ -93,16 +93,6 @@ namespace ACCG.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap NewFile_6276_32 {
-            get {
-                object obj = ResourceManager.GetObject("NewFile_6276_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Open_6529_24 {
             get {
                 object obj = ResourceManager.GetObject("Open_6529_24", resourceCulture);

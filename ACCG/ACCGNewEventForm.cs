@@ -21,7 +21,7 @@ namespace ACCG
 
         public ACCGNewEventForm(Event current_selected_event)
         {
-            // TODO: Complete member initialization
+            // For edit mode
             this.current_selected_event = current_selected_event;
 
             InitializeComponent();
@@ -63,7 +63,7 @@ namespace ACCG
             foreach (string track in ACCGMainForm.ac_tracks_list)
             {
                 cbTrack.Items.Add(track);
-            }
+            }            
 
             // Editing mode
             if (current_selected_event != null)
@@ -138,24 +138,8 @@ namespace ACCG
                     //temp_event = current_selected_event;
                     event_index = ACCGNewSeriesForm.temp_series.events_list.IndexOf(temp_event);
                     ACCGNewSeriesForm.temp_series.events_list.Remove(current_selected_event);
-                }
-                else // New event mode
-                {
-                    //temp_event = new Event();
-                    /*
-                    if (ACCGNewSeriesForm.events_global_ID == 0)
-                    {
-                        temp_event.ID = 1;
-                        ACCGNewSeriesForm.events_global_ID++;
-                    }
-                    else
-                    {
-                        temp_event.ID = ACCGNewSeriesForm.events_global_ID + 1;
-                        ACCGNewSeriesForm.events_global_ID++;
-                    }*/
-                }
-                
-                Console.WriteLine("DEBUG: ID = {0}", temp_event.ID);
+                }                
+                                
                 temp_event.name = tbName.Text;
                 temp_event.description = tbDescription.Text;
                 temp_event.ambient_temperature = tkbAmbientTemperature.Value;
@@ -165,8 +149,7 @@ namespace ACCG
                 temp_event.penalties = ckbPenalties.Checked;
                 temp_event.dynamic_track_preset = tkbCondition.Value;
                                 
-                // Sessions of the event
-                                
+                // Sessions of the event                                
                 temp_event.session_list = new List<Session>();
                                               
                 if (ckbPractice.Checked)
@@ -212,7 +195,7 @@ namespace ACCG
                     qualifying_session.type = 2;
                     qualifying_session.spawn_set = "PIT";
                     qualifying_session.duration_minutes = tkbQualifyingDuration.Value;
-                    qualifying_session.laps = 0;    // Will not included during generation
+                    qualifying_session.laps = 0;    // Will not included during generation (but I'm lying)
                     temp_event.session_list.Add(qualifying_session);
                 }
 
@@ -403,14 +386,6 @@ namespace ACCG
 
         }
 
-       
-
-
-
-      
-
-        
-
-
+                   
     }
 }

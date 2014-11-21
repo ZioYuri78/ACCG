@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 
 namespace ACCG
@@ -64,10 +65,7 @@ namespace ACCG
             else
             {
                 temp_series = new Series();              
-            }
-            
-            
-            // Manca try catch!
+            }                                    
             
             if (rbChampionship.Checked)
             {
@@ -103,23 +101,19 @@ namespace ACCG
 
             // Populating the requires series combobox
             ac_series_path = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
-            
-            /*
-            Console.WriteLine("DEBUG:");
-            foreach (string el in ac_series_path)
-            {
-                Console.WriteLine(el);
-            }
-            */
-            //Array.Sort(ac_series_path, StringComparer.InvariantCulture);
 
+            Array.Sort(ac_series_path, new AlphanumComparatorFast());
+                        
             if (ac_series_path.Length != 0)
             {
-                foreach (string el in ac_series_path)
+                for (int i = 1; i < ac_series_path.Length; i++)
                 {
-                    cbRequires.Items.Add(el.Substring(el.LastIndexOf(@"\") +1 ));
+                    cbRequires.Sorted = false;
+                    cbRequires.Items.Add(ac_series_path[i].Substring(ac_series_path[i].LastIndexOf(@"\") + 1));                    
                 }
+
             }
+
 
             if (current_selected_series != null)
             {
@@ -136,6 +130,7 @@ namespace ACCG
             {
                 cbCar.Items.Add(car.model);
             }
+
 
             if (current_selected_series != null)
             {
@@ -245,7 +240,7 @@ namespace ACCG
                 temp_series.isEdited = false;
                 temp_series.isGenerated = false;
 
-                // Very instable code!
+                // Missing "else" states
                 if (ACCGMainForm.series_global_ID >= 100)
                 {
                     if (current_selected_series == null)
@@ -253,37 +248,10 @@ namespace ACCG
                         temp_series.ID = ACCGMainForm.series_global_ID + 1;
                         ACCGMainForm.series_global_ID++;
 
-                        // Save the new value of global series ID in settings.ini  (very instable code!)              
-                        StringBuilder newFile = new StringBuilder();
-                        //string temp_opponent = "";                  
+                        // Save the new value of global series ID in settings.ini                                                                          
                         string settings_file_name = @"cfg\settings.ini";
-
-                        if (File.Exists(settings_file_name))
-                        {
-                            string[] file = File.ReadAllLines(settings_file_name);
-
-                            for (int i = 0; i < file.Length; i++)
-                            {
-                                if (file[i].Contains("[SERIES_GLOBAL_ID]"))
-                                {
-                                    newFile.Append(file[i] + "\r\n");
-                                    file[i + 1] = ACCGMainForm.series_global_ID.ToString();
-                                    Console.WriteLine("DEBUG: SERIES_GLOBAL_ID" + ACCGMainForm.series_global_ID.ToString());
-
-                                    newFile.Append(file[i + 1]);
-                                    break;
-
-                                }
-
-                                newFile.Append(file[i] + "\r\n");
-                            }
-
-                            File.WriteAllText(settings_file_name, newFile.ToString());
-                        }
-                        else
-                        {
-                            MessageBox.Show("Missing file \"" + settings_file_name + "\"!");
-                        }
+                        ACCGMainForm.accg_resource.SaveSettings(settings_file_name, e);
+                        
                     }
                                                            
                 }
@@ -305,26 +273,17 @@ namespace ACCG
                     ACCGMainForm.accg_series_list.Remove(current_selected_series);
                     ACCGMainForm.accg_series_list.Insert(series_index,temp_series);
                 }
-                else // New sereis mode
+                else // New series mode
                 {
                     ACCGMainForm.accg_series_list.Add(temp_series);
                 }
                 
                 // Need datasource
                 ACCGMainForm.bs_series_datasource.ResetBindings(false);
-
-                Console.WriteLine("DEBUG: Numero di elementi nella lista series = {0}", ACCGMainForm.accg_series_list.Count);
-
-                // Saving the series list 
-                string dir = Directory.GetCurrentDirectory();
-                Console.WriteLine("DEBUG: " + dir);
-                string serializationFile = Path.Combine(dir, @"data\accg_series_list.dat");
-
-                using (Stream stream = File.Open(serializationFile, FileMode.Create))
-                {
-                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    bformatter.Serialize(stream, ACCGMainForm.accg_series_list);
-                }
+                
+                // Saving the accg series list 
+                string accg_series_path = @"data\accg_series_list.dat";
+                ACCGMainForm.accg_resource.SaveACCGSeries(accg_series_path, ACCGMainForm.accg_series_list, e);                               
 
                 this.Close();
             }
@@ -610,7 +569,7 @@ namespace ACCG
             {
                 if (temp_series.startImage != null)
                 {
-                    startThumbnailImage = (Bitmap)temp_series.startImage.GetThumbnailImage(206, 206, null, new IntPtr());
+                    startThumbnailImage = (Bitmap)ScaleImage(temp_series.startImage, startImagePanel.Width, startImagePanel.Height);
                 }
                 else
                 {
@@ -677,8 +636,20 @@ namespace ACCG
 
         }
 
-        
-      
+        private Image ScaleImage(Image image, int maxWidth, int maxHeight)
+        {
+            var ratioX = (double)maxWidth / image.Width;
+            var ratioY = (double)maxHeight / image.Height;
+            var ratio = Math.Min(ratioX, ratioY);
+
+            var newWidth = (int)(image.Width * ratio);
+            var newHeight = (int)(image.Height * ratio);
+
+            var newImage = new Bitmap(newWidth, newHeight);
+            Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
+            return newImage;
+        }
+              
 
     }
 

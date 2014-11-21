@@ -40,6 +40,8 @@ namespace ACCG
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,6 +102,7 @@ namespace ACCG
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.resourceToolStripMenuItem,
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -123,6 +126,21 @@ namespace ACCG
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // resourceToolStripMenuItem
+            // 
+            this.resourceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.syncToolStripMenuItem});
+            this.resourceToolStripMenuItem.Name = "resourceToolStripMenuItem";
+            this.resourceToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.resourceToolStripMenuItem.Text = "Resource";
+            // 
+            // syncToolStripMenuItem
+            // 
+            this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.syncToolStripMenuItem.Text = "Sync";
+            this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -134,15 +152,15 @@ namespace ACCG
             // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.Enabled = false;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // creditsToolStripMenuItem
             // 
             this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
-            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.creditsToolStripMenuItem.Text = "Credits";
             this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
             // 
@@ -236,6 +254,8 @@ namespace ACCG
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem creditsToolStripMenuItem;
+        private ToolStripMenuItem resourceToolStripMenuItem;
+        private ToolStripMenuItem syncToolStripMenuItem;
         private RichTextBox rtbSeriesInfo;
         public ListBox lbSeries;
         private Label lblCurrentSeries;
@@ -256,8 +276,14 @@ namespace ACCG
         public static Dictionary<string, int> time_table { get; set; }
 
         public static ACCGGenerator accg_generator;
-        
 
+        public static ACCGResourceManager accg_resource;
+
+        public const string accg_settings_file_name = @"cfg\settings.ini";
+        public const string accg_series_file_name = @"data\accg_series_list.dat";
+        public const string accg_cars_file_name = @"data\cars.txt";
+        public const string accg_tracks_file_name = @"data\tracks.txt";
+        public const string accg_manual_file_name = @"doc\ACCG_manual.pdf";
 
         
     }

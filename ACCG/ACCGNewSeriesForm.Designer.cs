@@ -57,7 +57,6 @@ namespace ACCG
             this.lblGoalsPoints = new System.Windows.Forms.Label();
             this.cbSkin = new System.Windows.Forms.ComboBox();
             this.lblSkin = new System.Windows.Forms.Label();
-            this.lblDontuseseries0 = new System.Windows.Forms.Label();
             this.grbGoals = new System.Windows.Forms.GroupBox();
             this.tbGoldTier = new System.Windows.Forms.TextBox();
             this.tbSilverTier = new System.Windows.Forms.TextBox();
@@ -157,7 +156,7 @@ namespace ACCG
             // lblRequires
             // 
             this.lblRequires.AutoSize = true;
-            this.lblRequires.Location = new System.Drawing.Point(6, 186);
+            this.lblRequires.Location = new System.Drawing.Point(6, 189);
             this.lblRequires.Name = "lblRequires";
             this.lblRequires.Size = new System.Drawing.Size(49, 13);
             this.lblRequires.TabIndex = 5;
@@ -166,7 +165,7 @@ namespace ACCG
             // lblPoints
             // 
             this.lblPoints.AutoSize = true;
-            this.lblPoints.Location = new System.Drawing.Point(6, 226);
+            this.lblPoints.Location = new System.Drawing.Point(6, 220);
             this.lblPoints.Name = "lblPoints";
             this.lblPoints.Size = new System.Drawing.Size(36, 13);
             this.lblPoints.TabIndex = 6;
@@ -208,7 +207,7 @@ namespace ACCG
             // 
             this.cbRequires.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRequires.FormattingEnabled = true;
-            this.cbRequires.Location = new System.Drawing.Point(66, 183);
+            this.cbRequires.Location = new System.Drawing.Point(66, 186);
             this.cbRequires.Name = "cbRequires";
             this.cbRequires.Size = new System.Drawing.Size(130, 21);
             this.cbRequires.Sorted = true;
@@ -217,7 +216,7 @@ namespace ACCG
             // tbPoints
             // 
             this.tbPoints.Enabled = false;
-            this.tbPoints.Location = new System.Drawing.Point(66, 223);
+            this.tbPoints.Location = new System.Drawing.Point(66, 217);
             this.tbPoints.Name = "tbPoints";
             this.tbPoints.Size = new System.Drawing.Size(130, 20);
             this.tbPoints.TabIndex = 13;
@@ -326,15 +325,6 @@ namespace ACCG
             this.lblSkin.TabIndex = 37;
             this.lblSkin.Text = "Skin";
             // 
-            // lblDontuseseries0
-            // 
-            this.lblDontuseseries0.AutoSize = true;
-            this.lblDontuseseries0.Location = new System.Drawing.Point(63, 207);
-            this.lblDontuseseries0.Name = "lblDontuseseries0";
-            this.lblDontuseseries0.Size = new System.Drawing.Size(91, 13);
-            this.lblDontuseseries0.TabIndex = 39;
-            this.lblDontuseseries0.Text = "Don\'t use series0!";
-            // 
             // grbGoals
             // 
             this.grbGoals.Controls.Add(this.tbGoldTier);
@@ -406,7 +396,7 @@ namespace ACCG
             // lblPointsExample
             // 
             this.lblPointsExample.AutoSize = true;
-            this.lblPointsExample.Location = new System.Drawing.Point(63, 246);
+            this.lblPointsExample.Location = new System.Drawing.Point(63, 240);
             this.lblPointsExample.Name = "lblPointsExample";
             this.lblPointsExample.Size = new System.Drawing.Size(49, 13);
             this.lblPointsExample.TabIndex = 40;
@@ -418,7 +408,6 @@ namespace ACCG
             this.grbSeries.Controls.Add(this.lblPointsExample);
             this.grbSeries.Controls.Add(this.lblName);
             this.grbSeries.Controls.Add(this.lblDescription);
-            this.grbSeries.Controls.Add(this.lblDontuseseries0);
             this.grbSeries.Controls.Add(this.lblRequires);
             this.grbSeries.Controls.Add(this.lblPoints);
             this.grbSeries.Controls.Add(this.tbCode);
@@ -568,9 +557,9 @@ namespace ACCG
             this.grbImages.Controls.Add(this.lblStartImage);
             this.grbImages.Controls.Add(this.previewImagePanel);
             this.grbImages.Controls.Add(this.startImagePanel);
-            this.grbImages.Location = new System.Drawing.Point(352, 425);
+            this.grbImages.Location = new System.Drawing.Point(222, 425);
             this.grbImages.Name = "grbImages";
-            this.grbImages.Size = new System.Drawing.Size(224, 179);
+            this.grbImages.Size = new System.Drawing.Size(354, 179);
             this.grbImages.TabIndex = 48;
             this.grbImages.TabStop = false;
             this.grbImages.Text = "Images";
@@ -578,7 +567,7 @@ namespace ACCG
             // btnOpenPreviewImage
             // 
             this.btnOpenPreviewImage.Image = global::ACCG.Properties.Resources.Open_6529_24;
-            this.btnOpenPreviewImage.Location = new System.Drawing.Point(117, 150);
+            this.btnOpenPreviewImage.Location = new System.Drawing.Point(247, 150);
             this.btnOpenPreviewImage.Name = "btnOpenPreviewImage";
             this.btnOpenPreviewImage.Size = new System.Drawing.Size(26, 23);
             this.btnOpenPreviewImage.TabIndex = 5;
@@ -598,7 +587,7 @@ namespace ACCG
             // lblPreviewImage
             // 
             this.lblPreviewImage.AutoSize = true;
-            this.lblPreviewImage.Location = new System.Drawing.Point(114, 22);
+            this.lblPreviewImage.Location = new System.Drawing.Point(244, 21);
             this.lblPreviewImage.Name = "lblPreviewImage";
             this.lblPreviewImage.Size = new System.Drawing.Size(45, 13);
             this.lblPreviewImage.TabIndex = 3;
@@ -616,7 +605,7 @@ namespace ACCG
             // previewImagePanel
             // 
             this.previewImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.previewImagePanel.Location = new System.Drawing.Point(117, 44);
+            this.previewImagePanel.Location = new System.Drawing.Point(247, 44);
             this.previewImagePanel.Name = "previewImagePanel";
             this.previewImagePanel.Size = new System.Drawing.Size(100, 100);
             this.previewImagePanel.TabIndex = 1;
@@ -624,10 +613,9 @@ namespace ACCG
             // 
             // startImagePanel
             // 
-            this.startImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.startImagePanel.Location = new System.Drawing.Point(6, 44);
             this.startImagePanel.Name = "startImagePanel";
-            this.startImagePanel.Size = new System.Drawing.Size(100, 100);
+            this.startImagePanel.Size = new System.Drawing.Size(235, 100);
             this.startImagePanel.TabIndex = 0;
             this.startImagePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.startImagePanel_Paint);
             // 
@@ -728,7 +716,6 @@ namespace ACCG
 
         public static BindingSource bs_events_datasource = new BindingSource();
         public static BindingSource bs_opponents_datasource = new BindingSource();
-        private Label lblDontuseseries0;
         private GroupBox grbGoals;
         private Label lblBronzeTier;
         private Label lblSilverTier;

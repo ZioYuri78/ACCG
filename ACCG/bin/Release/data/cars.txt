@@ -11,7 +11,7 @@ white
 white_scorpion
 [END_SKINS]
 
-[abarth500_S1]
+[abarth500_s1]
 black_neon
 dark_blue_blue
 dark_green_yellow
@@ -60,7 +60,7 @@ Street_Racer
 Taurus_3D
 Yashugan_DGFX_Art
 [END_SKINS]
-	
+
 [bmw_m3_e30]
 alpine_white_I
 Brilliant_red
@@ -204,13 +204,13 @@ Falken
 Gulf
 Gulf2
 KunosRacing
-KunosRacing_80
-KunosRacing_81
+kunosracing_80
+kunosracing_81
 Nvidia
 Ozoshi
 Red_Bull
 [END_SKINS]
-	
+
 [bmw_z4]
 black
 black_matte
@@ -246,7 +246,12 @@ black
 blue
 red
 [END_SKINS]
-	
+
+[F169_MatraMS80]
+3
+4
+[END_SKINS]
+
 [ferrari_312t]
 bel_4
 default
@@ -260,22 +265,22 @@ uk_3
 
 [ferrari_458]
 avorio
-bianco_avus
 biancoavus
+bianco_avus
 blupozzi
 giallo_modena
 giallo_modena_dark_top
-grigio_scuro
 grigioscuro
+grigio_scuro
 red
 redblack
 redblack2
+rossocorsa
+rossomugello
 rosso_corsa
 rosso_mugello
 rosso_scuderia
 rosso_scuderia_dark_top
-rossocorsa
-rossomugello
 yellow
 yellowblack
 [END_SKINS]
@@ -289,6 +294,7 @@ black matte
 kessel1
 new
 red
+risingsun
 rossocorsa
 white
 yellow
@@ -310,10 +316,10 @@ rosso_scuderia_dark_top
 [ferrari_599xxevo]
 1
 2
-4
 24
 25
 27
+4
 40
 97
 [END_SKINS]
@@ -323,30 +329,30 @@ rosso_scuderia_dark_top
 2black
 3white
 [END_SKINS]
-		
+
 [ferrari_f40_s3]
 1red
 2black
 3white
 [END_SKINS]
-	
+
 [ferrari_laferrari]
 avorio
-bianco_avus
 biancoavus
+bianco_avus
 blupozzi
 giallo_modena
 giallo_modena_dark_top
-grigio_scuro
 grigioscuro
+grigio_scuro
 red
 redblack
 redblack2
+rossocorsa
+rossomugello
 rosso_corsa
 rosso_mugello
 rosso_scuderia
-rossocorsa
-rossomugello
 yellow
 [END_SKINS]
 
@@ -402,8 +408,6 @@ Taurus_18
 [END_SKINS]
 
 [lotus_49]
-1967__07
-1967__17
 1967_02
 1967_03
 1967_06
@@ -416,6 +420,8 @@ Taurus_18
 1967_29
 1967_32
 1967_34
+1967__07
+1967__17
 default
 jim_clark
 jo_siffert
@@ -662,6 +668,10 @@ Storm_Titanium
 Velvet_Red
 [END_SKINS]
 
+[lotus_exige_scura]
+scura
+[END_SKINS]
+
 [lotus_exige_s_roadster]
 Amethyst_Grey
 Ardent_Red
@@ -675,10 +685,6 @@ Nightfall_Blue
 Phantom_Black
 Racing_Green
 Solar_Yellow
-[END_SKINS]
-
-[lotus_exige_scura]
-scura
 [END_SKINS]
 
 [lotus_exige_v6_cup]
@@ -719,6 +725,11 @@ volcano_yellow
 2013-Hexis_Racing
 2013-Official_McLaren
 2013-Sebastien_Loeb_Racing
+[END_SKINS]
+
+[mclaren_yardley]
+6
+7
 [END_SKINS]
 
 [mercedes_sls]
@@ -776,9 +787,45 @@ white
 [END_SKINS]
 
 [pagani_zonda_r]
+acracers00_ARES
+acracers02_2FastYSoSerious
+acracers03_RacerX
+acracers05_TheOldPeculiar
+acracers07_Hayabusa
+acracers08_Eber
+acracers09_luxdroid
+acracers101_ZioYuri
+acracers12_ollybadger
+acracers13_Midlander
+acracers17_Kade
+acracers23_Xtr3meNZer
+acracers33_WhosOnTheThrone
+acracers365_Tactical
+acracers37_decaturdiciple
+acracers40_Toilailee
+acracers45_Donnie
+acracers47_Geargrinder
+acracers64_strangelyBrown
+acracers650_ranzar
+acracers66_Ragequit
+acracers69_Belcar
+acracers75_Formula2K
+acracers76_zelimper
+acracers777_Buyo
+acracers77_Stoner
+acracers79_Zombie
+acracers81_verymetall
+acracers83_Mojo
+acracers89_rikster
+acracers92_TrenchcoatNinja
+acracers93_Safferson
 default
 Kunos Racing
 worldrecord
+[END_SKINS]
+
+[shadow_DN1]
+8
 [END_SKINS]
 
 [shelby_cobra_427sc]
@@ -810,3 +857,4 @@ Scheme1_A
 Scheme2_A
 Scheme3_A
 [END_SKINS]
+

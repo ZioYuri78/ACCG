@@ -17,167 +17,25 @@ namespace ACCG
         {
             InitializeComponent();
             accg_generator = ACCGGenerator.GetInstance();
+            accg_resource = ACCGResourceManager.GetInstance();
         }
         
         private void ACCGMainForm_Load(object sender, EventArgs e)
-        {
-            // Load setting.ini
-            try
-            {
-                if (File.Exists(@"cfg\settings.ini"))
-                {
-                    using (StreamReader sr = new StreamReader(@"cfg\settings.ini"))
-                    {
-                        while (sr.Peek() >= 0)
-                        {
-                            string tmp = sr.ReadLine();
+        {           
 
-                            switch (tmp)
-                            {
-                                case "[AC_PATH]":
-                                    ac_path = sr.ReadLine();
-                                    Console.WriteLine("DEBUG: " + ac_path);
-                                    break;
-
-                                case "[SERIES_GLOBAL_ID]":
-                                    series_global_ID = Convert.ToInt32(sr.ReadLine());
-                                    Console.WriteLine("DEBUG: " + series_global_ID);
-                                    break;
-
-                                default:                                  
-                                    Console.WriteLine("DEBUG: default case");
-                                    break;
-                            }                                                   
-
-                        }
-
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("File settings.ini not exists!");
-                }
-            }
-            catch
-            {
-                Console.WriteLine("The process failed: {0}", e.ToString());
-            }
-                                    
-            // ACCG Series list (list with only user created series)            
-            string dir = Directory.GetCurrentDirectory() + @"\data";
-            Console.WriteLine("DEBUG: " + dir);
-
-            try
-            {
-                if(File.Exists(Path.Combine(dir,"accg_series_list.dat"))) {
-
-                    string serializationFile = Path.Combine(dir, "accg_series_list.dat");
-
-                    using (Stream stream = File.Open(serializationFile, FileMode.Open))
-                    {
-                        var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                        accg_series_list = (List<Series>)bformatter.Deserialize(stream);                
-                    }
-                }
-                else
-                {
-                    accg_series_list = new List<Series>();
-                    Console.WriteLine("DEBUG: File not exist, will be create later");
-                }
-                
-            }
-            catch
-            {
-                Console.WriteLine(e.ToString());
-            }
-            
-
-            ShowData();
-
-            // Events list
-            Console.WriteLine("DEBUG: Serie corrente: " + lbSeries.SelectedItem);
-            //Series tmp_series = accg_series_list.Find(x => x.name == lbSeries.SelectedItem.ToString());
-            
+            // Load settings.ini            
+            accg_resource.LoadSettings(accg_settings_file_name, e);
+                    
+            // ACCG Series list (list with only user created series)                        
+            accg_series_list = accg_resource.LoadACCGSeries(accg_series_file_name, e);
            
+            ShowData();
+                                               
+            // Populating Cars list                                    
+            ac_cars_list = accg_resource.LoadCars(accg_cars_file_name, e);
             
-            // Populating Cars list
-            ac_cars_list = new List<Car>();
-            string car_name;
-            string trimmed_car_name;
-            string cars_file_name = @"data\cars_skins.txt";
-    
-            try
-            {
-                if (File.Exists(cars_file_name))
-                {
-                    using (StreamReader sr = new StreamReader(cars_file_name))
-                    {
-                        while (sr.Peek() >= 0)
-                        {
-                            car_name = sr.ReadLine();
-                            if (car_name.Contains("[") && car_name != "[END_SKINS]")
-                            {
-                                Console.WriteLine("DEBUG: Contiene [");
-                                trimmed_car_name = car_name.Trim(new Char[] { '[', ']' });
-                                Console.WriteLine("DEBUG: " + trimmed_car_name);
-
-                                Car tmp_car = new Car();
-                                ac_cars_list.Add(tmp_car);
-                                tmp_car.model = trimmed_car_name;
-                                
-                                string tmp_skin = sr.ReadLine();
-
-                                while (tmp_skin != "[END_SKINS]")
-                                {
-                                    tmp_car.skins.Add(tmp_skin);
-                                    tmp_skin = sr.ReadLine();
-                                    Console.WriteLine("DEBUG: " + tmp_skin);
-                                }
-                                
-                            }
-
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Missing file \"" + cars_file_name + "\"!");
-                    Console.WriteLine("File cars.txt non esistente!");
-                    Application.Exit();
-                }
-            }
-            catch
-            {
-                Console.WriteLine("The process failed: {0}", e.ToString());
-            }
-
-            // Tracks list
-            ac_tracks_list = new List<string>();
-            string tracks_file_name = @"data\tracks.txt";
-
-            try
-            {
-                if (File.Exists(tracks_file_name))
-                {
-                    using (StreamReader sr = new StreamReader(tracks_file_name))
-                    {
-                        while (sr.Peek() >= 0)
-                        {
-                            ac_tracks_list.Add(sr.ReadLine());
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Missing file \"" + tracks_file_name + "\"!");                    
-                    Application.Exit();
-                    Console.WriteLine("File track.txt non esistente!");
-                }
-            }
-            catch
-            {
-                Console.WriteLine("The process failed: {0}", e.ToString());
-            }
+            // Populating Tracks list                        
+            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name,e);
 
             // Creating the time table             
             time_table = new Dictionary<string, int>();
@@ -203,15 +61,13 @@ namespace ACCG
             time_table.Add("17:00", 64);
             time_table.Add("17:30", 72);
             time_table.Add("18:00", 80);
-
             
         }
 
         private void lbSeries_SelectedIndexChanged(object sender, EventArgs e)
         {
             current_selected_series = (Series)lbSeries.SelectedItem;
-
-            // Bugged as hell
+            
             if (current_selected_series != null)
             {
                 if (!current_selected_series.isGenerated)
@@ -243,7 +99,7 @@ namespace ACCG
                 rtbSeriesInfo.AppendText("Events: " + current_selected_series.events_list.Count + "\n");
                 rtbSeriesInfo.AppendText("Opponents: " + current_selected_series.opponents_list.Count);
             }
-                                            
+                                                                    
         }
 
         private void creditsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -282,8 +138,7 @@ namespace ACCG
 
         private void btnDeleteSeries_Click(object sender, EventArgs e)
         {
-            
-            
+                        
             if (current_selected_series == null)
             {
                 MessageBox.Show("You have to select a series!");
@@ -307,16 +162,9 @@ namespace ACCG
                         bs_series_datasource.ResetBindings(false);
                         rtbSeriesInfo.ResetText();
 
-                        // Saving the series list 
-                        string dir = Directory.GetCurrentDirectory();
-                        Console.WriteLine("DEBUG: " + dir);
-                        string serializationFile = Path.Combine(dir, @"data\accg_series_list.dat");
-
-                        using (Stream stream = File.Open(serializationFile, FileMode.Create))
-                        {
-                            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                            bformatter.Serialize(stream, ACCGMainForm.accg_series_list);        
-                        }
+                        // Saving the accg series list
+                        string accg_series_path = @"data\accg_series_list.dat";
+                        accg_resource.SaveACCGSeries(accg_series_path, accg_series_list, e);
                         
                     }
                     catch (Exception exc)
@@ -339,8 +187,29 @@ namespace ACCG
             {                
                 accg_generator.Generate(current_selected_series, Directory.GetCurrentDirectory());
                 current_selected_series.isGenerated = true;
+                
+                // Saving the accg series list                
+                accg_resource.SaveACCGSeries(accg_series_file_name, accg_series_list, e);
             }
 
+        }
+
+        private void syncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name, e);
+            
+            // re-populating Cars list                                    
+            ac_cars_list = accg_resource.LoadCars(accg_cars_file_name, e);
+
+            // re-opulating Tracks list                        
+            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name, e);
+
+            MessageBox.Show("Resources synced!");
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(accg_manual_file_name);
         }
               
     }
