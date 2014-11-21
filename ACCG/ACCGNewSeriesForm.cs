@@ -121,7 +121,7 @@ namespace ACCG
             }
             else
             {
-                cbRequires.Text = ac_series_path[0].Substring(ac_series_path[0].LastIndexOf(@"\") + 1);                
+                cbRequires.Text = ac_series_path[1].Substring(ac_series_path[0].LastIndexOf(@"\") + 1);                
             }
             
                                     
@@ -269,6 +269,7 @@ namespace ACCG
                 // Add the current series to ACCG main series list
                 if (current_selected_series != null) // Edit mode
                 {
+                    current_selected_series.isEdited = true;
                     int series_index = ACCGMainForm.accg_series_list.IndexOf(current_selected_series);
                     ACCGMainForm.accg_series_list.Remove(current_selected_series);
                     ACCGMainForm.accg_series_list.Insert(series_index,temp_series);
@@ -581,11 +582,16 @@ namespace ACCG
                     ACCG.Properties.Resources.placeholder_1240_560.Height
                     );
                 }
-            } 
+            }
+            else if(startThumbnailImage != null)
+            {
+                startThumbnailImage = (Bitmap)ScaleImage(startThumbnailImage, startImagePanel.Width, startImagePanel.Height);
+            }
+            
 
             if (startThumbnailImage != null)
             {
-                e.Graphics.DrawImage(startThumbnailImage, 0, 0, startThumbnailImage.Width, startThumbnailImage.Height);
+                e.Graphics.DrawImage(startThumbnailImage, 0, 0, startImagePanel.Width, startImagePanel.Height);
             }
             else
             {
@@ -601,7 +607,7 @@ namespace ACCG
 
         private void previewImagePanel_Paint(object sender, PaintEventArgs e)
         {
-            if (current_selected_series != null)
+            if (current_selected_series != null) 
             {
                 if (temp_series.previewImage != null)
                 {
@@ -619,7 +625,7 @@ namespace ACCG
                 }
             }
 
-            if (previewThumbnailImage != null)
+            if (previewThumbnailImage != null) 
             {
                 e.Graphics.DrawImage(previewThumbnailImage, 0, 0, previewThumbnailImage.Width, previewThumbnailImage.Height);
             }

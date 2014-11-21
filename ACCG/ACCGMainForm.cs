@@ -74,13 +74,14 @@ namespace ACCG
                 {
                     lblCurrentSeries.ForeColor = Color.Red;
                 }
-                else if (current_selected_series.isGenerated)
+                else 
                 {
                     lblCurrentSeries.ForeColor = Color.Green;
                 }
-                else if (current_selected_series.isEdited)
+                
+                if (current_selected_series.isEdited)
                 {
-                    lblCurrentSeries.ForeColor = Color.Yellow;
+                    lblCurrentSeries.ForeColor = Color.DarkOrange;
                 }
 
                 lblCurrentSeries.Text = "Current series: " + current_selected_series.name;
@@ -165,7 +166,8 @@ namespace ACCG
                         // Saving the accg series list
                         string accg_series_path = @"data\accg_series_list.dat";
                         accg_resource.SaveACCGSeries(accg_series_path, accg_series_list, e);
-                        
+
+                        lblCurrentSeries.Text = "Current series: ";
                     }
                     catch (Exception exc)
                     {
