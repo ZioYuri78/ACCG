@@ -150,7 +150,7 @@ namespace ACCG
 
                 if (are_you_sure == DialogResult.Yes)
                 {
-                    string series_path = String.Format(@"ACCG_series\series{0}", current_selected_series.ID);
+                    string series_path = String.Format(ac_path + @"\content\career\series{0}", current_selected_series.ID);
 
                     try
                     {
@@ -187,7 +187,7 @@ namespace ACCG
             }
             else
             {                
-                accg_generator.Generate(current_selected_series, Directory.GetCurrentDirectory());
+                accg_generator.Generate(current_selected_series, ac_path);
                 current_selected_series.isGenerated = true;
                 
                 // Saving the accg series list                
@@ -203,7 +203,7 @@ namespace ACCG
             // re-populating Cars list                                    
             ac_cars_list = accg_resource.LoadCars(accg_cars_file_name, e);
 
-            // re-opulating Tracks list                        
+            // re-populating Tracks list                        
             ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name, e);
 
             MessageBox.Show("Resources synced!");

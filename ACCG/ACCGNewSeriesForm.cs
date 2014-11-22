@@ -240,22 +240,20 @@ namespace ACCG
                 temp_series.isEdited = false;
                 temp_series.isGenerated = false;
 
-                // Missing "else" states
-                if (ACCGMainForm.series_global_ID >= 100)
+                
+                string[] ac_series_id_list = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
+                int[] numbers = new int[ac_series_id_list.Length];
+                if (ac_series_id_list.Length != 0)
                 {
-                    if (current_selected_series == null)
+                    for (int i = 0; i < ac_series_id_list.Length; i++)
                     {
-                        temp_series.ID = ACCGMainForm.series_global_ID + 1;
-                        ACCGMainForm.series_global_ID++;
-
-                        // Save the new value of global series ID in settings.ini                                                                          
-                        string settings_file_name = @"cfg\settings.ini";
-                        ACCGMainForm.accg_resource.SaveSettings(settings_file_name, e);
-                        
+                        numbers[i] = Convert.ToInt32(ac_series_id_list[i].Substring(ac_series_id_list[i].LastIndexOf(@"s") + 1));
                     }
-                                                           
-                }
 
+                }
+                               
+                temp_series.ID = numbers.Max() + 1;
+                
                 Console.WriteLine("DEBUG: Code = {0}", temp_series.code);
                 Console.WriteLine("DEBUG: Name = {0}", temp_series.name);
                 Console.WriteLine("DEBUG: Description = {0}", temp_series.description);
@@ -282,9 +280,8 @@ namespace ACCG
                 // Need datasource
                 ACCGMainForm.bs_series_datasource.ResetBindings(false);
                 
-                // Saving the accg series list 
-                string accg_series_path = @"data\accg_series_list.dat";
-                ACCGMainForm.accg_resource.SaveACCGSeries(accg_series_path, ACCGMainForm.accg_series_list, e);                               
+                // Saving the accg series list                 
+                ACCGMainForm.accg_resource.SaveACCGSeries(ACCGMainForm.accg_series_file_name, ACCGMainForm.accg_series_list, e);                               
 
                 this.Close();
             }
@@ -304,6 +301,7 @@ namespace ACCG
 
             // Re-populating the car skins combo box
             cbSkin.Items.Clear();
+
             foreach (string skin in ACCGNewSeriesForm.champ_player_car.skins)
             {
                 cbSkin.Items.Add(skin);

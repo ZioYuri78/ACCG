@@ -39,7 +39,7 @@ namespace ACCG
        {
 
            this.series = _series;
-           this.series_path = String.Format(_path + @"\ACCG_series\series{0}", series.ID);           
+           this.series_path = String.Format(_path + @"\content\career\series{0}", series.ID);           
 
            // Creating the series folder           
            Console.WriteLine("DEBUG: series path = " + series_path);

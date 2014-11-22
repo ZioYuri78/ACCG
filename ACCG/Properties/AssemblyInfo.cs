@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set di attributi. Per modificare le informazioni associate a un assembly
 // occorre quindi modificare i valori di questi attributi.
 [assembly: AssemblyTitle("Assetto Corsa Career Generator")]
-[assembly: AssemblyDescription("Tool per la generazione di carriere in Assetto Corsa")]
+[assembly: AssemblyDescription("Tool per la generazione di cariere in Assetto Corsa")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Assetto Corsa Career Generator")]

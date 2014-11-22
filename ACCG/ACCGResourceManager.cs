@@ -41,11 +41,7 @@ namespace ACCG
                             {
                                 case "[AC_PATH]":
                                     ACCGMainForm.ac_path = sr.ReadLine();
-                                    break;
-
-                                case "[SERIES_GLOBAL_ID]":
-                                    ACCGMainForm.series_global_ID = Convert.ToInt32(sr.ReadLine());
-                                    break;
+                                    break;                                    
 
                                 default:
                                     break;
@@ -64,43 +60,7 @@ namespace ACCG
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
         }
-
-        public void SaveSettings(string settings_path, EventArgs e)
-        {
-            try
-            {
-                StringBuilder new_file = new StringBuilder();
-
-                if (File.Exists(settings_path))
-                {
-                    string[] file = File.ReadAllLines(settings_path);
-
-                    for (int i = 0; i < file.Length; i++)
-                    {
-                        if (file[i].Contains("[SERIES_GLOBAL_ID]"))
-                        {
-                            new_file.Append(file[i] + "\r\n");
-                            file[i + 1] = ACCGMainForm.series_global_ID.ToString();
-                            new_file.Append(file[i + 1]);
-                            break;
-                        }
-
-                        new_file.Append(file[i] + "\r\n");
-                    }
-
-                    File.WriteAllText(settings_path, new_file.ToString());
-                }
-                else
-                {
-                    MessageBox.Show("Missing file \"" + settings_path + "\"!");
-                }
-            }
-            catch
-            {
-                Console.WriteLine("The process failed: {0}", e.ToString());
-            }
-        }
-
+       
         public List<Series> LoadACCGSeries(string accg_series_path, EventArgs e)
         {
             List<Series> series_list = new List<Series>();
