@@ -95,7 +95,7 @@ namespace ACCG
                 rtbSeriesInfo.AppendText("Requires: " + current_selected_series.requires + "\n");
                 rtbSeriesInfo.AppendText("Points: " + current_selected_series.points + "\n");
                 rtbSeriesInfo.AppendText("Car: " + tmp_car.model + "\n");
-                rtbSeriesInfo.AppendText("Skin: " + current_selected_series.skin + "\n");
+                rtbSeriesInfo.AppendText("Skin: " + current_selected_series.skin.skin_name + "\n");
                 rtbSeriesInfo.AppendText("Goals: " + current_selected_series.goalsPoints + " points\n");
                 rtbSeriesInfo.AppendText("Events: " + current_selected_series.events_list.Count + "\n");
                 rtbSeriesInfo.AppendText("Opponents: " + current_selected_series.opponents_list.Count);

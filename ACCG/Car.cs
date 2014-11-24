@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,17 +11,15 @@ namespace ACCG
     public class Car
     {
         public string model { get; set; }
-        public List<string> skins = new List<string>();
+
+        public List<Skin> skins { get; set; }
+        
 
         public Car()
         {
-
+            this.skins = new List<Skin>();
         }
 
-        public Car(string model, List<string> skins)
-        {
-            this.model = model;
-            this.skins = skins;
-        }
+        
     }
 }

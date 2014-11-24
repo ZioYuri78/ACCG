@@ -269,8 +269,7 @@ namespace ACCG
        
         public static string ac_path { get; set; }
         public static List<Series> accg_series_list { get; set; }
-        public static Series current_selected_series { get; set; }
-        public static int series_global_ID { get; set; }
+        public static Series current_selected_series { get; set; }        
         public static List<Car> ac_cars_list { get; set; }        
         public static List<string> ac_tracks_list { get; set; }
         public static Dictionary<string, int> time_table { get; set; }

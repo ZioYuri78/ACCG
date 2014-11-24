@@ -59,6 +59,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_smug.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -113,6 +116,7 @@
     <Compile Include="ACCGResourceManager.cs" />
     <Compile Include="Series.cs" />
     <Compile Include="Session.cs" />
+    <Compile Include="Skin.cs" />
     <EmbeddedResource Include="ACCGCredits.resx">
       <DependentUpon>ACCGCredits.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +199,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Open_6529_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon_smug.ico" />
+    <None Include="Resources\placeholder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

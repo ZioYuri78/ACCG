@@ -57,19 +57,21 @@ namespace ACCG
             opponent_car = ACCGMainForm.ac_cars_list.Find(x => x.model == cbCar.SelectedItem.ToString());
 
             // Populating the car skins combo box
-            foreach (string skin in opponent_car.skins)
+            foreach (Skin skin in opponent_car.skins)
             {
-                cbSkin.Items.Add(skin);
+                cbSkin.Items.Add(skin.skin_name);
             }
 
             // Edit mode
             if (current_selected_opponent != null)
             {
-                cbSkin.Text = current_selected_opponent.skin;
+                cbSkin.Text = current_selected_opponent.skin.skin_name;
+                skinPreviewImage = current_selected_opponent.skin.skin_preview;
             }
             else // New opponent mode
             {
-                cbSkin.Text = opponent_car.skins[0];
+                cbSkin.Text = opponent_car.skins[0].skin_name;
+                skinPreviewImage = opponent_car.skins[0].skin_preview;
             }
             
         }
@@ -112,7 +114,8 @@ namespace ACCG
                 temp_opponent.model = opponent_car;
                 temp_opponent.setup = "";   //temp_opponent.setup = cbSetup.SelectedItem.ToString(); 
                 temp_opponent.ai_level = tkbAIlevel.Value;
-                temp_opponent.skin = cbSkin.SelectedItem.ToString();
+                temp_opponent.skin.skin_name = cbSkin.SelectedItem.ToString();
+                temp_opponent.skin.skin_preview = skinPreviewImage;
                 temp_opponent.name = tbName.Text;
                 temp_opponent.nationality = tbNationality.Text;
 
@@ -143,12 +146,44 @@ namespace ACCG
             // Re-populating the car skins combo box
             cbSkin.Items.Clear();
 
-            foreach (string skin in opponent_car.skins)
+            foreach (Skin skin in opponent_car.skins)
             {
-                cbSkin.Items.Add(skin);
+                cbSkin.Items.Add(skin.skin_name);
             }
 
-            cbSkin.Text = opponent_car.skins[0];
+            cbSkin.Text = opponent_car.skins[0].skin_name;
+            skinPreviewImage = opponent_car.skins[0].skin_preview;
+            skinPreviewImagePanel.Refresh();
+        }
+
+        private void cbSkin_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            skinPreviewImage = opponent_car.skins.Find(x => x.skin_name == cbSkin.SelectedItem.ToString()).skin_preview;
+            skinPreviewImagePanel.Refresh();
+        }
+
+        private void skinPreviewImagePanel_Paint(object sender, PaintEventArgs e)
+        {
+            Bitmap skinPreviewImageThumb = (Bitmap)ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
+            e.Graphics.DrawImage(skinPreviewImageThumb,
+                0,
+                0,
+                skinPreviewImageThumb.Width,
+                skinPreviewImageThumb.Height);
+        }
+
+        private Image ScaleImage(Image image, int maxWidth, int maxHeight)
+        {
+            var ratioX = (double)maxWidth / image.Width;
+            var ratioY = (double)maxHeight / image.Height;
+            var ratio = Math.Min(ratioX, ratioY);
+
+            var newWidth = (int)(image.Width * ratio);
+            var newHeight = (int)(image.Height * ratio);
+
+            var newImage = new Bitmap(newWidth, newHeight);
+            Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
+            return newImage;
         }
     }
 }

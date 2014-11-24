@@ -108,7 +108,7 @@ namespace ACCG
                                        "MODEL=" + temp_opponent.model.model,
                                        "SETUP=" + temp_opponent.setup,
                                        "AI_LEVEL=" + temp_opponent.ai_level.ToString(),
-                                       "SKIN=" + temp_opponent.skin,
+                                       "SKIN=" + temp_opponent.skin.skin_name,
                                        "DRIVER_NAME=" + temp_opponent.name,
                                        "NATIONALITY=" + temp_opponent.nationality,
                                        ""

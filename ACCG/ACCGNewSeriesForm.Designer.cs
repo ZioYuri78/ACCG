@@ -67,6 +67,7 @@ namespace ACCG
             this.lblPointsExample = new System.Windows.Forms.Label();
             this.grbSeries = new System.Windows.Forms.GroupBox();
             this.grbCar = new System.Windows.Forms.GroupBox();
+            this.skinPreviewImagePanel = new System.Windows.Forms.Panel();
             this.grbEvents = new System.Windows.Forms.GroupBox();
             this.btnNewEvent = new System.Windows.Forms.Button();
             this.btnEditEvent = new System.Windows.Forms.Button();
@@ -315,6 +316,7 @@ namespace ACCG
             this.cbSkin.Name = "cbSkin";
             this.cbSkin.Size = new System.Drawing.Size(145, 21);
             this.cbSkin.TabIndex = 15;
+            this.cbSkin.SelectionChangeCommitted += new System.EventHandler(this.cbSkin_SelectionChangeCommitted);
             // 
             // lblSkin
             // 
@@ -335,7 +337,7 @@ namespace ACCG
             this.grbGoals.Controls.Add(this.lblGoldTier);
             this.grbGoals.Controls.Add(this.tbGoalsPoints);
             this.grbGoals.Controls.Add(this.lblGoalsPoints);
-            this.grbGoals.Location = new System.Drawing.Point(12, 427);
+            this.grbGoals.Location = new System.Drawing.Point(12, 530);
             this.grbGoals.Name = "grbGoals";
             this.grbGoals.Size = new System.Drawing.Size(94, 129);
             this.grbGoals.TabIndex = 44;
@@ -424,16 +426,25 @@ namespace ACCG
             // 
             // grbCar
             // 
+            this.grbCar.Controls.Add(this.skinPreviewImagePanel);
             this.grbCar.Controls.Add(this.cbCar);
             this.grbCar.Controls.Add(this.lblModel);
             this.grbCar.Controls.Add(this.lblSkin);
             this.grbCar.Controls.Add(this.cbSkin);
             this.grbCar.Location = new System.Drawing.Point(12, 330);
             this.grbCar.Name = "grbCar";
-            this.grbCar.Size = new System.Drawing.Size(206, 91);
+            this.grbCar.Size = new System.Drawing.Size(206, 194);
             this.grbCar.TabIndex = 43;
             this.grbCar.TabStop = false;
             this.grbCar.Text = "Car";
+            // 
+            // skinPreviewImagePanel
+            // 
+            this.skinPreviewImagePanel.Location = new System.Drawing.Point(18, 87);
+            this.skinPreviewImagePanel.Name = "skinPreviewImagePanel";
+            this.skinPreviewImagePanel.Size = new System.Drawing.Size(170, 96);
+            this.skinPreviewImagePanel.TabIndex = 38;
+            this.skinPreviewImagePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.skinPreviewImagePanel_Paint);
             // 
             // grbEvents
             // 
@@ -744,13 +755,15 @@ namespace ACCG
         private Panel startImagePanel;
         private OpenFileDialog openImageFileDialog;
         private Button btnOpenPreviewImage;
+        private Panel skinPreviewImagePanel;
 
         public static Car champ_player_car {get; set;}
         public static Series temp_series { get; set; }        
         public static Event current_selected_event { get; set; }
         public static Opponent current_selected_opponent { get; set; }
         public Bitmap startThumbnailImage { get; set; }
-        public Bitmap previewThumbnailImage { get; set; } 
+        public Bitmap previewThumbnailImage { get; set; }
+        public Bitmap skinPreviewImage { get; set; }
         
     }
 }

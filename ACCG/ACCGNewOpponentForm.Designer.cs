@@ -1,4 +1,5 @@
-﻿namespace ACCG
+﻿using System.Drawing;
+namespace ACCG
 {
     partial class ACCGNewOpponentForm
     {
@@ -47,6 +48,7 @@
             this.grbCar = new System.Windows.Forms.GroupBox();
             this.grbAILevel = new System.Windows.Forms.GroupBox();
             this.grbButtons = new System.Windows.Forms.GroupBox();
+            this.skinPreviewImagePanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.tkbAIlevel)).BeginInit();
             this.grbDriver.SuspendLayout();
             this.grbCar.SuspendLayout();
@@ -113,6 +115,7 @@
             this.cbSkin.Name = "cbSkin";
             this.cbSkin.Size = new System.Drawing.Size(145, 21);
             this.cbSkin.TabIndex = 8;
+            this.cbSkin.SelectionChangeCommitted += new System.EventHandler(this.cbSkin_SelectionChangeCommitted);
             // 
             // lblSkin
             // 
@@ -128,7 +131,7 @@
             this.cbSetup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSetup.Enabled = false;
             this.cbSetup.FormattingEnabled = true;
-            this.cbSetup.Location = new System.Drawing.Point(68, 67);
+            this.cbSetup.Location = new System.Drawing.Point(68, 179);
             this.cbSetup.Name = "cbSetup";
             this.cbSetup.Size = new System.Drawing.Size(145, 21);
             this.cbSetup.TabIndex = 10;
@@ -136,7 +139,7 @@
             // lblSetup
             // 
             this.lblSetup.AutoSize = true;
-            this.lblSetup.Location = new System.Drawing.Point(6, 70);
+            this.lblSetup.Location = new System.Drawing.Point(6, 182);
             this.lblSetup.Name = "lblSetup";
             this.lblSetup.Size = new System.Drawing.Size(35, 13);
             this.lblSetup.TabIndex = 9;
@@ -197,6 +200,7 @@
             // 
             // grbCar
             // 
+            this.grbCar.Controls.Add(this.skinPreviewImagePanel);
             this.grbCar.Controls.Add(this.cbCar);
             this.grbCar.Controls.Add(this.lblModel);
             this.grbCar.Controls.Add(this.lblSkin);
@@ -205,7 +209,7 @@
             this.grbCar.Controls.Add(this.cbSetup);
             this.grbCar.Location = new System.Drawing.Point(12, 87);
             this.grbCar.Name = "grbCar";
-            this.grbCar.Size = new System.Drawing.Size(221, 100);
+            this.grbCar.Size = new System.Drawing.Size(221, 209);
             this.grbCar.TabIndex = 17;
             this.grbCar.TabStop = false;
             this.grbCar.Text = "Car";
@@ -214,7 +218,7 @@
             // 
             this.grbAILevel.Controls.Add(this.tkbAIlevel);
             this.grbAILevel.Controls.Add(this.lblAIlevelValue);
-            this.grbAILevel.Location = new System.Drawing.Point(12, 193);
+            this.grbAILevel.Location = new System.Drawing.Point(12, 302);
             this.grbAILevel.Name = "grbAILevel";
             this.grbAILevel.Size = new System.Drawing.Size(221, 70);
             this.grbAILevel.TabIndex = 18;
@@ -225,17 +229,25 @@
             // 
             this.grbButtons.Controls.Add(this.btnOK);
             this.grbButtons.Controls.Add(this.btnCancel);
-            this.grbButtons.Location = new System.Drawing.Point(12, 269);
+            this.grbButtons.Location = new System.Drawing.Point(12, 378);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(221, 54);
             this.grbButtons.TabIndex = 19;
             this.grbButtons.TabStop = false;
             // 
+            // skinPreviewImagePanel
+            // 
+            this.skinPreviewImagePanel.Location = new System.Drawing.Point(26, 71);
+            this.skinPreviewImagePanel.Name = "skinPreviewImagePanel";
+            this.skinPreviewImagePanel.Size = new System.Drawing.Size(170, 96);
+            this.skinPreviewImagePanel.TabIndex = 39;
+            this.skinPreviewImagePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.skinPreviewImagePanel_Paint);
+            // 
             // ACCGNewOpponentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(243, 332);
+            this.ClientSize = new System.Drawing.Size(243, 443);
             this.Controls.Add(this.grbButtons);
             this.Controls.Add(this.grbAILevel);
             this.Controls.Add(this.grbCar);
@@ -279,7 +291,9 @@
         private System.Windows.Forms.GroupBox grbCar;
         private System.Windows.Forms.GroupBox grbAILevel;
         private System.Windows.Forms.GroupBox grbButtons;
+        private System.Windows.Forms.Panel skinPreviewImagePanel;
 
         public static Car opponent_car { get; set; }
+        public Bitmap skinPreviewImage { get; set; }
     }
 }

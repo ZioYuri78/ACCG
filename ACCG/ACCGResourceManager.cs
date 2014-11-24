@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -130,12 +131,54 @@ namespace ACCG
                                 tmp_car.model = trimmed_car_name;
                                 cars_list.Add(tmp_car);
 
-                                string tmp_skin = sr.ReadLine();
-
-                                while (tmp_skin != "[END_SKINS]")
+                                Skin tmp_skin = new Skin();
+                                tmp_skin.skin_name = sr.ReadLine();
+                                string skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
+                                Console.WriteLine(skin_image_path);
+                                
+                                if (File.Exists(skin_image_path))
+                                {
+                                    using (var tempImage = Image.FromFile(skin_image_path))
+                                    {
+                                        Bitmap bmp = new Bitmap(170, 96);
+                                        using (Graphics g = Graphics.FromImage(bmp))
+                                        {
+                                            g.DrawImage(tempImage, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                                        }
+                                        tmp_skin.skin_preview = bmp;
+                                    }                                    
+                                    
+                                }
+                                else
+                                {
+                                    tmp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
+                                }
+                                
+                                while (tmp_skin.skin_name != "[END_SKINS]")
                                 {
                                     tmp_car.skins.Add(tmp_skin);
-                                    tmp_skin = sr.ReadLine();
+                                    tmp_skin = new Skin();
+                                    tmp_skin.skin_name = sr.ReadLine();
+                                    skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
+
+                                    if (File.Exists(skin_image_path))
+                                    {
+                                        using (var tempImage = Image.FromFile(skin_image_path))
+                                        {
+                                            Bitmap bmp = new Bitmap(170, 96);
+                                            using (Graphics g = Graphics.FromImage(bmp))
+                                            {
+                                                g.DrawImage(tempImage, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                                            }
+                                            tmp_skin.skin_preview = bmp;
+                                        }
+                                        
+                                    }
+                                    else
+                                    {
+                                        tmp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
+                                    }
+
                                 }
                             }
                         }
@@ -172,9 +215,10 @@ namespace ACCG
 
                         for (int j = 0; j < temp_car.skins.Count; j++)
                         {
-                            string temp_skin = temp_car.skins[j];
+                            Skin temp_skin = new Skin();
+                            temp_skin.skin_name = temp_car.skins[j].skin_name;
 
-                            new_file.Append(temp_skin);
+                            new_file.Append(temp_skin.skin_name);
                             new_file.Append("\r\n");
                         }
 
@@ -257,6 +301,11 @@ namespace ACCG
         public void Sync(string cars_file_name, string tracks_file_name, EventArgs e) 
         {
             string ac_path = ACCGMainForm.ac_path;
+            foreach(Car car in ACCGMainForm.ac_cars_list){
+                foreach(Skin skin in car.skins){
+                    skin.skin_preview.Dispose();
+                }
+            }
 
             try
             {
@@ -273,11 +322,29 @@ namespace ACCG
                     temp_car.model = car.Substring(car.LastIndexOf(@"\") + 1);
 
                     string car_skins_path = ac_cars_path + @"\" + temp_car.model + @"\skins";
-                    string[] car_skins = Directory.GetDirectories(car_skins_path, "*", SearchOption.TopDirectoryOnly);                    
+                    string[] car_skins = Directory.GetDirectories(car_skins_path, "*", SearchOption.TopDirectoryOnly);
 
                     foreach (string skin in car_skins)
-                    {                        
-                        temp_car.skins.Add(skin.Substring(skin.LastIndexOf(@"\") + 1));
+                    {
+                        Skin temp_skin = new Skin();
+                        temp_skin.skin_name = skin.Substring(skin.LastIndexOf(@"\") + 1);
+
+                        if(File.Exists(skin + @"\preview.jpg")){
+                            using (var tempImage = Image.FromFile(skin + @"\preview.jpg"))
+                            {
+                                Bitmap bmp = new Bitmap(170, 96);
+                                using (Graphics g = Graphics.FromImage(bmp))
+                                {
+                                    g.DrawImage(tempImage, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                                }
+                                temp_skin.skin_preview = bmp;
+                            }
+                            
+                        }else{
+                            temp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
+                        }
+                        
+                        temp_car.skins.Add(temp_skin);
                     }
 
                     temp_cars_list.Add(temp_car);
@@ -288,20 +355,21 @@ namespace ACCG
                 // Sync the tracks
                 string ac_tracks_path = ac_path + @"\content\tracks";
                 string[] ac_tracks = Directory.GetDirectories(ac_tracks_path, "*", SearchOption.TopDirectoryOnly);
-                List<string> temp_tracks_list = new List<string>();                
+                List<string> temp_tracks_list = new List<string>();
 
                 foreach (string track in ac_tracks)
-                {                    
+                {
                     temp_tracks_list.Add(track.Substring(track.LastIndexOf(@"\") + 1));
                 }
 
                 SaveTracks(tracks_file_name, temp_tracks_list, e);
             }
-            catch
+            finally { }
+            /*catch
             {
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
-            
+            */
         
         }
     }

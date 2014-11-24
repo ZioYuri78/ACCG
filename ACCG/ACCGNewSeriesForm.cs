@@ -154,18 +154,20 @@ namespace ACCG
             
 
             // Populating the car skins combo box
-            foreach (string skin in ACCGNewSeriesForm.champ_player_car.skins)
+            foreach (Skin skin in ACCGNewSeriesForm.champ_player_car.skins)
             {
-                cbSkin.Items.Add(skin);
+                cbSkin.Items.Add(skin.skin_name);
             }
 
             if (current_selected_series != null)
             {
-                cbSkin.Text = temp_series.skin;
+                cbSkin.Text = temp_series.skin.skin_name;
+                skinPreviewImage = temp_series.skin.skin_preview;
             }
             else
             {
-                cbSkin.Text = ACCGNewSeriesForm.champ_player_car.skins[0];            
+                cbSkin.Text = ACCGNewSeriesForm.champ_player_car.skins[0].skin_name;
+                skinPreviewImage = champ_player_car.skins[0].skin_preview;
             }
             
             
@@ -235,7 +237,8 @@ namespace ACCG
                 temp_series.requires = cbRequires.SelectedItem.ToString();
                 temp_series.points = tbPoints.Text;
                 temp_series.model = champ_player_car;
-                temp_series.skin = cbSkin.SelectedItem.ToString();
+                temp_series.skin.skin_name = cbSkin.SelectedItem.ToString();
+                temp_series.skin.skin_preview = skinPreviewImage;
                 temp_series.goalsPoints = tbGoalsPoints.Text;
                 temp_series.isEdited = false;
                 temp_series.isGenerated = false;
@@ -302,13 +305,14 @@ namespace ACCG
             // Re-populating the car skins combo box
             cbSkin.Items.Clear();
 
-            foreach (string skin in ACCGNewSeriesForm.champ_player_car.skins)
+            foreach (Skin skin in ACCGNewSeriesForm.champ_player_car.skins)
             {
-                cbSkin.Items.Add(skin);
+                cbSkin.Items.Add(skin.skin_name);
             }
 
-            cbSkin.Text = ACCGNewSeriesForm.champ_player_car.skins[0];
-
+            cbSkin.Text = ACCGNewSeriesForm.champ_player_car.skins[0].skin_name;
+            skinPreviewImage = ACCGNewSeriesForm.champ_player_car.skins[0].skin_preview;
+            skinPreviewImagePanel.Refresh();
         }
 
         private void lbEvents_SelectedIndexChanged(object sender, EventArgs e)
@@ -362,7 +366,7 @@ namespace ACCG
                 rtbOpponentsInfo.AppendText("Name: " + current_selected_opponent.name + "\n");
                 rtbOpponentsInfo.AppendText("Nationality: " + current_selected_opponent.nationality + "\n");
                 rtbOpponentsInfo.AppendText("Car: " + current_selected_opponent.model.model + "\n");
-                rtbOpponentsInfo.AppendText("Skin: " + current_selected_opponent.skin + "\n");
+                rtbOpponentsInfo.AppendText("Skin: " + current_selected_opponent.skin.skin_name + "\n");
                 rtbOpponentsInfo.AppendText("Setup: " + current_selected_opponent.setup + "\n");
                 rtbOpponentsInfo.AppendText("AI Level: " + current_selected_opponent.ai_level.ToString());
             }
@@ -639,6 +643,23 @@ namespace ACCG
             }
 
         }
+        
+        private void cbSkin_SelectionChangeCommitted(object sender, EventArgs e)
+        {            
+            skinPreviewImage = ACCGNewSeriesForm.champ_player_car.skins.Find(x => x.skin_name == cbSkin.SelectedItem.ToString()).skin_preview;
+            skinPreviewImagePanel.Refresh();
+        }
+
+        private void skinPreviewImagePanel_Paint(object sender, PaintEventArgs e)
+        {
+            Bitmap skinPreviewImageThumb = (Bitmap)ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
+
+            e.Graphics.DrawImage(skinPreviewImageThumb,
+                0,
+                0,
+                skinPreviewImageThumb.Width,
+                skinPreviewImageThumb.Height);
+        }
 
         private Image ScaleImage(Image image, int maxWidth, int maxHeight)
         {
@@ -653,6 +674,10 @@ namespace ACCG
             Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
             return newImage;
         }
+
+        
+
+       
               
 
     }

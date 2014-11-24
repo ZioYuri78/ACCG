@@ -83,6 +83,7 @@ namespace ACCG
             this.btnOpenPreviewImage = new System.Windows.Forms.Button();
             this.previewImagePanel = new System.Windows.Forms.Panel();
             this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.grbSingleEvent = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
@@ -427,7 +428,7 @@ namespace ACCG
             this.grbEvent.Controls.Add(this.ckbPenalties);
             this.grbEvent.Location = new System.Drawing.Point(12, 12);
             this.grbEvent.Name = "grbEvent";
-            this.grbEvent.Size = new System.Drawing.Size(258, 186);
+            this.grbEvent.Size = new System.Drawing.Size(263, 186);
             this.grbEvent.TabIndex = 39;
             this.grbEvent.TabStop = false;
             this.grbEvent.Text = "Event";
@@ -442,7 +443,7 @@ namespace ACCG
             this.grbAmbient.Controls.Add(this.lblTimeValue);
             this.grbAmbient.Location = new System.Drawing.Point(12, 204);
             this.grbAmbient.Name = "grbAmbient";
-            this.grbAmbient.Size = new System.Drawing.Size(258, 114);
+            this.grbAmbient.Size = new System.Drawing.Size(263, 114);
             this.grbAmbient.TabIndex = 40;
             this.grbAmbient.TabStop = false;
             this.grbAmbient.Text = "Ambient";
@@ -457,7 +458,7 @@ namespace ACCG
             this.grbTrack.Controls.Add(this.lblTrackTemperature);
             this.grbTrack.Location = new System.Drawing.Point(12, 324);
             this.grbTrack.Name = "grbTrack";
-            this.grbTrack.Size = new System.Drawing.Size(258, 124);
+            this.grbTrack.Size = new System.Drawing.Size(263, 124);
             this.grbTrack.TabIndex = 41;
             this.grbTrack.TabStop = false;
             this.grbTrack.Text = "Track";
@@ -524,7 +525,7 @@ namespace ACCG
             this.grbSessions.Controls.Add(this.grbSessionRace);
             this.grbSessions.Controls.Add(this.grbSessionQualifying);
             this.grbSessions.Controls.Add(this.grbPracticeSession);
-            this.grbSessions.Location = new System.Drawing.Point(276, 12);
+            this.grbSessions.Location = new System.Drawing.Point(281, 90);
             this.grbSessions.Name = "grbSessions";
             this.grbSessions.Size = new System.Drawing.Size(224, 436);
             this.grbSessions.TabIndex = 42;
@@ -609,11 +610,21 @@ namespace ACCG
             // 
             this.openImageFileDialog.Filter = "png files (*.png)|*.png";
             // 
+            // grbSingleEvent
+            // 
+            this.grbSingleEvent.Location = new System.Drawing.Point(281, 12);
+            this.grbSingleEvent.Name = "grbSingleEvent";
+            this.grbSingleEvent.Size = new System.Drawing.Size(224, 61);
+            this.grbSingleEvent.TabIndex = 48;
+            this.grbSingleEvent.TabStop = false;
+            this.grbSingleEvent.Text = "Single event";
+            // 
             // ACCGNewEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 696);
+            this.ClientSize = new System.Drawing.Size(517, 696);
+            this.Controls.Add(this.grbSingleEvent);
             this.Controls.Add(this.grbImages);
             this.Controls.Add(this.grbSessions);
             this.Controls.Add(this.grbTrack);
@@ -706,6 +717,7 @@ namespace ACCG
         private Panel previewImagePanel;
         private Button btnOpenPreviewImage;
         private OpenFileDialog openImageFileDialog;
+        private GroupBox grbSingleEvent;
 
         public static Event temp_event { get; set; }
                         

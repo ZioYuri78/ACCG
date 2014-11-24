@@ -14,14 +14,14 @@ namespace ACCG
         public Car model { get; set; }
         public string setup { get; set; }
         public int ai_level { get; set; }
-        public string skin { get; set; }
+        public Skin skin { get; set; }
         public string name { get; set; }
         public string nationality { get; set; }
         public bool isEdited { get; set; }
 
         public Opponent() 
         {
-
+            this.skin = new Skin();
         }
 
 
