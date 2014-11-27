@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="162304">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="184320">
       <assemblyIdentity name="ACCG" version="0.5.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EXfEnHpnDFiUQyDDTQ3WGNMqCoWvLwx/6ONeaUzTrZA=</dsig:DigestValue>
+        <dsig:DigestValue>O6C7UOW0lxU1WK9BQvtZrzk5lzwH8ZfbQsotDtSNzBs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

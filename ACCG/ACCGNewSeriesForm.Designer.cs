@@ -312,7 +312,7 @@ namespace ACCG
             // 
             this.cbSkin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSkin.FormattingEnabled = true;
-            this.cbSkin.Location = new System.Drawing.Point(51, 57);
+            this.cbSkin.Location = new System.Drawing.Point(51, 52);
             this.cbSkin.Name = "cbSkin";
             this.cbSkin.Size = new System.Drawing.Size(145, 21);
             this.cbSkin.TabIndex = 15;
@@ -321,7 +321,7 @@ namespace ACCG
             // lblSkin
             // 
             this.lblSkin.AutoSize = true;
-            this.lblSkin.Location = new System.Drawing.Point(7, 62);
+            this.lblSkin.Location = new System.Drawing.Point(7, 57);
             this.lblSkin.Name = "lblSkin";
             this.lblSkin.Size = new System.Drawing.Size(28, 13);
             this.lblSkin.TabIndex = 37;

@@ -39,6 +39,25 @@ namespace ACCG
        {
 
            this.series = _series;
+
+           if (!series.isGenerated)
+           {
+               string[] ac_series_id_list = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
+               int[] numbers = new int[ac_series_id_list.Length];
+
+               if (ac_series_id_list.Length != 0)
+               {
+                   for (int i = 0; i < ac_series_id_list.Length; i++)
+                   {
+                       numbers[i] = Convert.ToInt32(ac_series_id_list[i].Substring(ac_series_id_list[i].LastIndexOf(@"s") + 1));
+                   }
+
+               }
+
+               series.ID = numbers.Max() + 1;
+           }
+           
+
            this.series_path = String.Format(_path + @"\content\career\series{0}", series.ID);           
 
            // Creating the series folder           
@@ -66,7 +85,7 @@ namespace ACCG
                series.previewImage.Save(series_path + @"\" + series_preview_png_filename, System.Drawing.Imaging.ImageFormat.Png);
            }           
                       
-           // Creating the series.ini file
+           // Creating the series.ini file           
            string[] series_file_content = {
                                 "[SERIES]",
                                 "CODE=" + series.code,
@@ -77,10 +96,10 @@ namespace ACCG
                                 "MODEL=" + series.model.model,
                                 "\n",
                                 "[GOALS]",
-                                "POINTS=" + series.goalsPoints,
-                                "TIER1=0",
-                                "TIER2=0",
-                                "TIER3=0"           
+                                "POINTS=" + series.series_goals.points,
+                                "TIER1=" + series.series_goals.tier_1,
+                                "TIER2=" + series.series_goals.tier_2,
+                                "TIER3=" + series.series_goals.tier_3        
                             };
 
            try
@@ -196,7 +215,7 @@ namespace ACCG
                                                  "DRIFT_MODE=0",
                                                  "RACE_LAPS=" + ev.session_list.Find(x => x.type == 3).laps,
                                                  "ARM_FIRST_LAP=0",
-                                                 "SKIN=" + series.skin,
+                                                 "SKIN=" + series.skin.skin_name,
                                                  "\n",
                                                  "[GHOST_CAR]",
                                                  "RECORDING=0",
@@ -236,7 +255,7 @@ namespace ACCG
                                                  "[CAR_0]",
                                                  "SETUP=",
                                                  "MODEL=-",
-                                                 "SKIN=" + series.skin,
+                                                 "SKIN=" + series.skin.skin_name,
                                                  "DRIVER_NAME=",
                                                  "NATIONALITY=",
                                                  "\n"

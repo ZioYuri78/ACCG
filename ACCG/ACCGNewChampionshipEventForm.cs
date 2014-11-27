@@ -10,49 +10,23 @@ using System.Windows.Forms;
 
 namespace ACCG
 {
-    public partial class ACCGNewEventForm : Form
+    public partial class ACCGNewChampionshipEventForm : Form
     {
         private Event current_selected_event;
 
-        public ACCGNewEventForm()
+        public ACCGNewChampionshipEventForm()
         {
             InitializeComponent();
         }
 
-        public ACCGNewEventForm(Event current_selected_event)
+        public ACCGNewChampionshipEventForm(Event current_selected_event)
         {
             // For edit mode
             this.current_selected_event = current_selected_event;
 
             InitializeComponent();
         }
-
-        private void ckbPractice_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!ckbPractice.Checked)
-            {
-                if (current_selected_event != null)
-                {
-                    current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 1));
-                    
-                }
-            }
-            tkbPracticeDuration.Enabled = ckbPractice.Checked;
-        }
-
-        private void ckbQualifying_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!ckbQualifying.Checked)
-            {
-                if (current_selected_event != null)
-                {
-                    current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 2));
-                }
-            }
-
-            tkbQualifyingDuration.Enabled = ckbQualifying.Checked;
-        }
-
+       
         private void NewEventForm_Load(object sender, EventArgs e)
         {
             tkbPracticeDuration.Enabled = ckbPractice.Checked;
@@ -74,6 +48,7 @@ namespace ACCG
                 tkbAmbientTemperature.Value = current_selected_event.ambient_temperature;
                 lblAmbTemperatureValue.Text = tkbAmbientTemperature.Value.ToString() + " °C";
                 tkbTime.Value = current_selected_event.time;
+                
                 // Bad code
                 foreach (KeyValuePair<string, int> pair in ACCGMainForm.time_table)
                 {
@@ -106,12 +81,14 @@ namespace ACCG
                 lblNumberOfCarsValue.Text = tkbNumberOfCars.Value.ToString() + " cars";
                 tkbNumberOfLaps.Value = current_selected_event.session_list.Find(x => x.type == 3).laps;
                 lblNumberOfLapsValue.Text = tkbNumberOfLaps.Value.ToString() + " laps";
-                ckbPenalties.Checked = current_selected_event.penalties;
+                ckbPenalties.Checked = current_selected_event.penalties;                
+
             }
             else // New event mode
             {
                 temp_event = new Event();
-                cbTrack.Text = ACCGMainForm.ac_tracks_list[0]; 
+                cbTrack.Text = ACCGMainForm.ac_tracks_list[0];
+                                
             }
                                                           
         }
@@ -128,14 +105,12 @@ namespace ACCG
             }
             else
             {
-                // The event
-                //Event temp_event;
+                
                 int event_index = 0;
 
                 // Edit mode
                 if (current_selected_event != null)
-                {
-                    //temp_event = current_selected_event;
+                {                    
                     event_index = ACCGNewSeriesForm.temp_series.events_list.IndexOf(temp_event);
                     ACCGNewSeriesForm.temp_series.events_list.Remove(current_selected_event);
                 }                
@@ -167,7 +142,7 @@ namespace ACCG
                     practice_session.type = 1;
                     practice_session.spawn_set = "PIT";
                     practice_session.duration_minutes = tkbPracticeDuration.Value;
-                    practice_session.laps = 0;  // Will not included during generation
+                    practice_session.laps = 0;  // Will not included during generation (but I'm lying)
                     temp_event.session_list.Add(practice_session);
                 }
 
@@ -246,6 +221,11 @@ namespace ACCG
             
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void tkbAmbientTemperature_Scroll(object sender, EventArgs e)
         {
             lblAmbTemperatureValue.Text = tkbAmbientTemperature.Value + " °C";
@@ -264,27 +244,6 @@ namespace ACCG
             }
                         
         }
-
-        private void tkbPracticeDuration_Scroll(object sender, EventArgs e)
-        {
-            lblPracticeDurationValue.Text = tkbPracticeDuration.Value + " min";
-        }
-
-        private void tkbQualifyingDuration_Scroll(object sender, EventArgs e)
-        {
-            lblQualifyingDurationValue.Text = tkbQualifyingDuration.Value + " min";
-        }
-
-        private void tkbNumberOfCars_Scroll(object sender, EventArgs e)
-        {
-            lblNumberOfCarsValue.Text = tkbNumberOfCars.Value + " cars";
-        }
-
-        private void tkbNumberOfLaps_Scroll(object sender, EventArgs e)
-        {
-            lblNumberOfLapsValue.Text = tkbNumberOfLaps.Value + " laps";
-        }
-
 
         private void tkbCondition_Scroll(object sender, EventArgs e)
         {
@@ -314,18 +273,64 @@ namespace ACCG
                 case 5:
                     lblTrackConditionValue.Text = "Optimum";
                     break;
-                
+
                 default:
                     Console.WriteLine("Default case");
                     break;
             }
         }
 
-
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void ckbPractice_CheckedChanged(object sender, EventArgs e)
         {
-            this.Close();
+            if (!ckbPractice.Checked)
+            {
+                if (current_selected_event != null)
+                {
+                    current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 1));
+
+                }
+            }
+            tkbPracticeDuration.Enabled = ckbPractice.Checked;
         }
+
+        private void ckbQualifying_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ckbQualifying.Checked)
+            {
+                if (current_selected_event != null)
+                {
+                    current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 2));
+                }
+            }
+
+            tkbQualifyingDuration.Enabled = ckbQualifying.Checked;
+        }
+
+        private void tkbPracticeDuration_Scroll(object sender, EventArgs e)
+        {
+            lblPracticeDurationValue.Text = tkbPracticeDuration.Value + " min";
+        }
+
+        private void tkbQualifyingDuration_Scroll(object sender, EventArgs e)
+        {
+            lblQualifyingDurationValue.Text = tkbQualifyingDuration.Value + " min";
+        }
+
+        private void tkbNumberOfCars_Scroll(object sender, EventArgs e)
+        {
+            lblNumberOfCarsValue.Text = tkbNumberOfCars.Value + " cars";
+        }
+
+        private void tkbNumberOfLaps_Scroll(object sender, EventArgs e)
+        {
+            lblNumberOfLapsValue.Text = tkbNumberOfLaps.Value + " laps";
+        }
+
+
+        
+
+
+       
 
         private void btnOpenPreviewImage_Click(object sender, EventArgs e)
         {
@@ -346,7 +351,7 @@ namespace ACCG
 
             }
 
-            this.Refresh();
+            previewImagePanel.Refresh();
         }
 
         private void previewImagePanel_Paint(object sender, PaintEventArgs e)
@@ -385,7 +390,6 @@ namespace ACCG
             }
 
         }
-
-                   
+                          
     }
 }

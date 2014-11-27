@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace ACCG
 {
-    partial class ACCGNewEventForm
+    partial class ACCGNewChampionshipEventForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,11 +32,7 @@ namespace ACCG
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ACCGNewEventForm));
-            this.lblName = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.tbDescription = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ACCGNewChampionshipEventForm));
             this.lblAmbTemperature = new System.Windows.Forms.Label();
             this.tkbAmbientTemperature = new System.Windows.Forms.TrackBar();
             this.lblTime = new System.Windows.Forms.Label();
@@ -53,8 +49,6 @@ namespace ACCG
             this.lblModel = new System.Windows.Forms.Label();
             this.lblNumberOfCars = new System.Windows.Forms.Label();
             this.tkbNumberOfCars = new System.Windows.Forms.TrackBar();
-            this.lblPenalties = new System.Windows.Forms.Label();
-            this.ckbPenalties = new System.Windows.Forms.CheckBox();
             this.tkbNumberOfLaps = new System.Windows.Forms.TrackBar();
             this.lblNumberOfLaps = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -66,7 +60,6 @@ namespace ACCG
             this.lblNumberOfCarsValue = new System.Windows.Forms.Label();
             this.lblNumberOfLapsValue = new System.Windows.Forms.Label();
             this.grbButtons = new System.Windows.Forms.GroupBox();
-            this.grbEvent = new System.Windows.Forms.GroupBox();
             this.grbAmbient = new System.Windows.Forms.GroupBox();
             this.grbTrack = new System.Windows.Forms.GroupBox();
             this.lblTrackConditionValue = new System.Windows.Forms.Label();
@@ -83,7 +76,13 @@ namespace ACCG
             this.btnOpenPreviewImage = new System.Windows.Forms.Button();
             this.previewImagePanel = new System.Windows.Forms.Panel();
             this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.grbSingleEvent = new System.Windows.Forms.GroupBox();
+            this.ckbPenalties = new System.Windows.Forms.CheckBox();
+            this.lblPenalties = new System.Windows.Forms.Label();
+            this.tbDescription = new System.Windows.Forms.TextBox();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.grbEvent = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
@@ -91,7 +90,6 @@ namespace ACCG
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfCars)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).BeginInit();
             this.grbButtons.SuspendLayout();
-            this.grbEvent.SuspendLayout();
             this.grbAmbient.SuspendLayout();
             this.grbTrack.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tkbCondition)).BeginInit();
@@ -101,41 +99,8 @@ namespace ACCG
             this.grbSessionQualifying.SuspendLayout();
             this.grbPracticeSession.SuspendLayout();
             this.grbImages.SuspendLayout();
+            this.grbEvent.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(6, 19);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Name";
-            // 
-            // tbName
-            // 
-            this.tbName.Location = new System.Drawing.Point(72, 16);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(169, 20);
-            this.tbName.TabIndex = 1;
-            // 
-            // lblDescription
-            // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(6, 45);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(60, 13);
-            this.lblDescription.TabIndex = 2;
-            this.lblDescription.Text = "Description";
-            // 
-            // tbDescription
-            // 
-            this.tbDescription.Location = new System.Drawing.Point(72, 42);
-            this.tbDescription.Multiline = true;
-            this.tbDescription.Name = "tbDescription";
-            this.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbDescription.Size = new System.Drawing.Size(169, 107);
-            this.tbDescription.TabIndex = 3;
             // 
             // lblAmbTemperature
             // 
@@ -297,24 +262,6 @@ namespace ACCG
             this.tkbNumberOfCars.Value = 1;
             this.tkbNumberOfCars.Scroll += new System.EventHandler(this.tkbNumberOfCars_Scroll);
             // 
-            // lblPenalties
-            // 
-            this.lblPenalties.AutoSize = true;
-            this.lblPenalties.Location = new System.Drawing.Point(6, 164);
-            this.lblPenalties.Name = "lblPenalties";
-            this.lblPenalties.Size = new System.Drawing.Size(50, 13);
-            this.lblPenalties.TabIndex = 23;
-            this.lblPenalties.Text = "Penalties";
-            // 
-            // ckbPenalties
-            // 
-            this.ckbPenalties.AutoSize = true;
-            this.ckbPenalties.Location = new System.Drawing.Point(72, 163);
-            this.ckbPenalties.Name = "ckbPenalties";
-            this.ckbPenalties.Size = new System.Drawing.Size(15, 14);
-            this.ckbPenalties.TabIndex = 4;
-            this.ckbPenalties.UseVisualStyleBackColor = true;
-            // 
             // tkbNumberOfLaps
             // 
             this.tkbNumberOfLaps.Location = new System.Drawing.Point(51, 122);
@@ -412,26 +359,11 @@ namespace ACCG
             // 
             this.grbButtons.Controls.Add(this.btnOK);
             this.grbButtons.Controls.Add(this.btnCancel);
-            this.grbButtons.Location = new System.Drawing.Point(317, 630);
+            this.grbButtons.Location = new System.Drawing.Point(322, 580);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(183, 54);
             this.grbButtons.TabIndex = 46;
             this.grbButtons.TabStop = false;
-            // 
-            // grbEvent
-            // 
-            this.grbEvent.Controls.Add(this.lblName);
-            this.grbEvent.Controls.Add(this.tbName);
-            this.grbEvent.Controls.Add(this.lblDescription);
-            this.grbEvent.Controls.Add(this.tbDescription);
-            this.grbEvent.Controls.Add(this.lblPenalties);
-            this.grbEvent.Controls.Add(this.ckbPenalties);
-            this.grbEvent.Location = new System.Drawing.Point(12, 12);
-            this.grbEvent.Name = "grbEvent";
-            this.grbEvent.Size = new System.Drawing.Size(263, 186);
-            this.grbEvent.TabIndex = 39;
-            this.grbEvent.TabStop = false;
-            this.grbEvent.Text = "Event";
             // 
             // grbAmbient
             // 
@@ -525,7 +457,7 @@ namespace ACCG
             this.grbSessions.Controls.Add(this.grbSessionRace);
             this.grbSessions.Controls.Add(this.grbSessionQualifying);
             this.grbSessions.Controls.Add(this.grbPracticeSession);
-            this.grbSessions.Location = new System.Drawing.Point(281, 90);
+            this.grbSessions.Location = new System.Drawing.Point(281, 12);
             this.grbSessions.Name = "grbSessions";
             this.grbSessions.Size = new System.Drawing.Size(224, 436);
             this.grbSessions.TabIndex = 42;
@@ -586,7 +518,7 @@ namespace ACCG
             this.grbImages.Size = new System.Drawing.Size(263, 180);
             this.grbImages.TabIndex = 47;
             this.grbImages.TabStop = false;
-            this.grbImages.Text = "Images";
+            this.grbImages.Text = "Preview image";
             // 
             // btnOpenPreviewImage
             // 
@@ -610,21 +542,78 @@ namespace ACCG
             // 
             this.openImageFileDialog.Filter = "png files (*.png)|*.png";
             // 
-            // grbSingleEvent
+            // ckbPenalties
             // 
-            this.grbSingleEvent.Location = new System.Drawing.Point(281, 12);
-            this.grbSingleEvent.Name = "grbSingleEvent";
-            this.grbSingleEvent.Size = new System.Drawing.Size(224, 61);
-            this.grbSingleEvent.TabIndex = 48;
-            this.grbSingleEvent.TabStop = false;
-            this.grbSingleEvent.Text = "Single event";
+            this.ckbPenalties.AutoSize = true;
+            this.ckbPenalties.Location = new System.Drawing.Point(72, 163);
+            this.ckbPenalties.Name = "ckbPenalties";
+            this.ckbPenalties.Size = new System.Drawing.Size(15, 14);
+            this.ckbPenalties.TabIndex = 4;
+            this.ckbPenalties.UseVisualStyleBackColor = true;
             // 
-            // ACCGNewEventForm
+            // lblPenalties
+            // 
+            this.lblPenalties.AutoSize = true;
+            this.lblPenalties.Location = new System.Drawing.Point(6, 164);
+            this.lblPenalties.Name = "lblPenalties";
+            this.lblPenalties.Size = new System.Drawing.Size(50, 13);
+            this.lblPenalties.TabIndex = 23;
+            this.lblPenalties.Text = "Penalties";
+            // 
+            // tbDescription
+            // 
+            this.tbDescription.Location = new System.Drawing.Point(72, 42);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbDescription.Size = new System.Drawing.Size(169, 107);
+            this.tbDescription.TabIndex = 3;
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(6, 45);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(60, 13);
+            this.lblDescription.TabIndex = 2;
+            this.lblDescription.Text = "Description";
+            // 
+            // tbName
+            // 
+            this.tbName.Location = new System.Drawing.Point(72, 16);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(169, 20);
+            this.tbName.TabIndex = 1;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(6, 19);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Name";
+            // 
+            // grbEvent
+            // 
+            this.grbEvent.Controls.Add(this.lblName);
+            this.grbEvent.Controls.Add(this.tbName);
+            this.grbEvent.Controls.Add(this.lblDescription);
+            this.grbEvent.Controls.Add(this.tbDescription);
+            this.grbEvent.Controls.Add(this.lblPenalties);
+            this.grbEvent.Controls.Add(this.ckbPenalties);
+            this.grbEvent.Location = new System.Drawing.Point(12, 12);
+            this.grbEvent.Name = "grbEvent";
+            this.grbEvent.Size = new System.Drawing.Size(263, 186);
+            this.grbEvent.TabIndex = 39;
+            this.grbEvent.TabStop = false;
+            this.grbEvent.Text = "Event";
+            // 
+            // ACCGNewChampionshipEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 696);
-            this.Controls.Add(this.grbSingleEvent);
+            this.ClientSize = new System.Drawing.Size(517, 645);
             this.Controls.Add(this.grbImages);
             this.Controls.Add(this.grbSessions);
             this.Controls.Add(this.grbTrack);
@@ -634,7 +623,7 @@ namespace ACCG
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "ACCGNewEventForm";
+            this.Name = "ACCGNewChampionshipEventForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Event";
             this.Load += new System.EventHandler(this.NewEventForm_Load);
@@ -645,8 +634,6 @@ namespace ACCG
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfCars)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).EndInit();
             this.grbButtons.ResumeLayout(false);
-            this.grbEvent.ResumeLayout(false);
-            this.grbEvent.PerformLayout();
             this.grbAmbient.ResumeLayout(false);
             this.grbAmbient.PerformLayout();
             this.grbTrack.ResumeLayout(false);
@@ -661,16 +648,14 @@ namespace ACCG
             this.grbPracticeSession.ResumeLayout(false);
             this.grbPracticeSession.PerformLayout();
             this.grbImages.ResumeLayout(false);
+            this.grbEvent.ResumeLayout(false);
+            this.grbEvent.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Label lblName;
-        private TextBox tbName;
-        private Label lblDescription;
-        private TextBox tbDescription;
         private Label lblAmbTemperature;
         private TrackBar tkbAmbientTemperature;
         private Label lblTime;
@@ -687,8 +672,6 @@ namespace ACCG
         private Label lblModel;
         private Label lblNumberOfCars;
         private TrackBar tkbNumberOfCars;
-        private Label lblPenalties;
-        private CheckBox ckbPenalties;
         private TrackBar tkbNumberOfLaps;
         private Label lblNumberOfLaps;
         private Button btnCancel;
@@ -700,7 +683,6 @@ namespace ACCG
         private Label lblNumberOfCarsValue;
         private Label lblNumberOfLapsValue;
         private GroupBox grbButtons;
-        private GroupBox grbEvent;
         private GroupBox grbAmbient;
         private GroupBox grbTrack;
         private Label lblTrackCondition;
@@ -717,7 +699,13 @@ namespace ACCG
         private Panel previewImagePanel;
         private Button btnOpenPreviewImage;
         private OpenFileDialog openImageFileDialog;
-        private GroupBox grbSingleEvent;
+        private CheckBox ckbPenalties;
+        private Label lblPenalties;
+        private TextBox tbDescription;
+        private Label lblDescription;
+        private TextBox tbName;
+        private Label lblName;
+        private GroupBox grbEvent;
 
         public static Event temp_event { get; set; }
                         

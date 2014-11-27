@@ -7,26 +7,15 @@ using System.Threading.Tasks;
 namespace ACCG
 {
     [Serializable]
-    class Goals
+    public class Goals
     {
-        public int points { get; set; }
-        public int tier_1 { get; set; }
-        public int tier_2 { get; set; }
-        public int tier_3 { get; set; }
+        public string points { get; set; }
+        public string tier_1 { get; set; }  // Bronze medal
+        public string tier_2 { get; set; }  // Silver medal
+        public string tier_3 { get; set; }  // Gold medal
 
-        public Goals()
-        {
-
-        }
-
-        public Goals(int points, int tier_1, int tier_2, int tier_3)
-        {
-            this.points = points;
-            this.tier_1 = tier_1;
-            this.tier_2 = tier_2;
-            this.tier_3 = tier_3;
-        }
-
+        public Goals() { }
+        
 
     }
 }

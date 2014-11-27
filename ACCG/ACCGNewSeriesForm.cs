@@ -30,25 +30,6 @@ namespace ACCG
             InitializeComponent();
         }
 
-        private void rbChampionship_CheckedChanged(object sender, EventArgs e)
-        {
-            tbPoints.Enabled = rbChampionship.Checked;
-            cbCar.Enabled = rbChampionship.Checked;
-            cbSkin.Enabled = rbChampionship.Checked;
-            tbGoalsPoints.Enabled = rbChampionship.Checked;
-            lbOpponents.Enabled = rbChampionship.Checked;
-            btnNewOpponent.Enabled = rbChampionship.Checked;
-            btnEditOpponent.Enabled = rbChampionship.Checked;
-            btnDeleteOpponent.Enabled = rbChampionship.Checked;
-        }
-
-        private void rbSingleEvents_CheckedChanged(object sender, EventArgs e)
-        {
-            tbGoldTier.Enabled = rbSingleEvents.Checked;
-            tbSilverTier.Enabled = rbSingleEvents.Checked;
-            tbBronzeTier.Enabled = rbSingleEvents.Checked;
-        }
-
         private void NewSeriesForm_Load(object sender, EventArgs e)
         {
 
@@ -57,9 +38,27 @@ namespace ACCG
                 temp_series = current_selected_series;
                 tbCode.Text = temp_series.code;
                 tbName.Text = temp_series.name;
-                tbDescription.Text = temp_series.description;
+                tbDescription.Text = temp_series.description;                
+
+                rbChampionship.Checked = temp_series.isChampionship;
+                rbSingleEvents.Checked = temp_series.isSingleEvents;
+
+                if (rbChampionship.Checked)
+                {
+                    rbSingleEvents.Enabled = false;
+                }
+                else
+                {
+                    rbChampionship.Enabled = false;
+                }
+
                 tbPoints.Text = temp_series.points;
-                tbGoalsPoints.Text = temp_series.goalsPoints;
+                tbGoalsPoints.Text = temp_series.series_goals.points;
+
+                tbGoldTier.Text = temp_series.series_goals.tier_1;
+                tbSilverTier.Text = temp_series.series_goals.tier_2;
+                tbBronzeTier.Text = temp_series.series_goals.tier_3;
+                                
                 this.Refresh();
             }
             else
@@ -69,6 +68,8 @@ namespace ACCG
             
             if (rbChampionship.Checked)
             {
+
+                temp_series.isChampionship = rbChampionship.Checked;
 
                 if (current_selected_series == null)
                 {
@@ -84,18 +85,23 @@ namespace ACCG
                 tbGoldTier.Enabled = false;
                 tbSilverTier.Enabled = false;
                 tbBronzeTier.Enabled = false;
+               
             }
-            else if (rbSingleEvents.Checked)
+            else
             {
+
+                temp_series.isSingleEvents = rbSingleEvents.Checked;
+
                 tbPoints.Enabled = false;
                 cbCar.Enabled = false;
-                cbSkin.Enabled = false;
+                cbSkin.Enabled = false;                
                 tbGoalsPoints.Enabled = false;
                 lbOpponents.Enabled = false;
 
                 tbGoldTier.Enabled = true;
                 tbSilverTier.Enabled = true;
                 tbBronzeTier.Enabled = true;
+                
             }
             
 
@@ -175,15 +181,11 @@ namespace ACCG
         }
 
         private void btnOK_Click(object sender, EventArgs e)
-        {            
+        {
 
             if (temp_series.events_list.Count == 0)
             {
                 MessageBox.Show("You need to create at least one event!");
-            }
-            else if (temp_series.opponents_list.Count == 0)
-            {
-                MessageBox.Show("You need to create at least one opponent!");
             }
             else if (tbCode.Text == "")
             {
@@ -197,55 +199,91 @@ namespace ACCG
             {
                 MessageBox.Show("Missing \"Description\" field!");
             }
-            else if(tbPoints.Text == "") 
+            else if (temp_series.isSingleEvents && tbGoldTier.Text == "")
+            {
+                MessageBox.Show("");
+            }
+            else if (temp_series.isSingleEvents && !IsDigit(tbGoldTier.Text))
+            {
+                MessageBox.Show("Goals Points field have to contain only numbers!");
+            }
+            else if (temp_series.isSingleEvents && tbSilverTier.Text == "")
+            {
+                MessageBox.Show("");
+            }
+            else if (temp_series.isSingleEvents && !IsDigit(tbSilverTier.Text))
+            {
+                MessageBox.Show("Goals Points field have to contain only numbers!");
+            }
+            else if (temp_series.isSingleEvents && tbBronzeTier.Text == "")
+            {
+                MessageBox.Show("");
+            }
+            else if (temp_series.isSingleEvents && !IsDigit(tbBronzeTier.Text))
+            {
+                MessageBox.Show("Goals Points field have to contain only numbers!");
+            }
+            else if (temp_series.isChampionship && temp_series.opponents_list.Count == 0)
+            {
+                MessageBox.Show("You need to create at least one opponent!");
+            }
+            else if (temp_series.isChampionship && tbPoints.Text == "") 
             {
                 MessageBox.Show("Missing \"Points\" field!");
             }
-            else if (tbPoints.Text.First() == ',' || tbPoints.Text.Last() == ',')
+            else if (temp_series.isChampionship && (tbPoints.Text.First() == ',' || tbPoints.Text.Last() == ','))
             {
                 MessageBox.Show("The points field can't start or finish with \",\"!");            
             }
-            else if (!IsDigit(tbPoints.Text, ','))
+            else if (temp_series.isChampionship && !IsDigit(tbPoints.Text, ','))
             {
                 MessageBox.Show("Points field have to contain only numbers!");
             }
-            else if(tbGoalsPoints.Text == "") 
+            else if (temp_series.isChampionship && tbGoalsPoints.Text == "" ) 
             {                
                 MessageBox.Show("Missing \"Goals\" field!");
             }
-            else if(!IsDigit(tbGoalsPoints.Text))
+            else if (temp_series.isChampionship && !IsDigit(tbGoalsPoints.Text))
             {
                 MessageBox.Show("Goals Points field have to contain only numbers!");
             }
-            else if (!IsDigit(tbGoldTier.Text))
-            {
-                MessageBox.Show("Goals Points field have to contain only numbers!");
-            }
-            else if (!IsDigit(tbSilverTier.Text))
-            {
-                MessageBox.Show("Goals Points field have to contain only numbers!");
-            }
-            else if (!IsDigit(tbBronzeTier.Text))
-            {
-                MessageBox.Show("Goals Points field have to contain only numbers!");
-            }                         
-            else
+            else                                                                                      
             {
                 temp_series.code = tbCode.Text;
                 temp_series.name = tbName.Text;
                 temp_series.description = tbDescription.Text;
                 temp_series.requires = cbRequires.SelectedItem.ToString();
-                temp_series.points = tbPoints.Text;
-                temp_series.model = champ_player_car;
-                temp_series.skin.skin_name = cbSkin.SelectedItem.ToString();
-                temp_series.skin.skin_preview = skinPreviewImage;
-                temp_series.goalsPoints = tbGoalsPoints.Text;
+                temp_series.isChampionship = rbChampionship.Checked;
+                temp_series.isSingleEvents = rbSingleEvents.Checked;
+                
+                
+
+                if (temp_series.isChampionship)
+                {
+                    temp_series.model = champ_player_car;
+                    temp_series.skin.skin_name = cbSkin.SelectedItem.ToString();
+                    temp_series.skin.skin_preview = skinPreviewImage;
+                    temp_series.points = tbPoints.Text;
+                    temp_series.series_goals.points = tbGoalsPoints.Text;
+                }
+                else
+                {
+                    Car placeholder = new Car();
+                    placeholder.model = "";
+                    placeholder.skins.Add(new Skin());
+                    temp_series.model = placeholder;
+                    temp_series.series_goals.tier_1 = tbGoldTier.Text;
+                    temp_series.series_goals.tier_2 = tbSilverTier.Text;
+                    temp_series.series_goals.tier_3 = tbBronzeTier.Text;
+                }                                    
+                
                 temp_series.isEdited = false;
                 temp_series.isGenerated = false;
 
-                
+                /*
                 string[] ac_series_id_list = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
                 int[] numbers = new int[ac_series_id_list.Length];
+
                 if (ac_series_id_list.Length != 0)
                 {
                     for (int i = 0; i < ac_series_id_list.Length; i++)
@@ -256,17 +294,7 @@ namespace ACCG
                 }
                                
                 temp_series.ID = numbers.Max() + 1;
-                
-                Console.WriteLine("DEBUG: Code = {0}", temp_series.code);
-                Console.WriteLine("DEBUG: Name = {0}", temp_series.name);
-                Console.WriteLine("DEBUG: Description = {0}", temp_series.description);
-                Console.WriteLine("DEBUG: Requires = {0}", temp_series.requires);
-                Console.WriteLine("DEBUG: Points = {0}", temp_series.points);
-                Console.WriteLine("DEBUG: Selected car: " + champ_player_car.model);
-                Console.WriteLine("DEBUG: Goals = " + temp_series.goalsPoints + " points");
-                Console.WriteLine("DEBUG: ID = {0}", temp_series.ID);
-                Console.WriteLine("DEBUG: Events = {0}", temp_series.events_list.Count);
-
+                  */              
                 // Add the current series to ACCG main series list
                 if (current_selected_series != null) // Edit mode
                 {
@@ -290,13 +318,39 @@ namespace ACCG
             }
                              
         }
-
         
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        private void rbChampionship_CheckedChanged(object sender, EventArgs e)
+        {
+            temp_series.isChampionship = rbChampionship.Checked;
+
+            tbPoints.Enabled = rbChampionship.Checked;
+            grbCar.Enabled = rbChampionship.Checked;
+            grbOpponents.Enabled = rbChampionship.Checked;
+
+            tbGoalsPoints.Enabled = rbChampionship.Checked;
+
+            tbGoldTier.Text = "";
+            tbSilverTier.Text = "";
+            tbBronzeTier.Text = "";
+        }
+
+        private void rbSingleEvents_CheckedChanged(object sender, EventArgs e)
+        {
+            temp_series.isSingleEvents = rbSingleEvents.Checked;
+
+            tbGoldTier.Enabled = rbSingleEvents.Checked;
+            tbSilverTier.Enabled = rbSingleEvents.Checked;
+            tbBronzeTier.Enabled = rbSingleEvents.Checked;
+
+            tbPoints.Text = "";
+            tbGoalsPoints.Text = "";
+
+        }
       
         private void cbCar_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -346,10 +400,25 @@ namespace ACCG
                 }
 
                 rtbEventsInfo.AppendText("Track: " + current_selected_event.track + "\n");
-                //rtbEventsInfo.AppendText("Car: " + current_selected_event.); // Only for single events series, i will implement later
+
+                if (temp_series.isSingleEvents)
+                {
+                    rtbEventsInfo.AppendText("Car: " + current_selected_event.event_car + "\n");
+                    rtbEventsInfo.AppendText("Skin: " + current_selected_event.event_car_skin + "\n"); 
+                }
+                
                 rtbEventsInfo.AppendText("Number of cars: " + current_selected_event.numberOfCars + "\n");
                 rtbEventsInfo.AppendText("Penalties: " + current_selected_event.penalties + "\n");
-                rtbEventsInfo.AppendText("Laps: " + current_selected_event.session_list.Find(x => x.type == 3).laps + "\n");
+
+                if (temp_series.isChampionship)
+                {
+                    rtbEventsInfo.AppendText("Laps: " + current_selected_event.session_list.Find(x => x.type == 3).laps + "\n");
+                }
+                else
+                {
+                    rtbEventsInfo.AppendText("Laps: " + current_selected_event.numberOfLaps + "\n");
+                }
+                
             
             }            
 
@@ -377,10 +446,20 @@ namespace ACCG
 
         private void btnNewEvent_Click(object sender, EventArgs e)
         {
-            ACCGNewEventForm newEventForm = new ACCGNewEventForm();
-            newEventForm.Text = "New Event";
-            newEventForm.ShowDialog();
 
+            if (temp_series.isChampionship)
+            {
+                ACCGNewChampionshipEventForm newEventForm = new ACCGNewChampionshipEventForm();
+                newEventForm.Text = "New Championship Event";
+                newEventForm.ShowDialog();
+            }
+            else
+            {
+                ACCGNewSingleEventForm newSingleEventForm = new ACCGNewSingleEventForm();
+                newSingleEventForm.Text = "New Single Event";
+                newSingleEventForm.ShowDialog();
+            }
+            
             for (int i = 0; i < temp_series.events_list.Count; i++)
             {
                 temp_series.events_list[i].ID = i + 1;
@@ -392,10 +471,19 @@ namespace ACCG
         {
             if (current_selected_event != null)
             {
-                ACCGNewEventForm editEventForm = new ACCGNewEventForm(current_selected_event);
-                editEventForm.Text = "Edit Event " + current_selected_event.name;
-                editEventForm.ShowDialog();
-
+                if (temp_series.isChampionship)
+                {
+                    ACCGNewChampionshipEventForm editEventForm = new ACCGNewChampionshipEventForm(current_selected_event);
+                    editEventForm.Text = "Edit Event " + current_selected_event.name;
+                    editEventForm.ShowDialog();
+                }
+                else
+                {
+                    ACCGNewSingleEventForm editSingleEventForm = new ACCGNewSingleEventForm(current_selected_event);
+                    editSingleEventForm.Text = "Edit Event " + current_selected_event.name;
+                    editSingleEventForm.ShowDialog();
+                }
+                
                 for (int i = 0; i < temp_series.events_list.Count; i++)
                 {
                     temp_series.events_list[i].ID = i + 1;
@@ -464,7 +552,6 @@ namespace ACCG
                 MessageBox.Show("You have to select an opponent!");
             }
             
-
         }
 
         private void btnDeleteOpponent_Click(object sender, EventArgs e)
@@ -572,7 +659,7 @@ namespace ACCG
             {
                 if (temp_series.startImage != null)
                 {
-                    startThumbnailImage = (Bitmap)ScaleImage(temp_series.startImage, startImagePanel.Width, startImagePanel.Height);
+                    startThumbnailImage = (Bitmap)ACCGMainForm.accg_resource.ScaleImage(temp_series.startImage, startImagePanel.Width, startImagePanel.Height);
                 }
                 else
                 {
@@ -587,7 +674,7 @@ namespace ACCG
             }
             else if(startThumbnailImage != null)
             {
-                startThumbnailImage = (Bitmap)ScaleImage(startThumbnailImage, startImagePanel.Width, startImagePanel.Height);
+                startThumbnailImage = (Bitmap)ACCGMainForm.accg_resource.ScaleImage(startThumbnailImage, startImagePanel.Width, startImagePanel.Height);
             }
             
 
@@ -652,7 +739,7 @@ namespace ACCG
 
         private void skinPreviewImagePanel_Paint(object sender, PaintEventArgs e)
         {
-            Bitmap skinPreviewImageThumb = (Bitmap)ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
+            Bitmap skinPreviewImageThumb = (Bitmap)ACCGMainForm.accg_resource.ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
 
             e.Graphics.DrawImage(skinPreviewImageThumb,
                 0,
@@ -661,20 +748,7 @@ namespace ACCG
                 skinPreviewImageThumb.Height);
         }
 
-        private Image ScaleImage(Image image, int maxWidth, int maxHeight)
-        {
-            var ratioX = (double)maxWidth / image.Width;
-            var ratioY = (double)maxHeight / image.Height;
-            var ratio = Math.Min(ratioX, ratioY);
-
-            var newWidth = (int)(image.Width * ratio);
-            var newHeight = (int)(image.Height * ratio);
-
-            var newImage = new Bitmap(newWidth, newHeight);
-            Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
-            return newImage;
-        }
-
+       
         
 
        

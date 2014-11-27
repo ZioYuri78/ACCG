@@ -19,7 +19,6 @@ namespace ACCG
         {
             this.skins = new List<Skin>();
         }
-
-        
+                
     }
 }

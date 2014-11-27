@@ -25,7 +25,6 @@ D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\ACCG.application
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\ACCG.pdb
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGCredits.resources
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGMainForm.resources
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewEventForm.resources
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewOpponentForm.resources
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewSeriesForm.resources
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.Properties.Resources.resources
@@ -35,3 +34,6 @@ D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.application
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.exe
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.pdb
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.csprojResolveAssemblyReference.cache
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewChampionshipEventForm.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewSingleEventForm.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.SplashScreen.resources

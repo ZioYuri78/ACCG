@@ -21,7 +21,8 @@ namespace ACCG
         }
         
         private void ACCGMainForm_Load(object sender, EventArgs e)
-        {           
+        {
+           
 
             // Load settings.ini            
             accg_resource.LoadSettings(accg_settings_file_name, e);
@@ -61,6 +62,7 @@ namespace ACCG
             time_table.Add("17:00", 64);
             time_table.Add("17:30", 72);
             time_table.Add("18:00", 80);
+
             
         }
 
@@ -93,12 +95,25 @@ namespace ACCG
                 rtbSeriesInfo.AppendText("Name: " + current_selected_series.name + "\n");
                 rtbSeriesInfo.AppendText("Description: " + current_selected_series.description + "\n");
                 rtbSeriesInfo.AppendText("Requires: " + current_selected_series.requires + "\n");
-                rtbSeriesInfo.AppendText("Points: " + current_selected_series.points + "\n");
-                rtbSeriesInfo.AppendText("Car: " + tmp_car.model + "\n");
-                rtbSeriesInfo.AppendText("Skin: " + current_selected_series.skin.skin_name + "\n");
-                rtbSeriesInfo.AppendText("Goals: " + current_selected_series.goalsPoints + " points\n");
+
+                if (current_selected_series.isChampionship) 
+                {
+                    rtbSeriesInfo.AppendText("Points: " + current_selected_series.points + "\n");
+                    rtbSeriesInfo.AppendText("Car: " + tmp_car.model + "\n");
+                    rtbSeriesInfo.AppendText("Skin: " + current_selected_series.skin.skin_name + "\n");
+                    rtbSeriesInfo.AppendText("Opponents: " + current_selected_series.opponents_list.Count + "\n");
+                    rtbSeriesInfo.AppendText("Goals: " + current_selected_series.series_goals.points + " points\n");
+                }
+                else
+                {
+                    rtbSeriesInfo.AppendText("Goals:\n");
+                    rtbSeriesInfo.AppendText("Gold medals X " + current_selected_series.series_goals.tier_1 + "\n");
+                    rtbSeriesInfo.AppendText("Silver medals X " + current_selected_series.series_goals.tier_2 + "\n");
+                    rtbSeriesInfo.AppendText("Bronze medals X " + current_selected_series.series_goals.tier_3 + "\n");
+                }
+                                
                 rtbSeriesInfo.AppendText("Events: " + current_selected_series.events_list.Count + "\n");
-                rtbSeriesInfo.AppendText("Opponents: " + current_selected_series.opponents_list.Count);
+                
             }
                                                                     
         }
@@ -150,15 +165,35 @@ namespace ACCG
 
                 if (are_you_sure == DialogResult.Yes)
                 {
-                    string series_path = String.Format(ac_path + @"\content\career\series{0}", current_selected_series.ID);
-
-                    try
+                    if (current_selected_series.isGenerated)
                     {
-                        if (Directory.Exists(series_path))
+                        string series_path = String.Format(ac_path + @"\content\career\series{0}", current_selected_series.ID);
+
+                        try
                         {
-                            Directory.Delete(series_path, true);
+                            if (Directory.Exists(series_path))
+                            {
+                                Directory.Delete(series_path, true);
+                            }
+
+                            accg_series_list.Remove(current_selected_series);
+                            bs_series_datasource.ResetBindings(false);
+                            rtbSeriesInfo.ResetText();
+
+                            // Saving the accg series list
+                            string accg_series_path = @"data\accg_series_list.dat";
+                            accg_resource.SaveACCGSeries(accg_series_path, accg_series_list, e);
+
+                            lblCurrentSeries.Text = "Current series: ";
                         }
-                        
+                        catch (Exception exc)
+                        {
+                            Console.WriteLine("The process failed: {0}", exc.ToString());
+                        }
+
+                    }
+                    else
+                    {
                         accg_series_list.Remove(current_selected_series);
                         bs_series_datasource.ResetBindings(false);
                         rtbSeriesInfo.ResetText();
@@ -169,10 +204,7 @@ namespace ACCG
 
                         lblCurrentSeries.Text = "Current series: ";
                     }
-                    catch (Exception exc)
-                    {
-                        Console.WriteLine("The process failed: {0}", exc.ToString());
-                    }
+                    
                 }                
                
             }

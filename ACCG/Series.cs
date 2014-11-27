@@ -22,9 +22,12 @@ namespace ACCG
         public string points { get; set; }
         public Car model { get; set; }
         public Skin skin { get; set; }
-        public string goalsPoints { get; set; } //placeholder
+        public Goals series_goals { get; set; }
+        //public string goalsPoints { get; set; } //placeholder
         public bool isGenerated { get; set; }
         public bool isEdited { get; set; }
+        public bool isSingleEvents { get; set; }
+        public bool isChampionship { get; set; }
         public Bitmap previewImage { get; set; } // 206x206
         public Bitmap startImage { get; set; }   // 1240x560
         
@@ -33,6 +36,7 @@ namespace ACCG
         {
             this.events_list = new List<Event>();
             this.skin = new Skin();
+            this.series_goals = new Goals();
         }
 
         

@@ -102,8 +102,18 @@ namespace ACCG
                 if (current_selected_opponent != null)
                 {
                     temp_opponent = current_selected_opponent;
-                    opponent_index = ACCGNewSeriesForm.temp_series.opponents_list.IndexOf(temp_opponent);
-                    ACCGNewSeriesForm.temp_series.opponents_list.Remove(current_selected_opponent);
+
+                    if (ACCGNewSeriesForm.temp_series.isChampionship)
+                    {
+                        opponent_index = ACCGNewSeriesForm.temp_series.opponents_list.IndexOf(temp_opponent);
+                        ACCGNewSeriesForm.temp_series.opponents_list.Remove(current_selected_opponent);
+                    }
+                    else
+                    {
+                        opponent_index = ACCGNewSingleEventForm.temp_event.opponents_list.IndexOf(temp_opponent);
+                        ACCGNewSingleEventForm.temp_event.opponents_list.Remove(current_selected_opponent);
+                    }
+                    
                 }
                 else // New opponent mode
                 {
@@ -120,15 +130,34 @@ namespace ACCG
                 temp_opponent.nationality = tbNationality.Text;
 
                 if (current_selected_opponent != null)
-                {                    
-                    ACCGNewSeriesForm.temp_series.opponents_list.Insert(opponent_index, temp_opponent);
+                {
+                    if (ACCGNewSeriesForm.temp_series.isChampionship)
+                    {
+                        ACCGNewSeriesForm.temp_series.opponents_list.Insert(opponent_index, temp_opponent);
+                    }
+                    else
+                    {
+                        ACCGNewSingleEventForm.temp_event.opponents_list.Insert(opponent_index, temp_opponent);
+                    }
+                    
                 }
                 else
                 {
-                    ACCGNewSeriesForm.temp_series.opponents_list.Add(temp_opponent);                
+                    if (ACCGNewSeriesForm.temp_series.isChampionship)
+                    {
+                        ACCGNewSeriesForm.temp_series.opponents_list.Add(temp_opponent);
+                        ACCGNewSeriesForm.bs_opponents_datasource.ResetBindings(false);
+                    }
+                    else
+                    {
+                        ACCGNewSingleEventForm.temp_event.opponents_list.Add(temp_opponent);
+                        ACCGNewSingleEventForm.bs_opponents_datasource.ResetBindings(false);
+                    }
+                    
                 }
                 
-                ACCGNewSeriesForm.bs_opponents_datasource.ResetBindings(false);
+                
+                
 
                 this.Close();
             }
@@ -164,7 +193,8 @@ namespace ACCG
 
         private void skinPreviewImagePanel_Paint(object sender, PaintEventArgs e)
         {
-            Bitmap skinPreviewImageThumb = (Bitmap)ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
+            Bitmap skinPreviewImageThumb = (Bitmap)ACCGMainForm.accg_resource.ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
+
             e.Graphics.DrawImage(skinPreviewImageThumb,
                 0,
                 0,
@@ -172,18 +202,6 @@ namespace ACCG
                 skinPreviewImageThumb.Height);
         }
 
-        private Image ScaleImage(Image image, int maxWidth, int maxHeight)
-        {
-            var ratioX = (double)maxWidth / image.Width;
-            var ratioY = (double)maxHeight / image.Height;
-            var ratio = Math.Min(ratioX, ratioY);
-
-            var newWidth = (int)(image.Width * ratio);
-            var newHeight = (int)(image.Height * ratio);
-
-            var newImage = new Bitmap(newWidth, newHeight);
-            Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
-            return newImage;
-        }
+       
     }
 }

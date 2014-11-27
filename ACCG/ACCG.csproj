@@ -82,6 +82,12 @@
     <Compile Include="ACCGNewOpponentForm.Designer.cs">
       <DependentUpon>ACCGNewOpponentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ACCGNewSingleEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ACCGNewSingleEventForm.Designer.cs">
+      <DependentUpon>ACCGNewSingleEventForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AlphanumComparatorFast.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="ACCGCredits.cs">
@@ -98,11 +104,11 @@
       <DependentUpon>ACCGMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Goals.cs" />
-    <Compile Include="ACCGNewEventForm.cs">
+    <Compile Include="ACCGNewChampionshipEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ACCGNewEventForm.Designer.cs">
-      <DependentUpon>ACCGNewEventForm.cs</DependentUpon>
+    <Compile Include="ACCGNewChampionshipEventForm.Designer.cs">
+      <DependentUpon>ACCGNewChampionshipEventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ACCGNewSeriesForm.cs">
       <SubType>Form</SubType>
@@ -117,20 +123,29 @@
     <Compile Include="Series.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Skin.cs" />
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ACCGCredits.resx">
       <DependentUpon>ACCGCredits.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ACCGMainForm.resx">
       <DependentUpon>ACCGMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ACCGNewEventForm.resx">
-      <DependentUpon>ACCGNewEventForm.cs</DependentUpon>
+    <EmbeddedResource Include="ACCGNewChampionshipEventForm.resx">
+      <DependentUpon>ACCGNewChampionshipEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ACCGNewOpponentForm.resx">
       <DependentUpon>ACCGNewOpponentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ACCGNewSeriesForm.resx">
       <DependentUpon>ACCGNewSeriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ACCGNewSingleEventForm.resx">
+      <DependentUpon>ACCGNewSingleEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -142,6 +157,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ACCG_ChiaveTemporanea.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
