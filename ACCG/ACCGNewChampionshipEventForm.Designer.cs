@@ -32,6 +32,7 @@ namespace ACCG
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ACCGNewChampionshipEventForm));
             this.lblAmbTemperature = new System.Windows.Forms.Label();
             this.tkbAmbientTemperature = new System.Windows.Forms.TrackBar();
@@ -45,8 +46,6 @@ namespace ACCG
             this.ckbQualifying = new System.Windows.Forms.CheckBox();
             this.lblTrack = new System.Windows.Forms.Label();
             this.cbTrack = new System.Windows.Forms.ComboBox();
-            this.cbModel = new System.Windows.Forms.ComboBox();
-            this.lblModel = new System.Windows.Forms.Label();
             this.lblNumberOfCars = new System.Windows.Forms.Label();
             this.tkbNumberOfCars = new System.Windows.Forms.TrackBar();
             this.tkbNumberOfLaps = new System.Windows.Forms.TrackBar();
@@ -64,7 +63,7 @@ namespace ACCG
             this.grbTrack = new System.Windows.Forms.GroupBox();
             this.lblTrackConditionValue = new System.Windows.Forms.Label();
             this.lblTrackTemperatureValue = new System.Windows.Forms.Label();
-            this.tkbCondition = new System.Windows.Forms.TrackBar();
+            this.tkbTrackCondition = new System.Windows.Forms.TrackBar();
             this.tkbTrackTemperature = new System.Windows.Forms.TrackBar();
             this.lblTrackCondition = new System.Windows.Forms.Label();
             this.lblTrackTemperature = new System.Windows.Forms.Label();
@@ -83,6 +82,7 @@ namespace ACCG
             this.tbName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.grbEvent = new System.Windows.Forms.GroupBox();
+            this.tltLoadPreviewImage = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
@@ -92,7 +92,7 @@ namespace ACCG
             this.grbButtons.SuspendLayout();
             this.grbAmbient.SuspendLayout();
             this.grbTrack.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbCondition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTrackCondition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).BeginInit();
             this.grbSessions.SuspendLayout();
             this.grbSessionRace.SuspendLayout();
@@ -223,29 +223,10 @@ namespace ACCG
             this.cbTrack.Size = new System.Drawing.Size(145, 21);
             this.cbTrack.TabIndex = 18;
             // 
-            // cbModel
-            // 
-            this.cbModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbModel.Enabled = false;
-            this.cbModel.FormattingEnabled = true;
-            this.cbModel.Location = new System.Drawing.Point(47, 44);
-            this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(145, 21);
-            this.cbModel.TabIndex = 20;
-            // 
-            // lblModel
-            // 
-            this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(6, 47);
-            this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(36, 13);
-            this.lblModel.TabIndex = 19;
-            this.lblModel.Text = "Model";
-            // 
             // lblNumberOfCars
             // 
             this.lblNumberOfCars.AutoSize = true;
-            this.lblNumberOfCars.Location = new System.Drawing.Point(6, 74);
+            this.lblNumberOfCars.Location = new System.Drawing.Point(6, 47);
             this.lblNumberOfCars.Name = "lblNumberOfCars";
             this.lblNumberOfCars.Size = new System.Drawing.Size(28, 13);
             this.lblNumberOfCars.TabIndex = 21;
@@ -253,7 +234,7 @@ namespace ACCG
             // 
             // tkbNumberOfCars
             // 
-            this.tkbNumberOfCars.Location = new System.Drawing.Point(47, 71);
+            this.tkbNumberOfCars.Location = new System.Drawing.Point(47, 44);
             this.tkbNumberOfCars.Maximum = 24;
             this.tkbNumberOfCars.Minimum = 1;
             this.tkbNumberOfCars.Name = "tkbNumberOfCars";
@@ -264,7 +245,7 @@ namespace ACCG
             // 
             // tkbNumberOfLaps
             // 
-            this.tkbNumberOfLaps.Location = new System.Drawing.Point(51, 122);
+            this.tkbNumberOfLaps.Location = new System.Drawing.Point(47, 95);
             this.tkbNumberOfLaps.Minimum = 2;
             this.tkbNumberOfLaps.Name = "tkbNumberOfLaps";
             this.tkbNumberOfLaps.Size = new System.Drawing.Size(104, 45);
@@ -275,7 +256,7 @@ namespace ACCG
             // lblNumberOfLaps
             // 
             this.lblNumberOfLaps.AutoSize = true;
-            this.lblNumberOfLaps.Location = new System.Drawing.Point(6, 125);
+            this.lblNumberOfLaps.Location = new System.Drawing.Point(6, 98);
             this.lblNumberOfLaps.Name = "lblNumberOfLaps";
             this.lblNumberOfLaps.Size = new System.Drawing.Size(30, 13);
             this.lblNumberOfLaps.TabIndex = 25;
@@ -340,7 +321,7 @@ namespace ACCG
             // lblNumberOfCarsValue
             // 
             this.lblNumberOfCarsValue.AutoSize = true;
-            this.lblNumberOfCarsValue.Location = new System.Drawing.Point(157, 74);
+            this.lblNumberOfCarsValue.Location = new System.Drawing.Point(157, 47);
             this.lblNumberOfCarsValue.Name = "lblNumberOfCarsValue";
             this.lblNumberOfCarsValue.Size = new System.Drawing.Size(36, 13);
             this.lblNumberOfCarsValue.TabIndex = 35;
@@ -349,7 +330,7 @@ namespace ACCG
             // lblNumberOfLapsValue
             // 
             this.lblNumberOfLapsValue.AutoSize = true;
-            this.lblNumberOfLapsValue.Location = new System.Drawing.Point(157, 125);
+            this.lblNumberOfLapsValue.Location = new System.Drawing.Point(157, 98);
             this.lblNumberOfLapsValue.Name = "lblNumberOfLapsValue";
             this.lblNumberOfLapsValue.Size = new System.Drawing.Size(35, 13);
             this.lblNumberOfLapsValue.TabIndex = 36;
@@ -384,7 +365,7 @@ namespace ACCG
             // 
             this.grbTrack.Controls.Add(this.lblTrackConditionValue);
             this.grbTrack.Controls.Add(this.lblTrackTemperatureValue);
-            this.grbTrack.Controls.Add(this.tkbCondition);
+            this.grbTrack.Controls.Add(this.tkbTrackCondition);
             this.grbTrack.Controls.Add(this.tkbTrackTemperature);
             this.grbTrack.Controls.Add(this.lblTrackCondition);
             this.grbTrack.Controls.Add(this.lblTrackTemperature);
@@ -413,15 +394,15 @@ namespace ACCG
             this.lblTrackTemperatureValue.TabIndex = 4;
             this.lblTrackTemperatureValue.Text = "33 °C";
             // 
-            // tkbCondition
+            // tkbTrackCondition
             // 
-            this.tkbCondition.Location = new System.Drawing.Point(80, 72);
-            this.tkbCondition.Maximum = 5;
-            this.tkbCondition.Name = "tkbCondition";
-            this.tkbCondition.Size = new System.Drawing.Size(122, 45);
-            this.tkbCondition.TabIndex = 8;
-            this.tkbCondition.Value = 4;
-            this.tkbCondition.Scroll += new System.EventHandler(this.tkbCondition_Scroll);
+            this.tkbTrackCondition.Location = new System.Drawing.Point(80, 72);
+            this.tkbTrackCondition.Maximum = 5;
+            this.tkbTrackCondition.Name = "tkbTrackCondition";
+            this.tkbTrackCondition.Size = new System.Drawing.Size(122, 45);
+            this.tkbTrackCondition.TabIndex = 8;
+            this.tkbTrackCondition.Value = 4;
+            this.tkbTrackCondition.Scroll += new System.EventHandler(this.tkbCondition_Scroll);
             // 
             // tkbTrackTemperature
             // 
@@ -459,7 +440,7 @@ namespace ACCG
             this.grbSessions.Controls.Add(this.grbPracticeSession);
             this.grbSessions.Location = new System.Drawing.Point(281, 12);
             this.grbSessions.Name = "grbSessions";
-            this.grbSessions.Size = new System.Drawing.Size(224, 436);
+            this.grbSessions.Size = new System.Drawing.Size(224, 377);
             this.grbSessions.TabIndex = 42;
             this.grbSessions.TabStop = false;
             this.grbSessions.Text = "Sessions";
@@ -467,10 +448,8 @@ namespace ACCG
             // grbSessionRace
             // 
             this.grbSessionRace.Controls.Add(this.lblTrack);
-            this.grbSessionRace.Controls.Add(this.lblModel);
             this.grbSessionRace.Controls.Add(this.cbTrack);
             this.grbSessionRace.Controls.Add(this.lblNumberOfLapsValue);
-            this.grbSessionRace.Controls.Add(this.cbModel);
             this.grbSessionRace.Controls.Add(this.lblNumberOfCarsValue);
             this.grbSessionRace.Controls.Add(this.lblNumberOfCars);
             this.grbSessionRace.Controls.Add(this.tkbNumberOfLaps);
@@ -478,7 +457,7 @@ namespace ACCG
             this.grbSessionRace.Controls.Add(this.lblNumberOfLaps);
             this.grbSessionRace.Location = new System.Drawing.Point(6, 213);
             this.grbSessionRace.Name = "grbSessionRace";
-            this.grbSessionRace.Size = new System.Drawing.Size(212, 172);
+            this.grbSessionRace.Size = new System.Drawing.Size(212, 145);
             this.grbSessionRace.TabIndex = 45;
             this.grbSessionRace.TabStop = false;
             this.grbSessionRace.Text = "Race";
@@ -527,11 +506,13 @@ namespace ACCG
             this.btnOpenPreviewImage.Name = "btnOpenPreviewImage";
             this.btnOpenPreviewImage.Size = new System.Drawing.Size(30, 23);
             this.btnOpenPreviewImage.TabIndex = 1;
+            this.tltLoadPreviewImage.SetToolTip(this.btnOpenPreviewImage, "Load preview image");
             this.btnOpenPreviewImage.UseVisualStyleBackColor = true;
             this.btnOpenPreviewImage.Click += new System.EventHandler(this.btnOpenPreviewImage_Click);
             // 
             // previewImagePanel
             // 
+            this.previewImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.previewImagePanel.Location = new System.Drawing.Point(6, 19);
             this.previewImagePanel.Name = "previewImagePanel";
             this.previewImagePanel.Size = new System.Drawing.Size(250, 125);
@@ -638,7 +619,7 @@ namespace ACCG
             this.grbAmbient.PerformLayout();
             this.grbTrack.ResumeLayout(false);
             this.grbTrack.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbCondition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTrackCondition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).EndInit();
             this.grbSessions.ResumeLayout(false);
             this.grbSessionRace.ResumeLayout(false);
@@ -668,8 +649,6 @@ namespace ACCG
         private CheckBox ckbQualifying;
         private Label lblTrack;
         private ComboBox cbTrack;
-        private ComboBox cbModel;
-        private Label lblModel;
         private Label lblNumberOfCars;
         private TrackBar tkbNumberOfCars;
         private TrackBar tkbNumberOfLaps;
@@ -687,7 +666,7 @@ namespace ACCG
         private GroupBox grbTrack;
         private Label lblTrackCondition;
         private Label lblTrackTemperature;
-        private TrackBar tkbCondition;
+        private TrackBar tkbTrackCondition;
         private TrackBar tkbTrackTemperature;
         private Label lblTrackConditionValue;
         private Label lblTrackTemperatureValue;
@@ -706,6 +685,7 @@ namespace ACCG
         private TextBox tbName;
         private Label lblName;
         private GroupBox grbEvent;
+        private ToolTip tltLoadPreviewImage;
 
         public static Event temp_event { get; set; }
                         

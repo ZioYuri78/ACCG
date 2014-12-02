@@ -26,7 +26,7 @@ namespace ACCG
             return instance;
         }
 
-        public void LoadSettings(string settings_path, EventArgs e)
+        public void LoadSettings(string settings_path)
         {
             try
             {
@@ -56,13 +56,13 @@ namespace ACCG
                     Application.Exit();
                 }
             }
-            catch
+            catch (Exception exc)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                Console.WriteLine("The process failed: {0}", exc.ToString());
             }
         }
        
-        public List<Series> LoadACCGSeries(string accg_series_path, EventArgs e)
+        public List<Series> LoadACCGSeries(string accg_series_path)
         {
             List<Series> series_list = new List<Series>();
 
@@ -83,15 +83,15 @@ namespace ACCG
                     series_list = new List<Series>();
                 }
             }
-            catch
+            catch (Exception exc)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                Console.WriteLine("The process failed: {0}", exc.ToString());
             }
 
             return series_list;
         }
 
-        public void SaveACCGSeries(string accg_series_path, List<Series> accg_series_list, EventArgs e)
+        public void SaveACCGSeries(string accg_series_path, List<Series> accg_series_list)
         {
             try
             {
@@ -101,13 +101,13 @@ namespace ACCG
                     bformatter.Serialize(stream, accg_series_list);
                 }
             }
-            catch
+            catch (Exception exc)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                Console.WriteLine("The process failed: {0}", exc.ToString());
             }
         }
 
-        public List<Car> LoadCars(string file_path, EventArgs e)
+        public List<Car> LoadCars(string file_path)
         {
             List<Car> cars_list = new List<Car>();
             string car_name;
@@ -132,7 +132,7 @@ namespace ACCG
                                 cars_list.Add(tmp_car);
 
                                 Skin tmp_skin = new Skin();
-                                tmp_skin.skin_name = sr.ReadLine();
+                                tmp_skin.skin_name = sr.ReadLine().ToLower();
                                 string skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
                                 Console.WriteLine(skin_image_path);
                                 
@@ -154,11 +154,11 @@ namespace ACCG
                                     tmp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
                                 }
                                 
-                                while (tmp_skin.skin_name != "[END_SKINS]")
+                                while (tmp_skin.skin_name.ToUpper() != "[END_SKINS]")
                                 {
                                     tmp_car.skins.Add(tmp_skin);
                                     tmp_skin = new Skin();
-                                    tmp_skin.skin_name = sr.ReadLine();
+                                    tmp_skin.skin_name = sr.ReadLine().ToLower();
                                     skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
 
                                     if (File.Exists(skin_image_path))
@@ -190,15 +190,15 @@ namespace ACCG
                     Application.Exit();
                 }
             }
-            catch
+            catch (Exception exc)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                Console.WriteLine("The process failed: {0}", exc.ToString());
             }
 
             return cars_list;
         }
 
-        public void SaveCars(string file_path, List<Car> cars_list, EventArgs e) 
+        public void SaveCars(string file_path, List<Car> cars_list) 
         {
             try
             {
@@ -234,14 +234,14 @@ namespace ACCG
                     MessageBox.Show("Missing file \"" + file_path + "\"!");
                 }
             }
-            catch 
+            catch (Exception exc)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                Console.WriteLine("The process failed: {0}", exc.ToString());
             }
         
         }
 
-        public List<string> LoadTracks(string file_path, EventArgs e)
+        public List<string> LoadTracks(string file_path)
         {
             List<string> track_list = new List<string>();
 
@@ -263,15 +263,15 @@ namespace ACCG
                     Application.Exit();                    
                 }
             }
-            catch
+            catch (Exception exc)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                Console.WriteLine("The process failed: {0}", exc.ToString());
             }
 
             return track_list;
         }
 
-        private void SaveTracks(string file_path, List<string> tracks_list, EventArgs e) 
+        private void SaveTracks(string file_path, List<string> tracks_list) 
         {
             try
             {
@@ -292,13 +292,13 @@ namespace ACCG
                     MessageBox.Show("Missing file \"" + file_path + "\"!");
                 }
             }
-            catch
+            catch (Exception exc)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                Console.WriteLine("The process failed: {0}", exc.ToString());
             }
         }
 
-        public void Sync(string cars_file_name, string tracks_file_name, EventArgs e) 
+        public void Sync(string cars_file_name, string tracks_file_name) 
         {
             string ac_path = ACCGMainForm.ac_path;
             foreach(Car car in ACCGMainForm.ac_cars_list){
@@ -350,7 +350,7 @@ namespace ACCG
                     temp_cars_list.Add(temp_car);
                 }
 
-                SaveCars(cars_file_name, temp_cars_list, e);
+                SaveCars(cars_file_name, temp_cars_list);
 
                 // Sync the tracks
                 string ac_tracks_path = ac_path + @"\content\tracks";
@@ -362,32 +362,93 @@ namespace ACCG
                     temp_tracks_list.Add(track.Substring(track.LastIndexOf(@"\") + 1));
                 }
 
-                SaveTracks(tracks_file_name, temp_tracks_list, e);
+                SaveTracks(tracks_file_name, temp_tracks_list);
             }
-            finally { }
-            /*catch
+            catch (Exception exc)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                Console.WriteLine("The process failed: {0}", exc.ToString());
             }
-            */               
-
-            }
-        
-
-        public Image ScaleImage(Image image, int maxWidth, int maxHeight)
-        {
-
-                var ratioX = (double)maxWidth / image.Width;
-                var ratioY = (double)maxHeight / image.Height;
-                var ratio = Math.Min(ratioX, ratioY);
-
-                var newWidth = (int)(image.Width * ratio);
-                var newHeight = (int)(image.Height * ratio);
-
-                var newImage = new Bitmap(newWidth, newHeight);
-                Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
-
-                return newImage;
+                                      
         }
+
+        public List<Opponent> LoadOpponents(string file_path)
+        {
+            List<Opponent> temp_opponents_list = new List<Opponent>();
+
+            string line;
+           
+            try
+            {
+                if (File.Exists(file_path))
+                {
+                    using (StreamReader sr = new StreamReader(file_path))
+                    {
+                        while (sr.Peek() >= 0)
+                        {
+                            line = sr.ReadLine();
+
+                            if(line.Contains("[")) {
+                                
+                                Opponent temp_opponent = new Opponent();
+
+                                string[] splitted = line.Split('I');
+                                temp_opponent.ID = Convert.ToInt32(splitted[1].Trim(new Char[] { '[', ']' }));
+
+                                line = sr.ReadLine();
+
+                                while (line != "")
+                                {
+                                                                        
+                                    splitted = line.Split('=');
+
+                                    switch (splitted[0])
+                                    {
+                                        case "MODEL":                                            
+                                            temp_opponent.model.model = splitted[1];
+                                            break;
+
+                                        case "SETUP":                                            
+                                            temp_opponent.setup = splitted[1];
+                                            break;
+
+                                        case "AI_LEVEL":                                            
+                                            temp_opponent.ai_level = Convert.ToInt32(splitted[1]);
+                                            break;
+
+                                        case "SKIN":                                            
+                                            temp_opponent.skin.skin_name = splitted[1].ToLower();
+                                            Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_opponent.model.model);
+                                            Bitmap temp_skin_preview = temp_car.skins.Find(x => x.skin_name == temp_opponent.skin.skin_name).skin_preview;
+                                            temp_opponent.skin.skin_preview = temp_skin_preview;
+                                            break;
+
+                                        case "DRIVER_NAME":                                            
+                                            temp_opponent.name = splitted[1];
+                                            break;
+
+                                        case "NATIONALITY":                                            
+                                            temp_opponent.nationality = splitted[1];
+                                            break;
+                                    }
+
+                                    line = sr.ReadLine();
+                                    if (line == null) break;
+                                }
+                                
+                                temp_opponents_list.Add(temp_opponent);
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+
+                Console.WriteLine("The process failed: {0}", exc.ToString());
+            }
+
+            return temp_opponents_list;
+        }   
     }
 }

@@ -14,6 +14,8 @@ namespace ACCG
         [STAThread]
         static void Main()
         {
+            SplashScreen.ShowSplash();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ACCGMainForm());

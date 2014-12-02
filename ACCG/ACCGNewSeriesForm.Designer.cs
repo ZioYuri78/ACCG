@@ -58,6 +58,10 @@ namespace ACCG
             this.cbSkin = new System.Windows.Forms.ComboBox();
             this.lblSkin = new System.Windows.Forms.Label();
             this.grbGoals = new System.Windows.Forms.GroupBox();
+            this.rbRanking = new System.Windows.Forms.RadioButton();
+            this.rbGoalsPoints = new System.Windows.Forms.RadioButton();
+            this.tbRanking = new System.Windows.Forms.TextBox();
+            this.lblRanking = new System.Windows.Forms.Label();
             this.tbGoldTier = new System.Windows.Forms.TextBox();
             this.tbSilverTier = new System.Windows.Forms.TextBox();
             this.tbBronzeTier = new System.Windows.Forms.TextBox();
@@ -92,6 +96,11 @@ namespace ACCG
             this.previewImagePanel = new System.Windows.Forms.Panel();
             this.startImagePanel = new System.Windows.Forms.Panel();
             this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.tltLoadStartImage = new System.Windows.Forms.ToolTip(this.components);
+            this.tltLoadPreviewImage = new System.Windows.Forms.ToolTip(this.components);
+            this.btnLoadOpponents = new System.Windows.Forms.Button();
+            this.openOpponentsFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.tltLoadOpponents = new System.Windows.Forms.ToolTip(this.components);
             this.grbGoals.SuspendLayout();
             this.grbSeries.SuspendLayout();
             this.grbCar.SuspendLayout();
@@ -105,7 +114,6 @@ namespace ACCG
             // rbSingleEvents
             // 
             this.rbSingleEvents.AutoSize = true;
-            this.rbSingleEvents.Enabled = false;
             this.rbSingleEvents.Location = new System.Drawing.Point(6, 19);
             this.rbSingleEvents.Name = "rbSingleEvents";
             this.rbSingleEvents.Size = new System.Drawing.Size(89, 17);
@@ -274,11 +282,11 @@ namespace ACCG
             // 
             // rtbOpponentsInfo
             // 
-            this.rtbOpponentsInfo.Location = new System.Drawing.Point(135, 19);
+            this.rtbOpponentsInfo.Location = new System.Drawing.Point(178, 19);
             this.rtbOpponentsInfo.Name = "rtbOpponentsInfo";
             this.rtbOpponentsInfo.ReadOnly = true;
             this.rtbOpponentsInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbOpponentsInfo.Size = new System.Drawing.Size(209, 150);
+            this.rtbOpponentsInfo.Size = new System.Drawing.Size(166, 150);
             this.rtbOpponentsInfo.TabIndex = 26;
             this.rtbOpponentsInfo.Text = "";
             // 
@@ -287,7 +295,7 @@ namespace ACCG
             this.lbOpponents.FormattingEnabled = true;
             this.lbOpponents.Location = new System.Drawing.Point(6, 19);
             this.lbOpponents.Name = "lbOpponents";
-            this.lbOpponents.Size = new System.Drawing.Size(123, 121);
+            this.lbOpponents.Size = new System.Drawing.Size(166, 121);
             this.lbOpponents.TabIndex = 25;
             this.lbOpponents.SelectedIndexChanged += new System.EventHandler(this.lbOpponents_SelectedIndexChanged);
             // 
@@ -302,7 +310,7 @@ namespace ACCG
             // lblGoalsPoints
             // 
             this.lblGoalsPoints.AutoSize = true;
-            this.lblGoalsPoints.Location = new System.Drawing.Point(6, 22);
+            this.lblGoalsPoints.Location = new System.Drawing.Point(20, 22);
             this.lblGoalsPoints.Name = "lblGoalsPoints";
             this.lblGoalsPoints.Size = new System.Drawing.Size(36, 13);
             this.lblGoalsPoints.TabIndex = 35;
@@ -312,9 +320,9 @@ namespace ACCG
             // 
             this.cbSkin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSkin.FormattingEnabled = true;
-            this.cbSkin.Location = new System.Drawing.Point(51, 52);
+            this.cbSkin.Location = new System.Drawing.Point(50, 52);
             this.cbSkin.Name = "cbSkin";
-            this.cbSkin.Size = new System.Drawing.Size(145, 21);
+            this.cbSkin.Size = new System.Drawing.Size(146, 21);
             this.cbSkin.TabIndex = 15;
             this.cbSkin.SelectionChangeCommitted += new System.EventHandler(this.cbSkin_SelectionChangeCommitted);
             // 
@@ -329,6 +337,10 @@ namespace ACCG
             // 
             // grbGoals
             // 
+            this.grbGoals.Controls.Add(this.rbRanking);
+            this.grbGoals.Controls.Add(this.rbGoalsPoints);
+            this.grbGoals.Controls.Add(this.tbRanking);
+            this.grbGoals.Controls.Add(this.lblRanking);
             this.grbGoals.Controls.Add(this.tbGoldTier);
             this.grbGoals.Controls.Add(this.tbSilverTier);
             this.grbGoals.Controls.Add(this.tbBronzeTier);
@@ -339,10 +351,49 @@ namespace ACCG
             this.grbGoals.Controls.Add(this.lblGoalsPoints);
             this.grbGoals.Location = new System.Drawing.Point(12, 530);
             this.grbGoals.Name = "grbGoals";
-            this.grbGoals.Size = new System.Drawing.Size(94, 129);
+            this.grbGoals.Size = new System.Drawing.Size(206, 129);
             this.grbGoals.TabIndex = 44;
             this.grbGoals.TabStop = false;
             this.grbGoals.Text = "Series Goals";
+            // 
+            // rbRanking
+            // 
+            this.rbRanking.AutoSize = true;
+            this.rbRanking.Location = new System.Drawing.Point(105, 22);
+            this.rbRanking.Name = "rbRanking";
+            this.rbRanking.Size = new System.Drawing.Size(14, 13);
+            this.rbRanking.TabIndex = 42;
+            this.rbRanking.UseVisualStyleBackColor = true;
+            this.rbRanking.CheckedChanged += new System.EventHandler(this.rbRanking_CheckedChanged);
+            // 
+            // rbGoalsPoints
+            // 
+            this.rbGoalsPoints.AutoSize = true;
+            this.rbGoalsPoints.Checked = true;
+            this.rbGoalsPoints.Location = new System.Drawing.Point(6, 22);
+            this.rbGoalsPoints.Name = "rbGoalsPoints";
+            this.rbGoalsPoints.Size = new System.Drawing.Size(14, 13);
+            this.rbGoalsPoints.TabIndex = 41;
+            this.rbGoalsPoints.TabStop = true;
+            this.rbGoalsPoints.UseVisualStyleBackColor = true;
+            this.rbGoalsPoints.CheckedChanged += new System.EventHandler(this.rbGoalsPoints_CheckedChanged);
+            // 
+            // tbRanking
+            // 
+            this.tbRanking.Location = new System.Drawing.Point(172, 19);
+            this.tbRanking.MaxLength = 1;
+            this.tbRanking.Name = "tbRanking";
+            this.tbRanking.Size = new System.Drawing.Size(28, 20);
+            this.tbRanking.TabIndex = 40;
+            // 
+            // lblRanking
+            // 
+            this.lblRanking.AutoSize = true;
+            this.lblRanking.Location = new System.Drawing.Point(121, 22);
+            this.lblRanking.Name = "lblRanking";
+            this.lblRanking.Size = new System.Drawing.Size(47, 13);
+            this.lblRanking.TabIndex = 39;
+            this.lblRanking.Text = "Ranking";
             // 
             // tbGoldTier
             // 
@@ -440,6 +491,7 @@ namespace ACCG
             // 
             // skinPreviewImagePanel
             // 
+            this.skinPreviewImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.skinPreviewImagePanel.Location = new System.Drawing.Point(18, 87);
             this.skinPreviewImagePanel.Name = "skinPreviewImagePanel";
             this.skinPreviewImagePanel.Size = new System.Drawing.Size(170, 96);
@@ -495,6 +547,7 @@ namespace ACCG
             // 
             // grbOpponents
             // 
+            this.grbOpponents.Controls.Add(this.btnLoadOpponents);
             this.grbOpponents.Controls.Add(this.lbOpponents);
             this.grbOpponents.Controls.Add(this.btnDeleteOpponent);
             this.grbOpponents.Controls.Add(this.rtbOpponentsInfo);
@@ -510,7 +563,7 @@ namespace ACCG
             // btnDeleteOpponent
             // 
             this.btnDeleteOpponent.Image = global::ACCG.Properties.Resources.Clearallrequests_8816;
-            this.btnDeleteOpponent.Location = new System.Drawing.Point(92, 146);
+            this.btnDeleteOpponent.Location = new System.Drawing.Point(135, 146);
             this.btnDeleteOpponent.Name = "btnDeleteOpponent";
             this.btnDeleteOpponent.Size = new System.Drawing.Size(37, 23);
             this.btnDeleteOpponent.TabIndex = 29;
@@ -521,7 +574,7 @@ namespace ACCG
             // btnEditOpponent
             // 
             this.btnEditOpponent.Image = global::ACCG.Properties.Resources.EditTitleString_357;
-            this.btnEditOpponent.Location = new System.Drawing.Point(49, 146);
+            this.btnEditOpponent.Location = new System.Drawing.Point(92, 146);
             this.btnEditOpponent.Name = "btnEditOpponent";
             this.btnEditOpponent.Size = new System.Drawing.Size(37, 23);
             this.btnEditOpponent.TabIndex = 28;
@@ -532,7 +585,7 @@ namespace ACCG
             // btnNewOpponent
             // 
             this.btnNewOpponent.Image = global::ACCG.Properties.Resources.NewFile_6276;
-            this.btnNewOpponent.Location = new System.Drawing.Point(6, 146);
+            this.btnNewOpponent.Location = new System.Drawing.Point(49, 146);
             this.btnNewOpponent.Name = "btnNewOpponent";
             this.btnNewOpponent.Size = new System.Drawing.Size(37, 23);
             this.btnNewOpponent.TabIndex = 27;
@@ -582,6 +635,7 @@ namespace ACCG
             this.btnOpenPreviewImage.Name = "btnOpenPreviewImage";
             this.btnOpenPreviewImage.Size = new System.Drawing.Size(26, 23);
             this.btnOpenPreviewImage.TabIndex = 5;
+            this.tltLoadPreviewImage.SetToolTip(this.btnOpenPreviewImage, "Load preview image");
             this.btnOpenPreviewImage.UseVisualStyleBackColor = true;
             this.btnOpenPreviewImage.Click += new System.EventHandler(this.btnOpenPreviewImage_Click);
             // 
@@ -592,6 +646,7 @@ namespace ACCG
             this.btnOpenStartImage.Name = "btnOpenStartImage";
             this.btnOpenStartImage.Size = new System.Drawing.Size(26, 23);
             this.btnOpenStartImage.TabIndex = 4;
+            this.tltLoadStartImage.SetToolTip(this.btnOpenStartImage, "Load start image");
             this.btnOpenStartImage.UseVisualStyleBackColor = true;
             this.btnOpenStartImage.Click += new System.EventHandler(this.btnOpenStartImage_Click);
             // 
@@ -615,7 +670,7 @@ namespace ACCG
             // 
             // previewImagePanel
             // 
-            this.previewImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.previewImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.previewImagePanel.Location = new System.Drawing.Point(247, 44);
             this.previewImagePanel.Name = "previewImagePanel";
             this.previewImagePanel.Size = new System.Drawing.Size(100, 100);
@@ -624,6 +679,7 @@ namespace ACCG
             // 
             // startImagePanel
             // 
+            this.startImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.startImagePanel.Location = new System.Drawing.Point(6, 44);
             this.startImagePanel.Name = "startImagePanel";
             this.startImagePanel.Size = new System.Drawing.Size(235, 100);
@@ -633,6 +689,21 @@ namespace ACCG
             // openImageFileDialog
             // 
             this.openImageFileDialog.Filter = "png files (*.png)|*.png";
+            // 
+            // btnLoadOpponents
+            // 
+            this.btnLoadOpponents.Image = global::ACCG.Properties.Resources.Open_6529_24;
+            this.btnLoadOpponents.Location = new System.Drawing.Point(6, 146);
+            this.btnLoadOpponents.Name = "btnLoadOpponents";
+            this.btnLoadOpponents.Size = new System.Drawing.Size(37, 23);
+            this.btnLoadOpponents.TabIndex = 30;
+            this.tltLoadOpponents.SetToolTip(this.btnLoadOpponents, "Load Opponents");
+            this.btnLoadOpponents.UseVisualStyleBackColor = true;
+            this.btnLoadOpponents.Click += new System.EventHandler(this.btnLoadOpponents_Click);
+            // 
+            // openOpponentsFileDialog
+            // 
+            this.openOpponentsFileDialog.Filter = "opponents files (opponents.ini)|opponents.ini";
             // 
             // ACCGNewSeriesForm
             // 
@@ -756,6 +827,15 @@ namespace ACCG
         private OpenFileDialog openImageFileDialog;
         private Button btnOpenPreviewImage;
         private Panel skinPreviewImagePanel;
+        private ToolTip tltLoadPreviewImage;
+        private ToolTip tltLoadStartImage;
+        private Label lblRanking;
+        private RadioButton rbRanking;
+        private RadioButton rbGoalsPoints;
+        private TextBox tbRanking;
+        private Button btnLoadOpponents;
+        private OpenFileDialog openOpponentsFileDialog;
+        private ToolTip tltLoadOpponents;
 
         public static Car champ_player_car {get; set;}
         public static Series temp_series { get; set; }        

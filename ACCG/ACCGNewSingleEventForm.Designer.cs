@@ -30,6 +30,7 @@ namespace ACCG
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ACCGNewSingleEventForm));
             this.grbButtons = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -38,9 +39,11 @@ namespace ACCG
             this.btnOpenPreviewImage = new System.Windows.Forms.Button();
             this.previewImagePanel = new System.Windows.Forms.Panel();
             this.grbTrack = new System.Windows.Forms.GroupBox();
+            this.lblTrack = new System.Windows.Forms.Label();
+            this.cbTrack = new System.Windows.Forms.ComboBox();
             this.lblTrackConditionValue = new System.Windows.Forms.Label();
             this.lblTrackTemperatureValue = new System.Windows.Forms.Label();
-            this.tkbCondition = new System.Windows.Forms.TrackBar();
+            this.tkbTrackCondition = new System.Windows.Forms.TrackBar();
             this.tkbTrackTemperature = new System.Windows.Forms.TrackBar();
             this.lblTrackCondition = new System.Windows.Forms.Label();
             this.lblTrackTemperature = new System.Windows.Forms.Label();
@@ -58,13 +61,17 @@ namespace ACCG
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.lblPenalties = new System.Windows.Forms.Label();
             this.ckbPenalties = new System.Windows.Forms.CheckBox();
-            this.grbTimeAttack = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbTimeAttackTrack = new System.Windows.Forms.ComboBox();
             this.grbEventKind = new System.Windows.Forms.GroupBox();
+            this.rbHotlap = new System.Windows.Forms.RadioButton();
             this.rbTimeAttack = new System.Windows.Forms.RadioButton();
             this.rbQuickRace = new System.Windows.Forms.RadioButton();
-            this.grbEventGoals = new System.Windows.Forms.GroupBox();
+            this.grbQuickRaceGoals = new System.Windows.Forms.GroupBox();
+            this.tbTimeSecondsBronzeTier = new System.Windows.Forms.TextBox();
+            this.tbTimeMinutesBronzeTier = new System.Windows.Forms.TextBox();
+            this.tbTimeSecondsSilverTier = new System.Windows.Forms.TextBox();
+            this.tbTimeMinutesSilverTier = new System.Windows.Forms.TextBox();
+            this.tbTimeSecondsGoldTier = new System.Windows.Forms.TextBox();
+            this.tbTimeMinutesGoldTier = new System.Windows.Forms.TextBox();
             this.lblPoints = new System.Windows.Forms.Label();
             this.lblPosition = new System.Windows.Forms.Label();
             this.tbPointsGoldTier = new System.Windows.Forms.TextBox();
@@ -88,12 +95,11 @@ namespace ACCG
             this.tkbStartPosition = new System.Windows.Forms.TrackBar();
             this.lblStartingPosition = new System.Windows.Forms.Label();
             this.grbOpponents = new System.Windows.Forms.GroupBox();
+            this.btnLoadOpponents = new System.Windows.Forms.Button();
             this.lbOpponents = new System.Windows.Forms.ListBox();
             this.btnDeleteOpponent = new System.Windows.Forms.Button();
             this.btnEditOpponent = new System.Windows.Forms.Button();
             this.btnNewOpponent = new System.Windows.Forms.Button();
-            this.lblTrack = new System.Windows.Forms.Label();
-            this.cbQuickRaceTrack = new System.Windows.Forms.ComboBox();
             this.lblNumberOfLapsValue = new System.Windows.Forms.Label();
             this.lblNumberOfCarsValue = new System.Windows.Forms.Label();
             this.lblNumberOfCars = new System.Windows.Forms.Label();
@@ -102,31 +108,56 @@ namespace ACCG
             this.lblNumberOfLaps = new System.Windows.Forms.Label();
             this.btnRandom = new System.Windows.Forms.Button();
             this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.tltNewOpponent = new System.Windows.Forms.ToolTip(this.components);
+            this.tltEditOpponent = new System.Windows.Forms.ToolTip(this.components);
+            this.tltDeleteOpponent = new System.Windows.Forms.ToolTip(this.components);
+            this.tltLoadPreviewImage = new System.Windows.Forms.ToolTip(this.components);
+            this.openOpponentsFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.tltLoadOpponents = new System.Windows.Forms.ToolTip(this.components);
+            this.grbTimeAttackGoals = new System.Windows.Forms.GroupBox();
+            this.grbHotlapGoals = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.grbButtons.SuspendLayout();
             this.grbImages.SuspendLayout();
             this.grbTrack.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbCondition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTrackCondition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).BeginInit();
             this.grbAmbient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).BeginInit();
             this.grbEvent.SuspendLayout();
-            this.grbTimeAttack.SuspendLayout();
             this.grbEventKind.SuspendLayout();
-            this.grbEventGoals.SuspendLayout();
+            this.grbQuickRaceGoals.SuspendLayout();
             this.grbCar.SuspendLayout();
             this.grbQuickRace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tkbStartPosition)).BeginInit();
             this.grbOpponents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfCars)).BeginInit();
+            this.grbTimeAttackGoals.SuspendLayout();
+            this.grbHotlapGoals.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbButtons
             // 
             this.grbButtons.Controls.Add(this.btnCancel);
             this.grbButtons.Controls.Add(this.btnOK);
-            this.grbButtons.Location = new System.Drawing.Point(503, 635);
+            this.grbButtons.Location = new System.Drawing.Point(513, 615);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(183, 54);
             this.grbButtons.TabIndex = 48;
@@ -156,7 +187,7 @@ namespace ACCG
             // 
             this.grbImages.Controls.Add(this.btnOpenPreviewImage);
             this.grbImages.Controls.Add(this.previewImagePanel);
-            this.grbImages.Location = new System.Drawing.Point(5, 449);
+            this.grbImages.Location = new System.Drawing.Point(5, 489);
             this.grbImages.Name = "grbImages";
             this.grbImages.Size = new System.Drawing.Size(263, 180);
             this.grbImages.TabIndex = 49;
@@ -170,11 +201,13 @@ namespace ACCG
             this.btnOpenPreviewImage.Name = "btnOpenPreviewImage";
             this.btnOpenPreviewImage.Size = new System.Drawing.Size(30, 23);
             this.btnOpenPreviewImage.TabIndex = 1;
+            this.tltLoadPreviewImage.SetToolTip(this.btnOpenPreviewImage, "Load preview image");
             this.btnOpenPreviewImage.UseVisualStyleBackColor = true;
             this.btnOpenPreviewImage.Click += new System.EventHandler(this.btnOpenPreviewImage_Click);
             // 
             // previewImagePanel
             // 
+            this.previewImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.previewImagePanel.Location = new System.Drawing.Point(6, 19);
             this.previewImagePanel.Name = "previewImagePanel";
             this.previewImagePanel.Size = new System.Drawing.Size(250, 125);
@@ -183,23 +216,43 @@ namespace ACCG
             // 
             // grbTrack
             // 
+            this.grbTrack.Controls.Add(this.lblTrack);
+            this.grbTrack.Controls.Add(this.cbTrack);
             this.grbTrack.Controls.Add(this.lblTrackConditionValue);
             this.grbTrack.Controls.Add(this.lblTrackTemperatureValue);
-            this.grbTrack.Controls.Add(this.tkbCondition);
+            this.grbTrack.Controls.Add(this.tkbTrackCondition);
             this.grbTrack.Controls.Add(this.tkbTrackTemperature);
             this.grbTrack.Controls.Add(this.lblTrackCondition);
             this.grbTrack.Controls.Add(this.lblTrackTemperature);
             this.grbTrack.Location = new System.Drawing.Point(5, 319);
             this.grbTrack.Name = "grbTrack";
-            this.grbTrack.Size = new System.Drawing.Size(263, 124);
+            this.grbTrack.Size = new System.Drawing.Size(263, 164);
             this.grbTrack.TabIndex = 52;
             this.grbTrack.TabStop = false;
             this.grbTrack.Text = "Track";
             // 
+            // lblTrack
+            // 
+            this.lblTrack.AutoSize = true;
+            this.lblTrack.Location = new System.Drawing.Point(3, 27);
+            this.lblTrack.Name = "lblTrack";
+            this.lblTrack.Size = new System.Drawing.Size(35, 13);
+            this.lblTrack.TabIndex = 19;
+            this.lblTrack.Text = "Track";
+            // 
+            // cbTrack
+            // 
+            this.cbTrack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTrack.FormattingEnabled = true;
+            this.cbTrack.Location = new System.Drawing.Point(81, 24);
+            this.cbTrack.Name = "cbTrack";
+            this.cbTrack.Size = new System.Drawing.Size(145, 21);
+            this.cbTrack.TabIndex = 20;
+            // 
             // lblTrackConditionValue
             // 
             this.lblTrackConditionValue.AutoSize = true;
-            this.lblTrackConditionValue.Location = new System.Drawing.Point(207, 72);
+            this.lblTrackConditionValue.Location = new System.Drawing.Point(205, 117);
             this.lblTrackConditionValue.Name = "lblTrackConditionValue";
             this.lblTrackConditionValue.Size = new System.Drawing.Size(27, 13);
             this.lblTrackConditionValue.TabIndex = 5;
@@ -208,26 +261,26 @@ namespace ACCG
             // lblTrackTemperatureValue
             // 
             this.lblTrackTemperatureValue.AutoSize = true;
-            this.lblTrackTemperatureValue.Location = new System.Drawing.Point(208, 23);
+            this.lblTrackTemperatureValue.Location = new System.Drawing.Point(206, 68);
             this.lblTrackTemperatureValue.Name = "lblTrackTemperatureValue";
             this.lblTrackTemperatureValue.Size = new System.Drawing.Size(33, 13);
             this.lblTrackTemperatureValue.TabIndex = 4;
             this.lblTrackTemperatureValue.Text = "33 °C";
             // 
-            // tkbCondition
+            // tkbTrackCondition
             // 
-            this.tkbCondition.Location = new System.Drawing.Point(80, 72);
-            this.tkbCondition.Maximum = 5;
-            this.tkbCondition.Name = "tkbCondition";
-            this.tkbCondition.Size = new System.Drawing.Size(122, 45);
-            this.tkbCondition.TabIndex = 8;
-            this.tkbCondition.Value = 4;
-            this.tkbCondition.Scroll += new System.EventHandler(this.tkbCondition_Scroll);
+            this.tkbTrackCondition.Location = new System.Drawing.Point(78, 117);
+            this.tkbTrackCondition.Maximum = 5;
+            this.tkbTrackCondition.Name = "tkbTrackCondition";
+            this.tkbTrackCondition.Size = new System.Drawing.Size(122, 45);
+            this.tkbTrackCondition.TabIndex = 8;
+            this.tkbTrackCondition.Value = 4;
+            this.tkbTrackCondition.Scroll += new System.EventHandler(this.tkbCondition_Scroll);
             // 
             // tkbTrackTemperature
             // 
             this.tkbTrackTemperature.Enabled = false;
-            this.tkbTrackTemperature.Location = new System.Drawing.Point(81, 20);
+            this.tkbTrackTemperature.Location = new System.Drawing.Point(79, 65);
             this.tkbTrackTemperature.Maximum = 40;
             this.tkbTrackTemperature.Minimum = 10;
             this.tkbTrackTemperature.Name = "tkbTrackTemperature";
@@ -238,7 +291,7 @@ namespace ACCG
             // lblTrackCondition
             // 
             this.lblTrackCondition.AutoSize = true;
-            this.lblTrackCondition.Location = new System.Drawing.Point(6, 72);
+            this.lblTrackCondition.Location = new System.Drawing.Point(4, 117);
             this.lblTrackCondition.Name = "lblTrackCondition";
             this.lblTrackCondition.Size = new System.Drawing.Size(51, 13);
             this.lblTrackCondition.TabIndex = 1;
@@ -247,7 +300,7 @@ namespace ACCG
             // lblTrackTemperature
             // 
             this.lblTrackTemperature.AutoSize = true;
-            this.lblTrackTemperature.Location = new System.Drawing.Point(6, 23);
+            this.lblTrackTemperature.Location = new System.Drawing.Point(4, 68);
             this.lblTrackTemperature.Name = "lblTrackTemperature";
             this.lblTrackTemperature.Size = new System.Drawing.Size(67, 13);
             this.lblTrackTemperature.TabIndex = 0;
@@ -396,45 +449,29 @@ namespace ACCG
             this.ckbPenalties.TabIndex = 4;
             this.ckbPenalties.UseVisualStyleBackColor = true;
             // 
-            // grbTimeAttack
-            // 
-            this.grbTimeAttack.Controls.Add(this.label1);
-            this.grbTimeAttack.Controls.Add(this.cbTimeAttackTrack);
-            this.grbTimeAttack.Location = new System.Drawing.Point(274, 449);
-            this.grbTimeAttack.Name = "grbTimeAttack";
-            this.grbTimeAttack.Size = new System.Drawing.Size(206, 53);
-            this.grbTimeAttack.TabIndex = 54;
-            this.grbTimeAttack.TabStop = false;
-            this.grbTimeAttack.Text = "Time Attack";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Track";
-            // 
-            // cbTimeAttackTrack
-            // 
-            this.cbTimeAttackTrack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTimeAttackTrack.FormattingEnabled = true;
-            this.cbTimeAttackTrack.Location = new System.Drawing.Point(49, 21);
-            this.cbTimeAttackTrack.Name = "cbTimeAttackTrack";
-            this.cbTimeAttackTrack.Size = new System.Drawing.Size(145, 21);
-            this.cbTimeAttackTrack.TabIndex = 20;
-            // 
             // grbEventKind
             // 
+            this.grbEventKind.Controls.Add(this.rbHotlap);
             this.grbEventKind.Controls.Add(this.rbTimeAttack);
             this.grbEventKind.Controls.Add(this.rbQuickRace);
             this.grbEventKind.Location = new System.Drawing.Point(274, 7);
             this.grbEventKind.Name = "grbEventKind";
-            this.grbEventKind.Size = new System.Drawing.Size(206, 47);
+            this.grbEventKind.Size = new System.Drawing.Size(206, 72);
             this.grbEventKind.TabIndex = 55;
             this.grbEventKind.TabStop = false;
             this.grbEventKind.Text = "Event Kind";
+            // 
+            // rbHotlap
+            // 
+            this.rbHotlap.AutoSize = true;
+            this.rbHotlap.Location = new System.Drawing.Point(7, 43);
+            this.rbHotlap.Name = "rbHotlap";
+            this.rbHotlap.Size = new System.Drawing.Size(56, 17);
+            this.rbHotlap.TabIndex = 59;
+            this.rbHotlap.TabStop = true;
+            this.rbHotlap.Text = "Hotlap";
+            this.rbHotlap.UseVisualStyleBackColor = true;
+            this.rbHotlap.CheckedChanged += new System.EventHandler(this.rbHotlap_CheckedChanged);
             // 
             // rbTimeAttack
             // 
@@ -461,47 +498,93 @@ namespace ACCG
             this.rbQuickRace.UseVisualStyleBackColor = true;
             this.rbQuickRace.CheckedChanged += new System.EventHandler(this.rbQuickRace_CheckedChanged);
             // 
-            // grbEventGoals
+            // grbQuickRaceGoals
             // 
-            this.grbEventGoals.Controls.Add(this.lblPoints);
-            this.grbEventGoals.Controls.Add(this.lblPosition);
-            this.grbEventGoals.Controls.Add(this.tbPointsGoldTier);
-            this.grbEventGoals.Controls.Add(this.tbPointsSilverTier);
-            this.grbEventGoals.Controls.Add(this.tbPointsBronzeTier);
-            this.grbEventGoals.Controls.Add(this.tbPositionGoldTier);
-            this.grbEventGoals.Controls.Add(this.tbPositionSilverTier);
-            this.grbEventGoals.Controls.Add(this.tbPositionBronzeTier);
-            this.grbEventGoals.Controls.Add(this.lblBronzeTier);
-            this.grbEventGoals.Controls.Add(this.lblSilverTier);
-            this.grbEventGoals.Controls.Add(this.lblGoldTier);
-            this.grbEventGoals.Location = new System.Drawing.Point(486, 252);
-            this.grbEventGoals.Name = "grbEventGoals";
-            this.grbEventGoals.Size = new System.Drawing.Size(206, 191);
-            this.grbEventGoals.TabIndex = 56;
-            this.grbEventGoals.TabStop = false;
-            this.grbEventGoals.Text = "Event Goals";
+            this.grbQuickRaceGoals.Controls.Add(this.label15);
+            this.grbQuickRaceGoals.Controls.Add(this.label14);
+            this.grbQuickRaceGoals.Controls.Add(this.lblPosition);
+            this.grbQuickRaceGoals.Controls.Add(this.tbPositionGoldTier);
+            this.grbQuickRaceGoals.Controls.Add(this.tbPositionSilverTier);
+            this.grbQuickRaceGoals.Controls.Add(this.tbPositionBronzeTier);
+            this.grbQuickRaceGoals.Controls.Add(this.lblBronzeTier);
+            this.grbQuickRaceGoals.Controls.Add(this.lblSilverTier);
+            this.grbQuickRaceGoals.Controls.Add(this.lblGoldTier);
+            this.grbQuickRaceGoals.Location = new System.Drawing.Point(8, 326);
+            this.grbQuickRaceGoals.Name = "grbQuickRaceGoals";
+            this.grbQuickRaceGoals.Size = new System.Drawing.Size(194, 117);
+            this.grbQuickRaceGoals.TabIndex = 56;
+            this.grbQuickRaceGoals.TabStop = false;
+            this.grbQuickRaceGoals.Text = "Quick Race Goals";
+            // 
+            // tbTimeSecondsBronzeTier
+            // 
+            this.tbTimeSecondsBronzeTier.Location = new System.Drawing.Point(122, 71);
+            this.tbTimeSecondsBronzeTier.MaxLength = 2;
+            this.tbTimeSecondsBronzeTier.Name = "tbTimeSecondsBronzeTier";
+            this.tbTimeSecondsBronzeTier.Size = new System.Drawing.Size(25, 20);
+            this.tbTimeSecondsBronzeTier.TabIndex = 57;
+            // 
+            // tbTimeMinutesBronzeTier
+            // 
+            this.tbTimeMinutesBronzeTier.Location = new System.Drawing.Point(75, 71);
+            this.tbTimeMinutesBronzeTier.MaxLength = 2;
+            this.tbTimeMinutesBronzeTier.Name = "tbTimeMinutesBronzeTier";
+            this.tbTimeMinutesBronzeTier.Size = new System.Drawing.Size(25, 20);
+            this.tbTimeMinutesBronzeTier.TabIndex = 56;
+            // 
+            // tbTimeSecondsSilverTier
+            // 
+            this.tbTimeSecondsSilverTier.Location = new System.Drawing.Point(122, 45);
+            this.tbTimeSecondsSilverTier.MaxLength = 2;
+            this.tbTimeSecondsSilverTier.Name = "tbTimeSecondsSilverTier";
+            this.tbTimeSecondsSilverTier.Size = new System.Drawing.Size(25, 20);
+            this.tbTimeSecondsSilverTier.TabIndex = 54;
+            // 
+            // tbTimeMinutesSilverTier
+            // 
+            this.tbTimeMinutesSilverTier.Location = new System.Drawing.Point(75, 45);
+            this.tbTimeMinutesSilverTier.MaxLength = 2;
+            this.tbTimeMinutesSilverTier.Name = "tbTimeMinutesSilverTier";
+            this.tbTimeMinutesSilverTier.Size = new System.Drawing.Size(25, 20);
+            this.tbTimeMinutesSilverTier.TabIndex = 53;
+            // 
+            // tbTimeSecondsGoldTier
+            // 
+            this.tbTimeSecondsGoldTier.Location = new System.Drawing.Point(122, 19);
+            this.tbTimeSecondsGoldTier.MaxLength = 2;
+            this.tbTimeSecondsGoldTier.Name = "tbTimeSecondsGoldTier";
+            this.tbTimeSecondsGoldTier.Size = new System.Drawing.Size(25, 20);
+            this.tbTimeSecondsGoldTier.TabIndex = 51;
+            // 
+            // tbTimeMinutesGoldTier
+            // 
+            this.tbTimeMinutesGoldTier.Location = new System.Drawing.Point(75, 19);
+            this.tbTimeMinutesGoldTier.MaxLength = 2;
+            this.tbTimeMinutesGoldTier.Name = "tbTimeMinutesGoldTier";
+            this.tbTimeMinutesGoldTier.Size = new System.Drawing.Size(25, 20);
+            this.tbTimeMinutesGoldTier.TabIndex = 50;
             // 
             // lblPoints
             // 
             this.lblPoints.AutoSize = true;
-            this.lblPoints.Location = new System.Drawing.Point(112, 16);
+            this.lblPoints.Location = new System.Drawing.Point(128, 22);
             this.lblPoints.Name = "lblPoints";
-            this.lblPoints.Size = new System.Drawing.Size(36, 13);
+            this.lblPoints.Size = new System.Drawing.Size(35, 13);
             this.lblPoints.TabIndex = 49;
-            this.lblPoints.Text = "Points";
+            this.lblPoints.Text = "points";
             // 
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(58, 16);
+            this.lblPosition.Location = new System.Drawing.Point(128, 34);
             this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(44, 13);
+            this.lblPosition.Size = new System.Drawing.Size(43, 13);
             this.lblPosition.TabIndex = 48;
-            this.lblPosition.Text = "Position";
+            this.lblPosition.Text = "position";
             // 
             // tbPointsGoldTier
             // 
-            this.tbPointsGoldTier.Location = new System.Drawing.Point(115, 35);
+            this.tbPointsGoldTier.Location = new System.Drawing.Point(89, 19);
             this.tbPointsGoldTier.MaxLength = 4;
             this.tbPointsGoldTier.Name = "tbPointsGoldTier";
             this.tbPointsGoldTier.Size = new System.Drawing.Size(33, 20);
@@ -509,7 +592,7 @@ namespace ACCG
             // 
             // tbPointsSilverTier
             // 
-            this.tbPointsSilverTier.Location = new System.Drawing.Point(115, 61);
+            this.tbPointsSilverTier.Location = new System.Drawing.Point(89, 45);
             this.tbPointsSilverTier.MaxLength = 4;
             this.tbPointsSilverTier.Name = "tbPointsSilverTier";
             this.tbPointsSilverTier.Size = new System.Drawing.Size(33, 20);
@@ -517,7 +600,7 @@ namespace ACCG
             // 
             // tbPointsBronzeTier
             // 
-            this.tbPointsBronzeTier.Location = new System.Drawing.Point(115, 87);
+            this.tbPointsBronzeTier.Location = new System.Drawing.Point(89, 71);
             this.tbPointsBronzeTier.MaxLength = 4;
             this.tbPointsBronzeTier.Name = "tbPointsBronzeTier";
             this.tbPointsBronzeTier.Size = new System.Drawing.Size(33, 20);
@@ -525,7 +608,7 @@ namespace ACCG
             // 
             // tbPositionGoldTier
             // 
-            this.tbPositionGoldTier.Location = new System.Drawing.Point(61, 35);
+            this.tbPositionGoldTier.Location = new System.Drawing.Point(86, 31);
             this.tbPositionGoldTier.MaxLength = 2;
             this.tbPositionGoldTier.Name = "tbPositionGoldTier";
             this.tbPositionGoldTier.Size = new System.Drawing.Size(25, 20);
@@ -533,7 +616,7 @@ namespace ACCG
             // 
             // tbPositionSilverTier
             // 
-            this.tbPositionSilverTier.Location = new System.Drawing.Point(61, 61);
+            this.tbPositionSilverTier.Location = new System.Drawing.Point(86, 57);
             this.tbPositionSilverTier.MaxLength = 2;
             this.tbPositionSilverTier.Name = "tbPositionSilverTier";
             this.tbPositionSilverTier.Size = new System.Drawing.Size(25, 20);
@@ -541,7 +624,7 @@ namespace ACCG
             // 
             // tbPositionBronzeTier
             // 
-            this.tbPositionBronzeTier.Location = new System.Drawing.Point(61, 87);
+            this.tbPositionBronzeTier.Location = new System.Drawing.Point(86, 83);
             this.tbPositionBronzeTier.MaxLength = 2;
             this.tbPositionBronzeTier.Name = "tbPositionBronzeTier";
             this.tbPositionBronzeTier.Size = new System.Drawing.Size(25, 20);
@@ -550,7 +633,7 @@ namespace ACCG
             // lblBronzeTier
             // 
             this.lblBronzeTier.AutoSize = true;
-            this.lblBronzeTier.Location = new System.Drawing.Point(5, 90);
+            this.lblBronzeTier.Location = new System.Drawing.Point(30, 86);
             this.lblBronzeTier.Name = "lblBronzeTier";
             this.lblBronzeTier.Size = new System.Drawing.Size(40, 13);
             this.lblBronzeTier.TabIndex = 44;
@@ -559,7 +642,7 @@ namespace ACCG
             // lblSilverTier
             // 
             this.lblSilverTier.AutoSize = true;
-            this.lblSilverTier.Location = new System.Drawing.Point(5, 64);
+            this.lblSilverTier.Location = new System.Drawing.Point(30, 60);
             this.lblSilverTier.Name = "lblSilverTier";
             this.lblSilverTier.Size = new System.Drawing.Size(33, 13);
             this.lblSilverTier.TabIndex = 43;
@@ -568,7 +651,7 @@ namespace ACCG
             // lblGoldTier
             // 
             this.lblGoldTier.AutoSize = true;
-            this.lblGoldTier.Location = new System.Drawing.Point(6, 38);
+            this.lblGoldTier.Location = new System.Drawing.Point(31, 34);
             this.lblGoldTier.Name = "lblGoldTier";
             this.lblGoldTier.Size = new System.Drawing.Size(29, 13);
             this.lblGoldTier.TabIndex = 42;
@@ -581,7 +664,7 @@ namespace ACCG
             this.grbCar.Controls.Add(this.lblModel);
             this.grbCar.Controls.Add(this.lblSkin);
             this.grbCar.Controls.Add(this.cbSkin);
-            this.grbCar.Location = new System.Drawing.Point(486, 60);
+            this.grbCar.Location = new System.Drawing.Point(274, 85);
             this.grbCar.Name = "grbCar";
             this.grbCar.Size = new System.Drawing.Size(206, 186);
             this.grbCar.TabIndex = 57;
@@ -590,6 +673,7 @@ namespace ACCG
             // 
             // skinPreviewImagePanel
             // 
+            this.skinPreviewImagePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.skinPreviewImagePanel.Location = new System.Drawing.Point(18, 79);
             this.skinPreviewImagePanel.Name = "skinPreviewImagePanel";
             this.skinPreviewImagePanel.Size = new System.Drawing.Size(170, 96);
@@ -641,17 +725,16 @@ namespace ACCG
             this.grbQuickRace.Controls.Add(this.tkbStartPosition);
             this.grbQuickRace.Controls.Add(this.lblStartingPosition);
             this.grbQuickRace.Controls.Add(this.grbOpponents);
-            this.grbQuickRace.Controls.Add(this.lblTrack);
-            this.grbQuickRace.Controls.Add(this.cbQuickRaceTrack);
+            this.grbQuickRace.Controls.Add(this.grbQuickRaceGoals);
             this.grbQuickRace.Controls.Add(this.lblNumberOfLapsValue);
             this.grbQuickRace.Controls.Add(this.lblNumberOfCarsValue);
             this.grbQuickRace.Controls.Add(this.lblNumberOfCars);
             this.grbQuickRace.Controls.Add(this.tkbNumberOfLaps);
             this.grbQuickRace.Controls.Add(this.tkbNumberOfCars);
             this.grbQuickRace.Controls.Add(this.lblNumberOfLaps);
-            this.grbQuickRace.Location = new System.Drawing.Point(274, 60);
+            this.grbQuickRace.Location = new System.Drawing.Point(486, 85);
             this.grbQuickRace.Name = "grbQuickRace";
-            this.grbQuickRace.Size = new System.Drawing.Size(206, 383);
+            this.grbQuickRace.Size = new System.Drawing.Size(210, 451);
             this.grbQuickRace.TabIndex = 58;
             this.grbQuickRace.TabStop = false;
             this.grbQuickRace.Text = "Quick Race";
@@ -659,7 +742,7 @@ namespace ACCG
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 173);
+            this.label3.Location = new System.Drawing.Point(9, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 51;
@@ -668,7 +751,7 @@ namespace ACCG
             // lblStartPositionValue
             // 
             this.lblStartPositionValue.AutoSize = true;
-            this.lblStartPositionValue.Location = new System.Drawing.Point(157, 161);
+            this.lblStartPositionValue.Location = new System.Drawing.Point(159, 124);
             this.lblStartPositionValue.Name = "lblStartPositionValue";
             this.lblStartPositionValue.Size = new System.Drawing.Size(16, 13);
             this.lblStartPositionValue.TabIndex = 50;
@@ -676,7 +759,7 @@ namespace ACCG
             // 
             // tkbStartPosition
             // 
-            this.tkbStartPosition.Location = new System.Drawing.Point(51, 158);
+            this.tkbStartPosition.Location = new System.Drawing.Point(53, 121);
             this.tkbStartPosition.Minimum = 2;
             this.tkbStartPosition.Name = "tkbStartPosition";
             this.tkbStartPosition.Size = new System.Drawing.Size(104, 45);
@@ -687,7 +770,7 @@ namespace ACCG
             // lblStartingPosition
             // 
             this.lblStartingPosition.AutoSize = true;
-            this.lblStartingPosition.Location = new System.Drawing.Point(6, 159);
+            this.lblStartingPosition.Location = new System.Drawing.Point(8, 122);
             this.lblStartingPosition.Name = "lblStartingPosition";
             this.lblStartingPosition.Size = new System.Drawing.Size(43, 13);
             this.lblStartingPosition.TabIndex = 48;
@@ -695,78 +778,75 @@ namespace ACCG
             // 
             // grbOpponents
             // 
+            this.grbOpponents.Controls.Add(this.btnLoadOpponents);
             this.grbOpponents.Controls.Add(this.lbOpponents);
             this.grbOpponents.Controls.Add(this.btnDeleteOpponent);
             this.grbOpponents.Controls.Add(this.btnEditOpponent);
             this.grbOpponents.Controls.Add(this.btnNewOpponent);
-            this.grbOpponents.Location = new System.Drawing.Point(32, 209);
+            this.grbOpponents.Location = new System.Drawing.Point(8, 172);
             this.grbOpponents.Name = "grbOpponents";
-            this.grbOpponents.Size = new System.Drawing.Size(135, 148);
+            this.grbOpponents.Size = new System.Drawing.Size(194, 148);
             this.grbOpponents.TabIndex = 47;
             this.grbOpponents.TabStop = false;
             this.grbOpponents.Text = "Opponents";
             // 
+            // btnLoadOpponents
+            // 
+            this.btnLoadOpponents.Image = global::ACCG.Properties.Resources.Open_6529_24;
+            this.btnLoadOpponents.Location = new System.Drawing.Point(15, 118);
+            this.btnLoadOpponents.Name = "btnLoadOpponents";
+            this.btnLoadOpponents.Size = new System.Drawing.Size(37, 23);
+            this.btnLoadOpponents.TabIndex = 31;
+            this.tltLoadOpponents.SetToolTip(this.btnLoadOpponents, "Load Opponents");
+            this.btnLoadOpponents.UseVisualStyleBackColor = true;
+            this.btnLoadOpponents.Click += new System.EventHandler(this.btnLoadOpponents_Click);
+            // 
             // lbOpponents
             // 
             this.lbOpponents.FormattingEnabled = true;
-            this.lbOpponents.Location = new System.Drawing.Point(6, 19);
+            this.lbOpponents.Location = new System.Drawing.Point(15, 17);
             this.lbOpponents.Name = "lbOpponents";
-            this.lbOpponents.Size = new System.Drawing.Size(123, 95);
+            this.lbOpponents.Size = new System.Drawing.Size(166, 95);
             this.lbOpponents.TabIndex = 25;
             this.lbOpponents.SelectedIndexChanged += new System.EventHandler(this.lbOpponents_SelectedIndexChanged);
             // 
             // btnDeleteOpponent
             // 
             this.btnDeleteOpponent.Image = global::ACCG.Properties.Resources.Clearallrequests_8816;
-            this.btnDeleteOpponent.Location = new System.Drawing.Point(92, 120);
+            this.btnDeleteOpponent.Location = new System.Drawing.Point(144, 118);
             this.btnDeleteOpponent.Name = "btnDeleteOpponent";
             this.btnDeleteOpponent.Size = new System.Drawing.Size(37, 23);
             this.btnDeleteOpponent.TabIndex = 29;
+            this.tltDeleteOpponent.SetToolTip(this.btnDeleteOpponent, "Delete Opponent");
             this.btnDeleteOpponent.UseVisualStyleBackColor = true;
             this.btnDeleteOpponent.Click += new System.EventHandler(this.btnDeleteOpponent_Click);
             // 
             // btnEditOpponent
             // 
             this.btnEditOpponent.Image = global::ACCG.Properties.Resources.EditTitleString_357;
-            this.btnEditOpponent.Location = new System.Drawing.Point(49, 120);
+            this.btnEditOpponent.Location = new System.Drawing.Point(101, 118);
             this.btnEditOpponent.Name = "btnEditOpponent";
             this.btnEditOpponent.Size = new System.Drawing.Size(37, 23);
             this.btnEditOpponent.TabIndex = 28;
+            this.tltEditOpponent.SetToolTip(this.btnEditOpponent, "Edit Opponent");
             this.btnEditOpponent.UseVisualStyleBackColor = true;
             this.btnEditOpponent.Click += new System.EventHandler(this.btnEditOpponent_Click);
             // 
             // btnNewOpponent
             // 
             this.btnNewOpponent.Image = global::ACCG.Properties.Resources.NewFile_6276;
-            this.btnNewOpponent.Location = new System.Drawing.Point(6, 120);
+            this.btnNewOpponent.Location = new System.Drawing.Point(58, 118);
             this.btnNewOpponent.Name = "btnNewOpponent";
             this.btnNewOpponent.Size = new System.Drawing.Size(37, 23);
             this.btnNewOpponent.TabIndex = 27;
+            this.tltNewOpponent.SetToolTip(this.btnNewOpponent, "New Opponent");
             this.btnNewOpponent.UseVisualStyleBackColor = true;
             this.btnNewOpponent.Click += new System.EventHandler(this.btnNewOpponent_Click);
-            // 
-            // lblTrack
-            // 
-            this.lblTrack.AutoSize = true;
-            this.lblTrack.Location = new System.Drawing.Point(6, 24);
-            this.lblTrack.Name = "lblTrack";
-            this.lblTrack.Size = new System.Drawing.Size(35, 13);
-            this.lblTrack.TabIndex = 17;
-            this.lblTrack.Text = "Track";
-            // 
-            // cbQuickRaceTrack
-            // 
-            this.cbQuickRaceTrack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbQuickRaceTrack.FormattingEnabled = true;
-            this.cbQuickRaceTrack.Location = new System.Drawing.Point(47, 21);
-            this.cbQuickRaceTrack.Name = "cbQuickRaceTrack";
-            this.cbQuickRaceTrack.Size = new System.Drawing.Size(145, 21);
-            this.cbQuickRaceTrack.TabIndex = 18;
             // 
             // lblNumberOfLapsValue
             // 
             this.lblNumberOfLapsValue.AutoSize = true;
-            this.lblNumberOfLapsValue.Location = new System.Drawing.Point(157, 110);
+            this.lblNumberOfLapsValue.Location = new System.Drawing.Point(159, 73);
             this.lblNumberOfLapsValue.Name = "lblNumberOfLapsValue";
             this.lblNumberOfLapsValue.Size = new System.Drawing.Size(35, 13);
             this.lblNumberOfLapsValue.TabIndex = 36;
@@ -775,7 +855,7 @@ namespace ACCG
             // lblNumberOfCarsValue
             // 
             this.lblNumberOfCarsValue.AutoSize = true;
-            this.lblNumberOfCarsValue.Location = new System.Drawing.Point(157, 59);
+            this.lblNumberOfCarsValue.Location = new System.Drawing.Point(159, 22);
             this.lblNumberOfCarsValue.Name = "lblNumberOfCarsValue";
             this.lblNumberOfCarsValue.Size = new System.Drawing.Size(36, 13);
             this.lblNumberOfCarsValue.TabIndex = 35;
@@ -784,7 +864,7 @@ namespace ACCG
             // lblNumberOfCars
             // 
             this.lblNumberOfCars.AutoSize = true;
-            this.lblNumberOfCars.Location = new System.Drawing.Point(6, 59);
+            this.lblNumberOfCars.Location = new System.Drawing.Point(8, 22);
             this.lblNumberOfCars.Name = "lblNumberOfCars";
             this.lblNumberOfCars.Size = new System.Drawing.Size(28, 13);
             this.lblNumberOfCars.TabIndex = 21;
@@ -792,7 +872,7 @@ namespace ACCG
             // 
             // tkbNumberOfLaps
             // 
-            this.tkbNumberOfLaps.Location = new System.Drawing.Point(51, 107);
+            this.tkbNumberOfLaps.Location = new System.Drawing.Point(53, 70);
             this.tkbNumberOfLaps.Minimum = 2;
             this.tkbNumberOfLaps.Name = "tkbNumberOfLaps";
             this.tkbNumberOfLaps.Size = new System.Drawing.Size(104, 45);
@@ -802,7 +882,7 @@ namespace ACCG
             // 
             // tkbNumberOfCars
             // 
-            this.tkbNumberOfCars.Location = new System.Drawing.Point(47, 56);
+            this.tkbNumberOfCars.Location = new System.Drawing.Point(49, 19);
             this.tkbNumberOfCars.Maximum = 24;
             this.tkbNumberOfCars.Minimum = 1;
             this.tkbNumberOfCars.Name = "tkbNumberOfCars";
@@ -814,7 +894,7 @@ namespace ACCG
             // lblNumberOfLaps
             // 
             this.lblNumberOfLaps.AutoSize = true;
-            this.lblNumberOfLaps.Location = new System.Drawing.Point(6, 110);
+            this.lblNumberOfLaps.Location = new System.Drawing.Point(8, 73);
             this.lblNumberOfLaps.Name = "lblNumberOfLaps";
             this.lblNumberOfLaps.Size = new System.Drawing.Size(30, 13);
             this.lblNumberOfLaps.TabIndex = 25;
@@ -823,24 +903,214 @@ namespace ACCG
             // btnRandom
             // 
             this.btnRandom.Enabled = false;
-            this.btnRandom.Location = new System.Drawing.Point(496, 13);
+            this.btnRandom.Location = new System.Drawing.Point(497, 26);
             this.btnRandom.Name = "btnRandom";
             this.btnRandom.Size = new System.Drawing.Size(196, 41);
             this.btnRandom.TabIndex = 59;
             this.btnRandom.Text = "Random";
             this.btnRandom.UseVisualStyleBackColor = true;
             // 
+            // openOpponentsFileDialog
+            // 
+            this.openOpponentsFileDialog.Filter = "opponents files (opponents.ini)|opponents.ini";
+            // 
+            // grbTimeAttackGoals
+            // 
+            this.grbTimeAttackGoals.Controls.Add(this.label17);
+            this.grbTimeAttackGoals.Controls.Add(this.label16);
+            this.grbTimeAttackGoals.Controls.Add(this.label1);
+            this.grbTimeAttackGoals.Controls.Add(this.label2);
+            this.grbTimeAttackGoals.Controls.Add(this.label4);
+            this.grbTimeAttackGoals.Controls.Add(this.lblPoints);
+            this.grbTimeAttackGoals.Controls.Add(this.tbPointsBronzeTier);
+            this.grbTimeAttackGoals.Controls.Add(this.tbPointsSilverTier);
+            this.grbTimeAttackGoals.Controls.Add(this.tbPointsGoldTier);
+            this.grbTimeAttackGoals.Location = new System.Drawing.Point(274, 277);
+            this.grbTimeAttackGoals.Name = "grbTimeAttackGoals";
+            this.grbTimeAttackGoals.Size = new System.Drawing.Size(206, 100);
+            this.grbTimeAttackGoals.TabIndex = 60;
+            this.grbTimeAttackGoals.TabStop = false;
+            this.grbTimeAttackGoals.Text = "Time Attack Goals";
+            // 
+            // grbHotlapGoals
+            // 
+            this.grbHotlapGoals.Controls.Add(this.label13);
+            this.grbHotlapGoals.Controls.Add(this.label12);
+            this.grbHotlapGoals.Controls.Add(this.label11);
+            this.grbHotlapGoals.Controls.Add(this.label8);
+            this.grbHotlapGoals.Controls.Add(this.label5);
+            this.grbHotlapGoals.Controls.Add(this.label6);
+            this.grbHotlapGoals.Controls.Add(this.label9);
+            this.grbHotlapGoals.Controls.Add(this.label7);
+            this.grbHotlapGoals.Controls.Add(this.tbTimeSecondsBronzeTier);
+            this.grbHotlapGoals.Controls.Add(this.label10);
+            this.grbHotlapGoals.Controls.Add(this.tbTimeMinutesGoldTier);
+            this.grbHotlapGoals.Controls.Add(this.tbTimeMinutesBronzeTier);
+            this.grbHotlapGoals.Controls.Add(this.tbTimeSecondsGoldTier);
+            this.grbHotlapGoals.Controls.Add(this.tbTimeSecondsSilverTier);
+            this.grbHotlapGoals.Controls.Add(this.tbTimeMinutesSilverTier);
+            this.grbHotlapGoals.Location = new System.Drawing.Point(274, 383);
+            this.grbHotlapGoals.Name = "grbHotlapGoals";
+            this.grbHotlapGoals.Size = new System.Drawing.Size(206, 100);
+            this.grbHotlapGoals.TabIndex = 61;
+            this.grbHotlapGoals.TabStop = false;
+            this.grbHotlapGoals.Text = "Hotlap Goals";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "Bronze";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(43, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Silver";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(44, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Gold";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 74);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 60;
+            this.label5.Text = "Bronze";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(26, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 59;
+            this.label6.Text = "Silver";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(27, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 13);
+            this.label7.TabIndex = 58;
+            this.label7.Text = "Gold";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(152, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(28, 13);
+            this.label8.TabIndex = 63;
+            this.label8.Text = ".000";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(152, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 62;
+            this.label9.Text = ".000";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(153, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 13);
+            this.label10.TabIndex = 61;
+            this.label10.Text = ".000";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(106, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(10, 13);
+            this.label11.TabIndex = 64;
+            this.label11.Text = ":";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(106, 48);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(10, 13);
+            this.label12.TabIndex = 65;
+            this.label12.Text = ":";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(106, 74);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(10, 13);
+            this.label13.TabIndex = 66;
+            this.label13.Text = ":";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(128, 60);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(43, 13);
+            this.label14.TabIndex = 49;
+            this.label14.Text = "position";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(128, 86);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(43, 13);
+            this.label15.TabIndex = 50;
+            this.label15.Text = "position";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(128, 48);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(35, 13);
+            this.label16.TabIndex = 50;
+            this.label16.Text = "points";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(128, 74);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(35, 13);
+            this.label17.TabIndex = 51;
+            this.label17.Text = "points";
+            // 
             // ACCGNewSingleEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 697);
+            this.ClientSize = new System.Drawing.Size(703, 674);
+            this.Controls.Add(this.grbHotlapGoals);
+            this.Controls.Add(this.grbTimeAttackGoals);
             this.Controls.Add(this.btnRandom);
             this.Controls.Add(this.grbQuickRace);
             this.Controls.Add(this.grbCar);
-            this.Controls.Add(this.grbEventGoals);
             this.Controls.Add(this.grbEventKind);
-            this.Controls.Add(this.grbTimeAttack);
             this.Controls.Add(this.grbTrack);
             this.Controls.Add(this.grbAmbient);
             this.Controls.Add(this.grbEvent);
@@ -856,7 +1126,7 @@ namespace ACCG
             this.grbImages.ResumeLayout(false);
             this.grbTrack.ResumeLayout(false);
             this.grbTrack.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbCondition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTrackCondition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).EndInit();
             this.grbAmbient.ResumeLayout(false);
             this.grbAmbient.PerformLayout();
@@ -864,12 +1134,10 @@ namespace ACCG
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).EndInit();
             this.grbEvent.ResumeLayout(false);
             this.grbEvent.PerformLayout();
-            this.grbTimeAttack.ResumeLayout(false);
-            this.grbTimeAttack.PerformLayout();
             this.grbEventKind.ResumeLayout(false);
             this.grbEventKind.PerformLayout();
-            this.grbEventGoals.ResumeLayout(false);
-            this.grbEventGoals.PerformLayout();
+            this.grbQuickRaceGoals.ResumeLayout(false);
+            this.grbQuickRaceGoals.PerformLayout();
             this.grbCar.ResumeLayout(false);
             this.grbCar.PerformLayout();
             this.grbQuickRace.ResumeLayout(false);
@@ -878,6 +1146,10 @@ namespace ACCG
             this.grbOpponents.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfCars)).EndInit();
+            this.grbTimeAttackGoals.ResumeLayout(false);
+            this.grbTimeAttackGoals.PerformLayout();
+            this.grbHotlapGoals.ResumeLayout(false);
+            this.grbHotlapGoals.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -904,7 +1176,7 @@ namespace ACCG
         private System.Windows.Forms.GroupBox grbTrack;
         private System.Windows.Forms.Label lblTrackConditionValue;
         private System.Windows.Forms.Label lblTrackTemperatureValue;
-        private System.Windows.Forms.TrackBar tkbCondition;
+        private System.Windows.Forms.TrackBar tkbTrackCondition;
         private System.Windows.Forms.TrackBar tkbTrackTemperature;
         private System.Windows.Forms.Label lblTrackCondition;
         private System.Windows.Forms.Label lblTrackTemperature;
@@ -922,9 +1194,8 @@ namespace ACCG
         private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.Label lblPenalties;
         private System.Windows.Forms.CheckBox ckbPenalties;
-        private System.Windows.Forms.GroupBox grbTimeAttack;
         private System.Windows.Forms.GroupBox grbEventKind;
-        private System.Windows.Forms.GroupBox grbEventGoals;
+        private System.Windows.Forms.GroupBox grbQuickRaceGoals;
         private System.Windows.Forms.RadioButton rbQuickRace;
         private System.Windows.Forms.RadioButton rbTimeAttack;
         private System.Windows.Forms.GroupBox grbCar;
@@ -934,8 +1205,6 @@ namespace ACCG
         private System.Windows.Forms.Label lblSkin;
         private System.Windows.Forms.ComboBox cbSkin;
         private System.Windows.Forms.GroupBox grbQuickRace;
-        private System.Windows.Forms.Label lblTrack;
-        private System.Windows.Forms.ComboBox cbQuickRaceTrack;
         private System.Windows.Forms.Label lblNumberOfLapsValue;
         private System.Windows.Forms.Label lblNumberOfCarsValue;
         private System.Windows.Forms.Label lblNumberOfCars;
@@ -947,8 +1216,6 @@ namespace ACCG
         private System.Windows.Forms.Button btnDeleteOpponent;
         private System.Windows.Forms.Button btnEditOpponent;
         private System.Windows.Forms.Button btnNewOpponent;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbTimeAttackTrack;
         private System.Windows.Forms.Label lblPoints;
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.TextBox tbPointsGoldTier;
@@ -968,6 +1235,40 @@ namespace ACCG
         private System.Windows.Forms.OpenFileDialog openImageFileDialog;
 
         public static BindingSource bs_opponents_datasource = new BindingSource();
+        private ToolTip tltNewOpponent;
+        private ToolTip tltEditOpponent;
+        private ToolTip tltDeleteOpponent;
+        private ToolTip tltLoadPreviewImage;
+        private Button btnLoadOpponents;
+        private OpenFileDialog openOpponentsFileDialog;
+        private ToolTip tltLoadOpponents;
+        private RadioButton rbHotlap;
+        private TextBox tbTimeSecondsBronzeTier;
+        private TextBox tbTimeMinutesBronzeTier;
+        private TextBox tbTimeSecondsSilverTier;
+        private TextBox tbTimeMinutesSilverTier;
+        private TextBox tbTimeSecondsGoldTier;
+        private TextBox tbTimeMinutesGoldTier;
+        private Label lblTrack;
+        private ComboBox cbTrack;
+        private Label label15;
+        private Label label14;
+        private GroupBox grbTimeAttackGoals;
+        private Label label17;
+        private Label label16;
+        private Label label1;
+        private Label label2;
+        private Label label4;
+        private GroupBox grbHotlapGoals;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label8;
+        private Label label5;
+        private Label label6;
+        private Label label9;
+        private Label label7;
+        private Label label10;
 
         public static Event temp_event { get; set; }
         public static Car event_car { get; set; }

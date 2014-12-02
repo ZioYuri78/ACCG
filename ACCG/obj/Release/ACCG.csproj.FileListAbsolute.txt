@@ -18,22 +18,22 @@ D:\Gamedev\AssettoCorsa\ACCG\ACCG\obj\Release\ACCG.application
 C:\Users\Yuri Belleri\Desktop\ACCG_src_backup\ACCG\bin\Release\ACCG.exe.config
 C:\Users\Yuri Belleri\Desktop\ACCG_src_backup\ACCG\obj\Release\ACCG.exe
 C:\Users\Yuri Belleri\Desktop\ACCG_src_backup\ACCG\obj\Release\ACCG.pdb
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\ACCG.exe
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.exe
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGCredits.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGMainForm.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewChampionshipEventForm.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewOpponentForm.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewSeriesForm.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewSingleEventForm.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.Properties.Resources.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.SplashScreen.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.csproj.GenerateResource.Cache
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.pdb
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\ACCG.exe.config
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\ACCG.exe.manifest
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\ACCG.application
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\ACCG.exe
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\ACCG.pdb
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGCredits.resources
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGMainForm.resources
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewOpponentForm.resources
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewSeriesForm.resources
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.Properties.Resources.resources
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.csproj.GenerateResource.Cache
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.exe.manifest
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.application
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.exe
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.pdb
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.csprojResolveAssemblyReference.cache
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewChampionshipEventForm.resources
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.ACCGNewSingleEventForm.resources
-D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.SplashScreen.resources

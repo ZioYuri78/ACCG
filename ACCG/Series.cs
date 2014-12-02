@@ -12,15 +12,14 @@ namespace ACCG
     {
 
         public List<Event> events_list { get; set; }
-        public List<Opponent> opponents_list { get; set; }  // Only for championship
-        public int events_gloabl_ID { get; set; }
+        public List<Opponent> opponents_list { get; set; }  // Only for championship        
         public int ID { get; set; }
         public string code { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public string requires { get; set; }
         public string points { get; set; }
-        public Car model { get; set; }
+        public Car car { get; set; }
         public Skin skin { get; set; }
         public Goals series_goals { get; set; }
         //public string goalsPoints { get; set; } //placeholder

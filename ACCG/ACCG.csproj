@@ -88,6 +88,7 @@
     <Compile Include="ACCGNewSingleEventForm.Designer.cs">
       <DependentUpon>ACCGNewSingleEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ACCGUtility.cs" />
     <Compile Include="AlphanumComparatorFast.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="ACCGCredits.cs">

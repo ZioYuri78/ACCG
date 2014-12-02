@@ -24,7 +24,7 @@ namespace ACCG
 
         public ACCGNewSeriesForm(Series current_selected_series)
         {
-            // TODO: Complete member initialization
+            
             this.current_selected_series = current_selected_series;
 
             InitializeComponent();
@@ -42,30 +42,95 @@ namespace ACCG
 
                 rbChampionship.Checked = temp_series.isChampionship;
                 rbSingleEvents.Checked = temp_series.isSingleEvents;
+                rbGoalsPoints.Checked = rbChampionship.Checked;
+
+                
 
                 if (rbChampionship.Checked)
                 {
                     rbSingleEvents.Enabled = false;
+                    tbPoints.Enabled = true;
+                    cbCar.Enabled = true;
+
+                    if (temp_series.series_goals.ranking != "")
+                    {
+                        
+                        rbRanking.Checked = true;
+                        tbRanking.Enabled = true;
+                        rbGoalsPoints.Checked = false;
+                        tbGoalsPoints.Enabled = false;
+
+                        tbGoldTier.Enabled = false;
+                        tbSilverTier.Enabled = false;
+                        tbBronzeTier.Enabled = false;
+                    }
+                    else
+                    {
+                        rbRanking.Checked = false;
+                        tbRanking.Enabled = false;
+                        rbGoalsPoints.Checked = true;
+                        tbGoalsPoints.Enabled = true;
+                    }
                 }
                 else
                 {
-                    rbChampionship.Enabled = false;
+                    rbChampionship.Enabled = false;                    
+                    skinPreviewImage = ACCG.Properties.Resources.placeholder;
                 }
 
+                
                 tbPoints.Text = temp_series.points;
                 tbGoalsPoints.Text = temp_series.series_goals.points;
-
-                tbGoldTier.Text = temp_series.series_goals.tier_1;
+                tbRanking.Text = temp_series.series_goals.ranking;
+                tbGoldTier.Text = temp_series.series_goals.tier_3;
                 tbSilverTier.Text = temp_series.series_goals.tier_2;
-                tbBronzeTier.Text = temp_series.series_goals.tier_3;
+                tbBronzeTier.Text = temp_series.series_goals.tier_1;
                                 
                 this.Refresh();
             }
             else
             {
-                temp_series = new Series();              
+                temp_series = new Series();
+
+                if (rbChampionship.Checked)
+                {
+
+                    temp_series.isChampionship = rbChampionship.Checked;
+
+                    if (current_selected_series == null)
+                    {
+                        temp_series.opponents_list = new List<Opponent>();
+                    }
+
+                    tbPoints.Enabled = true;
+                    cbCar.Enabled = true;
+                    cbSkin.Enabled = true;
+                    tbRanking.Enabled = false;
+                    lbOpponents.Enabled = true;
+
+                    tbGoldTier.Enabled = false;
+                    tbSilverTier.Enabled = false;
+                    tbBronzeTier.Enabled = false;
+
+                }
+                else if (rbSingleEvents.Checked)
+                {
+
+                    temp_series.isSingleEvents = rbSingleEvents.Checked;
+
+                    tbPoints.Enabled = false;
+                    cbCar.Enabled = false;
+                    cbSkin.Enabled = false;
+
+                    lbOpponents.Enabled = false;
+
+                    tbGoldTier.Enabled = true;
+                    tbSilverTier.Enabled = true;
+                    tbBronzeTier.Enabled = true;
+
+                }
             }                                    
-            
+            /*
             if (rbChampionship.Checked)
             {
 
@@ -79,7 +144,7 @@ namespace ACCG
                 tbPoints.Enabled = true;
                 cbCar.Enabled = true;
                 cbSkin.Enabled = true;
-                tbGoalsPoints.Enabled = true;
+                tbRanking.Enabled = false;
                 lbOpponents.Enabled = true;
 
                 tbGoldTier.Enabled = false;
@@ -87,7 +152,7 @@ namespace ACCG
                 tbBronzeTier.Enabled = false;
                
             }
-            else
+            else if(rbSingleEvents.Checked)
             {
 
                 temp_series.isSingleEvents = rbSingleEvents.Checked;
@@ -95,7 +160,7 @@ namespace ACCG
                 tbPoints.Enabled = false;
                 cbCar.Enabled = false;
                 cbSkin.Enabled = false;                
-                tbGoalsPoints.Enabled = false;
+                
                 lbOpponents.Enabled = false;
 
                 tbGoldTier.Enabled = true;
@@ -103,7 +168,7 @@ namespace ACCG
                 tbBronzeTier.Enabled = true;
                 
             }
-            
+            */
 
             // Populating the requires series combobox
             ac_series_path = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
@@ -138,9 +203,9 @@ namespace ACCG
             }
 
 
-            if (current_selected_series != null)
+            if (current_selected_series != null && current_selected_series.isChampionship)
             {
-                cbCar.Text = temp_series.model.model;
+                cbCar.Text = temp_series.car.model;
             }
             else
             {
@@ -149,9 +214,9 @@ namespace ACCG
             
 
             // Set initial car model
-            if (current_selected_series != null)
-            {
-                champ_player_car = temp_series.model;
+            if (current_selected_series != null && current_selected_series.isChampionship)
+            {               
+                champ_player_car = temp_series.car;                                
             }
             else
             {
@@ -165,10 +230,22 @@ namespace ACCG
                 cbSkin.Items.Add(skin.skin_name);
             }
 
+            if (current_selected_series != null && current_selected_series.isChampionship)
+            {
+                foreach (Skin skin in ACCGNewSeriesForm.champ_player_car.skins)
+                {
+                    cbSkin.Items.Add(skin.skin_name);
+                }
+            }
+            
             if (current_selected_series != null)
             {
-                cbSkin.Text = temp_series.skin.skin_name;
-                skinPreviewImage = temp_series.skin.skin_preview;
+                if (current_selected_series.isChampionship)
+                {
+                    cbSkin.Text = temp_series.skin.skin_name;
+                    skinPreviewImage = temp_series.skin.skin_preview;
+                }
+                
             }
             else
             {
@@ -201,25 +278,25 @@ namespace ACCG
             }
             else if (temp_series.isSingleEvents && tbGoldTier.Text == "")
             {
-                MessageBox.Show("");
-            }
-            else if (temp_series.isSingleEvents && !IsDigit(tbGoldTier.Text))
+                MessageBox.Show("Missing \"Gold\" field!");
+            }            
+            else if (temp_series.isSingleEvents && !ACCGUtility.IsDigit(tbGoldTier.Text))
             {
                 MessageBox.Show("Goals Points field have to contain only numbers!");
             }
             else if (temp_series.isSingleEvents && tbSilverTier.Text == "")
             {
-                MessageBox.Show("");
+                MessageBox.Show("Missing \"Silver\" field!");
             }
-            else if (temp_series.isSingleEvents && !IsDigit(tbSilverTier.Text))
+            else if (temp_series.isSingleEvents && !ACCGUtility.IsDigit(tbSilverTier.Text))
             {
                 MessageBox.Show("Goals Points field have to contain only numbers!");
             }
             else if (temp_series.isSingleEvents && tbBronzeTier.Text == "")
             {
-                MessageBox.Show("");
+                MessageBox.Show("Missing \"Bronze\" field!");
             }
-            else if (temp_series.isSingleEvents && !IsDigit(tbBronzeTier.Text))
+            else if (temp_series.isSingleEvents && !ACCGUtility.IsDigit(tbBronzeTier.Text))
             {
                 MessageBox.Show("Goals Points field have to contain only numbers!");
             }
@@ -235,17 +312,25 @@ namespace ACCG
             {
                 MessageBox.Show("The points field can't start or finish with \",\"!");            
             }
-            else if (temp_series.isChampionship && !IsDigit(tbPoints.Text, ','))
+            else if (temp_series.isChampionship && !ACCGUtility.IsDigit(tbPoints.Text, ','))
             {
                 MessageBox.Show("Points field have to contain only numbers!");
             }
-            else if (temp_series.isChampionship && tbGoalsPoints.Text == "" ) 
+            else if (temp_series.isChampionship && rbGoalsPoints.Checked && tbGoalsPoints.Text == "" ) 
             {                
-                MessageBox.Show("Missing \"Goals\" field!");
+                MessageBox.Show("Missing \"Goals Points\" field!");
             }
-            else if (temp_series.isChampionship && !IsDigit(tbGoalsPoints.Text))
+            else if (temp_series.isChampionship && rbGoalsPoints.Checked && !ACCGUtility.IsDigit(tbGoalsPoints.Text))
             {
                 MessageBox.Show("Goals Points field have to contain only numbers!");
+            }
+            else if (temp_series.isChampionship && rbRanking.Checked && tbRanking.Text == "")
+            {
+                MessageBox.Show("Missing \"Ranking\" field!");
+            }
+            else if (temp_series.isChampionship && rbRanking.Checked && !ACCGUtility.IsDigit(tbRanking.Text))
+            {
+                MessageBox.Show("Ranking field have to contain only numbers!");
             }
             else                                                                                      
             {
@@ -260,41 +345,27 @@ namespace ACCG
 
                 if (temp_series.isChampionship)
                 {
-                    temp_series.model = champ_player_car;
+                    temp_series.car = champ_player_car;
                     temp_series.skin.skin_name = cbSkin.SelectedItem.ToString();
                     temp_series.skin.skin_preview = skinPreviewImage;
-                    temp_series.points = tbPoints.Text;
+                    temp_series.points = tbPoints.Text;                    
                     temp_series.series_goals.points = tbGoalsPoints.Text;
+                    temp_series.series_goals.ranking = tbRanking.Text;
                 }
                 else
                 {
                     Car placeholder = new Car();
                     placeholder.model = "";
                     placeholder.skins.Add(new Skin());
-                    temp_series.model = placeholder;
-                    temp_series.series_goals.tier_1 = tbGoldTier.Text;
+                    temp_series.car = placeholder;
+                    temp_series.series_goals.tier_1 = tbBronzeTier.Text;
                     temp_series.series_goals.tier_2 = tbSilverTier.Text;
-                    temp_series.series_goals.tier_3 = tbBronzeTier.Text;
+                    temp_series.series_goals.tier_3 = tbGoldTier.Text;
                 }                                    
                 
-                temp_series.isEdited = false;
-                temp_series.isGenerated = false;
-
-                /*
-                string[] ac_series_id_list = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
-                int[] numbers = new int[ac_series_id_list.Length];
-
-                if (ac_series_id_list.Length != 0)
-                {
-                    for (int i = 0; i < ac_series_id_list.Length; i++)
-                    {
-                        numbers[i] = Convert.ToInt32(ac_series_id_list[i].Substring(ac_series_id_list[i].LastIndexOf(@"s") + 1));
-                    }
-
-                }
-                               
-                temp_series.ID = numbers.Max() + 1;
-                  */              
+                //temp_series.isEdited = false;
+                //temp_series.isGenerated = false;
+                    
                 // Add the current series to ACCG main series list
                 if (current_selected_series != null) // Edit mode
                 {
@@ -312,7 +383,7 @@ namespace ACCG
                 ACCGMainForm.bs_series_datasource.ResetBindings(false);
                 
                 // Saving the accg series list                 
-                ACCGMainForm.accg_resource.SaveACCGSeries(ACCGMainForm.accg_series_file_name, ACCGMainForm.accg_series_list, e);                               
+                ACCGMainForm.accg_resource.SaveACCGSeries(ACCGMainForm.accg_series_file_name, ACCGMainForm.accg_series_list);                               
 
                 this.Close();
             }
@@ -332,7 +403,11 @@ namespace ACCG
             grbCar.Enabled = rbChampionship.Checked;
             grbOpponents.Enabled = rbChampionship.Checked;
 
-            tbGoalsPoints.Enabled = rbChampionship.Checked;
+            rbGoalsPoints.Enabled = rbChampionship.Checked;
+            tbGoalsPoints.Enabled = rbGoalsPoints.Checked;
+
+            rbRanking.Enabled = rbChampionship.Checked;
+            tbRanking.Enabled = rbRanking.Checked;
 
             tbGoldTier.Text = "";
             tbSilverTier.Text = "";
@@ -349,9 +424,29 @@ namespace ACCG
 
             tbPoints.Text = "";
             tbGoalsPoints.Text = "";
-
+            tbGoalsPoints.Enabled = false;
+            tbRanking.Text = "";
+            tbRanking.Enabled = false;
         }
-      
+
+        private void rbGoalsPoints_CheckedChanged(object sender, EventArgs e)
+        {
+            tbGoalsPoints.Enabled = rbGoalsPoints.Checked;
+            if (rbGoalsPoints.Checked)
+            {
+                tbRanking.Text = "";
+            }
+        }
+
+        private void rbRanking_CheckedChanged(object sender, EventArgs e)
+        {
+            tbRanking.Enabled = rbRanking.Checked;
+            if (rbRanking.Checked)
+            {
+                tbGoalsPoints.Text = "";
+            }
+        }
+
         private void cbCar_SelectionChangeCommitted(object sender, EventArgs e)
         {
             champ_player_car = ACCGMainForm.ac_cars_list.Find(x => x.model == cbCar.SelectedItem.ToString());
@@ -403,8 +498,8 @@ namespace ACCG
 
                 if (temp_series.isSingleEvents)
                 {
-                    rtbEventsInfo.AppendText("Car: " + current_selected_event.event_car + "\n");
-                    rtbEventsInfo.AppendText("Skin: " + current_selected_event.event_car_skin + "\n"); 
+                    rtbEventsInfo.AppendText("Car: " + current_selected_event.event_car.model + "\n");
+                    rtbEventsInfo.AppendText("Skin: " + current_selected_event.event_car_skin.skin_name + "\n"); 
                 }
                 
                 rtbEventsInfo.AppendText("Number of cars: " + current_selected_event.numberOfCars + "\n");
@@ -449,15 +544,29 @@ namespace ACCG
 
             if (temp_series.isChampionship)
             {
+                
                 ACCGNewChampionshipEventForm newEventForm = new ACCGNewChampionshipEventForm();
                 newEventForm.Text = "New Championship Event";
                 newEventForm.ShowDialog();
+
+                if (temp_series.events_list.Count == 0)
+                {
+                    rbSingleEvents.Enabled = true;
+                }
+                else rbSingleEvents.Enabled = false;
             }
             else
             {
+                
                 ACCGNewSingleEventForm newSingleEventForm = new ACCGNewSingleEventForm();
                 newSingleEventForm.Text = "New Single Event";
                 newSingleEventForm.ShowDialog();
+
+                if (temp_series.events_list.Count == 0)
+                {
+                    rbChampionship.Enabled = true;
+                }
+                else rbChampionship.Enabled = false;
             }
             
             for (int i = 0; i < temp_series.events_list.Count; i++)
@@ -518,7 +627,52 @@ namespace ACCG
 
                     bs_events_datasource.ResetBindings(false);
                     rtbEventsInfo.ResetText();
+
+                    if (temp_series.isChampionship)
+                    {
+                        if (temp_series.events_list.Count == 0)
+                        {
+                            rbSingleEvents.Enabled = true;
+                        }
+                        else rbSingleEvents.Enabled = false;
+                    }
+                    else
+                    {
+                        if (temp_series.events_list.Count == 0)
+                        {
+                            rbChampionship.Enabled = true;
+                        }
+                        else rbChampionship.Enabled = false;
+                    }
                 }
+            }
+        }
+
+
+        private void btnLoadOpponents_Click(object sender, EventArgs e)
+        {
+            if (openOpponentsFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openOpponentsFileDialog.FileName;
+
+                
+
+                if (current_selected_series != null)
+                {
+                    current_selected_series.opponents_list = ACCGMainForm.accg_resource.LoadOpponents(filename);
+                    
+                }
+                else
+                {
+                    temp_series.opponents_list = ACCGMainForm.accg_resource.LoadOpponents(filename);
+                    
+                }
+
+                ACCGMainForm.bs_series_datasource.ResetBindings(false);
+                ShowData();
+
+                rtbOpponentsInfo.ResetText();
+                
             }
         }
 
@@ -579,35 +733,7 @@ namespace ACCG
                 }
             }
         }
-
-        private bool IsDigit(string text)
-        {
-            foreach (char digit in text)
-            {
-                if (digit < '0' | digit > '9')
-                {
-                    return false;
-                    
-                }
-            }
-
-            return true;
-        }
-
-        private bool IsDigit(string text, char exclude)
-        {
-            foreach (char digit in text)
-            {
-                if (digit < '0' | digit > '9' && digit != exclude)
-                {
-                    return false;
-
-                }
-            }
-
-            return true;
-        }
-
+        
         private void btnOpenStartImage_Click(object sender, EventArgs e)
         {
             if (openImageFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -659,7 +785,7 @@ namespace ACCG
             {
                 if (temp_series.startImage != null)
                 {
-                    startThumbnailImage = (Bitmap)ACCGMainForm.accg_resource.ScaleImage(temp_series.startImage, startImagePanel.Width, startImagePanel.Height);
+                    startThumbnailImage = (Bitmap)ACCGUtility.ScaleImage(temp_series.startImage, startImagePanel.Width, startImagePanel.Height);
                 }
                 else
                 {
@@ -674,7 +800,7 @@ namespace ACCG
             }
             else if(startThumbnailImage != null)
             {
-                startThumbnailImage = (Bitmap)ACCGMainForm.accg_resource.ScaleImage(startThumbnailImage, startImagePanel.Width, startImagePanel.Height);
+                startThumbnailImage = (Bitmap)ACCGUtility.ScaleImage(startThumbnailImage, startImagePanel.Width, startImagePanel.Height);
             }
             
 
@@ -739,20 +865,29 @@ namespace ACCG
 
         private void skinPreviewImagePanel_Paint(object sender, PaintEventArgs e)
         {
-            Bitmap skinPreviewImageThumb = (Bitmap)ACCGMainForm.accg_resource.ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
+            
+            if (temp_series.isChampionship)
+            {
+                Bitmap skinPreviewImageThumb = (Bitmap)ACCGUtility.ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
 
-            e.Graphics.DrawImage(skinPreviewImageThumb,
+                e.Graphics.DrawImage(skinPreviewImageThumb,
                 0,
                 0,
                 skinPreviewImageThumb.Width,
                 skinPreviewImageThumb.Height);
+            }
+            else
+            {                                
+                e.Graphics.DrawImage(skinPreviewImage,
+                0,
+                0,
+                skinPreviewImage.Width,
+                skinPreviewImage.Height);
+            }
+            
+            
         }
-
-       
-        
-
-       
-              
+                                       
 
     }
 

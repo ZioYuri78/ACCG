@@ -122,7 +122,7 @@ namespace ACCG
                                 
                 Console.WriteLine("DEBUG: ID = {0}",temp_opponent.ID);
                 temp_opponent.model = opponent_car;
-                temp_opponent.setup = "";   //temp_opponent.setup = cbSetup.SelectedItem.ToString(); 
+                //temp_opponent.setup = 
                 temp_opponent.ai_level = tkbAIlevel.Value;
                 temp_opponent.skin.skin_name = cbSkin.SelectedItem.ToString();
                 temp_opponent.skin.skin_preview = skinPreviewImage;
@@ -193,7 +193,7 @@ namespace ACCG
 
         private void skinPreviewImagePanel_Paint(object sender, PaintEventArgs e)
         {
-            Bitmap skinPreviewImageThumb = (Bitmap)ACCGMainForm.accg_resource.ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
+            Bitmap skinPreviewImageThumb = (Bitmap)ACCGUtility.ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
 
             e.Graphics.DrawImage(skinPreviewImageThumb,
                 0,

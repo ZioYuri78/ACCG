@@ -45,10 +45,11 @@ namespace ACCG
                 temp_event = current_selected_event;
                 tbName.Text = current_selected_event.name;
                 tbDescription.Text = current_selected_event.description;
+                
                 tkbAmbientTemperature.Value = current_selected_event.ambient_temperature;
                 lblAmbTemperatureValue.Text = tkbAmbientTemperature.Value.ToString() + " °C";
-                tkbTime.Value = current_selected_event.time;
                 
+                tkbTime.Value = current_selected_event.time;
                 // Bad code
                 foreach (KeyValuePair<string, int> pair in ACCGMainForm.time_table)
                 {
@@ -58,6 +59,41 @@ namespace ACCG
                         break;
                     }
                 }
+
+                tkbTrackCondition.Value = current_selected_event.dynamic_track_preset;
+                // I don't like this way
+                switch (tkbTrackCondition.Value)
+                {
+                    case 0:
+                        lblTrackConditionValue.Text = "Dusty";
+                        break;
+
+                    case 1:
+                        lblTrackConditionValue.Text = "Old";
+                        break;
+
+                    case 2:
+                        lblTrackConditionValue.Text = "Slow";
+                        break;
+
+                    case 3:
+                        lblTrackConditionValue.Text = "Green";
+                        break;
+
+                    case 4:
+                        lblTrackConditionValue.Text = "Fast";
+                        break;
+
+                    case 5:
+                        lblTrackConditionValue.Text = "Optimum";
+                        break;
+
+                    default:
+                        Console.WriteLine("Default case");
+                        break;
+                }
+                
+                
                 
                 ckbPractice.Checked = current_selected_event.practice;
 
@@ -122,7 +158,7 @@ namespace ACCG
                 temp_event.track = cbTrack.SelectedItem.ToString();
                 temp_event.numberOfCars = tkbNumberOfCars.Value;
                 temp_event.penalties = ckbPenalties.Checked;
-                temp_event.dynamic_track_preset = tkbCondition.Value;
+                temp_event.dynamic_track_preset = tkbTrackCondition.Value;
                                 
                 // Sessions of the event                                
                 temp_event.session_list = new List<Session>();
@@ -248,7 +284,7 @@ namespace ACCG
         private void tkbCondition_Scroll(object sender, EventArgs e)
         {
             // placeolder code
-            switch (tkbCondition.Value)
+            switch (tkbTrackCondition.Value)
             {
                 case 0:
                     lblTrackConditionValue.Text = "Dusty";

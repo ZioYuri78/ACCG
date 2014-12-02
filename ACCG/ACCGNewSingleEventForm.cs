@@ -30,25 +30,20 @@ namespace ACCG
         private void ACCGNewSingleEventForm_Load(object sender, EventArgs e)
         {
 
-            grbTimeAttack.Enabled = rbTimeAttack.Checked;
-
-            tbPointsGoldTier.Enabled = rbTimeAttack.Checked;
-            tbPointsSilverTier.Enabled = rbTimeAttack.Checked;
-            tbPointsBronzeTier.Enabled = rbTimeAttack.Checked;
-
-            tbPositionGoldTier.Enabled = rbQuickRace.Checked;
-            tbPositionSilverTier.Enabled = rbQuickRace.Checked;
-            tbPositionBronzeTier.Enabled = rbQuickRace.Checked;
-
+            grbTimeAttackGoals.Enabled = rbTimeAttack.Checked;
+            grbHotlapGoals.Enabled = rbHotlap.Checked;
+            grbQuickRace.Enabled = rbQuickRace.Checked;            
+           
             if (current_selected_event != null)
             {
                 temp_event = current_selected_event;
                 tbName.Text = current_selected_event.name;
                 tbDescription.Text = current_selected_event.description;
-                tkbAmbientTemperature.Value = current_selected_event.ambient_temperature;
-                lblAmbTemperatureValue.Text = tkbAmbientTemperature.Value.ToString();
-                tkbTime.Value = current_selected_event.time;
 
+                tkbAmbientTemperature.Value = current_selected_event.ambient_temperature;
+                lblAmbTemperatureValue.Text = tkbAmbientTemperature.Value.ToString() + " °C";
+
+                tkbTime.Value = current_selected_event.time;
                 // Bad code
                 foreach (KeyValuePair<string, int> pair in ACCGMainForm.time_table)
                 {
@@ -59,37 +54,112 @@ namespace ACCG
                     }
                 }
 
-                cbQuickRaceTrack.Text = current_selected_event.track;
-                cbTimeAttackTrack.Text = current_selected_event.track;
+                tkbTrackCondition.Value = current_selected_event.dynamic_track_preset;
+                // I don't like this way
+                switch (tkbTrackCondition.Value)
+                {
+                    case 0:
+                        lblTrackConditionValue.Text = "Dusty";
+                        break;
+
+                    case 1:
+                        lblTrackConditionValue.Text = "Old";
+                        break;
+
+                    case 2:
+                        lblTrackConditionValue.Text = "Slow";
+                        break;
+
+                    case 3:
+                        lblTrackConditionValue.Text = "Green";
+                        break;
+
+                    case 4:
+                        lblTrackConditionValue.Text = "Fast";
+                        break;
+
+                    case 5:
+                        lblTrackConditionValue.Text = "Optimum";
+                        break;
+
+                    default:
+                        Console.WriteLine("Default case");
+                        break;
+                }                                                            
+
+                               
+                cbTrack.Text = current_selected_event.track;
+
+                if (current_selected_event.isQuickRace)
+                {
+                    rbTimeAttack.Enabled = false;
+
+                    tkbNumberOfCars.Value = current_selected_event.numberOfCars;
+                    lblNumberOfCarsValue.Text = current_selected_event.numberOfCars.ToString();
+
+                    tkbNumberOfLaps.Value = current_selected_event.numberOfLaps;
+                    lblNumberOfLapsValue.Text = current_selected_event.numberOfLaps.ToString();
+
+                    tkbStartPosition.Value = current_selected_event.start_position;
+                    lblStartPositionValue.Text = current_selected_event.start_position.ToString();
+                    
+                    tbPositionGoldTier.Text = current_selected_event.event_goals.tier_3;
+                    tbPositionSilverTier.Text = current_selected_event.event_goals.tier_2;
+                    tbPositionBronzeTier.Text = current_selected_event.event_goals.tier_1;
+                }
+                else if(current_selected_event.isTimeAttack)
+                {
+                    rbQuickRace.Enabled = false;
+                    grbQuickRace.Enabled = false;
+
+                    tbPositionGoldTier.Enabled = false;
+                    tbPositionSilverTier.Enabled = false;
+                    tbPositionBronzeTier.Enabled = false;
+
+                    rbTimeAttack.Checked = true;
+
+                    tbPointsGoldTier.Enabled = true;
+                    tbPointsSilverTier.Enabled = true;
+                    tbPointsBronzeTier.Enabled = true;
+
+                    tbPointsGoldTier.Text = current_selected_event.event_goals.tier_3;
+                    tbPointsSilverTier.Text = current_selected_event.event_goals.tier_2;
+                    tbPointsBronzeTier.Text = current_selected_event.event_goals.tier_1;
+                }
+                else if (current_selected_event.isHotlap)
+                {
+
+                }
 
             }
             else
             {
                 temp_event = new Event();
-
+                temp_event.isTimeAttack = rbTimeAttack.Checked;
+                temp_event.isQuickRace = rbQuickRace.Checked;
+                temp_event.isHotlap = rbHotlap.Checked;
             }
 
-            if (rbQuickRace.Checked)
+            if (current_selected_event == null && rbQuickRace.Checked)
             {
                 temp_event.opponents_list = new List<Opponent>();
             }
 
+           
+
             // Populating the track combo box
             foreach (string track in ACCGMainForm.ac_tracks_list)
             {
-                cbQuickRaceTrack.Items.Add(track);
-                cbTimeAttackTrack.Items.Add(track);
+                cbTrack.Items.Add(track);               
             }
 
             if(current_selected_event != null)
             {              
-                cbQuickRaceTrack.Text = current_selected_event.track;
-                cbTimeAttackTrack.Text = current_selected_event.track;
+                cbTrack.Text = current_selected_event.track;
             }
             else
             {
-                cbQuickRaceTrack.Text = ACCGMainForm.ac_tracks_list[0];
-                cbTimeAttackTrack.Text = ACCGMainForm.ac_tracks_list[0];
+                cbTrack.Text = ACCGMainForm.ac_tracks_list[0];                
             }
 
             // Populating the cars combo box
@@ -139,6 +209,60 @@ namespace ACCG
             {
                 MessageBox.Show("Missing \"Description\" field!");
             }
+            else if (temp_event.isQuickRace && temp_event.opponents_list.Count == 0)
+            {
+                MessageBox.Show("You need to create at least one opponent!");
+            }
+            else if (temp_event.isQuickRace && tbPositionGoldTier.Text == "" )
+            {
+                MessageBox.Show("Missing \"Gold Position\" field!");
+            }
+            else if(temp_event.isQuickRace && !ACCGUtility.IsDigit(tbPositionGoldTier.Text))
+            {
+                MessageBox.Show("Gold Position field have to contain only numbers!");
+            }
+            else if (temp_event.isQuickRace && tbPositionSilverTier.Text == "")
+            {
+                MessageBox.Show("Missing \"Silver Position\" field!");
+            }
+            else if (temp_event.isQuickRace && !ACCGUtility.IsDigit(tbPositionSilverTier.Text))
+            {
+                MessageBox.Show("Silver Position field have to contain only numbers!");
+            }
+            else if (temp_event.isQuickRace && tbPositionBronzeTier.Text == "")
+            {
+                MessageBox.Show("Missing \"Bronze Position\" field!");
+            }
+            else if (temp_event.isQuickRace && !ACCGUtility.IsDigit(tbPositionBronzeTier.Text))
+            {
+                MessageBox.Show("Bronze Position field have to contain only numbers!");
+            }
+            else if (temp_event.isTimeAttack && tbPointsGoldTier.Text == "")
+            {
+                MessageBox.Show("Missing \"Gold Points\" field!");
+            }
+            else if(temp_event.isTimeAttack && !ACCGUtility.IsDigit(tbPointsGoldTier.Text)) 
+            {
+                MessageBox.Show("Gold Points field have to contain only numbers!");
+            }
+            else if (temp_event.isTimeAttack && tbPointsSilverTier.Text == "")
+            {
+                MessageBox.Show("Missing \"Silver Points\" field");
+            }
+            else if (temp_event.isTimeAttack && !ACCGUtility.IsDigit(tbPointsSilverTier.Text))
+            {
+                MessageBox.Show("Silver Points field have to contain only numbers!");
+            }
+            else if (temp_event.isTimeAttack && tbPointsBronzeTier.Text == "")
+            {
+                MessageBox.Show("Missing \"Bronze Points\" field!");
+            }
+            else if (temp_event.isTimeAttack && !ACCGUtility.IsDigit(tbPointsBronzeTier.Text))
+            {
+                MessageBox.Show("Bronze Points field have to contain only numbers!");
+            }
+            
+
             else
             {
                 int event_index = 0;
@@ -154,27 +278,67 @@ namespace ACCG
                 temp_event.description = tbDescription.Text;
                 temp_event.ambient_temperature = tkbAmbientTemperature.Value;
                 temp_event.time = tkbTime.Value;
-                temp_event.dynamic_track_preset = tkbCondition.Value;
+                temp_event.dynamic_track_preset = tkbTrackCondition.Value;
+
                 temp_event.event_car = event_car;
                 temp_event.event_car_skin.skin_name = cbSkin.SelectedItem.ToString();
                 temp_event.event_car_skin.skin_preview = skinPreviewImage;
-                
+
+                temp_event.session_list = new List<Session>();
+
                 if (temp_event.isQuickRace)
                 {
-                    temp_event.track = cbQuickRaceTrack.SelectedItem.ToString();
-                    temp_event.numberOfCars = tkbNumberOfCars.Value;
+
+                    if (current_selected_event != null)
+                    {
+                        temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 3));
+                    }
+                    Session quickrace_session = new Session();
+
+                    quickrace_session.ID = 0;
+                    quickrace_session.name = "Quick Race";
+                    quickrace_session.type = 3;
+                    quickrace_session.spawn_set = "START";
+                    quickrace_session.duration_minutes = 0;
+                    quickrace_session.laps = tkbNumberOfLaps.Value;
                     temp_event.numberOfLaps = tkbNumberOfLaps.Value;
+                    temp_event.session_list.Add(quickrace_session);
+
                     temp_event.start_position = tkbStartPosition.Value;
+                    temp_event.track = cbTrack.SelectedItem.ToString();                                        
+                    temp_event.numberOfCars = tkbNumberOfCars.Value;                    
+                    
+                    
                     temp_event.event_goals.tier_1 = tbPositionBronzeTier.Text;
                     temp_event.event_goals.tier_2 = tbPositionSilverTier.Text;
                     temp_event.event_goals.tier_3 = tbPositionGoldTier.Text;
                 }
-                else
+                else if(temp_event.isTimeAttack)
                 {
-                    temp_event.track = cbTimeAttackTrack.SelectedItem.ToString();
+
+                    if (current_selected_event != null)
+                    {
+                        temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 5));
+                    }
+
+                    Session timeattack_session = new Session();
+
+                    timeattack_session.ID = 0;
+                    timeattack_session.name = "Time Attack";
+                    timeattack_session.type = 5;
+                    timeattack_session.spawn_set = "START";
+
+                    temp_event.session_list.Add(timeattack_session);
+
+                    temp_event.track = cbTrack.SelectedItem.ToString();
+                    
                     temp_event.event_goals.tier_1 = tbPointsBronzeTier.Text;
                     temp_event.event_goals.tier_2 = tbPointsSilverTier.Text;
                     temp_event.event_goals.tier_3 = tbPointsGoldTier.Text;
+                }
+                else if (temp_event.isHotlap)
+                {
+
                 }
 
                 if (current_selected_event != null)
@@ -187,7 +351,7 @@ namespace ACCG
                 }
 
                 ACCGNewSeriesForm.bs_events_datasource.ResetBindings(false);
-
+                
                 this.Close();
             }
             
@@ -220,7 +384,7 @@ namespace ACCG
         private void tkbCondition_Scroll(object sender, EventArgs e)
         {
             // placeolder code
-            switch (tkbCondition.Value)
+            switch (tkbTrackCondition.Value)
             {
                 case 0:
                     lblTrackConditionValue.Text = "Dusty";
@@ -331,23 +495,19 @@ namespace ACCG
         private void rbQuickRace_CheckedChanged(object sender, EventArgs e)
         {
             temp_event.isQuickRace = rbQuickRace.Checked;
-
-            grbQuickRace.Enabled = rbQuickRace.Checked;
-            grbOpponents.Enabled = rbQuickRace.Checked;
-            
-            tbPositionGoldTier.Enabled = rbQuickRace.Checked;
-            tbPositionSilverTier.Enabled = rbQuickRace.Checked;
-            tbPositionBronzeTier.Enabled = rbQuickRace.Checked;
+            grbQuickRace.Enabled = rbQuickRace.Checked;                                               
         }
 
         private void rbTimeAttack_CheckedChanged(object sender, EventArgs e)
         {
             temp_event.isTimeAttack = rbTimeAttack.Checked;
-            grbTimeAttack.Enabled = rbTimeAttack.Checked;
+            grbTimeAttackGoals.Enabled = rbTimeAttack.Checked;            
+        }
 
-            tbPointsGoldTier.Enabled = rbTimeAttack.Checked;
-            tbPointsSilverTier.Enabled = rbTimeAttack.Checked;
-            tbPointsBronzeTier.Enabled = rbTimeAttack.Checked;
+        private void rbHotlap_CheckedChanged(object sender, EventArgs e)
+        {
+            temp_event.isHotlap = rbHotlap.Checked;
+            grbHotlapGoals.Enabled = rbHotlap.Checked;
         }
 
         private void cbCar_SelectionChangeCommitted(object sender, EventArgs e)
@@ -375,7 +535,7 @@ namespace ACCG
 
         private void skinPreviewImagePanel_Paint(object sender, PaintEventArgs e)
         {
-            Bitmap skinPreviewImageThumb = (Bitmap)ACCGMainForm.accg_resource.ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
+            Bitmap skinPreviewImageThumb = (Bitmap)ACCGUtility.ScaleImage(skinPreviewImage, skinPreviewImagePanel.Width, skinPreviewImagePanel.Height);
             e.Graphics.DrawImage(skinPreviewImageThumb,
                 0,
                 0,
@@ -440,6 +600,35 @@ namespace ACCG
                     );
             }
         }
+
+        private void btnLoadOpponents_Click(object sender, EventArgs e)
+        {
+            if (openOpponentsFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openOpponentsFileDialog.FileName;
+
+
+
+                if (current_selected_event != null)
+                {
+                    current_selected_event.opponents_list = ACCGMainForm.accg_resource.LoadOpponents(filename);
+
+                }
+                else
+                {
+                    temp_event.opponents_list = ACCGMainForm.accg_resource.LoadOpponents(filename);
+
+                }
+
+                ACCGMainForm.bs_series_datasource.ResetBindings(false);
+                ShowData();
+
+                
+
+            }
+        }
+
+        
 
        
 

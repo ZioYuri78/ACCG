@@ -27,6 +27,7 @@ namespace ACCG
         public bool isEdited { get; set; }
         public bool isTimeAttack { get; set; }  // Only for single events
         public bool isQuickRace { get; set; }   // Only for single events
+        public bool isHotlap { get; set; }      // Only for single events
         public int dynamic_track_preset { get; set; }
         public Bitmap previewImage { get; set; } // 250x125
         public Car event_car { get; set; }  // Only for single events
@@ -38,6 +39,8 @@ namespace ACCG
         public Event()
         {
             event_goals = new Goals();
+            event_car = new Car();
+            event_car_skin = new Skin();
         }
 
         public Event(int ID, string name, string description)

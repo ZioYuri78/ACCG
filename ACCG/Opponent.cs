@@ -21,6 +21,7 @@ namespace ACCG
 
         public Opponent() 
         {
+            this.model = new Car();
             this.skin = new Skin();
         }
 

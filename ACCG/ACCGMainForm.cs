@@ -22,21 +22,17 @@ namespace ACCG
         
         private void ACCGMainForm_Load(object sender, EventArgs e)
         {
-           
-
             // Load settings.ini            
-            accg_resource.LoadSettings(accg_settings_file_name, e);
+            accg_resource.LoadSettings(accg_settings_file_name);
                     
             // ACCG Series list (list with only user created series)                        
-            accg_series_list = accg_resource.LoadACCGSeries(accg_series_file_name, e);
-           
-            ShowData();
-                                               
+            accg_series_list = accg_resource.LoadACCGSeries(accg_series_file_name);
+                                                                    
             // Populating Cars list                                    
-            ac_cars_list = accg_resource.LoadCars(accg_cars_file_name, e);
+            ac_cars_list = accg_resource.LoadCars(accg_cars_file_name);
             
             // Populating Tracks list                        
-            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name,e);
+            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);
 
             // Creating the time table             
             time_table = new Dictionary<string, int>();
@@ -63,6 +59,9 @@ namespace ACCG
             time_table.Add("17:30", 72);
             time_table.Add("18:00", 80);
 
+            ShowData();
+
+            SplashScreen.CloseSplash();
             
         }
 
@@ -88,7 +87,7 @@ namespace ACCG
 
                 lblCurrentSeries.Text = "Current series: " + current_selected_series.name;
 
-                Car tmp_car = current_selected_series.model;
+                Car tmp_car = current_selected_series.car;
 
                 rtbSeriesInfo.ResetText();
                 rtbSeriesInfo.AppendText("Code: " + current_selected_series.code + "\n");
@@ -182,7 +181,7 @@ namespace ACCG
 
                             // Saving the accg series list
                             string accg_series_path = @"data\accg_series_list.dat";
-                            accg_resource.SaveACCGSeries(accg_series_path, accg_series_list, e);
+                            accg_resource.SaveACCGSeries(accg_series_path, accg_series_list);
 
                             lblCurrentSeries.Text = "Current series: ";
                         }
@@ -200,7 +199,7 @@ namespace ACCG
 
                         // Saving the accg series list
                         string accg_series_path = @"data\accg_series_list.dat";
-                        accg_resource.SaveACCGSeries(accg_series_path, accg_series_list, e);
+                        accg_resource.SaveACCGSeries(accg_series_path, accg_series_list);
 
                         lblCurrentSeries.Text = "Current series: ";
                     }
@@ -223,20 +222,20 @@ namespace ACCG
                 current_selected_series.isGenerated = true;
                 
                 // Saving the accg series list                
-                accg_resource.SaveACCGSeries(accg_series_file_name, accg_series_list, e);
+                accg_resource.SaveACCGSeries(accg_series_file_name, accg_series_list);
             }
 
         }
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name, e);
+            accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
             
             // re-populating Cars list                                    
-            ac_cars_list = accg_resource.LoadCars(accg_cars_file_name, e);
+            ac_cars_list = accg_resource.LoadCars(accg_cars_file_name);
 
             // re-populating Tracks list                        
-            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name, e);
+            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);
 
             MessageBox.Show("Resources synced!");
         }
@@ -244,6 +243,11 @@ namespace ACCG
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(accg_manual_file_name);
+        }
+
+        private void ACCGMainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.ExitThread();
         }
               
     }
