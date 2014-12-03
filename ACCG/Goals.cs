@@ -9,6 +9,7 @@ namespace ACCG
     [Serializable]
     public class Goals
     {
+        public string type { get; set; }    // POSITION, POINTS, TIME
         public string points { get; set; }
         public string ranking { get; set; }
         public string tier_1 { get; set; }  // Bronze medal

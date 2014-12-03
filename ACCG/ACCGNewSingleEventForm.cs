@@ -93,6 +93,9 @@ namespace ACCG
                 if (current_selected_event.isQuickRace)
                 {
                     rbTimeAttack.Enabled = false;
+                    grbTimeAttackGoals.Enabled = false;
+                    rbHotlap.Enabled = false;
+                    grbHotlapGoals.Enabled = false;
 
                     tkbNumberOfCars.Value = current_selected_event.numberOfCars;
                     lblNumberOfCarsValue.Text = current_selected_event.numberOfCars.ToString();
@@ -111,24 +114,34 @@ namespace ACCG
                 {
                     rbQuickRace.Enabled = false;
                     grbQuickRace.Enabled = false;
-
-                    tbPositionGoldTier.Enabled = false;
-                    tbPositionSilverTier.Enabled = false;
-                    tbPositionBronzeTier.Enabled = false;
-
+                    rbHotlap.Enabled = false;
+                    grbHotlapGoals.Enabled = false;
+                   
                     rbTimeAttack.Checked = true;
-
-                    tbPointsGoldTier.Enabled = true;
-                    tbPointsSilverTier.Enabled = true;
-                    tbPointsBronzeTier.Enabled = true;
-
+                    grbTimeAttackGoals.Enabled = true;
+                   
                     tbPointsGoldTier.Text = current_selected_event.event_goals.tier_3;
                     tbPointsSilverTier.Text = current_selected_event.event_goals.tier_2;
                     tbPointsBronzeTier.Text = current_selected_event.event_goals.tier_1;
                 }
                 else if (current_selected_event.isHotlap)
                 {
+                    rbQuickRace.Enabled = false;
+                    grbQuickRace.Enabled = false;
+                    rbTimeAttack.Enabled = false;
+                    grbTimeAttackGoals.Enabled = false;
 
+                    rbHotlap.Checked = true;
+                    grbHotlapGoals.Enabled = true;
+
+                    tbTimeMinutesGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_3)).Minutes);
+                    tbTimeSecondsGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_3)).Seconds);
+
+                    tbTimeMinutesSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_2)).Minutes);
+                    tbTimeSecondsSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_2)).Seconds);
+                    
+                    tbTimeMinutesBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_1)).Minutes);
+                    tbTimeSecondsBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_1)).Seconds);
                 }
 
             }
@@ -278,6 +291,7 @@ namespace ACCG
                 temp_event.description = tbDescription.Text;
                 temp_event.ambient_temperature = tkbAmbientTemperature.Value;
                 temp_event.time = tkbTime.Value;
+                temp_event.track = cbTrack.SelectedItem.ToString();                                        
                 temp_event.dynamic_track_preset = tkbTrackCondition.Value;
 
                 temp_event.event_car = event_car;
@@ -304,8 +318,7 @@ namespace ACCG
                     temp_event.numberOfLaps = tkbNumberOfLaps.Value;
                     temp_event.session_list.Add(quickrace_session);
 
-                    temp_event.start_position = tkbStartPosition.Value;
-                    temp_event.track = cbTrack.SelectedItem.ToString();                                        
+                    temp_event.start_position = tkbStartPosition.Value;                    
                     temp_event.numberOfCars = tkbNumberOfCars.Value;                    
                     
                     
@@ -328,9 +341,7 @@ namespace ACCG
                     timeattack_session.type = 5;
                     timeattack_session.spawn_set = "START";
 
-                    temp_event.session_list.Add(timeattack_session);
-
-                    temp_event.track = cbTrack.SelectedItem.ToString();
+                    temp_event.session_list.Add(timeattack_session);                    
                     
                     temp_event.event_goals.tier_1 = tbPointsBronzeTier.Text;
                     temp_event.event_goals.tier_2 = tbPointsSilverTier.Text;
@@ -338,6 +349,23 @@ namespace ACCG
                 }
                 else if (temp_event.isHotlap)
                 {
+                    if (current_selected_event != null)
+                    {
+                        temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 4));
+                    }
+
+                    Session hotlap_session = new Session();
+
+                    hotlap_session.ID = 0;
+                    hotlap_session.name = "Hotlap";
+                    hotlap_session.type = 4;
+                    hotlap_session.spawn_set = "HOTLAP_START";
+
+                    temp_event.session_list.Add(hotlap_session);                    
+
+                    temp_event.event_goals.tier_1 = ACCGUtility.LapTimeToMilliseconds(Convert.ToDouble(tbTimeMinutesBronzeTier.Text), Convert.ToDouble( tbTimeSecondsBronzeTier.Text)).ToString();
+                    temp_event.event_goals.tier_2 = ACCGUtility.LapTimeToMilliseconds(Convert.ToDouble(tbTimeMinutesSilverTier.Text), Convert.ToDouble(tbTimeSecondsSilverTier.Text)).ToString();
+                    temp_event.event_goals.tier_3 = ACCGUtility.LapTimeToMilliseconds(Convert.ToDouble(tbTimeMinutesGoldTier.Text), Convert.ToDouble(tbTimeSecondsGoldTier.Text)).ToString();
 
                 }
 
@@ -626,6 +654,21 @@ namespace ACCG
                 
 
             }
+        }
+
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
+            if (current_selected_event != null)
+            {
+                current_selected_event = ACCGUtility.RandomizeEvent(current_selected_event);
+            }
+            else
+            {
+                temp_event = ACCGUtility.RandomizeEvent(temp_event);
+            }
+
+            this.ACCGNewSingle EventForm_Load(sender,e);
+            
         }
 
         

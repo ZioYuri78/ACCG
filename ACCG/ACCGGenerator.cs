@@ -509,6 +509,48 @@ namespace ACCG
                                                     };
 
                }
+               else if (ev.isHotlap)
+               {
+                   event_file_content = new string[] {
+                                                        "[EVENT]",
+                                                        "NAME=" + ev.name,
+                                                        "DESCRIPTION=" + ev.description,
+                                                        "\n",
+                                                        "[RACE]",
+                                                        "TRACK=" + ev.track,
+                                                        "MODEL=" + ev.event_car.model,
+                                                        "CARS=1",
+                                                        "AI_LEVEL=100",
+                                                        "PENALTIES=" + penalties,
+                                                        "FIXED_SETUP=0",
+                                                        "\n",
+                                                        "[GHOST_CAR]",
+                                                        "RECORDING=0",
+                                                        "PLAYING=0",
+                                                        "SECOND_ADVANTAGE=0",
+                                                        "LOAD=1",
+                                                        "FILE=",
+                                                        "ENABLED=0",
+                                                        "\n",
+                                                        "[LIGHTING]",
+                                                        "SUN_ANGLE=" + ev.time,
+                                                        "TIME_MULT=1",
+                                                        "CLOUD_SPEED=0.2",
+                                                        "\n",
+                                                        "[GROOVE]",
+                                                        "VIRTUAL_LAPS=10",
+                                                        "MAX_LAPS=1",
+                                                        "STARTING_LAPS=1",
+                                                        "\n",
+                                                        "[TEMPERATURE]",
+                                                        "AMBIENT=" + ev.ambient_temperature,
+                                                        "ROAD=33",
+                                                        "\n",
+                                                        "[DYNAMIC_TRACK]",
+                                                        "PRESET=" + ev.dynamic_track_preset,
+                                                        "\n"
+                                                    };
+               }
 
                string[][] session_file_content = new string[ev.session_list.Count][];
 
@@ -542,6 +584,16 @@ namespace ACCG
                    {
                        temp_session_attributes = new string[] {
                                                                 String.Format("[SESSION_{0}]", temp_session.ID),
+                                                                "NAME=" + temp_session.name,
+                                                                "TYPE=" + temp_session.type,
+                                                                "SPAWN_SET=" + temp_session.spawn_set,
+                                                                "\n"
+                                                            };
+                   }
+                   else if(ev.isHotlap)
+                   {
+                       temp_session_attributes = new string[] {
+                                                                String.Format("[SESSION_{0}", temp_session.ID),
                                                                 "NAME=" + temp_session.name,
                                                                 "TYPE=" + temp_session.type,
                                                                 "SPAWN_SET=" + temp_session.spawn_set,
@@ -614,6 +666,23 @@ namespace ACCG
                                                         "OBJECTIVE=" + ev.event_goals.tier_3,
                                                         "\n",
 
+                                                    };
+               }
+               else if (ev.isHotlap)
+               {
+                   goals_file_content = new string[] {
+                                                        "[CONDITION_0]",
+                                                        "TYPE=TIME",
+                                                        "OBJECTIVE=" + ev.event_goals.tier_1,
+                                                        "\n",
+                                                        "[CONDITION_1]",
+                                                        "TYPE=TIME",
+                                                        "OBJECTIVE=" + ev.event_goals.tier_2,
+                                                        "\n",
+                                                        "[CONDITION_2]",
+                                                        "TYPE=TIME",
+                                                        "OBJECTIVE=" + ev.event_goals.tier_3,
+                                                        "\n",
                                                     };
                }
 
