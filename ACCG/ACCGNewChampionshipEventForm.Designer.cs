@@ -83,6 +83,7 @@ namespace ACCG
             this.lblName = new System.Windows.Forms.Label();
             this.grbEvent = new System.Windows.Forms.GroupBox();
             this.tltLoadPreviewImage = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRandom = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
@@ -402,7 +403,7 @@ namespace ACCG
             this.tkbTrackCondition.Size = new System.Drawing.Size(122, 45);
             this.tkbTrackCondition.TabIndex = 8;
             this.tkbTrackCondition.Value = 4;
-            this.tkbTrackCondition.Scroll += new System.EventHandler(this.tkbCondition_Scroll);
+            this.tkbTrackCondition.Scroll += new System.EventHandler(this.tkbTrackCondition_Scroll);
             // 
             // tkbTrackTemperature
             // 
@@ -438,7 +439,7 @@ namespace ACCG
             this.grbSessions.Controls.Add(this.grbSessionRace);
             this.grbSessions.Controls.Add(this.grbSessionQualifying);
             this.grbSessions.Controls.Add(this.grbPracticeSession);
-            this.grbSessions.Location = new System.Drawing.Point(281, 12);
+            this.grbSessions.Location = new System.Drawing.Point(281, 71);
             this.grbSessions.Name = "grbSessions";
             this.grbSessions.Size = new System.Drawing.Size(224, 377);
             this.grbSessions.TabIndex = 42;
@@ -504,7 +505,7 @@ namespace ACCG
             this.btnOpenPreviewImage.Image = global::ACCG.Properties.Resources.Open_6529_24;
             this.btnOpenPreviewImage.Location = new System.Drawing.Point(6, 150);
             this.btnOpenPreviewImage.Name = "btnOpenPreviewImage";
-            this.btnOpenPreviewImage.Size = new System.Drawing.Size(30, 23);
+            this.btnOpenPreviewImage.Size = new System.Drawing.Size(37, 23);
             this.btnOpenPreviewImage.TabIndex = 1;
             this.tltLoadPreviewImage.SetToolTip(this.btnOpenPreviewImage, "Load preview image");
             this.btnOpenPreviewImage.UseVisualStyleBackColor = true;
@@ -590,11 +591,23 @@ namespace ACCG
             this.grbEvent.TabStop = false;
             this.grbEvent.Text = "Event";
             // 
+            // btnRandom
+            // 
+            this.btnRandom.Enabled = false;
+            this.btnRandom.Location = new System.Drawing.Point(303, 17);
+            this.btnRandom.Name = "btnRandom";
+            this.btnRandom.Size = new System.Drawing.Size(196, 41);
+            this.btnRandom.TabIndex = 60;
+            this.btnRandom.Text = "Random";
+            this.btnRandom.UseVisualStyleBackColor = true;
+            this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
+            // 
             // ACCGNewChampionshipEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 645);
+            this.Controls.Add(this.btnRandom);
             this.Controls.Add(this.grbImages);
             this.Controls.Add(this.grbSessions);
             this.Controls.Add(this.grbTrack);
@@ -686,6 +699,7 @@ namespace ACCG
         private Label lblName;
         private GroupBox grbEvent;
         private ToolTip tltLoadPreviewImage;
+        private Button btnRandom;
 
         public static Event temp_event { get; set; }
                         

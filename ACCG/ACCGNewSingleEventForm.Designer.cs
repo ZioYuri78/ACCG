@@ -123,6 +123,8 @@ namespace ACCG
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.grbHotlapGoals = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -132,8 +134,8 @@ namespace ACCG
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.btnSaveOpponents = new System.Windows.Forms.Button();
+            this.saveOpponentsFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.grbButtons.SuspendLayout();
             this.grbImages.SuspendLayout();
             this.grbTrack.SuspendLayout();
@@ -201,7 +203,7 @@ namespace ACCG
             this.btnOpenPreviewImage.Image = global::ACCG.Properties.Resources.Open_6529_24;
             this.btnOpenPreviewImage.Location = new System.Drawing.Point(6, 150);
             this.btnOpenPreviewImage.Name = "btnOpenPreviewImage";
-            this.btnOpenPreviewImage.Size = new System.Drawing.Size(30, 23);
+            this.btnOpenPreviewImage.Size = new System.Drawing.Size(37, 23);
             this.btnOpenPreviewImage.TabIndex = 1;
             this.tltLoadPreviewImage.SetToolTip(this.btnOpenPreviewImage, "Load preview image");
             this.btnOpenPreviewImage.UseVisualStyleBackColor = true;
@@ -277,7 +279,7 @@ namespace ACCG
             this.tkbTrackCondition.Size = new System.Drawing.Size(122, 45);
             this.tkbTrackCondition.TabIndex = 8;
             this.tkbTrackCondition.Value = 4;
-            this.tkbTrackCondition.Scroll += new System.EventHandler(this.tkbCondition_Scroll);
+            this.tkbTrackCondition.Scroll += new System.EventHandler(this.tkbTrackCondition_Scroll);
             // 
             // tkbTrackTemperature
             // 
@@ -798,6 +800,7 @@ namespace ACCG
             // 
             // grbOpponents
             // 
+            this.grbOpponents.Controls.Add(this.btnSaveOpponents);
             this.grbOpponents.Controls.Add(this.btnLoadOpponents);
             this.grbOpponents.Controls.Add(this.lbOpponents);
             this.grbOpponents.Controls.Add(this.btnDeleteOpponent);
@@ -813,7 +816,7 @@ namespace ACCG
             // btnLoadOpponents
             // 
             this.btnLoadOpponents.Image = global::ACCG.Properties.Resources.Open_6529_24;
-            this.btnLoadOpponents.Location = new System.Drawing.Point(15, 118);
+            this.btnLoadOpponents.Location = new System.Drawing.Point(144, 17);
             this.btnLoadOpponents.Name = "btnLoadOpponents";
             this.btnLoadOpponents.Size = new System.Drawing.Size(37, 23);
             this.btnLoadOpponents.TabIndex = 31;
@@ -826,14 +829,14 @@ namespace ACCG
             this.lbOpponents.FormattingEnabled = true;
             this.lbOpponents.Location = new System.Drawing.Point(15, 17);
             this.lbOpponents.Name = "lbOpponents";
-            this.lbOpponents.Size = new System.Drawing.Size(166, 95);
+            this.lbOpponents.Size = new System.Drawing.Size(123, 95);
             this.lbOpponents.TabIndex = 25;
             this.lbOpponents.SelectedIndexChanged += new System.EventHandler(this.lbOpponents_SelectedIndexChanged);
             // 
             // btnDeleteOpponent
             // 
             this.btnDeleteOpponent.Image = global::ACCG.Properties.Resources.Clearallrequests_8816;
-            this.btnDeleteOpponent.Location = new System.Drawing.Point(144, 118);
+            this.btnDeleteOpponent.Location = new System.Drawing.Point(101, 118);
             this.btnDeleteOpponent.Name = "btnDeleteOpponent";
             this.btnDeleteOpponent.Size = new System.Drawing.Size(37, 23);
             this.btnDeleteOpponent.TabIndex = 29;
@@ -844,7 +847,7 @@ namespace ACCG
             // btnEditOpponent
             // 
             this.btnEditOpponent.Image = global::ACCG.Properties.Resources.EditTitleString_357;
-            this.btnEditOpponent.Location = new System.Drawing.Point(101, 118);
+            this.btnEditOpponent.Location = new System.Drawing.Point(58, 118);
             this.btnEditOpponent.Name = "btnEditOpponent";
             this.btnEditOpponent.Size = new System.Drawing.Size(37, 23);
             this.btnEditOpponent.TabIndex = 28;
@@ -855,7 +858,7 @@ namespace ACCG
             // btnNewOpponent
             // 
             this.btnNewOpponent.Image = global::ACCG.Properties.Resources.NewFile_6276;
-            this.btnNewOpponent.Location = new System.Drawing.Point(58, 118);
+            this.btnNewOpponent.Location = new System.Drawing.Point(15, 118);
             this.btnNewOpponent.Name = "btnNewOpponent";
             this.btnNewOpponent.Size = new System.Drawing.Size(37, 23);
             this.btnNewOpponent.TabIndex = 27;
@@ -1023,6 +1026,24 @@ namespace ACCG
             this.grbHotlapGoals.TabStop = false;
             this.grbHotlapGoals.Text = "Hotlap Goals";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(112, 23);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(24, 13);
+            this.label19.TabIndex = 68;
+            this.label19.Text = "sec";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(73, 23);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(23, 13);
+            this.label18.TabIndex = 67;
+            this.label18.Text = "min";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -1104,23 +1125,19 @@ namespace ACCG
             this.label10.TabIndex = 61;
             this.label10.Text = ".000";
             // 
-            // label18
+            // btnSaveOpponents
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(73, 23);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(23, 13);
-            this.label18.TabIndex = 67;
-            this.label18.Text = "min";
+            this.btnSaveOpponents.Image = global::ACCG.Properties.Resources.Save_6530;
+            this.btnSaveOpponents.Location = new System.Drawing.Point(144, 46);
+            this.btnSaveOpponents.Name = "btnSaveOpponents";
+            this.btnSaveOpponents.Size = new System.Drawing.Size(37, 23);
+            this.btnSaveOpponents.TabIndex = 32;
+            this.btnSaveOpponents.UseVisualStyleBackColor = true;
+            this.btnSaveOpponents.Click += new System.EventHandler(this.btnSaveOpponents_Click);
             // 
-            // label19
+            // saveOpponentsFileDialog
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(112, 23);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(24, 13);
-            this.label19.TabIndex = 68;
-            this.label19.Text = "sec";
+            this.saveOpponentsFileDialog.Filter = "opponents files (*.ini)|*.ini|opponents files (*.txt)|*.txt";
             // 
             // ACCGNewSingleEventForm
             // 
@@ -1293,6 +1310,8 @@ namespace ACCG
         private Label label10;
         private Label label19;
         private Label label18;
+        private Button btnSaveOpponents;
+        private SaveFileDialog saveOpponentsFileDialog;
 
         public static Event temp_event { get; set; }
         public static Car event_car { get; set; }

@@ -47,62 +47,22 @@ namespace ACCG
                 tbDescription.Text = current_selected_event.description;
                 
                 tkbAmbientTemperature.Value = current_selected_event.ambient_temperature;
-                lblAmbTemperatureValue.Text = tkbAmbientTemperature.Value.ToString() + " °C";
+                tkbAmbientTemperature_Scroll(sender, e);
                 
                 tkbTime.Value = current_selected_event.time;
-                // Bad code
-                foreach (KeyValuePair<string, int> pair in ACCGMainForm.time_table)
-                {
-                    if (pair.Value == current_selected_event.time)
-                    {
-                        lblTimeValue.Text = pair.Key;
-                        break;
-                    }
-                }
+                tkbTime_Scroll(sender, e);                
 
                 tkbTrackCondition.Value = current_selected_event.dynamic_track_preset;
-                // I don't like this way
-                switch (tkbTrackCondition.Value)
-                {
-                    case 0:
-                        lblTrackConditionValue.Text = "Dusty";
-                        break;
-
-                    case 1:
-                        lblTrackConditionValue.Text = "Old";
-                        break;
-
-                    case 2:
-                        lblTrackConditionValue.Text = "Slow";
-                        break;
-
-                    case 3:
-                        lblTrackConditionValue.Text = "Green";
-                        break;
-
-                    case 4:
-                        lblTrackConditionValue.Text = "Fast";
-                        break;
-
-                    case 5:
-                        lblTrackConditionValue.Text = "Optimum";
-                        break;
-
-                    default:
-                        Console.WriteLine("Default case");
-                        break;
-                }
-                
-                
-                
+                tkbTrackCondition_Scroll(sender, e);               
+                                                
                 ckbPractice.Checked = current_selected_event.practice;
 
                 if (ckbPractice.Checked)
                 {
                     tkbPracticeDuration.Value = current_selected_event.session_list.Find(x => x.type == 1).duration_minutes;
                 }
-                
-                lblPracticeDurationValue.Text = tkbPracticeDuration.Value.ToString() + " min";
+
+                tkbPracticeDuration_Scroll(sender, e);
                 
                 ckbQualifying.Checked = current_selected_event.qualifying;
 
@@ -110,13 +70,17 @@ namespace ACCG
                 {
                     tkbQualifyingDuration.Value = current_selected_event.session_list.Find(x => x.type == 2).duration_minutes;
                 }
-                
-                lblQualifyingDurationValue.Text = tkbQualifyingDuration.Value.ToString() + " min";
+
+                tkbQualifyingDuration_Scroll(sender, e);
+
                 cbTrack.Text = current_selected_event.track;
+
                 tkbNumberOfCars.Value = current_selected_event.numberOfCars;
-                lblNumberOfCarsValue.Text = tkbNumberOfCars.Value.ToString() + " cars";
+                tkbNumberOfCars_Scroll(sender, e);
+
                 tkbNumberOfLaps.Value = current_selected_event.session_list.Find(x => x.type == 3).laps;
-                lblNumberOfLapsValue.Text = tkbNumberOfLaps.Value.ToString() + " laps";
+                tkbNumberOfLaps_Scroll(sender, e);
+
                 ckbPenalties.Checked = current_selected_event.penalties;                
 
             }
@@ -281,7 +245,7 @@ namespace ACCG
                         
         }
 
-        private void tkbCondition_Scroll(object sender, EventArgs e)
+        private void tkbTrackCondition_Scroll(object sender, EventArgs e)
         {
             // placeolder code
             switch (tkbTrackCondition.Value)
@@ -360,13 +324,7 @@ namespace ACCG
         private void tkbNumberOfLaps_Scroll(object sender, EventArgs e)
         {
             lblNumberOfLapsValue.Text = tkbNumberOfLaps.Value + " laps";
-        }
-
-
-        
-
-
-       
+        }              
 
         private void btnOpenPreviewImage_Click(object sender, EventArgs e)
         {
@@ -424,6 +382,11 @@ namespace ACCG
                     ACCG.Properties.Resources.placeholder_250_125.Height
                     );
             }
+
+        }
+
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
 
         }
                           

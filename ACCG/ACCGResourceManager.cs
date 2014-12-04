@@ -26,13 +26,13 @@ namespace ACCG
             return instance;
         }
 
-        public void LoadSettings(string settings_path)
+        public void LoadSettings(string _settings_path)
         {
             try
             {
-                if (File.Exists(settings_path))
+                if (File.Exists(_settings_path))
                 {
-                    using (StreamReader sr = new StreamReader(settings_path))
+                    using (StreamReader sr = new StreamReader(_settings_path))
                     {
                         while (sr.Peek() >= 0)
                         {
@@ -52,7 +52,7 @@ namespace ACCG
                 }
                 else
                 {
-                    MessageBox.Show("Missing file \"" + settings_path + "\"!");                    
+                    MessageBox.Show("Missing file \"" + _settings_path + "\"!");                    
                     Application.Exit();
                 }
             }
@@ -62,16 +62,16 @@ namespace ACCG
             }
         }
        
-        public List<Series> LoadACCGSeries(string accg_series_path)
+        public List<Series> LoadACCGSeries(string _accg_series_path)
         {
             List<Series> series_list = new List<Series>();
 
             try
             {
-                if (File.Exists(accg_series_path))
+                if (File.Exists(_accg_series_path))
                 {
 
-                    using (Stream stream = File.Open(accg_series_path, FileMode.Open))
+                    using (Stream stream = File.Open(_accg_series_path, FileMode.Open))
                     {
                         var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                         series_list = (List<Series>)bformatter.Deserialize(stream);
@@ -91,14 +91,14 @@ namespace ACCG
             return series_list;
         }
 
-        public void SaveACCGSeries(string accg_series_path, List<Series> accg_series_list)
+        public void SaveACCGSeries(string _accg_series_path, List<Series> _accg_series_list)
         {
             try
             {
-                using (Stream stream = File.Open(accg_series_path, FileMode.Create))
+                using (Stream stream = File.Open(_accg_series_path, FileMode.Create))
                 {
                     var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    bformatter.Serialize(stream, accg_series_list);
+                    bformatter.Serialize(stream, _accg_series_list);
                 }
             }
             catch (Exception exc)
@@ -107,7 +107,7 @@ namespace ACCG
             }
         }
 
-        public List<Car> LoadCars(string file_path)
+        public List<Car> LoadCars(string _file_path)
         {
             List<Car> cars_list = new List<Car>();
             string car_name;
@@ -115,9 +115,9 @@ namespace ACCG
 
             try
             {
-                if (File.Exists(file_path))
+                if (File.Exists(_file_path))
                 {
-                    using (StreamReader sr = new StreamReader(file_path))
+                    using (StreamReader sr = new StreamReader(_file_path))
                     {
                         while (sr.Peek() >= 0)
                         {
@@ -186,7 +186,7 @@ namespace ACCG
                 }
                 else 
                 {
-                    MessageBox.Show("Missing file \"" + file_path + "\"!");                    
+                    MessageBox.Show("Missing file \"" + _file_path + "\"!");                    
                     Application.Exit();
                 }
             }
@@ -198,17 +198,17 @@ namespace ACCG
             return cars_list;
         }
 
-        public void SaveCars(string file_path, List<Car> cars_list) 
+        public void SaveCars(string _file_path, List<Car> _cars_list) 
         {
             try
             {
                 StringBuilder new_file = new StringBuilder();
 
-                if (File.Exists(file_path))
+                if (File.Exists(_file_path))
                 {
-                    for (int i = 0; i < cars_list.Count; i++)
+                    for (int i = 0; i < _cars_list.Count; i++)
                     {
-                        Car temp_car = cars_list[i];
+                        Car temp_car = _cars_list[i];
 
                         new_file.Append("[" + temp_car.model + "]");
                         new_file.Append("\r\n");
@@ -227,11 +227,11 @@ namespace ACCG
                         new_file.Append("\r\n");
                     }
 
-                    File.WriteAllText(file_path, new_file.ToString());
+                    File.WriteAllText(_file_path, new_file.ToString());
                 }
                 else
                 {
-                    MessageBox.Show("Missing file \"" + file_path + "\"!");
+                    MessageBox.Show("Missing file \"" + _file_path + "\"!");
                 }
             }
             catch (Exception exc)
@@ -241,15 +241,15 @@ namespace ACCG
         
         }
 
-        public List<string> LoadTracks(string file_path)
+        public List<string> LoadTracks(string _file_path)
         {
             List<string> track_list = new List<string>();
 
             try
             {
-                if (File.Exists(file_path))
+                if (File.Exists(_file_path))
                 {
-                    using (StreamReader sr = new StreamReader(file_path))
+                    using (StreamReader sr = new StreamReader(_file_path))
                     {
                         while (sr.Peek() >= 0)
                         {
@@ -259,7 +259,7 @@ namespace ACCG
                 }
                 else
                 {
-                    MessageBox.Show("Missing file \"" + file_path + "\"!");
+                    MessageBox.Show("Missing file \"" + _file_path + "\"!");
                     Application.Exit();                    
                 }
             }
@@ -271,25 +271,25 @@ namespace ACCG
             return track_list;
         }
 
-        private void SaveTracks(string file_path, List<string> tracks_list) 
+        private void SaveTracks(string _file_path, List<string> _tracks_list) 
         {
             try
             {
                 StringBuilder new_file = new StringBuilder();
 
-                if (File.Exists(file_path))
+                if (File.Exists(_file_path))
                 {
                     
-                    for(int i = 0; i < tracks_list.Count; i++){
+                    for(int i = 0; i < _tracks_list.Count; i++){
                                                 
-                        new_file.Append(tracks_list[i] + "\r\n");
+                        new_file.Append(_tracks_list[i] + "\r\n");
                     }
 
-                    File.WriteAllText(file_path, new_file.ToString());
+                    File.WriteAllText(_file_path, new_file.ToString());
                 }
                 else
                 {
-                    MessageBox.Show("Missing file \"" + file_path + "\"!");
+                    MessageBox.Show("Missing file \"" + _file_path + "\"!");
                 }
             }
             catch (Exception exc)
@@ -298,7 +298,7 @@ namespace ACCG
             }
         }
 
-        public void Sync(string cars_file_name, string tracks_file_name) 
+        public void Sync(string _cars_file_name, string _tracks_file_name) 
         {
             string ac_path = ACCGMainForm.ac_path;
             foreach(Car car in ACCGMainForm.ac_cars_list){
@@ -340,7 +340,9 @@ namespace ACCG
                                 temp_skin.skin_preview = bmp;
                             }
                             
-                        }else{
+                        }
+                        else
+                        {
                             temp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
                         }
                         
@@ -350,7 +352,7 @@ namespace ACCG
                     temp_cars_list.Add(temp_car);
                 }
 
-                SaveCars(cars_file_name, temp_cars_list);
+                SaveCars(_cars_file_name, temp_cars_list);
 
                 // Sync the tracks
                 string ac_tracks_path = ac_path + @"\content\tracks";
@@ -362,7 +364,7 @@ namespace ACCG
                     temp_tracks_list.Add(track.Substring(track.LastIndexOf(@"\") + 1));
                 }
 
-                SaveTracks(tracks_file_name, temp_tracks_list);
+                SaveTracks(_tracks_file_name, temp_tracks_list);
             }
             catch (Exception exc)
             {
@@ -371,7 +373,7 @@ namespace ACCG
                                       
         }
 
-        public List<Opponent> LoadOpponents(string file_path)
+        public List<Opponent> LoadOpponents(string _file_path)
         {
             List<Opponent> temp_opponents_list = new List<Opponent>();
 
@@ -379,9 +381,9 @@ namespace ACCG
            
             try
             {
-                if (File.Exists(file_path))
+                if (File.Exists(_file_path))
                 {
-                    using (StreamReader sr = new StreamReader(file_path))
+                    using (StreamReader sr = new StreamReader(_file_path))
                     {
                         while (sr.Peek() >= 0)
                         {
@@ -449,6 +451,51 @@ namespace ACCG
             }
 
             return temp_opponents_list;
-        }   
+        }
+
+        public void SaveOpponents(List<Opponent> _opponents_list, string _file_path)
+        {
+            string[][] opponents_file_content = new string[_opponents_list.Count][];
+
+            for (int i = 0; i < _opponents_list.Count; i++)
+            {
+                Opponent temp_opponent = _opponents_list[i];
+
+                string[] temp_opponent_attributes = {
+                                       String.Format("[AI{0}]",temp_opponent.ID),
+                                       "MODEL=" + temp_opponent.model.model,
+                                       "SETUP=" + temp_opponent.setup,
+                                       "AI_LEVEL=" + temp_opponent.ai_level.ToString(),
+                                       "SKIN=" + temp_opponent.skin.skin_name,
+                                       "DRIVER_NAME=" + temp_opponent.name,
+                                       "NATIONALITY=" + temp_opponent.nationality,
+                                       ""
+                                   };
+
+                opponents_file_content[i] = temp_opponent_attributes;
+
+            }
+
+            try
+            {
+                
+                
+                if (File.Exists(_file_path))
+                {
+                    File.Delete(_file_path);
+                }
+
+                for (int i = 0; i < opponents_file_content.Length; i++)
+                {
+                    File.AppendAllLines(_file_path, opponents_file_content[i]);
+                }
+
+                
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("The process failed: {0}", exc.ToString());
+            }
+        }
     }
 }

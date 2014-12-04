@@ -43,12 +43,7 @@ namespace ACCG
             event_car_skin = new Skin();
         }
 
-        public Event(int ID, string name, string description)
-        {
-            this.ID = ID;
-            this.name = name;
-            this.description = description;
-        }
+       
         
     }
 }

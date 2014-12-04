@@ -10,9 +10,9 @@ namespace ACCG
     public static class ACCGUtility
     {
 
-        public static bool IsDigit(string text)
+        public static bool IsDigit(string _text)
         {
-            foreach (char digit in text)
+            foreach (char digit in _text)
             {
                 if (digit < '0' | digit > '9')
                 {
@@ -24,11 +24,11 @@ namespace ACCG
             return true;
         }
 
-        public static bool IsDigit(string text, char exclude)
+        public static bool IsDigit(string _text, char _exclude)
         {
-            foreach (char digit in text)
+            foreach (char digit in _text)
             {
-                if (digit < '0' | digit > '9' && digit != exclude)
+                if (digit < '0' | digit > '9' && digit != _exclude)
                 {
                     return false;
 
@@ -38,84 +38,110 @@ namespace ACCG
             return true;
         }
 
-        public static Image ScaleImage(Image image, int maxWidth, int maxHeight)
+        public static Image ScaleImage(Image _image, int _maxWidth, int _maxHeight)
         {
 
-            var ratioX = (double)maxWidth / image.Width;
-            var ratioY = (double)maxHeight / image.Height;
+            var ratioX = (double)_maxWidth / _image.Width;
+            var ratioY = (double)_maxHeight / _image.Height;
             var ratio = Math.Min(ratioX, ratioY);
 
-            var newWidth = (int)(image.Width * ratio);
-            var newHeight = (int)(image.Height * ratio);
+            var newWidth = (int)(_image.Width * ratio);
+            var newHeight = (int)(_image.Height * ratio);
 
             var newImage = new Bitmap(newWidth, newHeight);
-            Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
+            Graphics.FromImage(newImage).DrawImage(_image, 0, 0, newWidth, newHeight);
 
             return newImage;
         }
 
-        public static double LapTimeToMilliseconds(double minutes, double seconds)
+        public static double LapTimeToMilliseconds(double _minutes, double _seconds)
         {            
-            double timeInMilliseconds = TimeSpan.FromMinutes(minutes).TotalMilliseconds + TimeSpan.FromSeconds(seconds).TotalMilliseconds;
+            double timeInMilliseconds = TimeSpan.FromMinutes(_minutes).TotalMilliseconds + TimeSpan.FromSeconds(_seconds).TotalMilliseconds;
 
             return timeInMilliseconds;
         }
 
-        public static TimeSpan MillisecondsToLapTime(double milliseconds)
+        public static TimeSpan MillisecondsToLapTime(double _milliseconds)
         {
-            TimeSpan ts = TimeSpan.FromMilliseconds(milliseconds);
+            TimeSpan ts = TimeSpan.FromMilliseconds(_milliseconds);
 
             return ts;
         }
 
-        public static Event RandomizeEvent(Event _event)
+        public static Event RandomizeEvent(Event _event, bool _single_event)
         {
             Random rnd = new Random();
 
             // Common events attributes
-            _event.ambient_temperature = rnd.Next(10, 36);
-            _event.time = rnd.Next(-80, 80);
+            _event.ambient_temperature = rnd.Next(10, 37);
+            _event.time = rnd.Next(-80, 81);
             _event.track = ACCGMainForm.ac_tracks_list[rnd.Next(0, ACCGMainForm.ac_tracks_list.Count)];
-            _event.dynamic_track_preset = rnd.Next(0, 5);
-            
-            int rnd_car_model = rnd.Next(0, ACCGMainForm.ac_cars_list.Count);
-            _event.event_car = ACCGMainForm.ac_cars_list[rnd_car_model];
+            _event.dynamic_track_preset = rnd.Next(0, 6);
 
-            int rnd_skin_model = rnd.Next(0, _event.event_car.skins.Count);
-            _event.event_car_skin = _event.event_car.skins[rnd_skin_model];
-
-            // 1 == Quick Race, 2 == Time Attack, 3 == Hotlap
-            int rnd_event_kind = rnd.Next(1, 3);
-
-            switch (rnd_event_kind)
+            if (_single_event)
             {
-                case 1:
-                    // Quick Race attributes
-                    _event.isQuickRace = true;
-                    _event.numberOfCars = rnd.Next(2, 24);
-                    _event.numberOfLaps = rnd.Next(2, 10);
-                    _event.start_position = rnd.Next(1, 10);
-                    _event.event_goals.tier_3 = rnd.Next(1, 3).ToString();
-                    _event.event_goals.tier_2 = rnd.Next(3, 5).ToString();
-                    _event.event_goals.tier_1 = rnd.Next(5, 7).ToString();
-                    break;
+                int rnd_car_model = rnd.Next(0, ACCGMainForm.ac_cars_list.Count);
+                _event.event_car = ACCGMainForm.ac_cars_list[rnd_car_model];
 
-                case 2:
-                    // Time Attack attributes
-                    _event.isTimeAttack = true;
-                    _event.event_goals.tier_3 = rnd.Next(2000, 3000).ToString();
-                    _event.event_goals.tier_2 = rnd.Next(1000, 1999).ToString();
-                    _event.event_goals.tier_1 = rnd.Next(100, 999).ToString();
-                    break;
+                int rnd_skin_model = rnd.Next(0, _event.event_car.skins.Count);
+                _event.event_car_skin = _event.event_car.skins[rnd_skin_model];
 
-                case 3:
-                    // Hotlap attributes
-                    _event.isHotlap = true;
-                    //int rnd_hl_gold_tier = rnd.Next(, );
-                    //int rnd_hl_gold_tier = rnd.Next(, );
-                    //int rnd_hl_gold_tier = rnd.Next(, );
-                    break;
+                // 1 == Quick Race, 2 == Time Attack, 3 == Hotlap
+                int rnd_event_kind = rnd.Next(1, 4);
+
+                switch (rnd_event_kind)
+                {
+                    case 1:
+                        Console.WriteLine("DEBUG: Quick Race");
+                        // Quick Race attributes
+                        _event.isQuickRace = true;
+                        _event.numberOfCars = rnd.Next(2, 25);
+                        _event.numberOfLaps = rnd.Next(2, 11);
+                        _event.start_position = rnd.Next(1, 11);
+                        _event.event_goals.tier_3 = rnd.Next(1, 4).ToString();
+                        _event.event_goals.tier_2 = rnd.Next(4, 6).ToString();
+                        _event.event_goals.tier_1 = rnd.Next(6, 9).ToString();
+                        break;
+
+                    case 2:
+                        Console.WriteLine("DEBUG: Time Attack");
+                        // Time Attack attributes
+                        _event.isTimeAttack = true;
+                        _event.event_goals.tier_3 = rnd.Next(3000, 5001).ToString();
+                        _event.event_goals.tier_2 = rnd.Next(1500, 3000).ToString();
+                        _event.event_goals.tier_1 = rnd.Next(500, 1500).ToString();
+                        break;
+
+                    case 3:
+                        Console.WriteLine("DEBUG: Hotlap");
+                        // Hotlap attributes
+                        _event.isHotlap = true;
+                        _event.event_goals.tier_3 = rnd.Next(60000, 100000).ToString();
+                        _event.event_goals.tier_2 = rnd.Next(100000, 130000).ToString();
+                        _event.event_goals.tier_1 = rnd.Next(130000, 180000).ToString();
+                        break;
+                }
+
             }
+            else
+            {
+                int rnd_practice = rnd.Next(0, 2);
+                int rnd_qualifying = rnd.Next(0, 2);
+
+                if (rnd_practice == 1)
+                {
+                    //_event.
+                }
+
+                if (rnd_qualifying == 1)
+                {
+
+                }
+
+                _event.numberOfCars = rnd.Next(2, 25); 
+            }
+
+            
             
                                     
             return _event;

@@ -130,45 +130,7 @@ namespace ACCG
 
                 }
             }                                    
-            /*
-            if (rbChampionship.Checked)
-            {
-
-                temp_series.isChampionship = rbChampionship.Checked;
-
-                if (current_selected_series == null)
-                {
-                    temp_series.opponents_list = new List<Opponent>();                    
-                }
-                                                            
-                tbPoints.Enabled = true;
-                cbCar.Enabled = true;
-                cbSkin.Enabled = true;
-                tbRanking.Enabled = false;
-                lbOpponents.Enabled = true;
-
-                tbGoldTier.Enabled = false;
-                tbSilverTier.Enabled = false;
-                tbBronzeTier.Enabled = false;
-               
-            }
-            else if(rbSingleEvents.Checked)
-            {
-
-                temp_series.isSingleEvents = rbSingleEvents.Checked;
-
-                tbPoints.Enabled = false;
-                cbCar.Enabled = false;
-                cbSkin.Enabled = false;                
-                
-                lbOpponents.Enabled = false;
-
-                tbGoldTier.Enabled = true;
-                tbSilverTier.Enabled = true;
-                tbBronzeTier.Enabled = true;
-                
-            }
-            */
+            
 
             // Populating the requires series combobox
             ac_series_path = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
@@ -362,9 +324,7 @@ namespace ACCG
                     temp_series.series_goals.tier_2 = tbSilverTier.Text;
                     temp_series.series_goals.tier_3 = tbGoldTier.Text;
                 }                                    
-                
-                //temp_series.isEdited = false;
-                //temp_series.isGenerated = false;
+                                
                     
                 // Add the current series to ACCG main series list
                 if (current_selected_series != null) // Edit mode
@@ -654,9 +614,7 @@ namespace ACCG
             if (openOpponentsFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filename = openOpponentsFileDialog.FileName;
-
                 
-
                 if (current_selected_series != null)
                 {
                     current_selected_series.opponents_list = ACCGMainForm.accg_resource.LoadOpponents(filename);
@@ -673,6 +631,25 @@ namespace ACCG
 
                 rtbOpponentsInfo.ResetText();
                 
+            }
+        }
+
+
+        private void btnSaveOpponents_Click(object sender, EventArgs e)
+        {
+            
+            if (saveOpponentsFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = saveOpponentsFileDialog.FileName;
+
+                if (current_selected_series != null)
+                {
+                    ACCGMainForm.accg_resource.SaveOpponents(current_selected_series.opponents_list, filename);
+                }
+                else
+                {
+                    ACCGMainForm.accg_resource.SaveOpponents(temp_series.opponents_list, filename);
+                }
             }
         }
 
@@ -887,6 +864,7 @@ namespace ACCG
             
             
         }
+
                                        
 
     }

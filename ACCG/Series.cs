@@ -21,8 +21,7 @@ namespace ACCG
         public string points { get; set; }
         public Car car { get; set; }
         public Skin skin { get; set; }
-        public Goals series_goals { get; set; }
-        //public string goalsPoints { get; set; } //placeholder
+        public Goals series_goals { get; set; }        
         public bool isGenerated { get; set; }
         public bool isEdited { get; set; }
         public bool isSingleEvents { get; set; }
