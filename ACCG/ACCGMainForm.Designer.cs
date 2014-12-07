@@ -130,6 +130,7 @@ namespace ACCG
             // 
             this.resourceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.syncToolStripMenuItem});
+            this.resourceToolStripMenuItem.Enabled = false;
             this.resourceToolStripMenuItem.Name = "resourceToolStripMenuItem";
             this.resourceToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.resourceToolStripMenuItem.Text = "Resource";
@@ -137,7 +138,7 @@ namespace ACCG
             // syncToolStripMenuItem
             // 
             this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
-            this.syncToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.syncToolStripMenuItem.Text = "Sync";
             this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
             // 

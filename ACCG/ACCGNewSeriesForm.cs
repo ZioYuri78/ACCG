@@ -498,6 +498,44 @@ namespace ACCG
             
         }
 
+        private void btnLoadEvent_Click(object sender, EventArgs e)
+        {
+            if (openEventFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openEventFileDialog.FileName;
+
+                if (current_selected_series != null)
+                {
+                    current_selected_series.events_list.Add(ACCGMainForm.accg_resource.LoadEvent(filename));
+                }
+                else
+                {
+                    temp_series.events_list.Add(ACCGMainForm.accg_resource.LoadEvent(filename));
+                }
+
+                bs_events_datasource.ResetBindings(false);
+                ShowData();
+
+                rtbEventsInfo.ResetText();
+            }
+        }
+
+        private void btnSaveEvent_Click(object sender, EventArgs e)
+        {
+            if (saveEventFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = saveOpponentsFileDialog.FileName;
+
+                if (current_selected_series != null)
+                {
+                    ACCGMainForm.accg_resource.SaveEvent(current_selected_event, filename);
+                }
+                else
+                {
+                    ACCGMainForm.accg_resource.SaveEvent(current_selected_event, filename);
+                }
+            }
+        }
 
         private void btnNewEvent_Click(object sender, EventArgs e)
         {
@@ -626,7 +664,7 @@ namespace ACCG
                     
                 }
 
-                ACCGMainForm.bs_series_datasource.ResetBindings(false);
+                bs_opponents_datasource.ResetBindings(false);
                 ShowData();
 
                 rtbOpponentsInfo.ResetText();
@@ -864,6 +902,10 @@ namespace ACCG
             
             
         }
+
+        
+
+        
 
                                        
 

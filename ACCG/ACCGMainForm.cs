@@ -23,15 +23,23 @@ namespace ACCG
         private void ACCGMainForm_Load(object sender, EventArgs e)
         {
             // Load settings.ini            
+            Console.WriteLine("DEBUG: Load setting.ini");
             accg_resource.LoadSettings(accg_settings_file_name);
                     
             // ACCG Series list (list with only user created series)                        
+            Console.WriteLine("DEBUG: Load ACCG Series list");
             accg_series_list = accg_resource.LoadACCGSeries(accg_series_file_name);
-                                                                    
-            // Populating Cars list                                    
+
+            // Sync resources
+            Console.WriteLine("DEBUG: Sync resources");
+            accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
+                                                                   
+            // Populating Cars list                 
+            Console.WriteLine("DEBUG: Load Cars");       
             ac_cars_list = accg_resource.LoadCars(accg_cars_file_name);
             
-            // Populating Tracks list                        
+            // Populating Tracks list          
+            Console.WriteLine("DEBUG: Load Tracks");  
             ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);
 
             // Creating the time table             
@@ -228,7 +236,7 @@ namespace ACCG
         }
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {            
             accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
             
             // re-populating Cars list                                    
@@ -236,7 +244,7 @@ namespace ACCG
 
             // re-populating Tracks list                        
             ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);
-
+            
             MessageBox.Show("Resources synced!");
         }
 

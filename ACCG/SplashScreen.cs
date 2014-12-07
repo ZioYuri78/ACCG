@@ -45,11 +45,11 @@ namespace ACCG
         public static void CloseSplash()
         {
             if (_splashScreen.InvokeRequired)
-            {
+            {                
                 _splashScreen.Invoke(new MethodInvoker(CloseSplash));
             }
             else
-            {
+            {                
                 Application.ExitThread();
             }
         }

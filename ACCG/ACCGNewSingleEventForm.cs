@@ -222,7 +222,6 @@ namespace ACCG
                 event_car = temp_event.event_car;
                 cbSkin.Items.Clear();
             }
-
             
 
             // Populating the skins combo box
@@ -610,21 +609,36 @@ namespace ACCG
         {
             temp_event.isQuickRace = rbQuickRace.Checked;
             grbQuickRace.Enabled = rbQuickRace.Checked;
-            ResetAll(sender, e);                                 
+
+            if (sender == btnRandom)
+            {
+                ResetAll(sender, e);                                 
+            }
+            
         }
 
         private void rbTimeAttack_CheckedChanged(object sender, EventArgs e)
         {
             temp_event.isTimeAttack = rbTimeAttack.Checked;
             grbTimeAttackGoals.Enabled = rbTimeAttack.Checked;
-            ResetAll(sender, e);
+
+            if (sender == btnRandom)
+            {
+                ResetAll(sender, e);
+            }
+            
         }
 
         private void rbHotlap_CheckedChanged(object sender, EventArgs e)
         {
             temp_event.isHotlap = rbHotlap.Checked;
             grbHotlapGoals.Enabled = rbHotlap.Checked;
-            ResetAll(sender, e);
+
+            if (sender == btnRandom)
+            {
+                ResetAll(sender, e);
+            }
+            
         }
 
         private void cbCar_SelectionChangeCommitted(object sender, EventArgs e)

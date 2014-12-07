@@ -134,7 +134,7 @@ namespace ACCG
                                 Skin tmp_skin = new Skin();
                                 tmp_skin.skin_name = sr.ReadLine().ToLower();
                                 string skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
-                                Console.WriteLine(skin_image_path);
+                                Console.WriteLine("DEBUG: " + skin_image_path);
                                 
                                 if (File.Exists(skin_image_path))
                                 {
@@ -160,6 +160,7 @@ namespace ACCG
                                     tmp_skin = new Skin();
                                     tmp_skin.skin_name = sr.ReadLine().ToLower();
                                     skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
+                                    Console.WriteLine("DEBUG: " + skin_image_path);
 
                                     if (File.Exists(skin_image_path))
                                     {
@@ -198,7 +199,7 @@ namespace ACCG
             return cars_list;
         }
 
-        public void SaveCars(string _file_path, List<Car> _cars_list) 
+        private void SaveCars(string _file_path, List<Car> _cars_list) 
         {
             try
             {
@@ -300,13 +301,21 @@ namespace ACCG
 
         public void Sync(string _cars_file_name, string _tracks_file_name) 
         {
+
             string ac_path = ACCGMainForm.ac_path;
-            foreach(Car car in ACCGMainForm.ac_cars_list){
-                foreach(Skin skin in car.skins){
-                    skin.skin_preview.Dispose();
+
+            if (ACCGMainForm.ac_cars_list != null)
+            {
+                foreach (Car car in ACCGMainForm.ac_cars_list)
+                {
+                    foreach (Skin skin in car.skins)
+                    {
+                        skin.skin_preview.Dispose();
+                    }
                 }
             }
 
+            
             try
             {
                 // Sync the cars
@@ -496,6 +505,441 @@ namespace ACCG
             {
                 Console.WriteLine("The process failed: {0}", exc.ToString());
             }
+        }
+
+        public Event LoadEvent(string _file_path)
+        {
+            Event temp_event = new Event();
+            temp_event.opponents_list = new List<Opponent>();
+            temp_event.session_list = new List<Session>();
+
+            string line;
+
+            try
+            {
+                if (File.Exists(_file_path))
+                {
+
+                    string path = Path.GetDirectoryName(_file_path);                    
+                    temp_event.ID = Convert.ToInt32(path.Substring(path.LastIndexOf(@"t") + 1));
+                    
+                    using (StreamReader sr = new StreamReader(_file_path))
+                    {
+                        while (sr.Peek() >= 0)
+                        {
+                            line = sr.ReadLine();
+                            if (line == null) break;
+                            Console.WriteLine(line);
+
+                            string[] splitted;
+
+                            /*
+                           if (line == "")
+                           {
+                               line = sr.ReadLine();
+                               splitted = line.Split('=');
+
+                               while (line != "")
+                               {
+                                   switch (splitted[0])
+                                   {
+                                       case "":                                           
+                                           break;
+                                   }
+                                    
+                                   line = sr.ReadLine();
+                                   if (line == null) break;
+                                   splitted = line.Split('=',';');
+                               }
+                           }
+                           */
+
+                            if (line.Contains("[EVENT]"))
+                            {
+                                line = sr.ReadLine();
+                                splitted = line.Split('=', ';');
+
+                                while (line != "")
+                                {
+                                    switch (splitted[0])
+                                    {
+                                        case "NAME":
+                                            temp_event.name = splitted[1];
+                                            break;
+
+                                        case "DESCRIPTION":
+                                            temp_event.description = splitted[1];
+                                            break;
+                                    }
+
+                                    line = sr.ReadLine();
+                                    if (line == null) break;
+                                    splitted = line.Split('=', ';');
+                                }                                
+
+                            }else 
+
+                            if (line.Contains("[TEMPERATURE]"))
+                            {
+                                line = sr.ReadLine();
+                                splitted = line.Split('=', ';');
+
+                                while (line != "")
+                                {
+                                    switch (splitted[0])
+                                    {
+                                        case "ROAD":
+                                            // Not implemented yet
+                                            break;
+
+                                        case "AMBIENT":
+                                            temp_event.ambient_temperature = Convert.ToInt32(splitted[1]);
+                                            break;                                                                                  
+                                    }
+
+                                    line = sr.ReadLine();
+                                    if (line == null) break;
+                                    splitted = line.Split('=', ';');
+                                }
+                            }else 
+
+                            if (line.Contains("[DYNAMIC_TRACK]"))  // Rotto
+                            {
+                                line = sr.ReadLine();
+                                splitted = line.Split('=', ';');
+
+                                while (line != "")
+                                {
+                                    switch (splitted[0])
+                                    {
+                                        case "PRESET":
+                                            temp_event.dynamic_track_preset = Convert.ToInt32(splitted[1]);
+                                            break;
+                                    }
+
+                                    line = sr.ReadLine();
+                                    if (line == null) break;
+                                    splitted = line.Split('=', ';');
+                                }
+                            }else
+
+                            if (line.Contains("[RACE]"))
+                            {
+                                line = sr.ReadLine();
+                                splitted = line.Split('=', ';');
+
+                                while (line != "")
+                                {
+                                    switch (splitted[0])
+                                    {
+                                        case "TRACK":
+                                            temp_event.track = splitted[1];
+                                            break;
+
+                                        case "MODEL":
+                                            temp_event.event_car.model = splitted[1].ToLower();
+                                            break;
+
+                                        case "CARS":
+                                            temp_event.numberOfCars = Convert.ToInt32(splitted[1]);
+                                            break;
+
+                                        case "PENALTIES":
+                                            if (splitted[1] == "0")
+                                            {
+                                                temp_event.penalties = false;
+                                            }
+                                            else
+                                            {
+                                                temp_event.penalties = true;
+                                            }
+                                            break;
+
+                                        case "RACE_LAPS":
+                                            temp_event.numberOfLaps = Convert.ToInt32(splitted[1]);
+                                            break;
+
+                                        case "SKIN":
+                                            string temp_skin_name = splitted[1].ToLower();
+                                            
+                                            Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_event.event_car.model);                                            
+                                            Bitmap temp_skin_preview = temp_car.skins.Find(x => x.skin_name == temp_skin_name).skin_preview;
+
+                                            if (temp_skin_preview != null)
+                                            {
+                                                temp_event.event_car_skin.skin_name = temp_skin_name;
+                                                temp_event.event_car_skin.skin_preview = temp_skin_preview;
+                                            }                                            
+                                            break;
+
+                                    }
+
+                                    line = sr.ReadLine();
+                                    if (line == null) break;
+                                    splitted = line.Split('=', ';');
+                                }
+                            }else 
+
+                            
+                           if (line.Contains("[LIGHTING]"))    // Rotto
+                           {
+                               line = sr.ReadLine();
+                               splitted = line.Split('=', ';');
+
+                               while (line != "")
+                               {
+                                   switch (splitted[0])
+                                   {
+                                       case "SUN_ANGLE":
+                                           temp_event.time = Convert.ToInt32(splitted[1]);
+                                           break;
+                                   }
+                                    
+                                   line = sr.ReadLine();
+                                   if (line == null) break;
+                                   splitted = line.Split('=', ';');
+                               }
+                           }else
+
+                            
+                            if (line.Contains("SESSION_"))
+                            {
+                                Session session = new Session();
+                                splitted = line.Trim('[',']').Split('_');
+                                session.ID = Convert.ToInt32(splitted[1]);
+
+                                line = sr.ReadLine();
+                                splitted = line.Split('=', ';');
+
+                                while (line != "")
+                                {
+                                    switch (splitted[0])
+                                    {
+                                        case "STARTING_POSITION":
+                                            temp_event.start_position = Convert.ToInt32(splitted[1]);
+                                            break;
+
+                                        case "NAME":
+                                            session.name = splitted[1];
+                                            break;
+
+                                        case "TYPE":    // 1 = Practice, 2 = Qualify, 3 = Race, 4 = Hotlap, 5 = Time Attack, 6 = Drift, 7 = Drag
+                                            session.type = Convert.ToInt32(splitted[1]);
+                                            switch (session.type)
+                                            {
+                                                case 1:
+                                                    temp_event.practice = true;
+                                                    break;
+
+                                                case 2:
+                                                    temp_event.qualifying = true;
+                                                    break;
+                                                    
+                                                case 3:
+                                                    temp_event.isQuickRace = true;
+                                                    break;
+
+                                                case 4:
+                                                    temp_event.isHotlap = true;
+                                                    break;
+
+                                                case 5:
+                                                    temp_event.isTimeAttack = true;
+                                                    break;
+
+                                                case 6:
+                                                    break;
+
+                                                case 7:
+                                                    break;
+                                            }
+                                            break;
+
+                                        case "LAPS":
+                                            session.laps = Convert.ToInt32(splitted[1]);
+                                            break;
+
+                                        case "DURATION_MINUTES":
+                                            session.duration_minutes = Convert.ToInt32(splitted[1]);
+                                            break;
+
+                                        case "SPAWN_SET":
+                                            session.spawn_set = splitted[1];
+                                            break;
+                                    }
+                                    
+                                    line = sr.ReadLine();
+                                    if (line == null) break;
+                                    splitted = line.Split('=', ';');
+                                }
+
+                                temp_event.session_list.Add(session);
+                            }
+                            else
+
+                            
+                           if (line.Contains("[CAR_0]"))
+                           {
+                                                              
+                               line = sr.ReadLine();
+                               splitted = line.Split('=', ';');
+
+                               while (line != "")
+                               {
+                                   switch (splitted[0])
+                                   {
+                                       case "SKIN":                                           
+                                           string temp_skin_name = splitted[1].ToLower();
+                                            
+                                           Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_event.event_car.model);
+                                           Skin temp_skin = temp_car.skins.Find(x => x.skin_name == temp_skin_name);
+                                           Bitmap temp_skin_preview;
+
+                                           if (temp_skin != null)
+                                           {
+                                               temp_skin_preview = temp_skin.skin_preview;
+                                               temp_event.event_car_skin.skin_name = temp_skin_name;
+                                               temp_event.event_car_skin.skin_preview = temp_skin_preview;
+                                           }
+                                           else
+                                           {
+                                               temp_event.event_car_skin.skin_name = temp_car.skins[0].skin_name;
+                                               temp_event.event_car_skin.skin_preview = temp_car.skins[0].skin_preview;
+                                           }                                                                                                      
+                                           break;                                                                            
+                                   }
+                                    
+                                   line = sr.ReadLine();
+                                   if (line == null) break;
+                                   splitted = line.Split('=', ';');
+                               }
+
+                           }
+                           else
+                           
+                           if (line != "[CAR_0]" && line.Contains("CAR_"))
+                           {
+                               Opponent opponent = new Opponent();
+                               splitted = line.Trim('[', ']').Split('_');
+                               opponent.ID = Convert.ToInt32(splitted[1]);
+                               
+                               Car opponent_car = new Car();
+                   
+                               line = sr.ReadLine();
+                               splitted = line.Split('=', ';');
+
+                               while (line != "")
+                               {
+                                   switch (splitted[0])
+                                   {
+                                       case "MODEL":
+                                           opponent_car.model = splitted[1];
+                                           opponent.model = opponent_car;
+                                           break;                        
+                                           
+                                       case "SETUP":
+                                           opponent.setup = splitted[1];
+                                           break;
+
+                                       case "AI_LEVEL":
+                                           opponent.ai_level = Convert.ToInt32(splitted[1]);
+                                           break;
+
+                                       case "SKIN":
+                                           string temp_skin_name = splitted[1].ToLower();
+
+                                           Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == opponent.model.model);
+                                           Skin temp_skin = temp_car.skins.Find(x => x.skin_name == temp_skin_name);
+                                           Bitmap temp_skin_preview;
+
+                                           if (temp_skin != null)
+                                           {
+                                               temp_skin_preview = temp_skin.skin_preview;
+                                               opponent.skin.skin_name = temp_skin_name;
+                                               opponent.skin.skin_preview = temp_skin_preview;
+                                           }
+                                           else
+                                           {
+                                               opponent.skin.skin_name = temp_car.skins[0].skin_name;
+                                               opponent.skin.skin_preview = temp_car.skins[0].skin_preview;
+                                           }                                                                                                                                                
+                                           break;
+
+                                       case "DRIVER_NAME":
+                                           opponent.name = splitted[1];
+                                           break;
+
+                                       case "NATIONALITY":
+                                           opponent.nationality = splitted[1];
+                                           break;
+                                   }
+                                    
+                                   line = sr.ReadLine();
+                                   if (line == null) break;
+                                   splitted = line.Split('=', ';');
+                               }
+
+                               temp_event.opponents_list.Add(opponent);
+
+                           }
+                           else
+
+                           
+                            if (line.Contains("CONDITION_"))                           
+                            {
+                                splitted = line.Trim('[', ']').Split('_');
+                                int id = Convert.ToInt32(splitted[1]);
+                                 
+                                line = sr.ReadLine();
+                                splitted = line.Split('=', ';');
+                              
+                                while (line != "")                             
+                                {
+                                
+                                    switch (splitted[0])                                 
+                                    {                                      
+                                        case "TYPE":
+                                            temp_event.event_goals.type = splitted[1];                                                                                   
+                                            break;                                    
+                                              
+                                        case "OBJECTIVE":
+                                            if (id == 0)
+                                            {
+                                                temp_event.event_goals.tier_1 = splitted[1].Trim();
+                                            }
+                                            else if (id == 1)
+                                            {
+                                                temp_event.event_goals.tier_2 = splitted[1].Trim();
+                                            }
+                                            else 
+                                            {
+                                                temp_event.event_goals.tier_3 = splitted[1].Trim();
+                                            }
+                                            break;
+                                    }
+                                                                      
+                                    line = sr.ReadLine();
+                                    if (line == null) break;
+                                    splitted = line.Split('=', ';');
+                             
+                                }
+                         
+                            }
+                            
+                            
+                        }
+
+
+
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("The process failed: {0}", exc.ToString());
+            }
+
+            return temp_event;
         }
     }
 }

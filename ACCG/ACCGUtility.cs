@@ -123,7 +123,7 @@ namespace ACCG
                 }
 
             }
-            else
+            else // Not implemented yet
             {
                 int rnd_practice = rnd.Next(0, 2);
                 int rnd_qualifying = rnd.Next(0, 2);

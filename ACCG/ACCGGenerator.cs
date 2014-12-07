@@ -473,11 +473,11 @@ namespace ACCG
                                                         "FIXED_SETUP=0",
                                                         "PENALTIES=" + penalties,
                                                         "\n",
-                                                        "[CAR_0]",
-                                                        "SETUP=",
-                                                        "MODEL=-",
-                                                        "SKIN=" + ev.event_car_skin.skin_name,
-                                                        "\n",
+                                                        //"[CAR_0]",
+                                                        //"SETUP=",
+                                                        //"MODEL=-",
+                                                        //"SKIN=" + ev.event_car_skin.skin_name,
+                                                        //"\n",
                                                         "[GHOST_CAR]",
                                                         "RECORDING=0",
                                                         "PLAYING=0",
@@ -587,16 +587,30 @@ namespace ACCG
                                                                 "NAME=" + temp_session.name,
                                                                 "TYPE=" + temp_session.type,
                                                                 "SPAWN_SET=" + temp_session.spawn_set,
+                                                                "\n",
+                                                                "[CAR_0]",
+                                                                "SETUP=",
+                                                                "MODEL=-",
+                                                                "SKIN=" + ev.event_car_skin.skin_name,
+                                                                "DRIVER_NAME=",
+                                                                "NATIONALITY=",
                                                                 "\n"
                                                             };
                    }
                    else if(ev.isHotlap)
                    {
                        temp_session_attributes = new string[] {
-                                                                String.Format("[SESSION_{0}", temp_session.ID),
+                                                                String.Format("[SESSION_{0}]", temp_session.ID),
                                                                 "NAME=" + temp_session.name,
                                                                 "TYPE=" + temp_session.type,
                                                                 "SPAWN_SET=" + temp_session.spawn_set,
+                                                                "\n",
+                                                                "[CAR_0]",
+                                                                "SETUP=",
+                                                                "MODEL=-",
+                                                                "SKIN=" + ev.event_car_skin.skin_name,
+                                                                "DRIVER_NAME=",
+                                                                "NATIONALITY=",
                                                                 "\n"
                                                             };
                    }
