@@ -593,7 +593,6 @@ namespace ACCG
             // 
             // btnRandom
             // 
-            this.btnRandom.Enabled = false;
             this.btnRandom.Location = new System.Drawing.Point(303, 17);
             this.btnRandom.Name = "btnRandom";
             this.btnRandom.Size = new System.Drawing.Size(196, 41);

@@ -52,7 +52,18 @@ namespace ACCG
                     tbPoints.Enabled = true;
                     cbCar.Enabled = true;
 
-                    if (temp_series.series_goals.ranking != "")
+                    if (temp_series.series_goals.points != "")
+                    {
+                        rbRanking.Checked = false;
+                        tbRanking.Enabled = false;
+                        rbGoalsPoints.Checked = true;
+                        tbGoalsPoints.Enabled = true;
+
+                        tbGoldTier.Enabled = false;
+                        tbSilverTier.Enabled = false;
+                        tbBronzeTier.Enabled = false;
+                    }
+                    else if (temp_series.series_goals.ranking != "")
                     {
                         
                         rbRanking.Checked = true;
@@ -133,6 +144,8 @@ namespace ACCG
             
 
             // Populating the requires series combobox
+            cbRequires.Items.Add("");
+
             ac_series_path = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
 
             Array.Sort(ac_series_path, new AlphanumComparatorFast());
@@ -154,7 +167,7 @@ namespace ACCG
             }
             else
             {
-                cbRequires.Text = ac_series_path[1].Substring(ac_series_path[0].LastIndexOf(@"\") + 1);                
+                cbRequires.Text = "";                
             }
             
                                     
@@ -178,11 +191,13 @@ namespace ACCG
             // Set initial car model
             if (current_selected_series != null && current_selected_series.isChampionship)
             {               
-                champ_player_car = temp_series.car;                                
+                champ_player_car = temp_series.car;
+                champ_player_car.skins = ACCGMainForm.ac_cars_list.Find(x => x.model == champ_player_car.model).skins;        
             }
             else
             {
                 champ_player_car = ACCGMainForm.ac_cars_list.Find(x => x.model == cbCar.SelectedItem.ToString());
+                //temp_series.car = champ_player_car;
             }
             
 
@@ -204,14 +219,25 @@ namespace ACCG
             {
                 if (current_selected_series.isChampionship)
                 {
-                    cbSkin.Text = temp_series.skin.skin_name;
-                    skinPreviewImage = temp_series.skin.skin_preview;
+                    if (current_selected_series.skin.skin_name == "")
+                    {
+                        cbSkin.Text = champ_player_car.skins[0].skin_name;
+                        skinPreviewImage = champ_player_car.skins[0].skin_preview;
+                    }
+                    else
+                    {
+                        cbSkin.Text = temp_series.skin.skin_name;
+                        skinPreviewImage = temp_series.skin.skin_preview;
+                    }
+
+                    
                 }
                 
             }
             else
             {
                 cbSkin.Text = ACCGNewSeriesForm.champ_player_car.skins[0].skin_name;
+                //temp_series.skin = champ_player_car.skins[0];
                 skinPreviewImage = champ_player_car.skins[0].skin_preview;
             }
             
@@ -298,8 +324,8 @@ namespace ACCG
             {
                 temp_series.code = tbCode.Text;
                 temp_series.name = tbName.Text;
-                temp_series.description = tbDescription.Text;
-                temp_series.requires = cbRequires.SelectedItem.ToString();
+                temp_series.description = tbDescription.Text;                                
+                temp_series.requires = cbRequires.SelectedItem.ToString();                               
                 temp_series.isChampionship = rbChampionship.Checked;
                 temp_series.isSingleEvents = rbSingleEvents.Checked;
                 
@@ -524,15 +550,15 @@ namespace ACCG
         {
             if (saveEventFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string filename = saveOpponentsFileDialog.FileName;
+                string filename = saveEventFileDialog.FileName;
 
                 if (current_selected_series != null)
                 {
-                    ACCGMainForm.accg_resource.SaveEvent(current_selected_event, filename);
+                    ACCGMainForm.accg_resource.SaveEvent(current_selected_series, current_selected_event, filename);
                 }
                 else
                 {
-                    ACCGMainForm.accg_resource.SaveEvent(current_selected_event, filename);
+                    ACCGMainForm.accg_resource.SaveEvent(temp_series, current_selected_event, filename);
                 }
             }
         }
@@ -800,7 +826,15 @@ namespace ACCG
             {
                 if (temp_series.startImage != null)
                 {
-                    startThumbnailImage = (Bitmap)ACCGUtility.ScaleImage(temp_series.startImage, startImagePanel.Width, startImagePanel.Height);
+                    try
+                    {
+                        startThumbnailImage = (Bitmap)ACCGUtility.ScaleImage(temp_series.startImage, startImagePanel.Width, startImagePanel.Height);
+                    }
+                    catch (Exception exc)
+                    {
+                        ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                    }
+                    
                 }
                 else
                 {
@@ -841,7 +875,15 @@ namespace ACCG
             {
                 if (temp_series.previewImage != null)
                 {
-                    previewThumbnailImage = (Bitmap)temp_series.previewImage.GetThumbnailImage(100, 100, null, new IntPtr());
+                    try
+                    {
+                        previewThumbnailImage = (Bitmap)temp_series.previewImage.GetThumbnailImage(100, 100, null, new IntPtr());
+                    }
+                    catch (Exception exc)
+                    {
+                        ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                    }
+                    
                 }
                 else
                 {
@@ -875,6 +917,9 @@ namespace ACCG
         private void cbSkin_SelectionChangeCommitted(object sender, EventArgs e)
         {            
             skinPreviewImage = ACCGNewSeriesForm.champ_player_car.skins.Find(x => x.skin_name == cbSkin.SelectedItem.ToString()).skin_preview;
+            if (skinPreviewImage == null){
+                skinPreviewImage = ACCG.Properties.Resources.placeholder;
+            }
             skinPreviewImagePanel.Refresh();
         }
 

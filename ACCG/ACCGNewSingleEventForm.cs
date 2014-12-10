@@ -34,7 +34,7 @@ namespace ACCG
             grbHotlapGoals.Enabled = rbHotlap.Checked;
             grbQuickRace.Enabled = rbQuickRace.Checked;            
            
-            if (current_selected_event != null)
+            if (current_selected_event != null) // Edit mode
             {
                 btnRandom.Enabled = false;
 
@@ -108,9 +108,9 @@ namespace ACCG
                 }
 
             }
-            else
+            else              
             {
-                if (sender != btnRandom)
+                if (sender != btnRandom)  // New event mode
                 {
                     temp_event = new Event();
                     
@@ -118,7 +118,7 @@ namespace ACCG
                     temp_event.isQuickRace = rbQuickRace.Checked;
                     temp_event.isHotlap = rbHotlap.Checked;
                 }
-                else
+                else   // Random mode
                 {
                     rbQuickRace.Checked = temp_event.isQuickRace;
                     rbTimeAttack.Checked = temp_event.isTimeAttack;
@@ -232,8 +232,17 @@ namespace ACCG
 
             if (current_selected_event != null)
             {
-                cbSkin.Text = current_selected_event.event_car_skin.skin_name;
-                skinPreviewImage = current_selected_event.event_car_skin.skin_preview;
+                if (current_selected_event.event_car_skin.skin_name == "")
+                {
+                    cbSkin.Text = event_car.skins[0].skin_name;
+                    skinPreviewImage = event_car.skins[0].skin_preview;
+                }
+                else
+                {
+                    cbSkin.Text = current_selected_event.event_car_skin.skin_name;
+                    skinPreviewImage = current_selected_event.event_car_skin.skin_preview;
+                }
+                
             }
             else if(sender != btnRandom)
             {

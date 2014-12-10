@@ -18,29 +18,40 @@ namespace ACCG
             InitializeComponent();
             accg_generator = ACCGGenerator.GetInstance();
             accg_resource = ACCGResourceManager.GetInstance();
+            accg_log = ACCGLogManager.GetInstance();
         }
         
         private void ACCGMainForm_Load(object sender, EventArgs e)
         {
-            // Load settings.ini            
-            Console.WriteLine("DEBUG: Load setting.ini");
+            // Delete existing log files
+            accg_log.DeleteLogFiles();
+            DateTime time_stamp;
+
+            // Load settings.ini        
+            time_stamp = DateTime.Now;
+            accg_log.WriteLog("SYSTEM", time_stamp + ": Load settings.ini");            
             accg_resource.LoadSettings(accg_settings_file_name);
+            this.openSeriesFileDialog.InitialDirectory = ac_path + @"\content\career";
                     
-            // ACCG Series list (list with only user created series)                        
-            Console.WriteLine("DEBUG: Load ACCG Series list");
+            // ACCG Series list (list with only user created series)   
+            time_stamp = DateTime.Now;
+            accg_log.WriteLog("SYSTEM", time_stamp + ": Load ACCG Series list");            
             accg_series_list = accg_resource.LoadACCGSeries(accg_series_file_name);
 
             // Sync resources
-            Console.WriteLine("DEBUG: Sync resources");
+            time_stamp = DateTime.Now;
+            accg_log.WriteLog("SYSTEM", time_stamp + ": Sync resources");            
             accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
                                                                    
-            // Populating Cars list                 
-            Console.WriteLine("DEBUG: Load Cars");       
+            // Populating Cars list   
+            time_stamp = DateTime.Now;
+            accg_log.WriteLog("SYSTEM", time_stamp + ": Load Cars");            
             ac_cars_list = accg_resource.LoadCars(accg_cars_file_name);
             
-            // Populating Tracks list          
-            Console.WriteLine("DEBUG: Load Tracks");  
-            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);
+            // Populating Tracks list 
+            time_stamp = DateTime.Now;
+            accg_log.WriteLog("SYSTEM", time_stamp + ": Load Tracks");             
+            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);            
 
             // Creating the time table             
             time_table = new Dictionary<string, int>();
@@ -109,7 +120,15 @@ namespace ACCG
                     rtbSeriesInfo.AppendText("Car: " + tmp_car.model + "\n");
                     rtbSeriesInfo.AppendText("Skin: " + current_selected_series.skin.skin_name + "\n");
                     rtbSeriesInfo.AppendText("Opponents: " + current_selected_series.opponents_list.Count + "\n");
-                    rtbSeriesInfo.AppendText("Goals: " + current_selected_series.series_goals.points + " points\n");
+                    if (current_selected_series.series_goals.points == "")
+                    {
+                        rtbSeriesInfo.AppendText("Goals: " + current_selected_series.series_goals.ranking + " position\n");
+                    }
+                    else
+                    {
+                        rtbSeriesInfo.AppendText("Goals: " + current_selected_series.series_goals.points + " points\n");
+                    }
+                    
                 }
                 else
                 {
@@ -134,6 +153,20 @@ namespace ACCG
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnLoadSeries_Click(object sender, EventArgs e)
+        {
+            if (openSeriesFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string filename = openSeriesFileDialog.FileName;
+                accg_series_list.Add(accg_resource.loadSeries(filename));
+            }
+
+            bs_series_datasource.ResetBindings(false);
+            ShowData();
+
+            rtbSeriesInfo.ResetText();
         }
 
         private void btnNewSeries_Click(object sender, EventArgs e)
@@ -161,7 +194,9 @@ namespace ACCG
 
         private void btnDeleteSeries_Click(object sender, EventArgs e)
         {
-                        
+
+            GC.Collect();
+
             if (current_selected_series == null)
             {
                 MessageBox.Show("You have to select a series!");
@@ -195,6 +230,7 @@ namespace ACCG
                         }
                         catch (Exception exc)
                         {
+                            ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                             Console.WriteLine("The process failed: {0}", exc.ToString());
                         }
 
@@ -257,6 +293,13 @@ namespace ACCG
         {
             Application.ExitThread();
         }
+
+        private void ACCGMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Saving the accg series list                 
+            ACCGMainForm.accg_resource.SaveACCGSeries(ACCGMainForm.accg_series_file_name, ACCGMainForm.accg_series_list);  
+        }
+       
               
     }
 }

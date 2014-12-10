@@ -16,7 +16,16 @@ namespace ACCG
         public string tier_2 { get; set; }  // Silver medal
         public string tier_3 { get; set; }  // Gold medal
 
-        public Goals() { }
+        public Goals() 
+        {
+            this.type = "";
+            this.points = "";
+            this.ranking = "";
+            this.tier_1 = "";
+            this.tier_2 = "";
+            this.tier_3 = "";
+        
+        }
         
 
     }

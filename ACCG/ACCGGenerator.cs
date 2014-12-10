@@ -70,6 +70,7 @@ namespace ACCG
            }
            catch (Exception exc)
            {
+               ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                Console.WriteLine("The process failed: {0}", exc.ToString());
            }
 
@@ -141,6 +142,7 @@ namespace ACCG
            }
            catch (Exception exc)
            {
+               ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                Console.WriteLine("The process failed: {0}", exc.ToString());
            }
 
@@ -189,6 +191,7 @@ namespace ACCG
            }
            catch (Exception exc)
            {
+               ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                Console.WriteLine("The process failed: {0}", exc.ToString());
            }
        }
@@ -210,6 +213,7 @@ namespace ACCG
                }
                catch (Exception exc)
                {
+                   ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                    Console.WriteLine("The process failed: {0}", exc.ToString());
                }
 
@@ -339,6 +343,7 @@ namespace ACCG
                }
                catch (Exception exc)
                {
+                   ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                    Console.WriteLine("The process failed: {0}", exc.ToString());
                }
 
@@ -372,6 +377,7 @@ namespace ACCG
            }
            catch (Exception exc)
            {
+               ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                Console.WriteLine("The process failsed: {0}", exc.ToString());
            }
 
@@ -391,6 +397,7 @@ namespace ACCG
                }
                catch (Exception exc)
                {
+                   ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                    Console.WriteLine("The process failed: {0}", exc.ToString());
                }
 
@@ -629,7 +636,7 @@ namespace ACCG
                        Opponent temp_opponent = ev.opponents_list[i];
 
                        string[] temp_opponent_attributes = {
-                                                               String.Format("[CAR_{0}", temp_opponent.ID),
+                                                               String.Format("[CAR_{0}]", temp_opponent.ID),
                                                                "MODEL=" + temp_opponent.model.model,
                                                                "SETUP=" + ev.track,
                                                                "AI_LEVEL=" + temp_opponent.ai_level,
@@ -730,6 +737,7 @@ namespace ACCG
                }
                catch (Exception exc)
                {
+                   ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                    Console.WriteLine("The process failse: {0}", exc.ToString());
                }
 

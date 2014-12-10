@@ -38,9 +38,12 @@ namespace ACCG
 
         public Event()
         {
-            event_goals = new Goals();
-            event_car = new Car();
-            event_car_skin = new Skin();
+            this.session_list = new List<Session>();
+            this.opponents_list = new List<Opponent>();
+            //this.previewImage = new Bitmap("");
+            this.event_car = new Car();
+            this.event_car_skin = new Skin();
+            this.event_goals = new Goals();
         }
 
        

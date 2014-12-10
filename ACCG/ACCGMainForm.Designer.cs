@@ -49,9 +49,12 @@ namespace ACCG
             this.lblCurrentSeries = new System.Windows.Forms.Label();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.grbSeries = new System.Windows.Forms.GroupBox();
+            this.btnLoadSeries = new System.Windows.Forms.Button();
             this.tltNewSeriesButton = new System.Windows.Forms.ToolTip(this.components);
             this.tltEditSeriesButton = new System.Windows.Forms.ToolTip(this.components);
             this.tltDeleteSeriesButton = new System.Windows.Forms.ToolTip(this.components);
+            this.tltLoadSeries = new System.Windows.Forms.ToolTip(this.components);
+            this.openSeriesFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.grbSeries.SuspendLayout();
             this.SuspendLayout();
@@ -134,6 +137,7 @@ namespace ACCG
             this.resourceToolStripMenuItem.Name = "resourceToolStripMenuItem";
             this.resourceToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.resourceToolStripMenuItem.Text = "Resource";
+            this.resourceToolStripMenuItem.Visible = false;
             // 
             // syncToolStripMenuItem
             // 
@@ -167,11 +171,11 @@ namespace ACCG
             // 
             // rtbSeriesInfo
             // 
-            this.rtbSeriesInfo.Location = new System.Drawing.Point(135, 19);
+            this.rtbSeriesInfo.Location = new System.Drawing.Point(178, 19);
             this.rtbSeriesInfo.Name = "rtbSeriesInfo";
             this.rtbSeriesInfo.ReadOnly = true;
             this.rtbSeriesInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbSeriesInfo.Size = new System.Drawing.Size(262, 163);
+            this.rtbSeriesInfo.Size = new System.Drawing.Size(219, 163);
             this.rtbSeriesInfo.TabIndex = 16;
             this.rtbSeriesInfo.Text = "";
             // 
@@ -196,6 +200,7 @@ namespace ACCG
             // 
             // grbSeries
             // 
+            this.grbSeries.Controls.Add(this.btnLoadSeries);
             this.grbSeries.Controls.Add(this.lbSeries);
             this.grbSeries.Controls.Add(this.btnNewSeries);
             this.grbSeries.Controls.Add(this.btnEditSeries);
@@ -207,6 +212,22 @@ namespace ACCG
             this.grbSeries.TabIndex = 20;
             this.grbSeries.TabStop = false;
             this.grbSeries.Text = "Series";
+            // 
+            // btnLoadSeries
+            // 
+            this.btnLoadSeries.Image = global::ACCG.Properties.Resources.Open_6529_24;
+            this.btnLoadSeries.Location = new System.Drawing.Point(135, 19);
+            this.btnLoadSeries.Name = "btnLoadSeries";
+            this.btnLoadSeries.Size = new System.Drawing.Size(37, 23);
+            this.btnLoadSeries.TabIndex = 17;
+            this.tltNewSeriesButton.SetToolTip(this.btnLoadSeries, "New Series");
+            this.tltLoadSeries.SetToolTip(this.btnLoadSeries, "Load Series");
+            this.btnLoadSeries.UseVisualStyleBackColor = true;
+            this.btnLoadSeries.Click += new System.EventHandler(this.btnLoadSeries_Click);
+            // 
+            // openSeriesFileDialog
+            // 
+            this.openSeriesFileDialog.Filter = "Series files (series.ini)|series.ini";
             // 
             // ACCGMainForm
             // 
@@ -223,6 +244,7 @@ namespace ACCG
             this.Name = "ACCGMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ACCG - Assetto Corsa Career Generator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ACCGMainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ACCGMainForm_FormClosed);
             this.Load += new System.EventHandler(this.ACCGMainForm_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -280,11 +302,16 @@ namespace ACCG
 
         public static ACCGResourceManager accg_resource;
 
+        public static ACCGLogManager accg_log;
+
         public const string accg_settings_file_name = @"cfg\settings.ini";
         public const string accg_series_file_name = @"data\accg_series_list.dat";
         public const string accg_cars_file_name = @"data\cars.txt";
         public const string accg_tracks_file_name = @"data\tracks.txt";
         public const string accg_manual_file_name = @"doc\ACCG_manual.pdf";
+        private Button btnLoadSeries;
+        private ToolTip tltLoadSeries;
+        private OpenFileDialog openSeriesFileDialog;
 
         
     }

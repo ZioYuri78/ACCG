@@ -97,6 +97,7 @@ namespace ACCG
             this.tkbStartPosition = new System.Windows.Forms.TrackBar();
             this.lblStartingPosition = new System.Windows.Forms.Label();
             this.grbOpponents = new System.Windows.Forms.GroupBox();
+            this.btnSaveOpponents = new System.Windows.Forms.Button();
             this.btnLoadOpponents = new System.Windows.Forms.Button();
             this.lbOpponents = new System.Windows.Forms.ListBox();
             this.btnDeleteOpponent = new System.Windows.Forms.Button();
@@ -134,7 +135,6 @@ namespace ACCG
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnSaveOpponents = new System.Windows.Forms.Button();
             this.saveOpponentsFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.grbButtons.SuspendLayout();
             this.grbImages.SuspendLayout();
@@ -813,6 +813,16 @@ namespace ACCG
             this.grbOpponents.TabStop = false;
             this.grbOpponents.Text = "Opponents";
             // 
+            // btnSaveOpponents
+            // 
+            this.btnSaveOpponents.Image = global::ACCG.Properties.Resources.Save_6530;
+            this.btnSaveOpponents.Location = new System.Drawing.Point(144, 46);
+            this.btnSaveOpponents.Name = "btnSaveOpponents";
+            this.btnSaveOpponents.Size = new System.Drawing.Size(37, 23);
+            this.btnSaveOpponents.TabIndex = 32;
+            this.btnSaveOpponents.UseVisualStyleBackColor = true;
+            this.btnSaveOpponents.Click += new System.EventHandler(this.btnSaveOpponents_Click);
+            // 
             // btnLoadOpponents
             // 
             this.btnLoadOpponents.Image = global::ACCG.Properties.Resources.Open_6529_24;
@@ -896,7 +906,7 @@ namespace ACCG
             // tkbNumberOfLaps
             // 
             this.tkbNumberOfLaps.Location = new System.Drawing.Point(53, 70);
-            this.tkbNumberOfLaps.Minimum = 2;
+            this.tkbNumberOfLaps.Minimum = 1;
             this.tkbNumberOfLaps.Name = "tkbNumberOfLaps";
             this.tkbNumberOfLaps.Size = new System.Drawing.Size(104, 45);
             this.tkbNumberOfLaps.TabIndex = 26;
@@ -907,7 +917,7 @@ namespace ACCG
             // 
             this.tkbNumberOfCars.Location = new System.Drawing.Point(49, 19);
             this.tkbNumberOfCars.Maximum = 24;
-            this.tkbNumberOfCars.Minimum = 2;
+            this.tkbNumberOfCars.Minimum = 1;
             this.tkbNumberOfCars.Name = "tkbNumberOfCars";
             this.tkbNumberOfCars.Size = new System.Drawing.Size(104, 45);
             this.tkbNumberOfCars.TabIndex = 22;
@@ -1124,16 +1134,6 @@ namespace ACCG
             this.label10.Size = new System.Drawing.Size(28, 13);
             this.label10.TabIndex = 61;
             this.label10.Text = ".000";
-            // 
-            // btnSaveOpponents
-            // 
-            this.btnSaveOpponents.Image = global::ACCG.Properties.Resources.Save_6530;
-            this.btnSaveOpponents.Location = new System.Drawing.Point(144, 46);
-            this.btnSaveOpponents.Name = "btnSaveOpponents";
-            this.btnSaveOpponents.Size = new System.Drawing.Size(37, 23);
-            this.btnSaveOpponents.TabIndex = 32;
-            this.btnSaveOpponents.UseVisualStyleBackColor = true;
-            this.btnSaveOpponents.Click += new System.EventHandler(this.btnSaveOpponents_Click);
             // 
             // saveOpponentsFileDialog
             // 

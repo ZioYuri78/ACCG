@@ -73,6 +73,7 @@ namespace ACCG
             this.grbCar = new System.Windows.Forms.GroupBox();
             this.skinPreviewImagePanel = new System.Windows.Forms.Panel();
             this.grbEvents = new System.Windows.Forms.GroupBox();
+            this.btnSaveEvent = new System.Windows.Forms.Button();
             this.btnLoadEvent = new System.Windows.Forms.Button();
             this.btnNewEvent = new System.Windows.Forms.Button();
             this.btnEditEvent = new System.Windows.Forms.Button();
@@ -107,7 +108,6 @@ namespace ACCG
             this.saveOpponentsFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openEventFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tltLoadEvents = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSaveEvent = new System.Windows.Forms.Button();
             this.tltSaveEvent = new System.Windows.Forms.ToolTip(this.components);
             this.saveEventFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.grbGoals.SuspendLayout();
@@ -523,6 +523,19 @@ namespace ACCG
             this.grbEvents.TabStop = false;
             this.grbEvents.Text = "Events";
             // 
+            // btnSaveEvent
+            // 
+            this.btnSaveEvent.Enabled = false;
+            this.btnSaveEvent.Image = global::ACCG.Properties.Resources.Save_6530;
+            this.btnSaveEvent.Location = new System.Drawing.Point(135, 48);
+            this.btnSaveEvent.Name = "btnSaveEvent";
+            this.btnSaveEvent.Size = new System.Drawing.Size(37, 23);
+            this.btnSaveEvent.TabIndex = 32;
+            this.tltSaveEvent.SetToolTip(this.btnSaveEvent, "Save Event");
+            this.btnSaveEvent.UseVisualStyleBackColor = true;
+            this.btnSaveEvent.Visible = false;
+            this.btnSaveEvent.Click += new System.EventHandler(this.btnSaveEvent_Click);
+            // 
             // btnLoadEvent
             // 
             this.btnLoadEvent.Image = global::ACCG.Properties.Resources.Open_6529_24;
@@ -746,17 +759,6 @@ namespace ACCG
             // openEventFileDialog
             // 
             this.openEventFileDialog.Filter = "event files|*.ini|event files|*.txt";
-            // 
-            // btnSaveEvent
-            // 
-            this.btnSaveEvent.Image = global::ACCG.Properties.Resources.Save_6530;
-            this.btnSaveEvent.Location = new System.Drawing.Point(135, 48);
-            this.btnSaveEvent.Name = "btnSaveEvent";
-            this.btnSaveEvent.Size = new System.Drawing.Size(37, 23);
-            this.btnSaveEvent.TabIndex = 32;
-            this.tltSaveEvent.SetToolTip(this.btnSaveEvent, "Save Event");
-            this.btnSaveEvent.UseVisualStyleBackColor = true;
-            this.btnSaveEvent.Click += new System.EventHandler(this.btnSaveEvent_Click);
             // 
             // saveEventFileDialog
             // 

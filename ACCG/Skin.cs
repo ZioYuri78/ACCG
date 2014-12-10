@@ -13,7 +13,10 @@ namespace ACCG
         public string skin_name { get; set; }
         public Bitmap skin_preview { get; set; }
 
-        public Skin() { }
+        public Skin() 
+        {
+            this.skin_name = "";            
+        }
 
     }
 }

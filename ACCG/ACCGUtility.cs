@@ -71,12 +71,13 @@ namespace ACCG
         public static Event RandomizeEvent(Event _event, bool _single_event)
         {
             Random rnd = new Random();
+            _event.session_list = new List<Session>();
 
             // Common events attributes
             _event.ambient_temperature = rnd.Next(10, 37);
             _event.time = rnd.Next(-80, 81);
             _event.track = ACCGMainForm.ac_tracks_list[rnd.Next(0, ACCGMainForm.ac_tracks_list.Count)];
-            _event.dynamic_track_preset = rnd.Next(0, 6);
+            _event.dynamic_track_preset = rnd.Next(0, 6);            
 
             if (_single_event)
             {
@@ -127,22 +128,30 @@ namespace ACCG
             {
                 int rnd_practice = rnd.Next(0, 2);
                 int rnd_qualifying = rnd.Next(0, 2);
-
+                
                 if (rnd_practice == 1)
                 {
-                    //_event.
+                    Session practice = new Session();
+                    practice.name = "Practice";                    
+                    practice.duration_minutes = rnd.Next(5, 91);                    
+                    _event.session_list.Add(practice);
                 }
 
                 if (rnd_qualifying == 1)
                 {
-
+                    Session qualifying = new Session();
+                    qualifying.name = "Qualifying";
+                    qualifying.duration_minutes = rnd.Next(5, 61);
+                    _event.session_list.Add(qualifying);
                 }
 
-                _event.numberOfCars = rnd.Next(2, 25); 
-            }
-
-            
-            
+                Session race = new Session();
+                race.name = "Race";
+                race.laps = rnd.Next(2, 11);
+                _event.numberOfLaps = rnd.Next(2, 11);    
+                _event.numberOfCars = rnd.Next(2, 25);                                
+                
+            }                        
                                     
             return _event;
         }

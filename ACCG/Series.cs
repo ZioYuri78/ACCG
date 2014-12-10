@@ -33,6 +33,8 @@ namespace ACCG
         public Series()
         {
             this.events_list = new List<Event>();
+            this.opponents_list = new List<Opponent>();
+            this.car = new Car();
             this.skin = new Skin();
             this.series_goals = new Goals();
         }

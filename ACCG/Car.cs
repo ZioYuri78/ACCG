@@ -17,6 +17,7 @@ namespace ACCG
 
         public Car()
         {
+            this.model = "";
             this.skins = new List<Skin>();
         }
                 

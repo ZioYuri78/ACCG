@@ -42,6 +42,8 @@ namespace ACCG
             // Editing mode
             if (current_selected_event != null)
             {
+                btnRandom.Enabled = false;
+
                 temp_event = current_selected_event;
                 tbName.Text = current_selected_event.name;
                 tbDescription.Text = current_selected_event.description;
@@ -84,10 +86,52 @@ namespace ACCG
                 ckbPenalties.Checked = current_selected_event.penalties;                
 
             }
-            else // New event mode
+            else 
             {
-                temp_event = new Event();
-                cbTrack.Text = ACCGMainForm.ac_tracks_list[0];
+                if (sender != btnRandom)  // New event mode
+                {
+                    temp_event = new Event();
+                    cbTrack.Text = ACCGMainForm.ac_tracks_list[0];
+                }
+                else  // Random mode
+                {
+                    tkbAmbientTemperature.Value = temp_event.ambient_temperature;
+                    tkbAmbientTemperature_Scroll(sender, e);
+
+                    tkbTime.Value = temp_event.time;
+                    tkbTime_Scroll(sender, e);
+
+                    tkbTrackCondition.Value = temp_event.dynamic_track_preset;
+                    tkbTrackCondition_Scroll(sender, e);
+
+                    cbTrack.Text = temp_event.track;
+
+                    tkbNumberOfCars.Value = temp_event.numberOfCars;
+                    tkbNumberOfCars_Scroll(sender, e);
+
+                    tkbNumberOfLaps.Value = temp_event.numberOfLaps;
+                    tkbNumberOfLaps_Scroll(sender, e);
+
+                    foreach (Session session in temp_event.session_list)
+                    {
+                        switch (session.name)
+                        {
+                            case "Practice":
+                                ckbPractice.Checked = true;
+                                tkbPracticeDuration.Value = session.duration_minutes;
+                                tkbPracticeDuration_Scroll(sender, e);
+                                break;
+
+                            case "Qualifying":
+                                ckbQualifying.Checked = true;
+                                tkbQualifyingDuration.Value = session.duration_minutes;
+                                tkbQualifyingDuration_Scroll(sender, e);
+                                break;                            
+
+                        }
+                    }
+
+                }
                                 
             }
                                                           
@@ -387,8 +431,51 @@ namespace ACCG
 
         private void btnRandom_Click(object sender, EventArgs e)
         {
+            ResetAll(sender, e);
 
+            if (current_selected_event != null)
+            {
+                current_selected_event = ACCGUtility.RandomizeEvent(current_selected_event, false);
+            }
+            else
+            {
+                temp_event = ACCGUtility.RandomizeEvent(temp_event, false);
+            }
+
+            this.NewEventForm_Load(sender, e);
         }
-                          
+
+        private void ResetAll(object sender, EventArgs e)
+        {
+            ckbPenalties.Checked = false;
+
+            tkbAmbientTemperature.Value = 26;
+            tkbAmbientTemperature_Scroll(sender, e);
+
+            tkbTime.Value = 0;
+            tkbTime_Scroll(sender, e);
+
+            cbTrack.Text = ACCGMainForm.ac_tracks_list[0];
+
+            tkbTrackCondition.Value = 4;
+            tkbTrackCondition_Scroll(sender, e);
+
+            ckbPractice.Checked = false;
+            ckbPractice_CheckedChanged(sender, e);
+            tkbPracticeDuration.Value = 5;
+            tkbPracticeDuration_Scroll(sender, e);
+
+            ckbQualifying.Checked = false;
+            ckbQualifying_CheckedChanged(sender, e);
+            tkbQualifyingDuration.Value = 5;
+            tkbQualifyingDuration_Scroll(sender, e);
+
+            tkbNumberOfCars.Value = 2;
+            tkbNumberOfCars_Scroll(sender, e);
+
+            tkbNumberOfLaps.Value = 2;
+            tkbNumberOfLaps_Scroll(sender, e);
+            
+        }             
     }
 }
