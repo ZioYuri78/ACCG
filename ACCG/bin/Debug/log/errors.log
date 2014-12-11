@@ -1,3 +1,0 @@
-The process failed: System.ArgumentException: Parametro non valido.
-   in System.Drawing.Image.GetThumbnailImage(Int32 thumbWidth, Int32 thumbHeight, GetThumbnailImageAbort callback, IntPtr callbackData)
-   in ACCG.ACCGNewSeriesForm.previewImagePanel_Paint(Object sender, PaintEventArgs e) in d:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\ACCGNewSeriesForm.cs:riga 880

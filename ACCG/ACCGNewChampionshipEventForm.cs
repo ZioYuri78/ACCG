@@ -476,6 +476,11 @@ namespace ACCG
             tkbNumberOfLaps.Value = 2;
             tkbNumberOfLaps_Scroll(sender, e);
             
+        }
+
+        private void tkbTime_MouseEnter(object sender, EventArgs e)
+        {
+            tltTimeTrackbar.Show("This control still broken with mouse, please use arrow keys!", tkbTime, 5000);
         }             
     }
 }

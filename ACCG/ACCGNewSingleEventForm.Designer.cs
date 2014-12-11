@@ -136,6 +136,7 @@ namespace ACCG
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.saveOpponentsFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.tltTimeTrackbar = new System.Windows.Forms.ToolTip(this.components);
             this.grbButtons.SuspendLayout();
             this.grbImages.SuspendLayout();
             this.grbTrack.SuspendLayout();
@@ -367,6 +368,7 @@ namespace ACCG
             this.tkbTime.TabIndex = 6;
             this.tkbTime.TickFrequency = 8;
             this.tkbTime.Scroll += new System.EventHandler(this.tkbTime_Scroll);
+            this.tkbTime.MouseEnter += new System.EventHandler(this.tkbTime_MouseEnter);
             // 
             // lblAmbTemperatureValue
             // 
@@ -1312,6 +1314,7 @@ namespace ACCG
         private Label label18;
         private Button btnSaveOpponents;
         private SaveFileDialog saveOpponentsFileDialog;
+        private ToolTip tltTimeTrackbar;
 
         public static Event temp_event { get; set; }
         public static Car event_car { get; set; }

@@ -201,8 +201,9 @@ namespace ACCG
             // tbCode
             // 
             this.tbCode.Location = new System.Drawing.Point(66, 19);
+            this.tbCode.MaxLength = 3;
             this.tbCode.Name = "tbCode";
-            this.tbCode.Size = new System.Drawing.Size(130, 20);
+            this.tbCode.Size = new System.Drawing.Size(29, 20);
             this.tbCode.TabIndex = 9;
             // 
             // tbName
@@ -758,7 +759,7 @@ namespace ACCG
             // 
             // openEventFileDialog
             // 
-            this.openEventFileDialog.Filter = "event files|*.ini|event files|*.txt";
+            this.openEventFileDialog.Filter = "event files|event.ini";
             // 
             // saveEventFileDialog
             // 

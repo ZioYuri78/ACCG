@@ -202,10 +202,14 @@ namespace ACCG
             
 
             // Populating the car skins combo box
-            foreach (Skin skin in ACCGNewSeriesForm.champ_player_car.skins)
+            if (current_selected_series == null)
             {
-                cbSkin.Items.Add(skin.skin_name);
+                foreach (Skin skin in ACCGNewSeriesForm.champ_player_car.skins)
+                {
+                    cbSkin.Items.Add(skin.skin_name);
+                }
             }
+            
 
             if (current_selected_series != null && current_selected_series.isChampionship)
             {
@@ -493,7 +497,16 @@ namespace ACCG
 
                 if (temp_series.isChampionship)
                 {
-                    rtbEventsInfo.AppendText("Laps: " + current_selected_event.session_list.Find(x => x.type == 3).laps + "\n");
+                    try
+                    {
+                        rtbEventsInfo.AppendText("Laps: " + current_selected_event.session_list.Find(x => x.type == 3).laps + "\n");
+                    }
+                    catch (Exception exc)
+                    {
+                        ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                        Console.WriteLine("The process failed: {0}", exc.ToString());
+                    }
+                   
                 }
                 else
                 {
@@ -526,6 +539,8 @@ namespace ACCG
 
         private void btnLoadEvent_Click(object sender, EventArgs e)
         {
+            openEventFileDialog.InitialDirectory = ACCGMainForm.ac_path + @"\content\career";
+
             if (openEventFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filename = openEventFileDialog.FileName;

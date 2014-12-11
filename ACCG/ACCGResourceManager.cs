@@ -146,34 +146,9 @@ namespace ACCG
                                 ACCGMainForm.accg_log.WriteLog("SYSTEM", "SKIN: " + tmp_skin.skin_name);
                                 string skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
                                 Console.WriteLine("DEBUG: " + skin_image_path);
-                                
-                                if (File.Exists(skin_image_path))
-                                {
-                                    using (var tempImage = Image.FromFile(skin_image_path))
-                                    {
-                                        Bitmap bmp = new Bitmap(170, 96);
-                                        using (Graphics g = Graphics.FromImage(bmp))
-                                        {
-                                            g.DrawImage(tempImage, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                                        }
-                                        tmp_skin.skin_preview = bmp;
-                                    }                                    
-                                    
-                                }
-                                else
-                                {
-                                    tmp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
-                                }
-                                
-                                while (tmp_skin.skin_name.ToUpper() != "[END_SKINS]")
-                                {
-                                    tmp_car.skins.Add(tmp_skin);
-                                    tmp_skin = new Skin();
-                                    tmp_skin.skin_name = sr.ReadLine().ToLower();
-                                    ACCGMainForm.accg_log.WriteLog("SYSTEM", "SKIN: " + tmp_skin.skin_name);
-                                    skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
-                                    Console.WriteLine("DEBUG: " + skin_image_path);
 
+                                try
+                                {
                                     if (File.Exists(skin_image_path))
                                     {
                                         using (var tempImage = Image.FromFile(skin_image_path))
@@ -185,12 +160,56 @@ namespace ACCG
                                             }
                                             tmp_skin.skin_preview = bmp;
                                         }
-                                        
+
                                     }
                                     else
                                     {
                                         tmp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
                                     }
+                                }
+                                catch (Exception exc)
+                                {
+                                    ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                                    Console.WriteLine("The process failed: {0}", exc.ToString());
+                                }
+
+                                
+                                
+                                while (tmp_skin.skin_name.ToUpper() != "[END_SKINS]")
+                                {
+                                    tmp_car.skins.Add(tmp_skin);
+                                    tmp_skin = new Skin();
+                                    tmp_skin.skin_name = sr.ReadLine().ToLower();
+                                    ACCGMainForm.accg_log.WriteLog("SYSTEM", "SKIN: " + tmp_skin.skin_name);
+                                    skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
+                                    Console.WriteLine("DEBUG: " + skin_image_path);
+
+                                    try
+                                    {
+                                        if (File.Exists(skin_image_path))
+                                        {
+                                            using (var tempImage = Image.FromFile(skin_image_path))
+                                            {
+                                                Bitmap bmp = new Bitmap(170, 96);
+                                                using (Graphics g = Graphics.FromImage(bmp))
+                                                {
+                                                    g.DrawImage(tempImage, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                                                }
+                                                tmp_skin.skin_preview = bmp;
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            tmp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
+                                        }
+                                    }
+                                    catch (Exception exc)
+                                    {
+                                        ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                                        Console.WriteLine("The process failed: {0}", exc.ToString());
+                                    }
+                                    
 
                                 }
                             }
@@ -301,7 +320,7 @@ namespace ACCG
                     for(int i = 0; i < _tracks_list.Count; i++){
                                                 
                         new_file.Append(_tracks_list[i] + "\r\n");
-                        //ACCGMainForm.accg_log.WriteLog("SYSTEM","TRACK: " + _tracks_list[i]);
+                        
                     }
 
                     File.WriteAllText(_file_path, new_file.ToString());
@@ -357,22 +376,32 @@ namespace ACCG
                         Skin temp_skin = new Skin();
                         temp_skin.skin_name = skin.Substring(skin.LastIndexOf(@"\") + 1);
 
-                        if(File.Exists(skin + @"\preview.jpg")){
-                            using (var tempImage = Image.FromFile(skin + @"\preview.jpg"))
-                            {
-                                Bitmap bmp = new Bitmap(170, 96);
-                                using (Graphics g = Graphics.FromImage(bmp))
-                                {
-                                    g.DrawImage(tempImage, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                                }
-                                temp_skin.skin_preview = bmp;
-                            }
-                            
-                        }
-                        else
+                        try
                         {
-                            temp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
+                            if (File.Exists(skin + @"\preview.jpg"))
+                            {
+                                using (var tempImage = Image.FromFile(skin + @"\preview.jpg"))
+                                {
+                                    Bitmap bmp = new Bitmap(170, 96);
+                                    using (Graphics g = Graphics.FromImage(bmp))
+                                    {
+                                        g.DrawImage(tempImage, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                                    }
+                                    temp_skin.skin_preview = bmp;
+                                }
+
+                            }
+                            else
+                            {
+                                temp_skin.skin_preview = ACCG.Properties.Resources.placeholder;
+                            }
                         }
+                        catch (Exception exc)
+                        {
+                            ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                            Console.WriteLine("The process failed: {0}", exc.ToString());
+                        }
+                        
                         
                         temp_car.skins.Add(temp_skin);
                     }
@@ -438,6 +467,10 @@ namespace ACCG
                                             temp_opponent.model.model = splitted[1];
                                             break;
 
+                                        case "CAR":
+                                            temp_opponent.model.model = splitted[1];
+                                            break;
+
                                         case "SETUP":                                            
                                             temp_opponent.setup = splitted[1];
                                             break;
@@ -445,15 +478,36 @@ namespace ACCG
                                         case "AI_LEVEL":                                            
                                             temp_opponent.ai_level = Convert.ToInt32(splitted[1]);
                                             break;
-
-                                        case "SKIN":                                            
-                                            temp_opponent.skin.skin_name = splitted[1].ToLower();
-                                            Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_opponent.model.model);
-                                            Bitmap temp_skin_preview = temp_car.skins.Find(x => x.skin_name == temp_opponent.skin.skin_name).skin_preview;
-                                            temp_opponent.skin.skin_preview = temp_skin_preview;
+                                            
+                                        case "LEVEL":
+                                            temp_opponent.ai_level = Convert.ToInt32(splitted[1]);
                                             break;
 
+                                        case "SKIN":
+                                            string temp_skin_name = splitted[1].ToLower();
+
+                                            Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_opponent.model.model);
+                                            Skin temp_skin = temp_car.skins.Find(x => x.skin_name == temp_skin_name);
+                                            Bitmap temp_skin_preview;
+
+                                            if (temp_skin != null)
+                                            {
+                                                temp_skin_preview = temp_skin.skin_preview;
+                                                temp_opponent.skin.skin_name = temp_skin_name;
+                                                temp_opponent.skin.skin_preview = temp_skin_preview;
+                                            }
+                                            else
+                                            {
+                                                temp_opponent.skin.skin_name = temp_car.skins[0].skin_name;
+                                                temp_opponent.skin.skin_preview = temp_car.skins[0].skin_preview;
+                                            }
+                                            break;
+                                                                                    
                                         case "DRIVER_NAME":                                            
+                                            temp_opponent.name = splitted[1];
+                                            break;
+
+                                        case "NAME":
                                             temp_opponent.name = splitted[1];
                                             break;
 
@@ -544,8 +598,20 @@ namespace ACCG
                     string path = Path.GetDirectoryName(_file_path);
                     temp_event.ID = Convert.ToInt32(path.Substring(path.LastIndexOf(@"t") + 1));
 
-                    // Load preview images                                        
-                    temp_event.previewImage = (Bitmap)Image.FromFile(path + @"\preview.png");
+                    // Load preview images     
+                    try
+                    {
+                        using (var temp_bmp = new FileStream(path + @"\preview.png", FileMode.Open, FileAccess.Read))
+                        {
+                            temp_event.previewImage = new Bitmap(temp_bmp);
+                        }
+                    }
+                    catch (Exception exc)
+                    {
+                        ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                        Console.WriteLine("The process failed: {0}", exc.ToString());
+                    }            
+                    
 
                     using (StreamReader sr = new StreamReader(_file_path))
                     {
@@ -1131,7 +1197,7 @@ namespace ACCG
                     // Load start and preview images                                     
                     try
                     {
-                        using ( var temp_bmp = (Bitmap)Image.FromFile(path + @"\start.png"))
+                        using ( var temp_bmp = new FileStream(path + @"\start.png", FileMode.Open, FileAccess.Read))//(Bitmap)Image.FromFile(path + @"\start.png"))
                         {
                             temp_series.startImage = new Bitmap(temp_bmp);
                         }
@@ -1144,9 +1210,9 @@ namespace ACCG
 
                     try
                     {
-                        using(var temp_bmp = (Bitmap)Image.FromFile(path + @"\preview.png"))
+                        using(var temp_bmp = new FileStream(path + @"\preview.png", FileMode.Open, FileAccess.Read))//(Bitmap)Image.FromFile(path + @"\preview.png"))
                         {
-                            temp_series.previewImage = temp_bmp;
+                            temp_series.previewImage = new Bitmap(temp_bmp);
                         }
                         
                     }

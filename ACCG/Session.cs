@@ -19,7 +19,8 @@ namespace ACCG
 
         public Session()
         {
-
+            this.duration_minutes = 0;
+            this.laps = 0;
         }
     }
 }

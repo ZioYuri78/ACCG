@@ -2,12 +2,10 @@ drag1000
 drag400
 drift
 imola
-lakelouise_beta_016
 magione
 monza
 monza66
 mugello
-nord_snoopy_1.1
 nurburgring
 nurburgring-sprint
 silverstone

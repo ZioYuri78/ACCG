@@ -84,6 +84,7 @@ namespace ACCG
             this.grbEvent = new System.Windows.Forms.GroupBox();
             this.tltLoadPreviewImage = new System.Windows.Forms.ToolTip(this.components);
             this.btnRandom = new System.Windows.Forms.Button();
+            this.tltTimeTrackbar = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tkbAmbientTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
@@ -145,6 +146,7 @@ namespace ACCG
             this.tkbTime.TabIndex = 6;
             this.tkbTime.TickFrequency = 8;
             this.tkbTime.Scroll += new System.EventHandler(this.tkbTime_Scroll);
+            this.tkbTime.MouseEnter += new System.EventHandler(this.tkbTime_MouseEnter);
             // 
             // ckbPractice
             // 
@@ -699,6 +701,7 @@ namespace ACCG
         private GroupBox grbEvent;
         private ToolTip tltLoadPreviewImage;
         private Button btnRandom;
+        private ToolTip tltTimeTrackbar;
 
         public static Event temp_event { get; set; }
                         

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 namespace ACCG
@@ -308,7 +309,7 @@ namespace ACCG
         public const string accg_series_file_name = @"data\accg_series_list.dat";
         public const string accg_cars_file_name = @"data\cars.txt";
         public const string accg_tracks_file_name = @"data\tracks.txt";
-        public const string accg_manual_file_name = @"doc\ACCG_manual.pdf";
+        public const string accg_manual_file_name = "http://steamcommunity.com/sharedfiles/filedetails/?id=351184865";
         private Button btnLoadSeries;
         private ToolTip tltLoadSeries;
         private OpenFileDialog openSeriesFileDialog;

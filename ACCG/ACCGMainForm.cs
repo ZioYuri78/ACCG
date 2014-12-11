@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections.Concurrent;
 
 namespace ACCG
 {
@@ -120,6 +121,7 @@ namespace ACCG
                     rtbSeriesInfo.AppendText("Car: " + tmp_car.model + "\n");
                     rtbSeriesInfo.AppendText("Skin: " + current_selected_series.skin.skin_name + "\n");
                     rtbSeriesInfo.AppendText("Opponents: " + current_selected_series.opponents_list.Count + "\n");
+                    
                     if (current_selected_series.series_goals.points == "")
                     {
                         rtbSeriesInfo.AppendText("Goals: " + current_selected_series.series_goals.ranking + " position\n");
@@ -133,9 +135,9 @@ namespace ACCG
                 else
                 {
                     rtbSeriesInfo.AppendText("Goals:\n");
-                    rtbSeriesInfo.AppendText("Gold medals X " + current_selected_series.series_goals.tier_1 + "\n");
+                    rtbSeriesInfo.AppendText("Gold medals X " + current_selected_series.series_goals.tier_3 + "\n");
                     rtbSeriesInfo.AppendText("Silver medals X " + current_selected_series.series_goals.tier_2 + "\n");
-                    rtbSeriesInfo.AppendText("Bronze medals X " + current_selected_series.series_goals.tier_3 + "\n");
+                    rtbSeriesInfo.AppendText("Bronze medals X " + current_selected_series.series_goals.tier_1 + "\n");
                 }
                                 
                 rtbSeriesInfo.AppendText("Events: " + current_selected_series.events_list.Count + "\n");

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -492,6 +493,7 @@ namespace ACCG
         // Bad code, not work properly
         private void tkbTime_Scroll(object sender, EventArgs e)
         {
+
             foreach (KeyValuePair<string, int> pair in ACCGMainForm.time_table)
             {
                 if (pair.Value == tkbTime.Value)
@@ -500,7 +502,7 @@ namespace ACCG
                     break;
                 }
             }
-
+                       
         }
 
         private void tkbTrackCondition_Scroll(object sender, EventArgs e)
@@ -742,7 +744,8 @@ namespace ACCG
         }
 
         private void btnLoadOpponents_Click(object sender, EventArgs e)
-        {
+        {            
+
             if (openOpponentsFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filename = openOpponentsFileDialog.FileName;
@@ -841,7 +844,14 @@ namespace ACCG
             tbTimeSecondsSilverTier.Text = "";
             tbTimeMinutesBronzeTier.Text = "";
             tbTimeSecondsBronzeTier.Text = "";
+        }        
+
+        private void tkbTime_MouseEnter(object sender, EventArgs e)
+        {
+            tltTimeTrackbar.Show("This control still broken with mouse, please use arrow keys!", tkbTime, 5000);
         }
+
+       
         
     }
 }

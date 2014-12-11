@@ -247,11 +247,6 @@ blue
 red
 [END_SKINS]
 
-[F169_MatraMS80]
-3
-4
-[END_SKINS]
-
 [ferrari_312t]
 bel_4
 default
@@ -294,7 +289,6 @@ black matte
 kessel1
 new
 red
-risingsun
 rossocorsa
 white
 yellow
@@ -727,11 +721,6 @@ volcano_yellow
 2013-Sebastien_Loeb_Racing
 [END_SKINS]
 
-[mclaren_yardley]
-6
-7
-[END_SKINS]
-
 [mercedes_sls]
 Argento_Iridio
 Grigio_Alanite_designo
@@ -787,45 +776,9 @@ white
 [END_SKINS]
 
 [pagani_zonda_r]
-acracers00_ARES
-acracers02_2FastYSoSerious
-acracers03_RacerX
-acracers05_TheOldPeculiar
-acracers07_Hayabusa
-acracers08_Eber
-acracers09_luxdroid
-acracers101_ZioYuri
-acracers12_ollybadger
-acracers13_Midlander
-acracers17_Kade
-acracers23_Xtr3meNZer
-acracers33_WhosOnTheThrone
-acracers365_Tactical
-acracers37_decaturdiciple
-acracers40_Toilailee
-acracers45_Donnie
-acracers47_Geargrinder
-acracers64_strangelyBrown
-acracers650_ranzar
-acracers66_Ragequit
-acracers69_Belcar
-acracers75_Formula2K
-acracers76_zelimper
-acracers777_Buyo
-acracers77_Stoner
-acracers79_Zombie
-acracers81_verymetall
-acracers83_Mojo
-acracers89_rikster
-acracers92_TrenchcoatNinja
-acracers93_Safferson
 default
 Kunos Racing
 worldrecord
-[END_SKINS]
-
-[shadow_DN1]
-8
 [END_SKINS]
 
 [shelby_cobra_427sc]
