@@ -162,7 +162,14 @@ namespace ACCG
             if (openSeriesFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filename = openSeriesFileDialog.FileName;
-                accg_series_list.Add(accg_resource.loadSeries(filename));
+                Series temp_series = accg_resource.loadSeries(filename);
+
+                if (temp_series != null)
+                {
+                    accg_series_list.Add(temp_series);
+                    accg_resource.SaveACCGSeries(accg_series_file_name, accg_series_list);
+                }
+                
             }
 
             bs_series_datasource.ResetBindings(false);

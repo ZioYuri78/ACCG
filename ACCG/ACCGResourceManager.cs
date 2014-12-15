@@ -107,7 +107,9 @@ namespace ACCG
                 {
                     var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                     bformatter.Serialize(stream, _accg_series_list);
+                    stream.Dispose();
                 }
+                
             }
             catch (Exception exc)
             {
@@ -485,9 +487,22 @@ namespace ACCG
 
                                         case "SKIN":
                                             string temp_skin_name = splitted[1].ToLower();
+                                            Car temp_car = null;
+                                            Skin temp_skin = null;
 
-                                            Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_opponent.model.model);
-                                            Skin temp_skin = temp_car.skins.Find(x => x.skin_name == temp_skin_name);
+                                            try
+                                            {
+                                                temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_opponent.model.model);
+                                                temp_skin = temp_car.skins.Find(x => x.skin_name == temp_skin_name);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                                                Console.WriteLine("The process failed: {0}", exc.ToString());
+                                                MessageBox.Show("Missing " + temp_opponent.model.model + " car mod");
+                                                return null;
+                                            }
+                                                                                                                                   
                                             Bitmap temp_skin_preview;
 
                                             if (temp_skin != null)
@@ -701,8 +716,19 @@ namespace ACCG
                                 {
                                     switch (splitted[0])
                                     {
-                                        case "TRACK":
-                                            temp_event.track = splitted[1];
+                                        case "TRACK":                                            
+                                            try
+                                            {
+                                                temp_event.track = ACCGMainForm.ac_tracks_list.Find(x => x == splitted[1].ToLower());                                                 
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                                                Console.WriteLine("The process failed: {0}", exc.ToString());
+                                                MessageBox.Show("Missing " + splitted[1] + " track mod");
+                                                return null;
+                                            }
+                                            
                                             break;
 
                                         case "MODEL":
@@ -730,9 +756,22 @@ namespace ACCG
 
                                         case "SKIN":
                                             string temp_skin_name = splitted[1].ToLower();
+                                            Car temp_car = null;
+                                            Skin temp_skin = null;
 
-                                            Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_event.event_car.model);
-                                            Skin temp_skin = temp_car.skins.Find(x => x.skin_name == temp_skin_name);
+                                            try 
+                                            {
+                                                temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_event.event_car.model);
+                                                temp_skin = temp_car.skins.Find(x => x.skin_name == temp_skin_name);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                                                Console.WriteLine("The process failed: {0}", exc.ToString());
+                                                MessageBox.Show("Missing " + temp_event.event_car.model + " car mod");
+                                                return null;
+                                            }
+                                            
                                             Bitmap temp_skin_preview;
 
                                             if (temp_skin != null)
@@ -1281,15 +1320,15 @@ namespace ACCG
                                     switch (splitted[0])
                                     {
                                         case "POINTS":                                            
-                                            if (splitted[1] != "0")
+                                            if (splitted[1] != "0" && splitted[1] != "")
                                             {
                                                 temp_series.isChampionship = true; ;
                                             }
                                             temp_series.series_goals.points = splitted[1];
                                             break;
 
-                                        case "RANKING":                                            
-                                            if (splitted[1] != "0")
+                                        case "RANKING":
+                                            if (splitted[1] != "0" && splitted[1] != "")
                                             {
                                                 temp_series.isChampionship = true; ;
                                             }
@@ -1297,15 +1336,15 @@ namespace ACCG
                                             break;
 
                                         case "TIER1":                                            
-                                            if (splitted[1] != "0")
+                                            if (splitted[1] != "0" && splitted[1] != "") 
                                             {
                                                 temp_series.isSingleEvents = true; ;
                                             }
                                             temp_series.series_goals.tier_1 = splitted[1];
                                             break;
 
-                                        case "TIER2":                                            
-                                            if (splitted[1] != "0")
+                                        case "TIER2":
+                                            if (splitted[1] != "0" && splitted[1] != "") 
                                             {
                                                 temp_series.isSingleEvents = true; ;
                                             }
@@ -1313,7 +1352,7 @@ namespace ACCG
                                             break;
 
                                         case "TIER3":
-                                            if (splitted[1] != "0")
+                                            if (splitted[1] != "0" && splitted[1] != "") 
                                             {
                                                 temp_series.isSingleEvents = true; ;
                                             }
@@ -1334,7 +1373,17 @@ namespace ACCG
                     // Load opponents.ini
                     if (temp_series.isChampionship)
                     {
-                        temp_series.opponents_list = LoadOpponents(path + @"\opponents.ini");
+                        List<Opponent> temp_opponent_list = LoadOpponents(path + @"\opponents.ini");
+
+                        if(temp_opponent_list != null)
+                        {
+                            temp_series.opponents_list = temp_opponent_list;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                        
                     }
 
                     // Load events
@@ -1355,6 +1404,10 @@ namespace ACCG
                             }
 
                             temp_series.events_list.Add(temp_event);
+                        }
+                        else
+                        {
+                            return null;
                         }
                         
                     }

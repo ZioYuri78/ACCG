@@ -1,8 +1,8 @@
-15/12/2014 15:09:44: Load settings.ini
-15/12/2014 15:09:44: Load ACCG Series list
-SERIES: Novice Series 1
-15/12/2014 15:09:44: Sync resources
-15/12/2014 15:09:50: Load Cars
+12/12/2014 15:54:51: Load settings.ini
+12/12/2014 15:54:51: Load ACCG Series list
+SERIES: Single events example
+12/12/2014 15:54:51: Sync resources
+12/12/2014 15:54:59: Load Cars
 CAR: abarth500
 SKIN: black_red
 SKIN: grey_white
@@ -803,7 +803,7 @@ SKIN: scheme1_a
 SKIN: scheme2_a
 SKIN: scheme3_a
 SKIN: [end_skins]
-15/12/2014 15:10:09: Load Tracks
+12/12/2014 15:55:17: Load Tracks
 TRACK: drag1000
 TRACK: drag400
 TRACK: drift
