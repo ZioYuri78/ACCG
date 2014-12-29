@@ -4,8 +4,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+
 
 namespace ACCG
 {
@@ -146,8 +147,7 @@ namespace ACCG
                                 Skin tmp_skin = new Skin();
                                 tmp_skin.skin_name = sr.ReadLine().ToLower();
                                 ACCGMainForm.accg_log.WriteLog("SYSTEM", "SKIN: " + tmp_skin.skin_name);
-                                string skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
-                                Console.WriteLine("DEBUG: " + skin_image_path);
+                                string skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";                                
 
                                 try
                                 {
@@ -341,6 +341,8 @@ namespace ACCG
 
         public void Sync(string _cars_file_name, string _tracks_file_name) 
         {
+            ACCGMainForm.accg_log.WriteLog("SYNC", "Start syncronization");
+            Thread.Sleep(1000); 
 
             string ac_path = ACCGMainForm.ac_path;
 
@@ -358,7 +360,10 @@ namespace ACCG
             
             try
             {
-                // Sync the cars
+                // Sync the cars                
+                ACCGMainForm.accg_log.WriteLog("SYNC", "Sync the cars");
+                Thread.Sleep(1000); 
+    
                 string ac_cars_path = ac_path + @"\content\cars";
                 string[] ac_cars = Directory.GetDirectories(ac_cars_path, "*", SearchOption.TopDirectoryOnly);
                 List<Car> temp_cars_list = new List<Car>();
@@ -370,6 +375,8 @@ namespace ACCG
                     temp_car = new Car();
                     temp_car.model = car.Substring(car.LastIndexOf(@"\") + 1);
 
+                    ACCGMainForm.accg_log.WriteLog("SYNC", "CAR: " + temp_car.model);                    
+
                     string car_skins_path = ac_cars_path + @"\" + temp_car.model + @"\skins";
                     string[] car_skins = Directory.GetDirectories(car_skins_path, "*", SearchOption.TopDirectoryOnly);
 
@@ -377,6 +384,8 @@ namespace ACCG
                     {
                         Skin temp_skin = new Skin();
                         temp_skin.skin_name = skin.Substring(skin.LastIndexOf(@"\") + 1);
+
+                        ACCGMainForm.accg_log.WriteLog("SYNC", "SKIN: " + temp_skin.skin_name);
 
                         try
                         {
@@ -414,12 +423,16 @@ namespace ACCG
                 SaveCars(_cars_file_name, temp_cars_list);
 
                 // Sync the tracks
+                ACCGMainForm.accg_log.WriteLog("SYNC", "Sync the tracks");
+                Thread.Sleep(1000);
+
                 string ac_tracks_path = ac_path + @"\content\tracks";
                 string[] ac_tracks = Directory.GetDirectories(ac_tracks_path, "*", SearchOption.TopDirectoryOnly);
                 List<string> temp_tracks_list = new List<string>();
 
                 foreach (string track in ac_tracks)
                 {
+                    ACCGMainForm.accg_log.WriteLog("SYNC", "TRACK: " + track.Substring(track.LastIndexOf(@"\") + 1));                    
                     temp_tracks_list.Add(track.Substring(track.LastIndexOf(@"\") + 1));
                 }
 
@@ -719,7 +732,18 @@ namespace ACCG
                                         case "TRACK":                                            
                                             try
                                             {
-                                                temp_event.track = ACCGMainForm.ac_tracks_list.Find(x => x == splitted[1].ToLower());                                                 
+                                                string temp_track = ACCGMainForm.ac_tracks_list.Find(x => x == splitted[1].ToLower());                                                 
+ 
+                                                if(temp_track != null && temp_track != "")
+                                                {
+                                                    temp_event.track = temp_track;
+                                                }
+                                                else
+                                                {                                                                                                        
+                                                    MessageBox.Show("Missing " + splitted[1] + " track mod");                                                    
+                                                    return null;
+                                                }
+                                                
                                             }
                                             catch (Exception exc)
                                             {
@@ -727,8 +751,7 @@ namespace ACCG
                                                 Console.WriteLine("The process failed: {0}", exc.ToString());
                                                 MessageBox.Show("Missing " + splitted[1] + " track mod");
                                                 return null;
-                                            }
-                                            
+                                            }                                            
                                             break;
 
                                         case "MODEL":

@@ -30,3 +30,4 @@ D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Debug\ACCG.pdb
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Debug\ACCG.exe.manifest
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Debug\ACCG.application
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Debug\ACCG.csprojResolveAssemblyReference.cache
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Debug\ACCG.SyncForm.resources

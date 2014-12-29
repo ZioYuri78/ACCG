@@ -249,11 +249,10 @@ namespace ACCG
             // tkbNumberOfLaps
             // 
             this.tkbNumberOfLaps.Location = new System.Drawing.Point(47, 95);
-            this.tkbNumberOfLaps.Minimum = 2;
+            this.tkbNumberOfLaps.Maximum = 50;
             this.tkbNumberOfLaps.Name = "tkbNumberOfLaps";
             this.tkbNumberOfLaps.Size = new System.Drawing.Size(104, 45);
             this.tkbNumberOfLaps.TabIndex = 26;
-            this.tkbNumberOfLaps.Value = 2;
             this.tkbNumberOfLaps.Scroll += new System.EventHandler(this.tkbNumberOfLaps_Scroll);
             // 
             // lblNumberOfLaps

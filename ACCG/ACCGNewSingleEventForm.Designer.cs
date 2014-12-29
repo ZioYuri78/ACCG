@@ -784,6 +784,7 @@ namespace ACCG
             // tkbStartPosition
             // 
             this.tkbStartPosition.Location = new System.Drawing.Point(53, 121);
+            this.tkbStartPosition.Maximum = 20;
             this.tkbStartPosition.Minimum = 1;
             this.tkbStartPosition.Name = "tkbStartPosition";
             this.tkbStartPosition.Size = new System.Drawing.Size(104, 45);
@@ -908,6 +909,7 @@ namespace ACCG
             // tkbNumberOfLaps
             // 
             this.tkbNumberOfLaps.Location = new System.Drawing.Point(53, 70);
+            this.tkbNumberOfLaps.Maximum = 50;
             this.tkbNumberOfLaps.Minimum = 1;
             this.tkbNumberOfLaps.Name = "tkbNumberOfLaps";
             this.tkbNumberOfLaps.Size = new System.Drawing.Size(104, 45);

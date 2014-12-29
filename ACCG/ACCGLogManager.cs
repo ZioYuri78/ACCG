@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ACCG
@@ -12,6 +13,9 @@ namespace ACCG
     public class ACCGLogManager
     {
         private static ACCGLogManager instance = null;
+
+        delegate void SetTextCallback(string _text);
+        
 
         private ACCGLogManager() { }
 
@@ -40,6 +44,10 @@ namespace ACCG
                         case "SYSTEM":                      
                             File.AppendAllText(Directory.GetCurrentDirectory() + @"\log\system.log", _message + Environment.NewLine);
                             break;
+
+                        case "SYNC":
+                            SetSyncText(_message + Environment.NewLine);                            
+                            break;
                     }
                 }
             }
@@ -48,6 +56,8 @@ namespace ACCG
                 Console.WriteLine("Ops " + exc.ToString());
             }
         }
+
+        
 
         public void DeleteLogFiles()
         {
@@ -68,5 +78,23 @@ namespace ACCG
                 Console.WriteLine("Ops " + exc.ToString());
             }
         }
+
+        private void SetSyncText(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (ACCGMainForm.sync_form.tbLogArea.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetSyncText);
+                ACCGMainForm.sync_form.tbLogArea.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                ACCGMainForm.sync_form.tbLogArea.AppendText(text);
+            }
+        }
+       
+        
     }
 }

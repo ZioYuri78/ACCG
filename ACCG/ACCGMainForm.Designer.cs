@@ -35,13 +35,10 @@ namespace ACCG
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ACCGMainForm));
             this.lbSeries = new System.Windows.Forms.ListBox();
-            this.btnNewSeries = new System.Windows.Forms.Button();
-            this.btnEditSeries = new System.Windows.Forms.Button();
-            this.btnDeleteSeries = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,11 +48,15 @@ namespace ACCG
             this.btnGenerate = new System.Windows.Forms.Button();
             this.grbSeries = new System.Windows.Forms.GroupBox();
             this.btnLoadSeries = new System.Windows.Forms.Button();
+            this.btnNewSeries = new System.Windows.Forms.Button();
+            this.btnEditSeries = new System.Windows.Forms.Button();
+            this.btnDeleteSeries = new System.Windows.Forms.Button();
             this.tltNewSeriesButton = new System.Windows.Forms.ToolTip(this.components);
             this.tltEditSeriesButton = new System.Windows.Forms.ToolTip(this.components);
             this.tltDeleteSeriesButton = new System.Windows.Forms.ToolTip(this.components);
             this.tltLoadSeries = new System.Windows.Forms.ToolTip(this.components);
             this.openSeriesFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.bgWorkerSync = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.grbSeries.SuspendLayout();
             this.SuspendLayout();
@@ -69,44 +70,11 @@ namespace ACCG
             this.lbSeries.TabIndex = 3;
             this.lbSeries.SelectedIndexChanged += new System.EventHandler(this.lbSeries_SelectedIndexChanged);
             // 
-            // btnNewSeries
-            // 
-            this.btnNewSeries.Image = global::ACCG.Properties.Resources.NewFile_6276;
-            this.btnNewSeries.Location = new System.Drawing.Point(6, 159);
-            this.btnNewSeries.Name = "btnNewSeries";
-            this.btnNewSeries.Size = new System.Drawing.Size(37, 23);
-            this.btnNewSeries.TabIndex = 6;
-            this.tltNewSeriesButton.SetToolTip(this.btnNewSeries, "New Series");
-            this.btnNewSeries.UseVisualStyleBackColor = true;
-            this.btnNewSeries.Click += new System.EventHandler(this.btnNewSeries_Click);
-            // 
-            // btnEditSeries
-            // 
-            this.btnEditSeries.Image = global::ACCG.Properties.Resources.EditTitleString_357;
-            this.btnEditSeries.Location = new System.Drawing.Point(49, 159);
-            this.btnEditSeries.Name = "btnEditSeries";
-            this.btnEditSeries.Size = new System.Drawing.Size(37, 23);
-            this.btnEditSeries.TabIndex = 7;
-            this.tltEditSeriesButton.SetToolTip(this.btnEditSeries, "Edit Series");
-            this.btnEditSeries.UseVisualStyleBackColor = true;
-            this.btnEditSeries.Click += new System.EventHandler(this.btnEditSeries_Click);
-            // 
-            // btnDeleteSeries
-            // 
-            this.btnDeleteSeries.Image = global::ACCG.Properties.Resources.Clearallrequests_8816;
-            this.btnDeleteSeries.Location = new System.Drawing.Point(92, 159);
-            this.btnDeleteSeries.Name = "btnDeleteSeries";
-            this.btnDeleteSeries.Size = new System.Drawing.Size(37, 23);
-            this.btnDeleteSeries.TabIndex = 8;
-            this.tltDeleteSeriesButton.SetToolTip(this.btnDeleteSeries, "Delete Series");
-            this.btnDeleteSeries.UseVisualStyleBackColor = true;
-            this.btnDeleteSeries.Click += new System.EventHandler(this.btnDeleteSeries_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.resourceToolStripMenuItem,
+            this.modsToolStripMenuItem,
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -130,15 +98,13 @@ namespace ACCG
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // resourceToolStripMenuItem
+            // modsToolStripMenuItem
             // 
-            this.resourceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.syncToolStripMenuItem});
-            this.resourceToolStripMenuItem.Enabled = false;
-            this.resourceToolStripMenuItem.Name = "resourceToolStripMenuItem";
-            this.resourceToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.resourceToolStripMenuItem.Text = "Resource";
-            this.resourceToolStripMenuItem.Visible = false;
+            this.modsToolStripMenuItem.Name = "modsToolStripMenuItem";
+            this.modsToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.modsToolStripMenuItem.Text = "Mods";
             // 
             // syncToolStripMenuItem
             // 
@@ -226,9 +192,48 @@ namespace ACCG
             this.btnLoadSeries.UseVisualStyleBackColor = true;
             this.btnLoadSeries.Click += new System.EventHandler(this.btnLoadSeries_Click);
             // 
+            // btnNewSeries
+            // 
+            this.btnNewSeries.Image = global::ACCG.Properties.Resources.NewFile_6276;
+            this.btnNewSeries.Location = new System.Drawing.Point(6, 159);
+            this.btnNewSeries.Name = "btnNewSeries";
+            this.btnNewSeries.Size = new System.Drawing.Size(37, 23);
+            this.btnNewSeries.TabIndex = 6;
+            this.tltNewSeriesButton.SetToolTip(this.btnNewSeries, "New Series");
+            this.btnNewSeries.UseVisualStyleBackColor = true;
+            this.btnNewSeries.Click += new System.EventHandler(this.btnNewSeries_Click);
+            // 
+            // btnEditSeries
+            // 
+            this.btnEditSeries.Image = global::ACCG.Properties.Resources.EditTitleString_357;
+            this.btnEditSeries.Location = new System.Drawing.Point(49, 159);
+            this.btnEditSeries.Name = "btnEditSeries";
+            this.btnEditSeries.Size = new System.Drawing.Size(37, 23);
+            this.btnEditSeries.TabIndex = 7;
+            this.tltEditSeriesButton.SetToolTip(this.btnEditSeries, "Edit Series");
+            this.btnEditSeries.UseVisualStyleBackColor = true;
+            this.btnEditSeries.Click += new System.EventHandler(this.btnEditSeries_Click);
+            // 
+            // btnDeleteSeries
+            // 
+            this.btnDeleteSeries.Image = global::ACCG.Properties.Resources.Clearallrequests_8816;
+            this.btnDeleteSeries.Location = new System.Drawing.Point(92, 159);
+            this.btnDeleteSeries.Name = "btnDeleteSeries";
+            this.btnDeleteSeries.Size = new System.Drawing.Size(37, 23);
+            this.btnDeleteSeries.TabIndex = 8;
+            this.tltDeleteSeriesButton.SetToolTip(this.btnDeleteSeries, "Delete Series");
+            this.btnDeleteSeries.UseVisualStyleBackColor = true;
+            this.btnDeleteSeries.Click += new System.EventHandler(this.btnDeleteSeries_Click);
+            // 
             // openSeriesFileDialog
             // 
             this.openSeriesFileDialog.Filter = "Series files (series.ini)|series.ini";
+            // 
+            // bgWorkerSync
+            // 
+            this.bgWorkerSync.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerSync_DoWork);
+            this.bgWorkerSync.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerSync_ProgressChanged);
+            this.bgWorkerSync.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerSync_RunWorkerCompleted);
             // 
             // ACCGMainForm
             // 
@@ -279,7 +284,7 @@ namespace ACCG
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem creditsToolStripMenuItem;
-        private ToolStripMenuItem resourceToolStripMenuItem;
+        private ToolStripMenuItem modsToolStripMenuItem;
         private ToolStripMenuItem syncToolStripMenuItem;
         private RichTextBox rtbSeriesInfo;
         public ListBox lbSeries;
@@ -305,6 +310,8 @@ namespace ACCG
 
         public static ACCGLogManager accg_log;
 
+        public static SyncForm sync_form;
+
         public const string accg_settings_file_name = @"cfg\settings.ini";
         public const string accg_series_file_name = @"data\accg_series_list.dat";
         public const string accg_cars_file_name = @"data\cars.txt";
@@ -313,6 +320,7 @@ namespace ACCG
         private Button btnLoadSeries;
         private ToolTip tltLoadSeries;
         private OpenFileDialog openSeriesFileDialog;
+        private BackgroundWorker bgWorkerSync;
 
         
     }

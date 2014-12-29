@@ -14,12 +14,16 @@ namespace ACCG
 {
     public partial class ACCGMainForm : Form
     {
+        
+
         public ACCGMainForm()
         {
             InitializeComponent();
+            sync_form = new SyncForm();
             accg_generator = ACCGGenerator.GetInstance();
             accg_resource = ACCGResourceManager.GetInstance();
             accg_log = ACCGLogManager.GetInstance();
+            
         }
         
         private void ACCGMainForm_Load(object sender, EventArgs e)
@@ -40,9 +44,9 @@ namespace ACCG
             accg_series_list = accg_resource.LoadACCGSeries(accg_series_file_name);
 
             // Sync resources
-            time_stamp = DateTime.Now;
-            accg_log.WriteLog("SYSTEM", time_stamp + ": Sync resources");            
-            accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
+            //time_stamp = DateTime.Now;
+            //accg_log.WriteLog("SYSTEM", time_stamp + ": Sync resources");            
+            //accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
                                                                    
             // Populating Cars list   
             time_stamp = DateTime.Now;
@@ -281,16 +285,11 @@ namespace ACCG
         }
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
-            accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
-            
-            // re-populating Cars list                                    
-            ac_cars_list = accg_resource.LoadCars(accg_cars_file_name);
-
-            // re-populating Tracks list                        
-            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);
-            
-            MessageBox.Show("Resources synced!");
+        {
+            sync_form.tbLogArea.ResetText();
+            sync_form.btnOk.Enabled = false;
+            bgWorkerSync.RunWorkerAsync();
+            sync_form.ShowDialog();                                   
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
@@ -306,7 +305,34 @@ namespace ACCG
         private void ACCGMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Saving the accg series list                 
-            ACCGMainForm.accg_resource.SaveACCGSeries(ACCGMainForm.accg_series_file_name, ACCGMainForm.accg_series_list);  
+            ACCGMainForm.accg_resource.SaveACCGSeries(ACCGMainForm.accg_series_file_name, ACCGMainForm.accg_series_list);
+        }
+
+        private void bgWorkerSync_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
+            
+            // re-populating Cars list                                    
+            accg_log.WriteLog("SYNC", "re-populating cars list...");
+            ac_cars_list = accg_resource.LoadCars(accg_cars_file_name);
+
+            // re-populating Tracks list                        
+            accg_log.WriteLog("SYNC", "re-populating tracks list...");
+            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);                        
+           
+        }
+
+        private void bgWorkerSync_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            
+        }
+
+        private void bgWorkerSync_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            accg_log.WriteLog("SYNC", "Syncronization complete!");
+            System.Threading.Thread.Sleep(1000);
+            sync_form.btnOk.Enabled = true;
         }
        
               
