@@ -1,6 +1,0 @@
-The process failed: System.IO.IOException: Il processo non può accedere al file 'D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Debug\data\accg_series_list.dat' perché è in uso da un altro processo.
-   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
-   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
-   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
-   in System.IO.File.Open(String path, FileMode mode)
-   in ACCG.ACCGResourceManager.LoadACCGSeries(String _accg_series_path) in d:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\ACCGResourceManager.cs:riga 76

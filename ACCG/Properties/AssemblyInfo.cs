@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Resources;
 
 // Le informazioni generali relative a un assembly sono controllate dal seguente 
 // set di attributi. Per modificare le informazioni associate a un assembly
 // occorre quindi modificare i valori di questi attributi.
 [assembly: AssemblyTitle("Assetto Corsa Career Generator")]
-[assembly: AssemblyDescription("Tool per la generazione di cariere in Assetto Corsa")]
+[assembly: AssemblyDescription("Tool per la generazione di carriere in Assetto Corsa")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Yuri Belleri")]
 [assembly: AssemblyProduct("Assetto Corsa Career Generator")]
 [assembly: AssemblyCopyright("Yuri Belleri - 2014")]
 [assembly: AssemblyTrademark("")]
@@ -32,5 +33,6 @@ using System.Runtime.InteropServices;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
 // utilizzando l'asterisco (*) come descritto di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.6.1.0")]
-[assembly: AssemblyFileVersion("0.6.1.0")]
+[assembly: AssemblyVersion("0.7.0.0")]
+[assembly: AssemblyFileVersion("0.7.0.0")]
+[assembly: NeutralResourcesLanguageAttribute("")]

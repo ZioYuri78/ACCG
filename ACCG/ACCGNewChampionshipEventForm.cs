@@ -157,8 +157,8 @@ namespace ACCG
                 {                    
                     event_index = ACCGNewSeriesForm.temp_series.events_list.IndexOf(temp_event);
                     ACCGNewSeriesForm.temp_series.events_list.Remove(current_selected_event);
-                }                
-                                
+                }
+                
                 temp_event.name = tbName.Text;
                 temp_event.description = tbDescription.Text;
                 temp_event.ambient_temperature = tkbAmbientTemperature.Value;

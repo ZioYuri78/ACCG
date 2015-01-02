@@ -22,6 +22,21 @@ namespace ACCG
             this.Close();
         }
 
+        public void SetText(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (this.tbLogArea.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.tbLogArea.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                this.tbLogArea.AppendText(text);
+            }
+        }
 
     }
 }

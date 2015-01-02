@@ -14,7 +14,7 @@ namespace ACCG
     {
         private static ACCGLogManager instance = null;
 
-        delegate void SetTextCallback(string _text);
+        
         
 
         private ACCGLogManager() { }
@@ -46,7 +46,7 @@ namespace ACCG
                             break;
 
                         case "SYNC":
-                            SetSyncText(_message + Environment.NewLine);                            
+                            ACCGMainForm.sync_form.SetText(_message + Environment.NewLine);                            
                             break;
                     }
                 }
@@ -63,11 +63,12 @@ namespace ACCG
         {
             try
             {
+                /*
                 if (File.Exists(Directory.GetCurrentDirectory() + @"\log\errors.log"))
                 {
                     File.Delete(Directory.GetCurrentDirectory() + @"\log\errors.log");
                 }
-
+                */
                 if (File.Exists(Directory.GetCurrentDirectory() + @"\log\system.log"))
                 {
                     File.Delete(Directory.GetCurrentDirectory() + @"\log\system.log");
@@ -79,21 +80,7 @@ namespace ACCG
             }
         }
 
-        private void SetSyncText(string text)
-        {
-            // InvokeRequired required compares the thread ID of the
-            // calling thread to the thread ID of the creating thread.
-            // If these threads are different, it returns true.
-            if (ACCGMainForm.sync_form.tbLogArea.InvokeRequired)
-            {
-                SetTextCallback d = new SetTextCallback(SetSyncText);
-                ACCGMainForm.sync_form.tbLogArea.Invoke(d, new object[] { text });
-            }
-            else
-            {
-                ACCGMainForm.sync_form.tbLogArea.AppendText(text);
-            }
-        }
+        
        
         
     }

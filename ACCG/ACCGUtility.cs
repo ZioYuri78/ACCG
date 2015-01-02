@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -124,7 +125,7 @@ namespace ACCG
                 }
 
             }
-            else // Not implemented yet
+            else 
             {
                 int rnd_practice = rnd.Next(0, 2);
                 int rnd_qualifying = rnd.Next(0, 2);
@@ -156,6 +157,21 @@ namespace ACCG
             return _event;
         }
 
+
+        public static String RemoveDiacritics(String s)
+        {
+            String normalizedString = s.Normalize(NormalizationForm.FormD);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < normalizedString.Length; i++)
+            {
+                Char c = normalizedString[i];
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                    stringBuilder.Append(c);
+            }
+
+            return stringBuilder.ToString();
+        }
 
     }
 }

@@ -74,6 +74,7 @@
 
         public System.Windows.Forms.TextBox tbLogArea;
         public System.Windows.Forms.Button btnOk;
+        delegate void SetTextCallback(string _text);
 
         
     }
