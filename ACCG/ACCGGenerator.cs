@@ -460,6 +460,13 @@ namespace ACCG
                                                         "\n",
                                                         "[DYNAMIC_TRACK]",
                                                         "PRESET=" + ev.dynamic_track_preset,
+                                                        "\n",
+                                                        "[CAR_0]",
+                                                        "SETUP=",
+                                                        "MODEL=-",
+                                                        "SKIN=" + ev.event_car_skin.skin_name,
+                                                        "DRIVER_NAME=",
+                                                        "NATIONALITY=",
                                                         "\n"
                                                     };
 
@@ -575,16 +582,10 @@ namespace ACCG
                                                                 "NAME=" + temp_session.name,
                                                                 "TYPE=" + temp_session.type,
                                                                 "LAPS=" + temp_session.laps,
-                                                                "DURATION_MINUTES=0",
+                                                                "DURATION_MINUTES=" + temp_session.duration_minutes,
                                                                 "SPAWN_SET=" + temp_session.spawn_set,
                                                                 "\n",
-                                                                "[CAR_0]",
-                                                                "SETUP=",
-                                                                "MODEL=-",
-                                                                "SKIN=" + ev.event_car_skin.skin_name,
-                                                                "DRIVER_NAME=",
-                                                                "NATIONALITY=",
-                                                                "\n"
+                                                                
                                                             };
                    }
                    else if (ev.isTimeAttack)

@@ -711,6 +711,17 @@ Kunos_Racing
 Racing_Green
 [END_SKINS]
 
+[mazda_787b]
+efini_18
+martini_21
+mazda_18
+mobil1_sanyo_74
+renown_55
+renown_old_55
+silk_cut_7
+tokina_48
+[END_SKINS]
+
 [mclaren_mp412c]
 azure_blue
 carbon_black
@@ -750,6 +761,11 @@ Black_Falcon_Porta_9
 Black_Falcon_SB_Mobel_Boss_10
 TCR_2014_05
 TCR_2014_65
+[END_SKINS]
+
+[opel_adam_cup]
+ADAC_Opel
+PTSims_RT
 [END_SKINS]
 
 [p4-5_2011]

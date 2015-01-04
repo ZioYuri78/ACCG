@@ -194,7 +194,7 @@ namespace ACCG
                 {
                     if (current_selected_event != null)
                     {
-                        temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 3));
+                        temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 2)); // era 3
                     }
 
                     temp_event.qualifying = true;
@@ -218,7 +218,7 @@ namespace ACCG
                     temp_event.session_list.Add(qualifying_session);
                 }
 
-                // Race sessions (always present)
+                // Race session (always present)
                 if (current_selected_event != null)
                 {
                     temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 3));

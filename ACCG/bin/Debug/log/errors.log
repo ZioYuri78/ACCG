@@ -1,0 +1,124 @@
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series101\start.png'.
+Nome file: 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series101\start.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path) in d:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\ACCGResourceManager.cs:riga 1261
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series101\preview.png'.
+Nome file: 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series101\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path) in d:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\ACCGResourceManager.cs:riga 1274
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series102\start.png'.
+Nome file: 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series102\start.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path) in d:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\ACCGResourceManager.cs:riga 1261
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series102\preview.png'.
+Nome file: 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series102\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path) in d:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\ACCGResourceManager.cs:riga 1274
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series102\start.png'.
+Nome file: 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series102\start.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path) in d:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\ACCGResourceManager.cs:riga 1261
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series102\preview.png'.
+Nome file: 'C:\Program Files (x86)\Steam\SteamApps\common\assettocorsa\content\career\series102\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path) in d:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\ACCGResourceManager.cs:riga 1274
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\start.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\start.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\event1\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\event1\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)
+The process failed: System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\start.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\start.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\event1\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\event1\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)
+The process failed: System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\start.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\start.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.loadSeries(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\event1\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\event1\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\event2\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\event2\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\event3\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\event3\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\event4\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\event4\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\event5\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\event5\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)
+The process failed: System.IO.FileNotFoundException: Impossibile trovare il file 'C:\Users\Yuri Belleri\Downloads\series101\series101\event6\preview.png'.
+Nome file: 'C:\Users\Yuri Belleri\Downloads\series101\series101\event6\preview.png'
+   in System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   in System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   in System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   in ACCG.ACCGResourceManager.LoadEvent(String _file_path)

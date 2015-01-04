@@ -97,6 +97,25 @@ namespace ACCG
                         Console.WriteLine("DEBUG: Quick Race");
                         // Quick Race attributes
                         _event.isQuickRace = true;
+                        int rnd_practice = rnd.Next(0, 2);
+                        int rnd_qualifying = rnd.Next(0, 2);
+                
+                        if (rnd_practice == 1)
+                        {
+                            Session practice = new Session();
+                            practice.name = "Practice";                    
+                            practice.duration_minutes = rnd.Next(5, 91);                    
+                            _event.session_list.Add(practice);
+                        }
+
+                        if (rnd_qualifying == 1)
+                        {
+                            Session qualifying = new Session();
+                            qualifying.name = "Qualifying";
+                            qualifying.duration_minutes = rnd.Next(5, 61);
+                            _event.session_list.Add(qualifying);
+                        }
+
                         _event.numberOfCars = rnd.Next(2, 25);
                         _event.numberOfLaps = rnd.Next(2, 11);
                         _event.start_position = rnd.Next(1, 11);

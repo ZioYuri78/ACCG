@@ -183,8 +183,7 @@ namespace ACCG
                                     tmp_skin = new Skin();
                                     tmp_skin.skin_name = sr.ReadLine().ToLower();
                                     ACCGMainForm.accg_log.WriteLog("SYSTEM", "SKIN: " + tmp_skin.skin_name);
-                                    skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";
-                                    Console.WriteLine("DEBUG: " + skin_image_path);
+                                    skin_image_path = ACCGMainForm.ac_path + @"\content\cars\" + tmp_car.model + @"\skins\" + tmp_skin.skin_name + @"\preview.jpg";                                    
 
                                     try
                                     {

@@ -33,7 +33,10 @@ namespace ACCG
 
             grbTimeAttackGoals.Enabled = rbTimeAttack.Checked;
             grbHotlapGoals.Enabled = rbHotlap.Checked;
-            grbQuickRace.Enabled = rbQuickRace.Checked;            
+            grbQuickRace.Enabled = rbQuickRace.Checked;
+
+            tkbPracticeDuration.Enabled = ckbPractice.Checked;
+            tkbQualifyingDuration.Enabled = ckbQualifying.Checked;
            
             if (current_selected_event != null) // Edit mode
             {
@@ -61,15 +64,36 @@ namespace ACCG
                     rbHotlap.Enabled = false;
                     grbHotlapGoals.Enabled = false;
 
+                    ckbPractice.Checked = current_selected_event.practice;
+
+                    if (ckbPractice.Checked)
+                    {
+                        tkbPracticeDuration.Value = current_selected_event.session_list.Find(x => x.type == 1).duration_minutes;
+                    }
+
+                    tkbPracticeDuration_Scroll(sender, e);
+
+                    ckbQualifying.Checked = current_selected_event.qualifying;
+
+                    if (ckbQualifying.Checked)
+                    {
+                        tkbQualifyingDuration.Value = current_selected_event.session_list.Find(x => x.type == 2).duration_minutes;
+                    }
+
+                    tkbQualifyingDuration_Scroll(sender, e);
+
                     tkbNumberOfCars.Value = current_selected_event.numberOfCars;
                     tkbNumberOfCars_Scroll(sender, e);
 
                     tkbNumberOfLaps.Value = current_selected_event.numberOfLaps;
                     tkbNumberOfLaps_Scroll(sender, e);
 
-                    tkbStartPosition.Value = current_selected_event.start_position;
-                    tkbStartPosition_Scroll(sender, e);
-                    
+                    if (!ckbQualifying.Checked)
+                    {
+                        tkbStartPosition.Value = current_selected_event.start_position;
+                        tkbStartPosition_Scroll(sender, e);
+                    }
+                                        
                     tbPositionGoldTier.Text = current_selected_event.event_goals.tier_3;
                     tbPositionSilverTier.Text = current_selected_event.event_goals.tier_2;
                     tbPositionBronzeTier.Text = current_selected_event.event_goals.tier_1;
@@ -136,6 +160,26 @@ namespace ACCG
 
                     if (temp_event.isQuickRace)
                     {
+
+                        foreach (Session session in temp_event.session_list)
+                        {
+                            switch (session.name)
+                            {
+                                case "Practice":
+                                    ckbPractice.Checked = true;
+                                    tkbPracticeDuration.Value = session.duration_minutes;
+                                    tkbPracticeDuration_Scroll(sender, e);
+                                    break;
+
+                                case "Qualifying":
+                                    ckbQualifying.Checked = true;
+                                    tkbQualifyingDuration.Value = session.duration_minutes;
+                                    tkbQualifyingDuration_Scroll(sender, e);
+                                    break;
+
+                            }
+                        }
+
                         tkbNumberOfCars.Value = temp_event.numberOfCars;
                         tkbNumberOfCars_Scroll(sender, e);
 
@@ -393,19 +437,94 @@ namespace ACCG
                 temp_event.event_car_skin.skin_name = cbSkin.SelectedItem.ToString();
                 temp_event.event_car_skin.skin_preview = skinPreviewImage;
 
+                // Sessions of the event
                 temp_event.session_list = new List<Session>();
 
                 if (temp_event.isQuickRace)
                 {
 
+                    // Practice session
+                    if (ckbPractice.Checked)
+                    {
+                        if (current_selected_event != null)
+                        {
+                            temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 1));
+                        }
+
+                        temp_event.practice = true;
+
+                        Session practice_session = new Session();
+                        practice_session.ID = 0;
+                        practice_session.name = "Practice";
+                        practice_session.type = 1;
+                        practice_session.spawn_set = "PIT";
+                        practice_session.duration_minutes = tkbPracticeDuration.Value;
+                        practice_session.laps = 0;  // Will not included during generation (but I'm lying)
+                        temp_event.session_list.Add(practice_session);
+                    }
+
+                    if (ckbQualifying.Checked)
+                    {
+                        if (current_selected_event != null)
+                        {
+                            temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 2)); // era 3
+                        }
+
+                        temp_event.qualifying = true;
+
+                        Session qualifying_session = new Session();
+
+                        if (ckbPractice.Checked)
+                        {
+                            qualifying_session.ID = 1;
+                        }
+                        else
+                        {
+                            qualifying_session.ID = 0;
+                        }
+
+                        qualifying_session.name = "Qualifying";
+                        qualifying_session.type = 2;
+                        qualifying_session.spawn_set = "PIT";
+                        qualifying_session.duration_minutes = tkbQualifyingDuration.Value;
+                        qualifying_session.laps = 0;    // Will not included during generation (but I'm lying)
+                        temp_event.session_list.Add(qualifying_session);
+                    }
+
+                    // Race session (always present)
                     if (current_selected_event != null)
                     {
                         temp_event.session_list.Remove(temp_event.session_list.Find(x => x.type == 3));
                     }
+
                     Session quickrace_session = new Session();
 
-                    quickrace_session.ID = 0;
-                    quickrace_session.name = "Quick Race";
+                    if (ckbPractice.Checked & !ckbQualifying.Checked)
+                    {
+                        quickrace_session.ID = 1;
+                    }
+                    else if (ckbQualifying.Checked & !ckbPractice.Checked)
+                    {
+                        quickrace_session.ID = 1;
+                    }
+                    else if (ckbPractice.Checked & ckbQualifying.Checked)
+                    {
+                        quickrace_session.ID = 2;
+                    }
+                    else
+                    {
+                        quickrace_session.ID = 0;
+                    }
+
+                    if (quickrace_session.ID == 0)
+                    {
+                        quickrace_session.name = "Quick Race";
+                    }
+                    else
+                    {
+                        quickrace_session.name = "Race";
+                    }
+                    
                     quickrace_session.type = 3;
                     quickrace_session.spawn_set = "START";
                     quickrace_session.duration_minutes = 0;
@@ -413,10 +532,13 @@ namespace ACCG
                     temp_event.numberOfLaps = tkbNumberOfLaps.Value;
                     temp_event.session_list.Add(quickrace_session);
 
-                    temp_event.start_position = tkbStartPosition.Value;                    
+                    if (!ckbQualifying.Checked)
+                    {
+                        temp_event.start_position = tkbStartPosition.Value;                    
+                    }
+                    
                     temp_event.numberOfCars = tkbNumberOfCars.Value;                    
-                    
-                    
+                                        
                     temp_event.event_goals.tier_1 = tbPositionBronzeTier.Text;
                     temp_event.event_goals.tier_2 = tbPositionSilverTier.Text;
                     temp_event.event_goals.tier_3 = tbPositionGoldTier.Text;
@@ -818,6 +940,16 @@ namespace ACCG
             tkbTrackCondition.Value = 4;
             tkbTrackCondition_Scroll(sender, e);
 
+            ckbPractice.Checked = false;
+            ckbPractice_CheckedChanged(sender, e);
+            tkbPracticeDuration.Value = 5;
+            tkbPracticeDuration_Scroll(sender, e);
+
+            ckbQualifying.Checked = false;
+            ckbQualifying_CheckedChanged(sender, e);
+            tkbQualifyingDuration.Value = 5;
+            tkbQualifyingDuration_Scroll(sender, e);
+
             cbCar.Text = ACCGMainForm.ac_cars_list[0].model;
             cbCar_SelectionChangeCommitted(sender, e);
 
@@ -849,9 +981,45 @@ namespace ACCG
         private void tkbTime_MouseEnter(object sender, EventArgs e)
         {
             tltTimeTrackbar.Show("This control still broken with mouse, please use arrow keys!", tkbTime, 5000);
+        }       
+
+        private void ckbPractice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ckbPractice.Checked)
+            {
+                if (current_selected_event != null)
+                {
+                    current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 1));
+                    current_selected_event.practice = false;
+                }
+            }
+            tkbPracticeDuration.Enabled = ckbPractice.Checked;
         }
 
-       
+        private void ckbQualifying_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ckbQualifying.Checked)
+            {
+                if (current_selected_event != null)
+                {
+                    current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 2));
+                    current_selected_event.qualifying = false;
+                }
+            }
+
+            tkbQualifyingDuration.Enabled = ckbQualifying.Checked;
+            tkbStartPosition.Enabled = !ckbQualifying.Checked;
+        }
+
+        private void tkbPracticeDuration_Scroll(object sender, EventArgs e)
+        {
+            lblPracticeDurationValue.Text = tkbPracticeDuration.Value + " min";
+        }
+
+        private void tkbQualifyingDuration_Scroll(object sender, EventArgs e)
+        {
+            lblQualifyingDurationValue.Text = tkbQualifyingDuration.Value + " min";
+        }
         
     }
 }

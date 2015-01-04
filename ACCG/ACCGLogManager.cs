@@ -37,7 +37,8 @@ namespace ACCG
                 {
                     switch (_channel)
                     {
-                        case "ERROR":                            
+                        case "ERROR":             
+                            
                             File.AppendAllText(Directory.GetCurrentDirectory() + @"\log\errors.log", _message + Environment.NewLine);
                             break;
 
@@ -63,12 +64,13 @@ namespace ACCG
         {
             try
             {
-                /*
-                if (File.Exists(Directory.GetCurrentDirectory() + @"\log\errors.log"))
+                
+                if (Directory.EnumerateFiles(Directory.GetCurrentDirectory() + @"\log","*_errors.log").Any()) //File.Exists(Directory.GetCurrentDirectory() + @"\log\errors_*.log"))
                 {
+
                     File.Delete(Directory.GetCurrentDirectory() + @"\log\errors.log");
                 }
-                */
+                
                 if (File.Exists(Directory.GetCurrentDirectory() + @"\log\system.log"))
                 {
                     File.Delete(Directory.GetCurrentDirectory() + @"\log\system.log");
