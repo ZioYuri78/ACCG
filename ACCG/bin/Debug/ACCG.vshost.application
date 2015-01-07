@@ -14,14 +14,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ACCG.exe.manifest" size="3993">
+    <dependentAssembly dependencyType="install" codebase="ACCG.exe.manifest" size="5285">
       <assemblyIdentity name="ACCG.exe" version="0.6.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MdUsL84ZR17/96W4h7KCNLEPg/OnPW6IbzFFjWl3QTM=</dsig:DigestValue>
+        <dsig:DigestValue>uTjOAc6q4vaFjdRA1F9IsYFlwHxagJ8QM9P+T6MMbdE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

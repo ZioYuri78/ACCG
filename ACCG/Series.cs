@@ -37,6 +37,7 @@ namespace ACCG
             this.car = new Car();
             this.skin = new Skin();
             this.series_goals = new Goals();
+            this.requires = "";
         }
 
         

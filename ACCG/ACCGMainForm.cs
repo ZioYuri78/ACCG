@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Concurrent;
+using System.Threading;
 
 namespace ACCG
 {
@@ -20,6 +21,7 @@ namespace ACCG
         {
             InitializeComponent();
             sync_form = new SyncForm();
+            gen_form = new GenForm();
             accg_generator = ACCGGenerator.GetInstance();
             accg_resource = ACCGResourceManager.GetInstance();
             accg_log = ACCGLogManager.GetInstance();
@@ -269,19 +271,12 @@ namespace ACCG
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            if (current_selected_series == null)
-            {
-                MessageBox.Show("You have to select a series!");
-            }
-            else
-            {                
-                accg_generator.Generate(current_selected_series, ac_path);
-                current_selected_series.isGenerated = true;
-                
-                // Saving the accg series list                
-                accg_resource.SaveACCGSeries(accg_series_file_name, accg_series_list);
-            }
-
+            
+            gen_form.tbLogArea.ResetText();
+            gen_form.btnOk.Enabled = false;
+            bgWorkerGenerate.RunWorkerAsync();
+            gen_form.ShowDialog();      
+            
         }
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
@@ -314,11 +309,11 @@ namespace ACCG
             accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
             
             // re-populating Cars list                                    
-            accg_log.WriteLog("SYNC", "re-populating cars list...");
+            accg_log.WriteLog("SYNC", "re-populating ACCG cars list...");
             ac_cars_list = accg_resource.LoadCars(accg_cars_file_name);
 
             // re-populating Tracks list                        
-            accg_log.WriteLog("SYNC", "re-populating tracks list...");
+            accg_log.WriteLog("SYNC", "re-populating ACCG tracks list...");
             ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);                        
            
         }
@@ -330,9 +325,36 @@ namespace ACCG
 
         private void bgWorkerSync_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            accg_log.WriteLog("SYNC", "Syncronization complete!");
-            System.Threading.Thread.Sleep(1000);
+            accg_log.WriteLog("SYNC", "Syncronization complete!", 1000);            
             sync_form.btnOk.Enabled = true;
+        }
+
+        private void bgWorkerGenerate_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (current_selected_series == null)
+            {
+                MessageBox.Show("You have to select a series!");
+            }
+            else
+            {
+                accg_generator.Generate(current_selected_series, ac_path);
+                current_selected_series.isGenerated = true;
+
+                // Saving the accg series list      
+                accg_log.WriteLog("GEN", "Saving accg_series_list.dat", 500);                
+                accg_resource.SaveACCGSeries(accg_series_file_name, accg_series_list);
+            }
+        }
+
+        private void bgWorkerGenerate_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bgWorkerGenerate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            accg_log.WriteLog("GEN", "Series successfully generated!", 1000);            
+            gen_form.btnOk.Enabled = true;
         }
        
               

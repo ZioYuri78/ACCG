@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace ACCG
 {
@@ -61,6 +62,7 @@ namespace ACCG
            this.series_path = String.Format(_path + @"\content\career\series{0}", series.ID);           
 
            // Create the series folder           
+           ACCGMainForm.accg_log.WriteLog("GEN", "series path = " + series_path, 500);           
            Console.WriteLine("DEBUG: series path = " + series_path);
 
            try
@@ -77,12 +79,14 @@ namespace ACCG
            // Create the series start.png image
            if (series.startImage != null)
            {
+               ACCGMainForm.accg_log.WriteLog("GEN", "Create the series start.png image", 500);               
                series.startImage.Save(series_path + @"\" + series_start_png_filename, System.Drawing.Imaging.ImageFormat.Png);
            }
                    
            // Create the series preview.png image
            if (series.previewImage != null)
            {
+               ACCGMainForm.accg_log.WriteLog("GEN", "Create the series preview.png image", 500);               
                series.previewImage.Save(series_path + @"\" + series_preview_png_filename, System.Drawing.Imaging.ImageFormat.Png);
            }           
            
@@ -91,24 +95,29 @@ namespace ACCG
            if (series.isChampionship)
            {
                // Create the series.ini file   
+               ACCGMainForm.accg_log.WriteLog("GEN", "Create the series.ini file", 500);               
                generateChampionshipSeriesIni(series, series_path, series_ini_filename);
 
                // Create the opponents.ini file
+               ACCGMainForm.accg_log.WriteLog("GEN", "Create the opponents.ini file", 500);               
                generateOpponentsIni(series, series_path, opponents_ini_filename);
 
                // Create events sub-folders and contents           
+               ACCGMainForm.accg_log.WriteLog("GEN", "Create events sub-folders and contents", 500);               
                generateChampionshipEventsIni(series, series_path, event_ini_filename, event_preview_png_filename);
            }
            else
            {
                // Create the series.ini file
+               ACCGMainForm.accg_log.WriteLog("GEN", "Create the series.ini file", 500);               
                generateSingleEventsSeriesIni(series, series_path, series_ini_filename);
 
-               // Create events sub-folders and content
+               // Create events sub-folders and contents
+               ACCGMainForm.accg_log.WriteLog("GEN", "Create events sub-folders and contents", 500);               
                generateSingleEventsIni(series, series_path, event_ini_filename, event_preview_png_filename);
            }                                                                  
                       
-           System.Windows.Forms.MessageBox.Show("Series successfully generated!");
+           //System.Windows.Forms.MessageBox.Show("Series successfully generated!");
 
        }
 
@@ -207,6 +216,7 @@ namespace ACCG
                try
                {
                    DirectoryInfo temp_event_folder = Directory.CreateDirectory(String.Format(_series_path + @"\event{0}", ev.ID));
+                   ACCGMainForm.accg_log.WriteLog("GEN", temp_event_folder.ToString(), 500);                   
                    Console.WriteLine("DEBUG: " + temp_event_folder.ToString());
                    event_folder = _series_path + @"\" + temp_event_folder.ToString();
 
@@ -220,6 +230,7 @@ namespace ACCG
                // Create event preview.png image
                if (ev.previewImage != null)
                {
+                   ACCGMainForm.accg_log.WriteLog("GEN", "Create event preview.png image", 500);                   
                    ev.previewImage.Save(event_folder + @"\" + _event_preview_png_filename, System.Drawing.Imaging.ImageFormat.Png);
                }
 
@@ -392,6 +403,7 @@ namespace ACCG
                try
                {
                    DirectoryInfo temp_event_folder = Directory.CreateDirectory(String.Format(_series_path + @"\event{0}", ev.ID));
+                   ACCGMainForm.accg_log.WriteLog("GEN", temp_event_folder.ToString(), 500);                   
                    Console.WriteLine("DEBUG: " + temp_event_folder.ToString());
                    event_folder = _series_path + @"\" + temp_event_folder.ToString();
                }
@@ -404,6 +416,7 @@ namespace ACCG
                // Create event preview.png image
                if (ev.previewImage != null)
                {
+                   ACCGMainForm.accg_log.WriteLog("GEN", "Create event preview.png image", 500);                   
                    ev.previewImage.Save(event_folder + @"\" + _event_preview_png_filename, System.Drawing.Imaging.ImageFormat.Png);
                }
 

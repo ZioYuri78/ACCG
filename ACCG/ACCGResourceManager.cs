@@ -340,8 +340,7 @@ namespace ACCG
 
         public void Sync(string _cars_file_name, string _tracks_file_name) 
         {
-            ACCGMainForm.accg_log.WriteLog("SYNC", "Start syncronization");
-            Thread.Sleep(1000); 
+            ACCGMainForm.accg_log.WriteLog("SYNC", "Start syncronization", 1000);            
 
             string ac_path = ACCGMainForm.ac_path;
 
@@ -360,8 +359,7 @@ namespace ACCG
             try
             {
                 // Sync the cars                
-                ACCGMainForm.accg_log.WriteLog("SYNC", "Sync the cars");
-                Thread.Sleep(1000); 
+                ACCGMainForm.accg_log.WriteLog("SYNC", "Sync the cars", 1000);                
     
                 string ac_cars_path = ac_path + @"\content\cars";
                 string[] ac_cars = Directory.GetDirectories(ac_cars_path, "*", SearchOption.TopDirectoryOnly);
@@ -422,8 +420,7 @@ namespace ACCG
                 SaveCars(_cars_file_name, temp_cars_list);
 
                 // Sync the tracks
-                ACCGMainForm.accg_log.WriteLog("SYNC", "Sync the tracks");
-                Thread.Sleep(1000);
+                ACCGMainForm.accg_log.WriteLog("SYNC", "Sync the tracks", 1000);                
 
                 string ac_tracks_path = ac_path + @"\content\tracks";
                 string[] ac_tracks = Directory.GetDirectories(ac_tracks_path, "*", SearchOption.TopDirectoryOnly);

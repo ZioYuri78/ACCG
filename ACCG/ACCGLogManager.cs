@@ -29,7 +29,7 @@ namespace ACCG
             return instance;
         }
 
-        public void WriteLog(string _channel, string _message)
+        public void WriteLog(string _channel, string _message, int tick = 0)
         {
             try
             {
@@ -37,17 +37,22 @@ namespace ACCG
                 {
                     switch (_channel)
                     {
-                        case "ERROR":             
-                            
-                            File.AppendAllText(Directory.GetCurrentDirectory() + @"\log\errors.log", _message + Environment.NewLine);
+                        case "ERROR":                                         
+                            File.AppendAllText(Directory.GetCurrentDirectory() + @"\log\errors.log", _message + Environment.NewLine);                            
                             break;
 
                         case "SYSTEM":                      
-                            File.AppendAllText(Directory.GetCurrentDirectory() + @"\log\system.log", _message + Environment.NewLine);
+                            File.AppendAllText(Directory.GetCurrentDirectory() + @"\log\system.log", _message + Environment.NewLine);                            
                             break;
 
                         case "SYNC":
-                            ACCGMainForm.sync_form.SetText(_message + Environment.NewLine);                            
+                            ACCGMainForm.sync_form.SetText(_message + Environment.NewLine);
+                            Thread.Sleep(tick);
+                            break;
+
+                        case "GEN":
+                            ACCGMainForm.gen_form.SetText(_message + Environment.NewLine);
+                            Thread.Sleep(tick);
                             break;
                     }
                 }
@@ -67,7 +72,6 @@ namespace ACCG
                 
                 if (Directory.EnumerateFiles(Directory.GetCurrentDirectory() + @"\log","*_errors.log").Any()) //File.Exists(Directory.GetCurrentDirectory() + @"\log\errors_*.log"))
                 {
-
                     File.Delete(Directory.GetCurrentDirectory() + @"\log\errors.log");
                 }
                 

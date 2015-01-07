@@ -57,6 +57,7 @@ namespace ACCG
             this.tltLoadSeries = new System.Windows.Forms.ToolTip(this.components);
             this.openSeriesFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.bgWorkerSync = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkerGenerate = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.grbSeries.SuspendLayout();
             this.SuspendLayout();
@@ -109,7 +110,7 @@ namespace ACCG
             // syncToolStripMenuItem
             // 
             this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
-            this.syncToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.syncToolStripMenuItem.Text = "Sync";
             this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
             // 
@@ -235,6 +236,12 @@ namespace ACCG
             this.bgWorkerSync.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerSync_ProgressChanged);
             this.bgWorkerSync.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerSync_RunWorkerCompleted);
             // 
+            // bgWorkerGenerate
+            // 
+            this.bgWorkerGenerate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGenerate_DoWork);
+            this.bgWorkerGenerate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerGenerate_ProgressChanged);
+            this.bgWorkerGenerate.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGenerate_RunWorkerCompleted);
+            // 
             // ACCGMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,6 +318,7 @@ namespace ACCG
         public static ACCGLogManager accg_log;
 
         public static SyncForm sync_form;
+        public static GenForm gen_form;
 
         public const string accg_settings_file_name = @"cfg\settings.ini";
         public const string accg_series_file_name = @"data\accg_series_list.dat";
@@ -321,6 +329,7 @@ namespace ACCG
         private ToolTip tltLoadSeries;
         private OpenFileDialog openSeriesFileDialog;
         private BackgroundWorker bgWorkerSync;
+        private BackgroundWorker bgWorkerGenerate;
 
         
     }
