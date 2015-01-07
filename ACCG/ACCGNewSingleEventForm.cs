@@ -122,14 +122,23 @@ namespace ACCG
                     rbHotlap.Checked = true;
                     grbHotlapGoals.Enabled = true;
 
-                    tbTimeMinutesGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_3)).Minutes);
-                    tbTimeSecondsGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_3)).Seconds);
+                    try
+                    {
+                        tbTimeMinutesGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_3)).Minutes);
+                        tbTimeSecondsGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_3)).Seconds);
 
-                    tbTimeMinutesSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_2)).Minutes);
-                    tbTimeSecondsSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_2)).Seconds);
+                        tbTimeMinutesSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_2)).Minutes);
+                        tbTimeSecondsSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_2)).Seconds);
+
+                        tbTimeMinutesBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_1)).Minutes);
+                        tbTimeSecondsBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_1)).Seconds);
+                    }
+                    catch (Exception exc)
+                    {
+                        ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                        Console.WriteLine("DEBUG: " + exc.ToString());
+                    }
                     
-                    tbTimeMinutesBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_1)).Minutes);
-                    tbTimeSecondsBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(current_selected_event.event_goals.tier_1)).Seconds);
                 }
 
             }
@@ -202,21 +211,27 @@ namespace ACCG
                     }
                     else if (temp_event.isHotlap)
                     {
-                        tbTimeMinutesGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_3)).Minutes);
-                        tbTimeSecondsGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_3)).Seconds);
+                        try
+                        {
+                            tbTimeMinutesGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_3)).Minutes);
+                            tbTimeSecondsGoldTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_3)).Seconds);
 
-                        tbTimeMinutesSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_2)).Minutes);
-                        tbTimeSecondsSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_2)).Seconds);
+                            tbTimeMinutesSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_2)).Minutes);
+                            tbTimeSecondsSilverTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_2)).Seconds);
 
-                        tbTimeMinutesBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_1)).Minutes);
-                        tbTimeSecondsBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_1)).Seconds);
-               
+                            tbTimeMinutesBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_1)).Minutes);
+                            tbTimeSecondsBronzeTier.Text = String.Format("{0}", ACCGUtility.MillisecondsToLapTime(Convert.ToDouble(temp_event.event_goals.tier_1)).Seconds);
+                        }
+                        catch (Exception exc)
+                        {
+                            ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                            Console.WriteLine("DEBUG: " + exc.ToString());
+                        }
+                                      
                     }
 
                 }
-                          
-                
-                
+                                                          
             }
 
             if (current_selected_event == null && rbQuickRace.Checked)
@@ -578,12 +593,21 @@ namespace ACCG
                     hotlap_session.type = 4;
                     hotlap_session.spawn_set = "HOTLAP_START";
 
-                    temp_event.session_list.Add(hotlap_session);                    
+                    temp_event.session_list.Add(hotlap_session);
 
-                    temp_event.event_goals.tier_1 = ACCGUtility.LapTimeToMilliseconds(Convert.ToDouble(tbTimeMinutesBronzeTier.Text), Convert.ToDouble( tbTimeSecondsBronzeTier.Text)).ToString();
-                    temp_event.event_goals.tier_2 = ACCGUtility.LapTimeToMilliseconds(Convert.ToDouble(tbTimeMinutesSilverTier.Text), Convert.ToDouble(tbTimeSecondsSilverTier.Text)).ToString();
-                    temp_event.event_goals.tier_3 = ACCGUtility.LapTimeToMilliseconds(Convert.ToDouble(tbTimeMinutesGoldTier.Text), Convert.ToDouble(tbTimeSecondsGoldTier.Text)).ToString();
+                    try
+                    {
+                        temp_event.event_goals.tier_1 = ACCGUtility.LapTimeToMilliseconds(Convert.ToDouble(tbTimeMinutesBronzeTier.Text), Convert.ToDouble(tbTimeSecondsBronzeTier.Text)).ToString();
+                        temp_event.event_goals.tier_2 = ACCGUtility.LapTimeToMilliseconds(Convert.ToDouble(tbTimeMinutesSilverTier.Text), Convert.ToDouble(tbTimeSecondsSilverTier.Text)).ToString();
+                        temp_event.event_goals.tier_3 = ACCGUtility.LapTimeToMilliseconds(Convert.ToDouble(tbTimeMinutesGoldTier.Text), Convert.ToDouble(tbTimeSecondsGoldTier.Text)).ToString();
 
+                    }
+                    catch (Exception exc)
+                    {
+                        ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                        Console.WriteLine("DEBUG: " + exc.ToString());
+                    }
+                    
                 }
 
                 if (current_selected_event != null)

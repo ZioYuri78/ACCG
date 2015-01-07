@@ -11,7 +11,7 @@ namespace ACCG
     {
 
         public int ID { get; set; }
-        public Car model { get; set; }
+        public Car car_model { get; set; }
         public string setup { get; set; }
         public int ai_level { get; set; }
         public Skin skin { get; set; }
@@ -21,7 +21,7 @@ namespace ACCG
 
         public Opponent() 
         {
-            this.model = new Car();
+            this.car_model = new Car();
             this.skin = new Skin();
         }
 

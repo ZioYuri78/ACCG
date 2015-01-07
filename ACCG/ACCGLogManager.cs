@@ -54,6 +54,10 @@ namespace ACCG
                             ACCGMainForm.gen_form.SetText(_message + Environment.NewLine);
                             Thread.Sleep(tick);
                             break;
+                            
+                        default:
+                            Console.WriteLine("Nessun canale!");
+                            break;
                     }
                 }
             }
@@ -70,7 +74,7 @@ namespace ACCG
             try
             {
                 
-                if (Directory.EnumerateFiles(Directory.GetCurrentDirectory() + @"\log","*_errors.log").Any()) //File.Exists(Directory.GetCurrentDirectory() + @"\log\errors_*.log"))
+                if (File.Exists(Directory.GetCurrentDirectory() + @"\log\errors.log"))
                 {
                     File.Delete(Directory.GetCurrentDirectory() + @"\log\errors.log");
                 }

@@ -463,7 +463,17 @@ namespace ACCG
                                 Opponent temp_opponent = new Opponent();
 
                                 string[] splitted = line.Split('I');
-                                temp_opponent.ID = Convert.ToInt32(splitted[1].Trim(new Char[] { '[', ']' }));
+
+                                try
+                                {                                    
+                                    temp_opponent.ID = Convert.ToInt32(splitted[1].Trim(new Char[] { '[', ']' }));
+                                }
+                                catch (Exception exc)
+                                {
+                                    ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                    Console.WriteLine("DEBUG: " + exc.ToString());
+                                }
+                               
 
                                 line = sr.ReadLine();
 
@@ -475,23 +485,39 @@ namespace ACCG
                                     switch (splitted[0])
                                     {
                                         case "MODEL":                                            
-                                            temp_opponent.model.model = splitted[1];
+                                            temp_opponent.car_model.model = splitted[1];
                                             break;
 
                                         case "CAR":
-                                            temp_opponent.model.model = splitted[1];
+                                            temp_opponent.car_model.model = splitted[1];
                                             break;
 
                                         case "SETUP":                                            
                                             temp_opponent.setup = splitted[1];
                                             break;
 
-                                        case "AI_LEVEL":                                            
-                                            temp_opponent.ai_level = Convert.ToInt32(splitted[1]);
+                                        case "AI_LEVEL":
+                                            try
+                                            {
+                                                temp_opponent.ai_level = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                            
                                             break;
                                             
                                         case "LEVEL":
-                                            temp_opponent.ai_level = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                temp_opponent.ai_level = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                            
                                             break;
 
                                         case "SKIN":
@@ -501,14 +527,14 @@ namespace ACCG
 
                                             try
                                             {
-                                                temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_opponent.model.model);
+                                                temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == temp_opponent.car_model.model);
                                                 temp_skin = temp_car.skins.Find(x => x.skin_name == temp_skin_name);
                                             }
                                             catch (Exception exc)
                                             {
                                                 ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                                                 Console.WriteLine("The process failed: {0}", exc.ToString());
-                                                MessageBox.Show("Missing " + temp_opponent.model.model + " car mod");
+                                                MessageBox.Show("Missing " + temp_opponent.car_model.model + " car mod");
                                                 return null;
                                             }
                                                                                                                                    
@@ -570,7 +596,7 @@ namespace ACCG
 
                 string[] temp_opponent_attributes = {
                                        String.Format("[AI{0}]",temp_opponent.ID),
-                                       "MODEL=" + temp_opponent.model.model,
+                                       "MODEL=" + temp_opponent.car_model.model,
                                        "SETUP=" + temp_opponent.setup,
                                        "AI_LEVEL=" + temp_opponent.ai_level.ToString(),
                                        "SKIN=" + temp_opponent.skin.skin_name,
@@ -686,7 +712,15 @@ namespace ACCG
                                             break;
 
                                         case "AMBIENT":
-                                            temp_event.ambient_temperature = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                temp_event.ambient_temperature = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                            
                                             break;
                                     }
 
@@ -706,7 +740,15 @@ namespace ACCG
                                     switch (splitted[0])
                                     {
                                         case "PRESET":
-                                            temp_event.dynamic_track_preset = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                temp_event.dynamic_track_preset = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                                    
                                             break;
                                     }
 
@@ -755,7 +797,15 @@ namespace ACCG
                                             break;
 
                                         case "CARS":
-                                            temp_event.numberOfCars = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                temp_event.numberOfCars = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                            
                                             break;
 
                                         case "PENALTIES":
@@ -770,7 +820,15 @@ namespace ACCG
                                             break;
 
                                         case "RACE_LAPS":
-                                            temp_event.numberOfLaps = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                temp_event.numberOfLaps = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                                 
                                             break;
 
                                         case "SKIN":
@@ -825,7 +883,15 @@ namespace ACCG
                                     switch (splitted[0])
                                     {
                                         case "SUN_ANGLE":
-                                            temp_event.time = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                temp_event.time = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                                          
                                             break;
                                     }
 
@@ -840,8 +906,17 @@ namespace ACCG
                             {
                                 Session session = new Session();
                                 splitted = line.Trim('[', ']').Split('_');
-                                session.ID = Convert.ToInt32(splitted[1]);
 
+                                try
+                                {
+                                    session.ID = Convert.ToInt32(splitted[1]);
+                                }
+                                catch (Exception exc)
+                                {
+                                    ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                    Console.WriteLine("DEBUG: " + exc.ToString());
+                                }     
+                                
                                 line = sr.ReadLine();
                                 splitted = line.Split('=', ';');
 
@@ -850,7 +925,15 @@ namespace ACCG
                                     switch (splitted[0])
                                     {
                                         case "STARTING_POSITION":
-                                            temp_event.start_position = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                temp_event.start_position = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                                 
                                             break;
 
                                         case "NAME":
@@ -858,7 +941,16 @@ namespace ACCG
                                             break;
 
                                         case "TYPE":    // 1 = Practice, 2 = Qualify, 3 = Race, 4 = Hotlap, 5 = Time Attack, 6 = Drift, 7 = Drag
-                                            session.type = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                session.type = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }      
+                                            
                                             switch (session.type)
                                             {
                                                 case 1:
@@ -890,12 +982,28 @@ namespace ACCG
                                             break;
 
                                         case "LAPS":
-                                            session.laps = Convert.ToInt32(splitted[1]);
-                                            temp_event.numberOfLaps = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                session.laps = Convert.ToInt32(splitted[1]);
+                                                temp_event.numberOfLaps = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                                 
                                             break;
 
                                         case "DURATION_MINUTES":
-                                            session.duration_minutes = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                session.duration_minutes = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                                   
                                             break;
 
                                         case "SPAWN_SET":
@@ -954,7 +1062,17 @@ namespace ACCG
                             {
                                 Opponent opponent = new Opponent();
                                 splitted = line.Trim('[', ']').Split('_');
-                                opponent.ID = Convert.ToInt32(splitted[1]);
+
+                                try
+                                {
+                                    opponent.ID = Convert.ToInt32(splitted[1]);
+                                }
+                                catch (Exception exc)
+                                {
+                                    ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                    Console.WriteLine("DEBUG: " + exc.ToString());
+                                }       
+                                
 
                                 Car opponent_car = new Car();
 
@@ -967,7 +1085,7 @@ namespace ACCG
                                     {
                                         case "MODEL":
                                             opponent_car.model = splitted[1];
-                                            opponent.model = opponent_car;
+                                            opponent.car_model = opponent_car;
                                             break;
 
                                         case "SETUP":
@@ -975,13 +1093,21 @@ namespace ACCG
                                             break;
 
                                         case "AI_LEVEL":
-                                            opponent.ai_level = Convert.ToInt32(splitted[1]);
+                                            try
+                                            {
+                                                opponent.ai_level = Convert.ToInt32(splitted[1]);
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                                Console.WriteLine("DEBUG: " + exc.ToString());
+                                            }                                                   
                                             break;
 
                                         case "SKIN":
                                             string temp_skin_name = splitted[1].ToLower();
 
-                                            Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == opponent.model.model);
+                                            Car temp_car = ACCGMainForm.ac_cars_list.Find(x => x.model == opponent.car_model.model);
                                             Skin temp_skin = temp_car.skins.Find(x => x.skin_name == temp_skin_name);
                                             Bitmap temp_skin_preview;
 
@@ -1018,8 +1144,18 @@ namespace ACCG
                             else if (line.Contains("CONDITION_"))
                             {
                                 splitted = line.Trim('[', ']').Split('_');
-                                int id = Convert.ToInt32(splitted[1]);
+                                int id = 0;
 
+                                try
+                                {
+                                    id = Convert.ToInt32(splitted[1]);
+                                }
+                                catch (Exception exc)
+                                {
+                                    ACCGMainForm.accg_log.WriteLog("ERROR", exc.ToString());
+                                    Console.WriteLine("DEBUG: " + exc.ToString());
+                                }      
+                                
                                 line = sr.ReadLine();
                                 splitted = line.Split('=', ';');
 

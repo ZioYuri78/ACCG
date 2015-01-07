@@ -467,7 +467,7 @@ namespace ACCG
 
                 foreach (KeyValuePair<string, int> pair in ACCGMainForm.time_table)
                 {
-                    if (pair.Value == Convert.ToInt32(current_selected_event.time))
+                    if (pair.Value == current_selected_event.time)//Convert.ToInt32(current_selected_event.time))
                     {
                         rtbEventsInfo.AppendText("Time: " + pair.Key + "\n");
                         break;
@@ -528,7 +528,7 @@ namespace ACCG
                 rtbOpponentsInfo.ResetText();
                 rtbOpponentsInfo.AppendText("Name: " + current_selected_opponent.name + "\n");
                 rtbOpponentsInfo.AppendText("Nationality: " + current_selected_opponent.nationality + "\n");
-                rtbOpponentsInfo.AppendText("Car: " + current_selected_opponent.model.model + "\n");
+                rtbOpponentsInfo.AppendText("Car: " + current_selected_opponent.car_model.model + "\n");
                 rtbOpponentsInfo.AppendText("Skin: " + current_selected_opponent.skin.skin_name + "\n");
                 rtbOpponentsInfo.AppendText("Setup: " + current_selected_opponent.setup + "\n");
                 rtbOpponentsInfo.AppendText("AI Level: " + current_selected_opponent.ai_level.ToString());

@@ -22,6 +22,7 @@ namespace ACCG
        private string series_start_png_filename = "start.png";
        private string series_preview_png_filename = "preview.png";
        private string event_preview_png_filename = "preview.png";
+       private string series_intro_video_filename = "start.ogv";
 
        private ACCGGenerator() { }
 
@@ -90,7 +91,10 @@ namespace ACCG
                series.previewImage.Save(series_path + @"\" + series_preview_png_filename, System.Drawing.Imaging.ImageFormat.Png);
            }           
            
-           
+           // Create the series intro video
+
+
+           //-----------------------------
                
            if (series.isChampionship)
            {
@@ -169,7 +173,7 @@ namespace ACCG
 
                string[] temp_opponent_attributes = {
                                        String.Format("[AI{0}]",temp_opponent.ID),
-                                       "MODEL=" + temp_opponent.model.model,
+                                       "MODEL=" + temp_opponent.car_model.model,
                                        "SETUP=" + temp_opponent.setup,
                                        "AI_LEVEL=" + temp_opponent.ai_level.ToString(),
                                        "SKIN=" + temp_opponent.skin.skin_name,
@@ -651,7 +655,7 @@ namespace ACCG
 
                        string[] temp_opponent_attributes = {
                                                                String.Format("[CAR_{0}]", temp_opponent.ID),
-                                                               "MODEL=" + temp_opponent.model.model,
+                                                               "MODEL=" + temp_opponent.car_model.model,
                                                                "SETUP=" + ev.track,
                                                                "AI_LEVEL=" + temp_opponent.ai_level,
                                                                "SKIN=" + temp_opponent.skin.skin_name,

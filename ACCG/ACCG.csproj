@@ -132,11 +132,11 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenForm - Copia.cs">
+    <Compile Include="GenForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GenForm - Copia.Designer.cs">
-      <DependentUpon>GenForm - Copia.cs</DependentUpon>
+    <Compile Include="GenForm.Designer.cs">
+      <DependentUpon>GenForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SyncForm.cs">
       <SubType>Form</SubType>
@@ -175,8 +175,8 @@
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GenForm - Copia.resx">
-      <DependentUpon>GenForm - Copia.cs</DependentUpon>
+    <EmbeddedResource Include="GenForm.resx">
+      <DependentUpon>GenForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SyncForm.resx">
       <DependentUpon>SyncForm.cs</DependentUpon>

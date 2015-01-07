@@ -47,7 +47,7 @@ namespace ACCG
             // Edit mode
             if (current_selected_opponent != null)
             {
-                cbCar.Text = current_selected_opponent.model.model;
+                cbCar.Text = current_selected_opponent.car_model.model;
             }
             else // New opponent mode
             {
@@ -121,7 +121,7 @@ namespace ACCG
                 }
                                 
                 Console.WriteLine("DEBUG: ID = {0}",temp_opponent.ID);
-                temp_opponent.model = opponent_car;
+                temp_opponent.car_model = opponent_car;
                 //temp_opponent.setup = 
                 temp_opponent.ai_level = tkbAIlevel.Value;
                 temp_opponent.skin.skin_name = cbSkin.SelectedItem.ToString();
@@ -155,10 +155,7 @@ namespace ACCG
                     }
                     
                 }
-                
-                
-                
-
+                                                
                 this.Close();
             }
         }
