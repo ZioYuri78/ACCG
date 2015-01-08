@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="240128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="238592">
       <assemblyIdentity name="ACCG" version="0.7.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>guj5lG6+lPIS/XxAbWbczoU8yx0MabCMRf3TrybIzJk=</dsig:DigestValue>
+        <dsig:DigestValue>XEfQnr2tCM0L+82ueav7+2ZIMKUQ9CUepnds5BtRP1E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,13 +78,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="ACCG.exe.config" size="187">
+  <file name="ACCG.exe.config" size="182">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+      <dsig:DigestValue>PbQiHFOih9uz3RPvvsStiPKcsu3PE8/gyCn2QGUyyf4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="icon_smug.ico" size="1150">

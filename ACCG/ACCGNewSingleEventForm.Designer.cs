@@ -92,10 +92,27 @@ namespace ACCG
             this.lblSkin = new System.Windows.Forms.Label();
             this.cbSkin = new System.Windows.Forms.ComboBox();
             this.grbQuickRace = new System.Windows.Forms.GroupBox();
+            this.grbSessionQualifying = new System.Windows.Forms.GroupBox();
+            this.tkbQualifyingDuration = new System.Windows.Forms.TrackBar();
+            this.lblQualifyingDurationValue = new System.Windows.Forms.Label();
+            this.lblQualifyingDuration = new System.Windows.Forms.Label();
+            this.ckbQualifying = new System.Windows.Forms.CheckBox();
+            this.grbRace = new System.Windows.Forms.GroupBox();
+            this.lblNumberOfCars = new System.Windows.Forms.Label();
+            this.lblNumberOfLaps = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.tkbNumberOfCars = new System.Windows.Forms.TrackBar();
             this.lblStartPositionValue = new System.Windows.Forms.Label();
+            this.tkbNumberOfLaps = new System.Windows.Forms.TrackBar();
             this.tkbStartPosition = new System.Windows.Forms.TrackBar();
+            this.lblNumberOfCarsValue = new System.Windows.Forms.Label();
             this.lblStartingPosition = new System.Windows.Forms.Label();
+            this.lblNumberOfLapsValue = new System.Windows.Forms.Label();
+            this.grbPracticeSession = new System.Windows.Forms.GroupBox();
+            this.tkbPracticeDuration = new System.Windows.Forms.TrackBar();
+            this.ckbPractice = new System.Windows.Forms.CheckBox();
+            this.lblPracticeDurationValue = new System.Windows.Forms.Label();
+            this.lblPracticeDuration = new System.Windows.Forms.Label();
             this.grbOpponents = new System.Windows.Forms.GroupBox();
             this.btnSaveOpponents = new System.Windows.Forms.Button();
             this.btnLoadOpponents = new System.Windows.Forms.Button();
@@ -103,12 +120,6 @@ namespace ACCG
             this.btnDeleteOpponent = new System.Windows.Forms.Button();
             this.btnEditOpponent = new System.Windows.Forms.Button();
             this.btnNewOpponent = new System.Windows.Forms.Button();
-            this.lblNumberOfLapsValue = new System.Windows.Forms.Label();
-            this.lblNumberOfCarsValue = new System.Windows.Forms.Label();
-            this.lblNumberOfCars = new System.Windows.Forms.Label();
-            this.tkbNumberOfLaps = new System.Windows.Forms.TrackBar();
-            this.tkbNumberOfCars = new System.Windows.Forms.TrackBar();
-            this.lblNumberOfLaps = new System.Windows.Forms.Label();
             this.btnRandom = new System.Windows.Forms.Button();
             this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tltNewOpponent = new System.Windows.Forms.ToolTip(this.components);
@@ -137,17 +148,6 @@ namespace ACCG
             this.label10 = new System.Windows.Forms.Label();
             this.saveOpponentsFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tltTimeTrackbar = new System.Windows.Forms.ToolTip(this.components);
-            this.grbPracticeSession = new System.Windows.Forms.GroupBox();
-            this.tkbPracticeDuration = new System.Windows.Forms.TrackBar();
-            this.ckbPractice = new System.Windows.Forms.CheckBox();
-            this.lblPracticeDurationValue = new System.Windows.Forms.Label();
-            this.lblPracticeDuration = new System.Windows.Forms.Label();
-            this.grbRace = new System.Windows.Forms.GroupBox();
-            this.grbSessionQualifying = new System.Windows.Forms.GroupBox();
-            this.tkbQualifyingDuration = new System.Windows.Forms.TrackBar();
-            this.lblQualifyingDurationValue = new System.Windows.Forms.Label();
-            this.lblQualifyingDuration = new System.Windows.Forms.Label();
-            this.ckbQualifying = new System.Windows.Forms.CheckBox();
             this.grbButtons.SuspendLayout();
             this.grbImages.SuspendLayout();
             this.grbTrack.SuspendLayout();
@@ -161,24 +161,24 @@ namespace ACCG
             this.grbQuickRaceGoals.SuspendLayout();
             this.grbCar.SuspendLayout();
             this.grbQuickRace.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbStartPosition)).BeginInit();
-            this.grbOpponents.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfCars)).BeginInit();
-            this.grbTimeAttackGoals.SuspendLayout();
-            this.grbHotlapGoals.SuspendLayout();
-            this.grbPracticeSession.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
-            this.grbRace.SuspendLayout();
             this.grbSessionQualifying.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tkbQualifyingDuration)).BeginInit();
+            this.grbRace.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfCars)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbStartPosition)).BeginInit();
+            this.grbPracticeSession.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).BeginInit();
+            this.grbOpponents.SuspendLayout();
+            this.grbTimeAttackGoals.SuspendLayout();
+            this.grbHotlapGoals.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbButtons
             // 
             this.grbButtons.Controls.Add(this.btnCancel);
             this.grbButtons.Controls.Add(this.btnOK);
-            this.grbButtons.Location = new System.Drawing.Point(513, 738);
+            this.grbButtons.Location = new System.Drawing.Point(536, 750);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(183, 54);
             this.grbButtons.TabIndex = 48;
@@ -765,12 +765,101 @@ namespace ACCG
             this.grbQuickRace.Controls.Add(this.grbPracticeSession);
             this.grbQuickRace.Controls.Add(this.grbOpponents);
             this.grbQuickRace.Controls.Add(this.grbQuickRaceGoals);
-            this.grbQuickRace.Location = new System.Drawing.Point(486, 7);
+            this.grbQuickRace.Location = new System.Drawing.Point(482, 59);
             this.grbQuickRace.Name = "grbQuickRace";
             this.grbQuickRace.Size = new System.Drawing.Size(237, 673);
             this.grbQuickRace.TabIndex = 58;
             this.grbQuickRace.TabStop = false;
             this.grbQuickRace.Text = "Quick Race";
+            // 
+            // grbSessionQualifying
+            // 
+            this.grbSessionQualifying.Controls.Add(this.tkbQualifyingDuration);
+            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDurationValue);
+            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDuration);
+            this.grbSessionQualifying.Controls.Add(this.ckbQualifying);
+            this.grbSessionQualifying.Location = new System.Drawing.Point(11, 116);
+            this.grbSessionQualifying.Name = "grbSessionQualifying";
+            this.grbSessionQualifying.Size = new System.Drawing.Size(212, 91);
+            this.grbSessionQualifying.TabIndex = 59;
+            this.grbSessionQualifying.TabStop = false;
+            this.grbSessionQualifying.Text = "Qualifying";
+            // 
+            // tkbQualifyingDuration
+            // 
+            this.tkbQualifyingDuration.Location = new System.Drawing.Point(56, 42);
+            this.tkbQualifyingDuration.Maximum = 60;
+            this.tkbQualifyingDuration.Minimum = 5;
+            this.tkbQualifyingDuration.Name = "tkbQualifyingDuration";
+            this.tkbQualifyingDuration.Size = new System.Drawing.Size(104, 45);
+            this.tkbQualifyingDuration.TabIndex = 15;
+            this.tkbQualifyingDuration.Value = 5;
+            this.tkbQualifyingDuration.Scroll += new System.EventHandler(this.tkbQualifyingDuration_Scroll);
+            // 
+            // lblQualifyingDurationValue
+            // 
+            this.lblQualifyingDurationValue.AutoSize = true;
+            this.lblQualifyingDurationValue.Location = new System.Drawing.Point(166, 42);
+            this.lblQualifyingDurationValue.Name = "lblQualifyingDurationValue";
+            this.lblQualifyingDurationValue.Size = new System.Drawing.Size(32, 13);
+            this.lblQualifyingDurationValue.TabIndex = 34;
+            this.lblQualifyingDurationValue.Text = "5 min";
+            // 
+            // lblQualifyingDuration
+            // 
+            this.lblQualifyingDuration.AutoSize = true;
+            this.lblQualifyingDuration.Location = new System.Drawing.Point(3, 42);
+            this.lblQualifyingDuration.Name = "lblQualifyingDuration";
+            this.lblQualifyingDuration.Size = new System.Drawing.Size(47, 13);
+            this.lblQualifyingDuration.TabIndex = 14;
+            this.lblQualifyingDuration.Text = "Duration";
+            // 
+            // ckbQualifying
+            // 
+            this.ckbQualifying.AutoSize = true;
+            this.ckbQualifying.Location = new System.Drawing.Point(6, 19);
+            this.ckbQualifying.Name = "ckbQualifying";
+            this.ckbQualifying.Size = new System.Drawing.Size(15, 14);
+            this.ckbQualifying.TabIndex = 13;
+            this.ckbQualifying.UseVisualStyleBackColor = true;
+            this.ckbQualifying.CheckedChanged += new System.EventHandler(this.ckbQualifying_CheckedChanged);
+            // 
+            // grbRace
+            // 
+            this.grbRace.Controls.Add(this.lblNumberOfCars);
+            this.grbRace.Controls.Add(this.lblNumberOfLaps);
+            this.grbRace.Controls.Add(this.label3);
+            this.grbRace.Controls.Add(this.tkbNumberOfCars);
+            this.grbRace.Controls.Add(this.lblStartPositionValue);
+            this.grbRace.Controls.Add(this.tkbNumberOfLaps);
+            this.grbRace.Controls.Add(this.tkbStartPosition);
+            this.grbRace.Controls.Add(this.lblNumberOfCarsValue);
+            this.grbRace.Controls.Add(this.lblStartingPosition);
+            this.grbRace.Controls.Add(this.lblNumberOfLapsValue);
+            this.grbRace.Location = new System.Drawing.Point(11, 209);
+            this.grbRace.Name = "grbRace";
+            this.grbRace.Size = new System.Drawing.Size(212, 171);
+            this.grbRace.TabIndex = 58;
+            this.grbRace.TabStop = false;
+            this.grbRace.Text = "Race";
+            // 
+            // lblNumberOfCars
+            // 
+            this.lblNumberOfCars.AutoSize = true;
+            this.lblNumberOfCars.Location = new System.Drawing.Point(18, 16);
+            this.lblNumberOfCars.Name = "lblNumberOfCars";
+            this.lblNumberOfCars.Size = new System.Drawing.Size(28, 13);
+            this.lblNumberOfCars.TabIndex = 21;
+            this.lblNumberOfCars.Text = "Cars";
+            // 
+            // lblNumberOfLaps
+            // 
+            this.lblNumberOfLaps.AutoSize = true;
+            this.lblNumberOfLaps.Location = new System.Drawing.Point(18, 67);
+            this.lblNumberOfLaps.Name = "lblNumberOfLaps";
+            this.lblNumberOfLaps.Size = new System.Drawing.Size(30, 13);
+            this.lblNumberOfLaps.TabIndex = 25;
+            this.lblNumberOfLaps.Text = "Laps";
             // 
             // label3
             // 
@@ -781,6 +870,17 @@ namespace ACCG
             this.label3.TabIndex = 51;
             this.label3.Text = "position";
             // 
+            // tkbNumberOfCars
+            // 
+            this.tkbNumberOfCars.Location = new System.Drawing.Point(59, 13);
+            this.tkbNumberOfCars.Maximum = 24;
+            this.tkbNumberOfCars.Minimum = 1;
+            this.tkbNumberOfCars.Name = "tkbNumberOfCars";
+            this.tkbNumberOfCars.Size = new System.Drawing.Size(104, 45);
+            this.tkbNumberOfCars.TabIndex = 22;
+            this.tkbNumberOfCars.Value = 2;
+            this.tkbNumberOfCars.Scroll += new System.EventHandler(this.tkbNumberOfCars_Scroll);
+            // 
             // lblStartPositionValue
             // 
             this.lblStartPositionValue.AutoSize = true;
@@ -789,6 +889,17 @@ namespace ACCG
             this.lblStartPositionValue.Size = new System.Drawing.Size(13, 13);
             this.lblStartPositionValue.TabIndex = 50;
             this.lblStartPositionValue.Text = "1";
+            // 
+            // tkbNumberOfLaps
+            // 
+            this.tkbNumberOfLaps.Location = new System.Drawing.Point(63, 64);
+            this.tkbNumberOfLaps.Maximum = 50;
+            this.tkbNumberOfLaps.Minimum = 1;
+            this.tkbNumberOfLaps.Name = "tkbNumberOfLaps";
+            this.tkbNumberOfLaps.Size = new System.Drawing.Size(104, 45);
+            this.tkbNumberOfLaps.TabIndex = 26;
+            this.tkbNumberOfLaps.Value = 2;
+            this.tkbNumberOfLaps.Scroll += new System.EventHandler(this.tkbNumberOfLaps_Scroll);
             // 
             // tkbStartPosition
             // 
@@ -801,6 +912,15 @@ namespace ACCG
             this.tkbStartPosition.Value = 1;
             this.tkbStartPosition.Scroll += new System.EventHandler(this.tkbStartPosition_Scroll);
             // 
+            // lblNumberOfCarsValue
+            // 
+            this.lblNumberOfCarsValue.AutoSize = true;
+            this.lblNumberOfCarsValue.Location = new System.Drawing.Point(169, 16);
+            this.lblNumberOfCarsValue.Name = "lblNumberOfCarsValue";
+            this.lblNumberOfCarsValue.Size = new System.Drawing.Size(36, 13);
+            this.lblNumberOfCarsValue.TabIndex = 35;
+            this.lblNumberOfCarsValue.Text = "2 cars";
+            // 
             // lblStartingPosition
             // 
             this.lblStartingPosition.AutoSize = true;
@@ -809,6 +929,67 @@ namespace ACCG
             this.lblStartingPosition.Size = new System.Drawing.Size(43, 13);
             this.lblStartingPosition.TabIndex = 48;
             this.lblStartingPosition.Text = "Starting";
+            // 
+            // lblNumberOfLapsValue
+            // 
+            this.lblNumberOfLapsValue.AutoSize = true;
+            this.lblNumberOfLapsValue.Location = new System.Drawing.Point(169, 67);
+            this.lblNumberOfLapsValue.Name = "lblNumberOfLapsValue";
+            this.lblNumberOfLapsValue.Size = new System.Drawing.Size(35, 13);
+            this.lblNumberOfLapsValue.TabIndex = 36;
+            this.lblNumberOfLapsValue.Text = "2 laps";
+            // 
+            // grbPracticeSession
+            // 
+            this.grbPracticeSession.Controls.Add(this.tkbPracticeDuration);
+            this.grbPracticeSession.Controls.Add(this.ckbPractice);
+            this.grbPracticeSession.Controls.Add(this.lblPracticeDurationValue);
+            this.grbPracticeSession.Controls.Add(this.lblPracticeDuration);
+            this.grbPracticeSession.Location = new System.Drawing.Point(11, 19);
+            this.grbPracticeSession.Name = "grbPracticeSession";
+            this.grbPracticeSession.Size = new System.Drawing.Size(212, 91);
+            this.grbPracticeSession.TabIndex = 57;
+            this.grbPracticeSession.TabStop = false;
+            this.grbPracticeSession.Text = "Practice";
+            // 
+            // tkbPracticeDuration
+            // 
+            this.tkbPracticeDuration.Location = new System.Drawing.Point(56, 41);
+            this.tkbPracticeDuration.Maximum = 90;
+            this.tkbPracticeDuration.Minimum = 5;
+            this.tkbPracticeDuration.Name = "tkbPracticeDuration";
+            this.tkbPracticeDuration.Size = new System.Drawing.Size(104, 45);
+            this.tkbPracticeDuration.TabIndex = 11;
+            this.tkbPracticeDuration.Value = 5;
+            this.tkbPracticeDuration.Scroll += new System.EventHandler(this.tkbPracticeDuration_Scroll);
+            // 
+            // ckbPractice
+            // 
+            this.ckbPractice.AutoSize = true;
+            this.ckbPractice.Location = new System.Drawing.Point(6, 19);
+            this.ckbPractice.Name = "ckbPractice";
+            this.ckbPractice.Size = new System.Drawing.Size(15, 14);
+            this.ckbPractice.TabIndex = 9;
+            this.ckbPractice.UseVisualStyleBackColor = true;
+            this.ckbPractice.CheckedChanged += new System.EventHandler(this.ckbPractice_CheckedChanged);
+            // 
+            // lblPracticeDurationValue
+            // 
+            this.lblPracticeDurationValue.AutoSize = true;
+            this.lblPracticeDurationValue.Location = new System.Drawing.Point(166, 41);
+            this.lblPracticeDurationValue.Name = "lblPracticeDurationValue";
+            this.lblPracticeDurationValue.Size = new System.Drawing.Size(32, 13);
+            this.lblPracticeDurationValue.TabIndex = 33;
+            this.lblPracticeDurationValue.Text = "5 min";
+            // 
+            // lblPracticeDuration
+            // 
+            this.lblPracticeDuration.AutoSize = true;
+            this.lblPracticeDuration.Location = new System.Drawing.Point(3, 41);
+            this.lblPracticeDuration.Name = "lblPracticeDuration";
+            this.lblPracticeDuration.Size = new System.Drawing.Size(47, 13);
+            this.lblPracticeDuration.TabIndex = 10;
+            this.lblPracticeDuration.Text = "Duration";
             // 
             // grbOpponents
             // 
@@ -888,67 +1069,9 @@ namespace ACCG
             this.btnNewOpponent.UseVisualStyleBackColor = true;
             this.btnNewOpponent.Click += new System.EventHandler(this.btnNewOpponent_Click);
             // 
-            // lblNumberOfLapsValue
-            // 
-            this.lblNumberOfLapsValue.AutoSize = true;
-            this.lblNumberOfLapsValue.Location = new System.Drawing.Point(169, 67);
-            this.lblNumberOfLapsValue.Name = "lblNumberOfLapsValue";
-            this.lblNumberOfLapsValue.Size = new System.Drawing.Size(35, 13);
-            this.lblNumberOfLapsValue.TabIndex = 36;
-            this.lblNumberOfLapsValue.Text = "2 laps";
-            // 
-            // lblNumberOfCarsValue
-            // 
-            this.lblNumberOfCarsValue.AutoSize = true;
-            this.lblNumberOfCarsValue.Location = new System.Drawing.Point(169, 16);
-            this.lblNumberOfCarsValue.Name = "lblNumberOfCarsValue";
-            this.lblNumberOfCarsValue.Size = new System.Drawing.Size(36, 13);
-            this.lblNumberOfCarsValue.TabIndex = 35;
-            this.lblNumberOfCarsValue.Text = "2 cars";
-            // 
-            // lblNumberOfCars
-            // 
-            this.lblNumberOfCars.AutoSize = true;
-            this.lblNumberOfCars.Location = new System.Drawing.Point(18, 16);
-            this.lblNumberOfCars.Name = "lblNumberOfCars";
-            this.lblNumberOfCars.Size = new System.Drawing.Size(28, 13);
-            this.lblNumberOfCars.TabIndex = 21;
-            this.lblNumberOfCars.Text = "Cars";
-            // 
-            // tkbNumberOfLaps
-            // 
-            this.tkbNumberOfLaps.Location = new System.Drawing.Point(63, 64);
-            this.tkbNumberOfLaps.Maximum = 50;
-            this.tkbNumberOfLaps.Minimum = 1;
-            this.tkbNumberOfLaps.Name = "tkbNumberOfLaps";
-            this.tkbNumberOfLaps.Size = new System.Drawing.Size(104, 45);
-            this.tkbNumberOfLaps.TabIndex = 26;
-            this.tkbNumberOfLaps.Value = 2;
-            this.tkbNumberOfLaps.Scroll += new System.EventHandler(this.tkbNumberOfLaps_Scroll);
-            // 
-            // tkbNumberOfCars
-            // 
-            this.tkbNumberOfCars.Location = new System.Drawing.Point(59, 13);
-            this.tkbNumberOfCars.Maximum = 24;
-            this.tkbNumberOfCars.Minimum = 1;
-            this.tkbNumberOfCars.Name = "tkbNumberOfCars";
-            this.tkbNumberOfCars.Size = new System.Drawing.Size(104, 45);
-            this.tkbNumberOfCars.TabIndex = 22;
-            this.tkbNumberOfCars.Value = 2;
-            this.tkbNumberOfCars.Scroll += new System.EventHandler(this.tkbNumberOfCars_Scroll);
-            // 
-            // lblNumberOfLaps
-            // 
-            this.lblNumberOfLaps.AutoSize = true;
-            this.lblNumberOfLaps.Location = new System.Drawing.Point(18, 67);
-            this.lblNumberOfLaps.Name = "lblNumberOfLaps";
-            this.lblNumberOfLaps.Size = new System.Drawing.Size(30, 13);
-            this.lblNumberOfLaps.TabIndex = 25;
-            this.lblNumberOfLaps.Text = "Laps";
-            // 
             // btnRandom
             // 
-            this.btnRandom.Location = new System.Drawing.Point(274, 592);
+            this.btnRandom.Location = new System.Drawing.Point(523, 12);
             this.btnRandom.Name = "btnRandom";
             this.btnRandom.Size = new System.Drawing.Size(196, 41);
             this.btnRandom.TabIndex = 59;
@@ -1152,129 +1275,6 @@ namespace ACCG
             // 
             this.saveOpponentsFileDialog.Filter = "opponents files (*.ini)|*.ini|opponents files (*.txt)|*.txt";
             // 
-            // grbPracticeSession
-            // 
-            this.grbPracticeSession.Controls.Add(this.tkbPracticeDuration);
-            this.grbPracticeSession.Controls.Add(this.ckbPractice);
-            this.grbPracticeSession.Controls.Add(this.lblPracticeDurationValue);
-            this.grbPracticeSession.Controls.Add(this.lblPracticeDuration);
-            this.grbPracticeSession.Location = new System.Drawing.Point(11, 19);
-            this.grbPracticeSession.Name = "grbPracticeSession";
-            this.grbPracticeSession.Size = new System.Drawing.Size(212, 91);
-            this.grbPracticeSession.TabIndex = 57;
-            this.grbPracticeSession.TabStop = false;
-            this.grbPracticeSession.Text = "Practice";
-            // 
-            // tkbPracticeDuration
-            // 
-            this.tkbPracticeDuration.Location = new System.Drawing.Point(56, 41);
-            this.tkbPracticeDuration.Maximum = 90;
-            this.tkbPracticeDuration.Minimum = 5;
-            this.tkbPracticeDuration.Name = "tkbPracticeDuration";
-            this.tkbPracticeDuration.Size = new System.Drawing.Size(104, 45);
-            this.tkbPracticeDuration.TabIndex = 11;
-            this.tkbPracticeDuration.Value = 5;
-            this.tkbPracticeDuration.Scroll += new System.EventHandler(this.tkbPracticeDuration_Scroll);
-            // 
-            // ckbPractice
-            // 
-            this.ckbPractice.AutoSize = true;
-            this.ckbPractice.Location = new System.Drawing.Point(6, 19);
-            this.ckbPractice.Name = "ckbPractice";
-            this.ckbPractice.Size = new System.Drawing.Size(15, 14);
-            this.ckbPractice.TabIndex = 9;
-            this.ckbPractice.UseVisualStyleBackColor = true;
-            this.ckbPractice.CheckedChanged += new System.EventHandler(this.ckbPractice_CheckedChanged);
-            // 
-            // lblPracticeDurationValue
-            // 
-            this.lblPracticeDurationValue.AutoSize = true;
-            this.lblPracticeDurationValue.Location = new System.Drawing.Point(166, 41);
-            this.lblPracticeDurationValue.Name = "lblPracticeDurationValue";
-            this.lblPracticeDurationValue.Size = new System.Drawing.Size(32, 13);
-            this.lblPracticeDurationValue.TabIndex = 33;
-            this.lblPracticeDurationValue.Text = "5 min";
-            // 
-            // lblPracticeDuration
-            // 
-            this.lblPracticeDuration.AutoSize = true;
-            this.lblPracticeDuration.Location = new System.Drawing.Point(3, 41);
-            this.lblPracticeDuration.Name = "lblPracticeDuration";
-            this.lblPracticeDuration.Size = new System.Drawing.Size(47, 13);
-            this.lblPracticeDuration.TabIndex = 10;
-            this.lblPracticeDuration.Text = "Duration";
-            // 
-            // grbRace
-            // 
-            this.grbRace.Controls.Add(this.lblNumberOfCars);
-            this.grbRace.Controls.Add(this.lblNumberOfLaps);
-            this.grbRace.Controls.Add(this.label3);
-            this.grbRace.Controls.Add(this.tkbNumberOfCars);
-            this.grbRace.Controls.Add(this.lblStartPositionValue);
-            this.grbRace.Controls.Add(this.tkbNumberOfLaps);
-            this.grbRace.Controls.Add(this.tkbStartPosition);
-            this.grbRace.Controls.Add(this.lblNumberOfCarsValue);
-            this.grbRace.Controls.Add(this.lblStartingPosition);
-            this.grbRace.Controls.Add(this.lblNumberOfLapsValue);
-            this.grbRace.Location = new System.Drawing.Point(11, 209);
-            this.grbRace.Name = "grbRace";
-            this.grbRace.Size = new System.Drawing.Size(212, 171);
-            this.grbRace.TabIndex = 58;
-            this.grbRace.TabStop = false;
-            this.grbRace.Text = "Race";
-            // 
-            // grbSessionQualifying
-            // 
-            this.grbSessionQualifying.Controls.Add(this.tkbQualifyingDuration);
-            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDurationValue);
-            this.grbSessionQualifying.Controls.Add(this.lblQualifyingDuration);
-            this.grbSessionQualifying.Controls.Add(this.ckbQualifying);
-            this.grbSessionQualifying.Location = new System.Drawing.Point(11, 116);
-            this.grbSessionQualifying.Name = "grbSessionQualifying";
-            this.grbSessionQualifying.Size = new System.Drawing.Size(212, 91);
-            this.grbSessionQualifying.TabIndex = 59;
-            this.grbSessionQualifying.TabStop = false;
-            this.grbSessionQualifying.Text = "Qualifying";
-            // 
-            // tkbQualifyingDuration
-            // 
-            this.tkbQualifyingDuration.Location = new System.Drawing.Point(56, 42);
-            this.tkbQualifyingDuration.Maximum = 60;
-            this.tkbQualifyingDuration.Minimum = 5;
-            this.tkbQualifyingDuration.Name = "tkbQualifyingDuration";
-            this.tkbQualifyingDuration.Size = new System.Drawing.Size(104, 45);
-            this.tkbQualifyingDuration.TabIndex = 15;
-            this.tkbQualifyingDuration.Value = 5;
-            this.tkbQualifyingDuration.Scroll += new System.EventHandler(this.tkbQualifyingDuration_Scroll);
-            // 
-            // lblQualifyingDurationValue
-            // 
-            this.lblQualifyingDurationValue.AutoSize = true;
-            this.lblQualifyingDurationValue.Location = new System.Drawing.Point(166, 42);
-            this.lblQualifyingDurationValue.Name = "lblQualifyingDurationValue";
-            this.lblQualifyingDurationValue.Size = new System.Drawing.Size(32, 13);
-            this.lblQualifyingDurationValue.TabIndex = 34;
-            this.lblQualifyingDurationValue.Text = "5 min";
-            // 
-            // lblQualifyingDuration
-            // 
-            this.lblQualifyingDuration.AutoSize = true;
-            this.lblQualifyingDuration.Location = new System.Drawing.Point(3, 42);
-            this.lblQualifyingDuration.Name = "lblQualifyingDuration";
-            this.lblQualifyingDuration.Size = new System.Drawing.Size(47, 13);
-            this.lblQualifyingDuration.TabIndex = 14;
-            this.lblQualifyingDuration.Text = "Duration";
-            // 
-            // ckbQualifying
-            // 
-            this.ckbQualifying.AutoSize = true;
-            this.ckbQualifying.Location = new System.Drawing.Point(6, 19);
-            this.ckbQualifying.Name = "ckbQualifying";
-            this.ckbQualifying.Size = new System.Drawing.Size(15, 14);
-            this.ckbQualifying.TabIndex = 13;
-            this.ckbQualifying.UseVisualStyleBackColor = true;
-            this.ckbQualifying.CheckedChanged += new System.EventHandler(this.ckbQualifying_CheckedChanged);
-            // 
             // ACCGNewSingleEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1316,22 +1316,22 @@ namespace ACCG
             this.grbCar.ResumeLayout(false);
             this.grbCar.PerformLayout();
             this.grbQuickRace.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tkbStartPosition)).EndInit();
-            this.grbOpponents.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).EndInit();
+            this.grbSessionQualifying.ResumeLayout(false);
+            this.grbSessionQualifying.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbQualifyingDuration)).EndInit();
+            this.grbRace.ResumeLayout(false);
+            this.grbRace.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfCars)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbNumberOfLaps)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbStartPosition)).EndInit();
+            this.grbPracticeSession.ResumeLayout(false);
+            this.grbPracticeSession.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).EndInit();
+            this.grbOpponents.ResumeLayout(false);
             this.grbTimeAttackGoals.ResumeLayout(false);
             this.grbTimeAttackGoals.PerformLayout();
             this.grbHotlapGoals.ResumeLayout(false);
             this.grbHotlapGoals.PerformLayout();
-            this.grbPracticeSession.ResumeLayout(false);
-            this.grbPracticeSession.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbPracticeDuration)).EndInit();
-            this.grbRace.ResumeLayout(false);
-            this.grbRace.PerformLayout();
-            this.grbSessionQualifying.ResumeLayout(false);
-            this.grbSessionQualifying.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbQualifyingDuration)).EndInit();
             this.ResumeLayout(false);
 
         }

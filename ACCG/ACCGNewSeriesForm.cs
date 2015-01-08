@@ -353,8 +353,9 @@ namespace ACCG
                     temp_series.series_goals.tier_1 = tbBronzeTier.Text;
                     temp_series.series_goals.tier_2 = tbSilverTier.Text;
                     temp_series.series_goals.tier_3 = tbGoldTier.Text;
-                }                                    
-                                
+                }
+
+                ACCGUtility.RemoveDiacritics(temp_series);
                     
                 // Add the current series to ACCG main series list
                 if (current_selected_series != null) // Edit mode

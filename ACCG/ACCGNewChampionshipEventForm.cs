@@ -249,6 +249,8 @@ namespace ACCG
                 race_session.laps = tkbNumberOfLaps.Value;
                 temp_event.session_list.Add(race_session);
 
+                ACCGUtility.RemoveDiacritics(null ,temp_event);
+
                 if (current_selected_event != null)
                 {
                     ACCGNewSeriesForm.temp_series.events_list.Insert(event_index, temp_event);

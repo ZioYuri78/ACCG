@@ -4,7 +4,7 @@
   <description asmv2:iconFile="icon_smug.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ACCG" version="0.6.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="ACCG" version="0.7.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="ACCG.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,24 +43,48 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="215040">
-      <assemblyIdentity name="ACCG" version="0.6.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="227328">
+      <assemblyIdentity name="ACCG" version="0.7.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>q74l04fkfJcra4PR4UvD6CTURMbQDY3G6XsNsF/0vFk=</dsig:DigestValue>
+        <dsig:DigestValue>VWqPmf4NiWADYEZOl7ZRVwvuCXFSamwEphc4KCzCPIk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="ACCG.exe.config" size="187">
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AxInterop.AXVLC.dll" size="25088">
+      <assemblyIdentity name="AxInterop.AXVLC" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>+JhneMacLWCe7+cIRHrvuKVgI4mJHg/Lh185U+rvo4Q=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.AXVLC.dll" size="37376">
+      <assemblyIdentity name="Interop.AXVLC" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>XCWdGNAeWKlsuOj+OHx2mn8Mat98g0O2JtYbK6a0F4E=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="ACCG.exe.config" size="182">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+      <dsig:DigestValue>PbQiHFOih9uz3RPvvsStiPKcsu3PE8/gyCn2QGUyyf4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="icon_smug.ico" size="1150">

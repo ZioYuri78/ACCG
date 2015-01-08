@@ -37,3 +37,10 @@ D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\ACCG.pdb
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.exe.manifest
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.application
 D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.csprojResolveAssemblyReference.cache
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\Interop.AXVLC.dll
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\AxInterop.AXVLC.dll
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.csproj.ResolveComReference.cache
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\Interop.AXVLC.dll
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\bin\Release\AxInterop.AXVLC.dll
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.GenForm.resources
+D:\Gamedev\AssettoCorsa\GitHub\ACCG\ACCG\obj\Release\ACCG.SyncForm.resources

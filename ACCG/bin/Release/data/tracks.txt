@@ -3,6 +3,7 @@ drag400
 drift
 imola
 lakelouise_beta_016
+luccaring-beta-0.5
 magione
 monza
 monza66

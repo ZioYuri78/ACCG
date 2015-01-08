@@ -38,27 +38,58 @@ Rosso_Alfa
 Rosso_Competizione
 [END_SKINS]
 
+[alfa_romeo_giulietta_qv_le]
+Argento_Alfa
+Bianco_Ghiaccio
+Blu_Anodizzato
+Bronzo
+Grigio_Antracite
+Grigio_Magnesio
+Nero
+Nero_Etna
+Perla_Moonlight
+Rosso_Alfa
+Rosso_Competizione
+[END_SKINS]
+
 [bmw_1m]
-orange
-staiger
-white
-zaphir
+black_sapphire_02
+black_sapphire_03
+bmw_20
+BMW_motorsport_07
+crimson_red_04
+deep_sea_blue_08
+dgfx_11
+glacier_silver_09
+grey_05
+liquid_blue_10
+midnight_blue_12
+mineral_grey_13
+Nvidia_06
+orange_16
+red_01
+sparkling_bronze_17
+staiger_15
+valencia_orange_18
+white_14
+zaphir_19
 [END_SKINS]
 
 [bmw_1m_s3]
-ArisTek
-BMW_Bank
-BMW_Motorsport_black
-BMW_Motorsport_white
-Green_Motorsport
-Inferno
-Just_Mareo
-Kunos_Racing
+ArisTek_5
+BMW_Bank_22
+BMW_Motorsport_black_88
+BMW_Motorsport_white_99
+Green_Motorsport_45
+Inferno_64
+Just_Mareo_14
+Kunos_Racing_2
 Midnight_Boss
 Nvidia
+Nvidia_780
 Street_Racer
-Taurus_3D
-Yashugan_DGFX_Art
+Taurus_3D_17
+Yashugan_DGFX_Art_4
 [END_SKINS]
 
 [bmw_m3_e30]
@@ -148,16 +179,14 @@ Dakar_Yellow
 Frozen_Black
 Hellrot
 Laguna_Seca_Blue
-Marrakesh Brown
+Marrakesh_Brown
 Midnight_Blue
 Monte_Carlo_Blue
 Moonstone
 Orange
-orange_mareo
 Phoenix_Yellow
 Power_Green
 Red
-Red_Mareo
 Santorini_Blue
 Titanium_Silver
 Tomczyk
@@ -215,8 +244,8 @@ Red_Bull
 black
 black_matte
 blue
-default
 red
+white
 [END_SKINS]
 
 [bmw_z4_drift]
@@ -231,12 +260,13 @@ assetto_z
 bmw_motorsport_2012
 bmw_motorsport_2013_black
 bmw_motorsport_2013_white
-ecosse_white
+fanatec
 marc_vds_2013
 nvidea_z
-Save_the_ring
+ScuderiaEcosse
 TCR_2014_097
 TCR_2014_903
+Vita4one
 walkenhorst_motorsport
 xdrive_20_z
 [END_SKINS]
@@ -245,11 +275,6 @@ xdrive_20_z
 black
 blue
 red
-[END_SKINS]
-
-[F169_MatraMS80]
-3
-4
 [END_SKINS]
 
 [ferrari_312t]
@@ -265,24 +290,15 @@ uk_3
 
 [ferrari_458]
 avorio
-biancoavus
 bianco_avus
 blupozzi
 giallo_modena
 giallo_modena_dark_top
-grigioscuro
 grigio_scuro
-red
-redblack
-redblack2
-rossocorsa
-rossomugello
 rosso_corsa
 rosso_mugello
 rosso_scuderia
 rosso_scuderia_dark_top
-yellow
-yellowblack
 [END_SKINS]
 
 [ferrari_458_gt2]
@@ -338,22 +354,13 @@ rosso_scuderia_dark_top
 
 [ferrari_laferrari]
 avorio
-biancoavus
 bianco_avus
 blupozzi
 giallo_modena
-giallo_modena_dark_top
-grigioscuro
 grigio_scuro
-red
-redblack
-redblack2
-rossocorsa
-rossomugello
 rosso_corsa
 rosso_mugello
 rosso_scuderia
-yellow
 [END_SKINS]
 
 [ktm_xbow_r]
@@ -381,7 +388,7 @@ verde_20
 
 [lotus_2_eleven]
 2_eleven
-default
+red
 [END_SKINS]
 
 [lotus_2_eleven_gt4]
@@ -637,7 +644,6 @@ tcr_2014
 [END_SKINS]
 
 [lotus_exige_s]
-1
 Amethyst_Grey
 Aquamarine_Blue
 Ardent_Red
@@ -652,7 +658,6 @@ Frost_Blue
 Graphite_Grey
 Ice_White
 Isotope_Green
-jps
 Laser_Blue
 Liquid_Blue
 Motorsport_Green
@@ -706,6 +711,17 @@ Kunos_Racing
 Racing_Green
 [END_SKINS]
 
+[mazda_787b]
+efini_18
+martini_21
+mazda_18
+mobil1_sanyo_74
+renown_55
+renown_old_55
+silk_cut_7
+tokina_48
+[END_SKINS]
+
 [mclaren_mp412c]
 azure_blue
 carbon_black
@@ -727,11 +743,6 @@ volcano_yellow
 2013-Sebastien_Loeb_Racing
 [END_SKINS]
 
-[mclaren_yardley]
-6
-7
-[END_SKINS]
-
 [mercedes_sls]
 Argento_Iridio
 Grigio_Alanite_designo
@@ -746,10 +757,15 @@ ALL_INKL_38
 AMG
 Black_Falcon_Dubai_24H_1
 Black_Falcon_Dubai_24H_2
-Black_Falcon_Porta!_9
+Black_Falcon_Porta_9
 Black_Falcon_SB_Mobel_Boss_10
 TCR_2014_05
 TCR_2014_65
+[END_SKINS]
+
+[opel_adam_cup]
+ADAC_Opel
+PTSims_RT
 [END_SKINS]
 
 [p4-5_2011]
@@ -783,7 +799,6 @@ Solar_Yellow
 Starlight_Black
 Storm_Titanium
 Velvet_Red
-white
 [END_SKINS]
 
 [pagani_zonda_r]
@@ -821,11 +836,22 @@ acracers92_TrenchcoatNinja
 acracers93_Safferson
 default
 Kunos Racing
+Kunos_Racing
 worldrecord
 [END_SKINS]
 
-[shadow_DN1]
-8
+[ruf_yellowbird]
+1-Yellowbird-black
+2-Yellowbird-silver
+3-Yellowbird-silverblack
+black
+black-blackrims
+blue
+blue-blackrims
+Green
+Green-blackrims
+red
+red-blackrims
 [END_SKINS]
 
 [shelby_cobra_427sc]

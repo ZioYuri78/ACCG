@@ -101,7 +101,6 @@ namespace ACCG
             this.startImagePanel = new System.Windows.Forms.Panel();
             this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tltLoadStartImage = new System.Windows.Forms.ToolTip(this.components);
-            this.btnLoadVideo = new System.Windows.Forms.Button();
             this.tltLoadPreviewImage = new System.Windows.Forms.ToolTip(this.components);
             this.openOpponentsFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tltLoadOpponents = new System.Windows.Forms.ToolTip(this.components);
@@ -111,8 +110,6 @@ namespace ACCG
             this.tltLoadEvents = new System.Windows.Forms.ToolTip(this.components);
             this.tltSaveEvent = new System.Windows.Forms.ToolTip(this.components);
             this.saveEventFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.grbVideo = new System.Windows.Forms.GroupBox();
-            this.axVLCPlugin21 = new AxAXVLC.AxVLCPlugin2();
             this.grbGoals.SuspendLayout();
             this.grbSeries.SuspendLayout();
             this.grbCar.SuspendLayout();
@@ -121,8 +118,6 @@ namespace ACCG
             this.grbButtons.SuspendLayout();
             this.grbCheckButtons.SuspendLayout();
             this.grbImages.SuspendLayout();
-            this.grbVideo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
             this.SuspendLayout();
             // 
             // rbSingleEvents
@@ -661,7 +656,7 @@ namespace ACCG
             // 
             this.grbButtons.Controls.Add(this.btnCancel);
             this.grbButtons.Controls.Add(this.btnOK);
-            this.grbButtons.Location = new System.Drawing.Point(12, 665);
+            this.grbButtons.Location = new System.Drawing.Point(393, 610);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(183, 54);
             this.grbButtons.TabIndex = 47;
@@ -754,16 +749,6 @@ namespace ACCG
             // 
             this.openImageFileDialog.Filter = "png files (*.png)|*.png";
             // 
-            // btnLoadVideo
-            // 
-            this.btnLoadVideo.Image = global::ACCG.Properties.Resources.Open_6529_24;
-            this.btnLoadVideo.Location = new System.Drawing.Point(6, 133);
-            this.btnLoadVideo.Name = "btnLoadVideo";
-            this.btnLoadVideo.Size = new System.Drawing.Size(37, 23);
-            this.btnLoadVideo.TabIndex = 5;
-            this.tltLoadStartImage.SetToolTip(this.btnLoadVideo, "Load start image");
-            this.btnLoadVideo.UseVisualStyleBackColor = true;
-            // 
             // openOpponentsFileDialog
             // 
             this.openOpponentsFileDialog.Filter = "opponents files (*.ini)|*.ini|opponents files (*.txt)|*.txt";
@@ -780,32 +765,11 @@ namespace ACCG
             // 
             this.saveEventFileDialog.Filter = "event files|*.ini|event files|*.txt";
             // 
-            // grbVideo
-            // 
-            this.grbVideo.Controls.Add(this.btnLoadVideo);
-            this.grbVideo.Controls.Add(this.axVLCPlugin21);
-            this.grbVideo.Location = new System.Drawing.Point(222, 610);
-            this.grbVideo.Name = "grbVideo";
-            this.grbVideo.Size = new System.Drawing.Size(208, 162);
-            this.grbVideo.TabIndex = 49;
-            this.grbVideo.TabStop = false;
-            this.grbVideo.Text = "Intro video";
-            // 
-            // axVLCPlugin21
-            // 
-            this.axVLCPlugin21.Enabled = true;
-            this.axVLCPlugin21.Location = new System.Drawing.Point(6, 19);
-            this.axVLCPlugin21.Name = "axVLCPlugin21";
-            this.axVLCPlugin21.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVLCPlugin21.OcxState")));
-            this.axVLCPlugin21.Size = new System.Drawing.Size(192, 108);
-            this.axVLCPlugin21.TabIndex = 0;
-            // 
             // ACCGNewSeriesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 805);
-            this.Controls.Add(this.grbVideo);
+            this.ClientSize = new System.Drawing.Size(585, 673);
             this.Controls.Add(this.grbImages);
             this.Controls.Add(this.grbCheckButtons);
             this.Controls.Add(this.grbButtons);
@@ -835,8 +799,6 @@ namespace ACCG
             this.grbCheckButtons.PerformLayout();
             this.grbImages.ResumeLayout(false);
             this.grbImages.PerformLayout();
-            this.grbVideo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -943,9 +905,6 @@ namespace ACCG
         private Button btnSaveEvent;
         private ToolTip tltSaveEvent;
         private SaveFileDialog saveEventFileDialog;
-        private GroupBox grbVideo;
-        private Button btnLoadVideo;
-        private AxAXVLC.AxVLCPlugin2 axVLCPlugin21;
 
         public static Car champ_player_car {get; set;}
         public static Series temp_series { get; set; }        

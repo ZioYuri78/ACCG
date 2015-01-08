@@ -177,7 +177,7 @@ namespace ACCG
         }
 
 
-        public static String RemoveDiacritics(String s)
+        private static String RemoveDiacritics(String s)
         {
             String normalizedString = s.Normalize(NormalizationForm.FormD);
             StringBuilder stringBuilder = new StringBuilder();
@@ -190,6 +190,22 @@ namespace ACCG
             }
 
             return stringBuilder.ToString();
+        }
+
+        public static void RemoveDiacritics(Series _series = null, Event _event = null)
+        {
+            if (_series != null)
+            {
+                _series.code = RemoveDiacritics(_series.code);
+                _series.name = RemoveDiacritics(_series.name);
+                _series.description = RemoveDiacritics(_series.description);                
+            }
+
+            if (_event != null)
+            {
+                _event.name = RemoveDiacritics(_event.name);
+                _event.description = RemoveDiacritics(_event.description);
+            }
         }
 
     }
