@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,7 +18,7 @@ namespace ACCG
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -35,6 +36,16 @@ namespace ACCG
             else
             {
                 this.tbLogArea.AppendText(text);
+            }
+
+            EnsureMainGuiThread();
+        }
+
+        private void EnsureMainGuiThread()
+        {
+            if (Thread.CurrentThread.Name != "MainGUI")
+            {
+                throw new InvalidOperationException("This code must execute on the main GUI thread");
             }
         }
 

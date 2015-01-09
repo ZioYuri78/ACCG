@@ -30,6 +30,8 @@ namespace ACCG
         
         private void ACCGMainForm_Load(object sender, EventArgs e)
         {
+            ForceControlCreation(gen_form);
+
             // Delete existing log files
             accg_log.DeleteLogFiles();
             DateTime time_stamp;
@@ -270,21 +272,60 @@ namespace ACCG
 
 
         private void btnGenerate_Click(object sender, EventArgs e)
-        {
-            
+        {            
+
+            if (current_selected_series == null)
+            {
+                MessageBox.Show("You have to select a series!");
+            }
+            else
+            {
+
+                gen_sync_info_box.ResetText();
+                this.Enabled = false;
+
+                accg_generator.Generate(current_selected_series, ac_path);
+                current_selected_series.isGenerated = true;
+
+                // Saving the accg series list      
+                accg_log.WriteLog("GEN", "Saving accg_series_list.dat", 500);
+                accg_resource.SaveACCGSeries(accg_series_file_name, accg_series_list);
+
+                this.Enabled = true;
+            }
+
+            /*
             gen_form.tbLogArea.ResetText();
-            gen_form.btnOk.Enabled = false;
+            gen_form.btnOK.Enabled = false;            
             bgWorkerGenerate.RunWorkerAsync();
             gen_form.ShowDialog();      
-            
+            */
         }
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            gen_sync_info_box.ResetText();
+            this.Enabled = false;
+
+            accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
+
+            // re-populating Cars list                                    
+            accg_log.WriteLog("SYNC", "re-populating ACCG cars list...");
+            ac_cars_list = accg_resource.LoadCars(accg_cars_file_name);
+
+            // re-populating Tracks list                        
+            accg_log.WriteLog("SYNC", "re-populating ACCG tracks list...");
+            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);            
+
+            this.Enabled = true;
+
+            /*
             sync_form.tbLogArea.ResetText();
-            sync_form.btnOk.Enabled = false;
+            sync_form.btnOK.Enabled = false;
             bgWorkerSync.RunWorkerAsync();
             sync_form.ShowDialog();                                   
+            */
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
@@ -326,7 +367,7 @@ namespace ACCG
         private void bgWorkerSync_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             accg_log.WriteLog("SYNC", "Syncronization complete!", 1000);            
-            sync_form.btnOk.Enabled = true;
+            sync_form.btnOK.Enabled = true;
         }
 
         private void bgWorkerGenerate_DoWork(object sender, DoWorkEventArgs e)
@@ -337,6 +378,7 @@ namespace ACCG
             }
             else
             {
+                
                 accg_generator.Generate(current_selected_series, ac_path);
                 current_selected_series.isGenerated = true;
 
@@ -354,9 +396,18 @@ namespace ACCG
         private void bgWorkerGenerate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             accg_log.WriteLog("GEN", "Series successfully generated!", 1000);            
-            gen_form.btnOk.Enabled = true;
+            gen_form.btnOK.Enabled = true;
         }
-       
+
+
+        private void ForceControlCreation(IWin32Window control)
+        {
+            // Ensures that the subject control is created in the same thread as the parent 
+            // form's without making it actually visible if not required. This will prevent 
+            // any possible InvalidAsynchronousStateException, if the control is later 
+            // invoked first from a background thread.
+            var handle = control.Handle;
+        }
               
     }
 }

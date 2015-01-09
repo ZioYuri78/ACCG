@@ -1587,6 +1587,8 @@ namespace ACCG
                 Console.WriteLine("The process failed: {0}", exc.ToString());
             }
 
+            ACCGUtility.RemoveDiacritics(temp_series);
+            
             return temp_series;
         }
     }

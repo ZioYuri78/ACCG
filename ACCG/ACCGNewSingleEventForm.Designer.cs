@@ -178,7 +178,7 @@ namespace ACCG
             // 
             this.grbButtons.Controls.Add(this.btnCancel);
             this.grbButtons.Controls.Add(this.btnOK);
-            this.grbButtons.Location = new System.Drawing.Point(536, 750);
+            this.grbButtons.Location = new System.Drawing.Point(540, 626);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(183, 54);
             this.grbButtons.TabIndex = 48;
@@ -476,12 +476,12 @@ namespace ACCG
             this.grbEventKind.Controls.Add(this.rbHotlap);
             this.grbEventKind.Controls.Add(this.rbTimeAttack);
             this.grbEventKind.Controls.Add(this.rbQuickRace);
-            this.grbEventKind.Location = new System.Drawing.Point(274, 7);
+            this.grbEventKind.Location = new System.Drawing.Point(517, 7);
             this.grbEventKind.Name = "grbEventKind";
             this.grbEventKind.Size = new System.Drawing.Size(206, 72);
             this.grbEventKind.TabIndex = 55;
             this.grbEventKind.TabStop = false;
-            this.grbEventKind.Text = "Event Kind";
+            this.grbEventKind.Text = "Type of Event";
             // 
             // rbHotlap
             // 
@@ -704,7 +704,7 @@ namespace ACCG
             this.grbCar.Controls.Add(this.lblModel);
             this.grbCar.Controls.Add(this.lblSkin);
             this.grbCar.Controls.Add(this.cbSkin);
-            this.grbCar.Location = new System.Drawing.Point(274, 85);
+            this.grbCar.Location = new System.Drawing.Point(517, 85);
             this.grbCar.Name = "grbCar";
             this.grbCar.Size = new System.Drawing.Size(206, 186);
             this.grbCar.TabIndex = 57;
@@ -765,7 +765,7 @@ namespace ACCG
             this.grbQuickRace.Controls.Add(this.grbPracticeSession);
             this.grbQuickRace.Controls.Add(this.grbOpponents);
             this.grbQuickRace.Controls.Add(this.grbQuickRaceGoals);
-            this.grbQuickRace.Location = new System.Drawing.Point(482, 59);
+            this.grbQuickRace.Location = new System.Drawing.Point(274, 7);
             this.grbQuickRace.Name = "grbQuickRace";
             this.grbQuickRace.Size = new System.Drawing.Size(237, 673);
             this.grbQuickRace.TabIndex = 58;
@@ -1071,7 +1071,7 @@ namespace ACCG
             // 
             // btnRandom
             // 
-            this.btnRandom.Location = new System.Drawing.Point(523, 12);
+            this.btnRandom.Location = new System.Drawing.Point(524, 514);
             this.btnRandom.Name = "btnRandom";
             this.btnRandom.Size = new System.Drawing.Size(196, 41);
             this.btnRandom.TabIndex = 59;
@@ -1094,7 +1094,7 @@ namespace ACCG
             this.grbTimeAttackGoals.Controls.Add(this.tbPointsBronzeTier);
             this.grbTimeAttackGoals.Controls.Add(this.tbPointsSilverTier);
             this.grbTimeAttackGoals.Controls.Add(this.tbPointsGoldTier);
-            this.grbTimeAttackGoals.Location = new System.Drawing.Point(274, 277);
+            this.grbTimeAttackGoals.Location = new System.Drawing.Point(517, 277);
             this.grbTimeAttackGoals.Name = "grbTimeAttackGoals";
             this.grbTimeAttackGoals.Size = new System.Drawing.Size(206, 100);
             this.grbTimeAttackGoals.TabIndex = 60;
@@ -1165,7 +1165,7 @@ namespace ACCG
             this.grbHotlapGoals.Controls.Add(this.tbTimeSecondsGoldTier);
             this.grbHotlapGoals.Controls.Add(this.tbTimeSecondsSilverTier);
             this.grbHotlapGoals.Controls.Add(this.tbTimeMinutesSilverTier);
-            this.grbHotlapGoals.Location = new System.Drawing.Point(274, 383);
+            this.grbHotlapGoals.Location = new System.Drawing.Point(517, 383);
             this.grbHotlapGoals.Name = "grbHotlapGoals";
             this.grbHotlapGoals.Size = new System.Drawing.Size(206, 125);
             this.grbHotlapGoals.TabIndex = 61;
@@ -1279,7 +1279,7 @@ namespace ACCG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 816);
+            this.ClientSize = new System.Drawing.Size(731, 687);
             this.Controls.Add(this.grbHotlapGoals);
             this.Controls.Add(this.grbTimeAttackGoals);
             this.Controls.Add(this.btnRandom);
@@ -1291,6 +1291,7 @@ namespace ACCG
             this.Controls.Add(this.grbEvent);
             this.Controls.Add(this.grbImages);
             this.Controls.Add(this.grbButtons);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ACCGNewSingleEventForm";

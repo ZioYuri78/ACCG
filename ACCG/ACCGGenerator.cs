@@ -22,7 +22,7 @@ namespace ACCG
        private string series_start_png_filename = "start.png";
        private string series_preview_png_filename = "preview.png";
        private string event_preview_png_filename = "preview.png";
-       private string series_intro_video_filename = "start.ogv";
+       //private string series_intro_video_filename = "start.ogv";
 
        private ACCGGenerator() { }
 
@@ -122,7 +122,7 @@ namespace ACCG
            }                                                                  
                       
            //System.Windows.Forms.MessageBox.Show("Series successfully generated!");
-
+           ACCGMainForm.accg_log.WriteLog("GEN", "Series successfully generated!", 1000);
        }
 
 
@@ -593,6 +593,7 @@ namespace ACCG
 
                    if (ev.isQuickRace)
                    {
+
                        temp_session_attributes = new string[] {
                                                                 String.Format("[SESSION_{0}]", temp_session.ID),
                                                                 "STARTING_POSITION=" + ev.start_position,
@@ -603,7 +604,8 @@ namespace ACCG
                                                                 "SPAWN_SET=" + temp_session.spawn_set,
                                                                 "\n",
                                                                 
-                                                            };
+                                                            };                                              
+                       
                    }
                    else if (ev.isTimeAttack)
                    {

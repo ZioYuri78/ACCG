@@ -46,12 +46,14 @@ namespace ACCG
                             break;
 
                         case "SYNC":
-                            ACCGMainForm.sync_form.SetText(_message + Environment.NewLine);
+                            //ACCGMainForm.sync_form.SetText(_message + Environment.NewLine);
+                            ACCGMainForm.gen_sync_info_box.AppendText(_message + Environment.NewLine);
                             Thread.Sleep(tick);
                             break;
 
                         case "GEN":
-                            ACCGMainForm.gen_form.SetText(_message + Environment.NewLine);
+                            //ACCGMainForm.gen_form.SetText(_message + Environment.NewLine);
+                            ACCGMainForm.gen_sync_info_box.AppendText(_message + Environment.NewLine);
                             Thread.Sleep(tick);
                             break;
                             

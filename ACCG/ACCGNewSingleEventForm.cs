@@ -549,7 +549,11 @@ namespace ACCG
 
                     if (!ckbQualifying.Checked)
                     {
-                        temp_event.start_position = tkbStartPosition.Value;                    
+                        temp_event.start_position = tkbStartPosition.Value;
+                    }
+                    else
+                    {
+                        temp_event.start_position = 0;
                     }
                     
                     temp_event.numberOfCars = tkbNumberOfCars.Value;                    

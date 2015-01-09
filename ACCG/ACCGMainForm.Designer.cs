@@ -58,6 +58,7 @@ namespace ACCG
             this.openSeriesFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.bgWorkerSync = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGenerate = new System.ComponentModel.BackgroundWorker();
+            gen_sync_info_box = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.grbSeries.SuspendLayout();
             this.SuspendLayout();
@@ -242,11 +243,21 @@ namespace ACCG
             this.bgWorkerGenerate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerGenerate_ProgressChanged);
             this.bgWorkerGenerate.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGenerate_RunWorkerCompleted);
             // 
+            // GenSyncInfobox
+            // 
+            gen_sync_info_box.Location = new System.Drawing.Point(13, 318);
+            gen_sync_info_box.Multiline = true;
+            gen_sync_info_box.Name = "GenSyncInfobox";
+            gen_sync_info_box.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            gen_sync_info_box.Size = new System.Drawing.Size(402, 145);
+            gen_sync_info_box.TabIndex = 21;
+            // 
             // ACCGMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 322);
+            this.ClientSize = new System.Drawing.Size(426, 475);
+            this.Controls.Add(gen_sync_info_box);
             this.Controls.Add(this.grbSeries);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.lblCurrentSeries);
@@ -320,6 +331,8 @@ namespace ACCG
         public static SyncForm sync_form;
         public static GenForm gen_form;
 
+        public static TextBox gen_sync_info_box;
+
         public const string accg_settings_file_name = @"cfg\settings.ini";
         public const string accg_series_file_name = @"data\accg_series_list.dat";
         public const string accg_cars_file_name = @"data\cars.txt";
@@ -330,6 +343,7 @@ namespace ACCG
         private OpenFileDialog openSeriesFileDialog;
         private BackgroundWorker bgWorkerSync;
         private BackgroundWorker bgWorkerGenerate;
+        
 
         
     }

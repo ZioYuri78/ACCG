@@ -1,6 +1,6 @@
-08/01/2015 15:08:00: Load settings.ini
-08/01/2015 15:08:00: Load ACCG Series list
-08/01/2015 15:08:00: Load Cars
+09/01/2015 11:53:15: Load settings.ini
+09/01/2015 11:53:15: Load ACCG Series list
+09/01/2015 11:53:15: Load Cars
 CAR: abarth500
 SKIN: black_red
 SKIN: grey_white
@@ -826,15 +826,18 @@ SKIN: scheme1_a
 SKIN: scheme2_a
 SKIN: scheme3_a
 SKIN: [end_skins]
-08/01/2015 15:08:09: Load Tracks
+09/01/2015 11:53:24: Load Tracks
 TRACK: drag1000
 TRACK: drag400
 TRACK: drift
 TRACK: imola
+TRACK: lakelouise_beta_016
+TRACK: luccaring-beta-0.5
 TRACK: magione
 TRACK: monza
 TRACK: monza66
 TRACK: mugello
+TRACK: nord_snoopy_1.1
 TRACK: nurburgring
 TRACK: nurburgring-sprint
 TRACK: silverstone

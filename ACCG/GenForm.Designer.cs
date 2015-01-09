@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tbLogArea = new System.Windows.Forms.TextBox();
-            this.btnOk = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbLogArea
@@ -42,16 +42,16 @@
             this.tbLogArea.Size = new System.Drawing.Size(417, 191);
             this.tbLogArea.TabIndex = 0;
             // 
-            // btnOk
+            // btnOK
             // 
-            this.btnOk.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnOk.Location = new System.Drawing.Point(0, 197);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(417, 23);
-            this.btnOk.TabIndex = 1;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.button1_Click);
+            this.btnOK.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnOK.Location = new System.Drawing.Point(0, 197);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(417, 23);
+            this.btnOK.TabIndex = 1;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // GenForm
             // 
@@ -59,12 +59,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(417, 220);
             this.ControlBox = false;
-            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.tbLogArea);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "GenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sync";
+            this.Text = "Generator";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,7 +73,7 @@
         #endregion
 
         public System.Windows.Forms.TextBox tbLogArea;
-        public System.Windows.Forms.Button btnOk;
+        public System.Windows.Forms.Button btnOK;
         delegate void SetTextCallback(string _text);
 
         
