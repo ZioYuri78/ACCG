@@ -243,11 +243,12 @@ namespace ACCG
             this.bgWorkerGenerate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerGenerate_ProgressChanged);
             this.bgWorkerGenerate.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGenerate_RunWorkerCompleted);
             // 
-            // GenSyncInfobox
+            // gen_sync_info_box
             // 
             gen_sync_info_box.Location = new System.Drawing.Point(13, 318);
             gen_sync_info_box.Multiline = true;
-            gen_sync_info_box.Name = "GenSyncInfobox";
+            gen_sync_info_box.Name = "gen_sync_info_box";
+            gen_sync_info_box.ReadOnly = true;
             gen_sync_info_box.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             gen_sync_info_box.Size = new System.Drawing.Size(402, 145);
             gen_sync_info_box.TabIndex = 21;
@@ -343,6 +344,7 @@ namespace ACCG
         private OpenFileDialog openSeriesFileDialog;
         private BackgroundWorker bgWorkerSync;
         private BackgroundWorker bgWorkerGenerate;
+        
         
 
         

@@ -1,8 +1,7 @@
-08/01/2015 17:55:27: Load settings.ini
-08/01/2015 17:55:27: Load ACCG Series list
-SERIES: fdfd
-SERIES: tr
-08/01/2015 17:55:27: Load Cars
+09/01/2015 15:29:54: Load settings.ini
+09/01/2015 15:29:54: Load ACCG Series list
+SERIES: GT2 Championship
+09/01/2015 15:29:54: Load Cars
 CAR: abarth500
 SKIN: black_red
 SKIN: grey_white
@@ -828,7 +827,7 @@ SKIN: scheme1_a
 SKIN: scheme2_a
 SKIN: scheme3_a
 SKIN: [end_skins]
-08/01/2015 17:55:36: Load Tracks
+09/01/2015 15:30:02: Load Tracks
 TRACK: drag1000
 TRACK: drag400
 TRACK: drift

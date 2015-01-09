@@ -316,7 +316,9 @@ namespace ACCG
 
             // re-populating Tracks list                        
             accg_log.WriteLog("SYNC", "re-populating ACCG tracks list...");
-            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);            
+            ac_tracks_list = accg_resource.LoadTracks(accg_tracks_file_name);
+
+            ACCGMainForm.accg_log.WriteLog("SYNC", "Syncronization finished!");
 
             this.Enabled = true;
 

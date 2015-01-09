@@ -439,7 +439,8 @@ namespace ACCG
                 ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
                 Console.WriteLine("The process failed: {0}", exc.ToString());
             }
-                                      
+
+            
         }
 
         public List<Opponent> LoadOpponents(string _file_path)

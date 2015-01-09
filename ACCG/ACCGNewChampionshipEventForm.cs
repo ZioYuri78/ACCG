@@ -333,7 +333,7 @@ namespace ACCG
                 if (current_selected_event != null)
                 {
                     current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 1));
-
+                    current_selected_event.practice = false;
                 }
             }
             tkbPracticeDuration.Enabled = ckbPractice.Checked;
@@ -346,6 +346,7 @@ namespace ACCG
                 if (current_selected_event != null)
                 {
                     current_selected_event.session_list.Remove(current_selected_event.session_list.Find(x => x.type == 2));
+                    current_selected_event.qualifying = false;
                 }
             }
 

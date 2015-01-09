@@ -43,38 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="227840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="228352">
       <assemblyIdentity name="ACCG" version="0.7.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vi9T9Fpw+SkyP0F/Y8s167VxzFSv5atXCyiaF9s1qfA=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AxInterop.AXVLC.dll" size="25088">
-      <assemblyIdentity name="AxInterop.AXVLC" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+JhneMacLWCe7+cIRHrvuKVgI4mJHg/Lh185U+rvo4Q=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.AXVLC.dll" size="37376">
-      <assemblyIdentity name="Interop.AXVLC" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XCWdGNAeWKlsuOj+OHx2mn8Mat98g0O2JtYbK6a0F4E=</dsig:DigestValue>
+        <dsig:DigestValue>e1xRgBTB+p+DwKW6TjEVgBE3v75S0GFwCNSLlecwYsQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
