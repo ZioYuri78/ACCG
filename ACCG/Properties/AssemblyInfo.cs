@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Yuri Belleri")]
 [assembly: AssemblyProduct("Assetto Corsa Career Generator")]
-[assembly: AssemblyCopyright("Yuri Belleri - 2014")]
+[assembly: AssemblyCopyright("Yuri Belleri - 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
