@@ -310,7 +310,6 @@ black matte
 kessel1
 new
 red
-risingsun
 rossocorsa
 white
 yellow
@@ -711,17 +710,6 @@ Kunos_Racing
 Racing_Green
 [END_SKINS]
 
-[mazda_787b]
-efini_18
-martini_21
-mazda_18
-mobil1_sanyo_74
-renown_55
-renown_old_55
-silk_cut_7
-tokina_48
-[END_SKINS]
-
 [mclaren_mp412c]
 azure_blue
 carbon_black
@@ -763,11 +751,6 @@ TCR_2014_05
 TCR_2014_65
 [END_SKINS]
 
-[opel_adam_cup]
-ADAC_Opel
-PTSims_RT
-[END_SKINS]
-
 [p4-5_2011]
 2011
 [END_SKINS]
@@ -802,38 +785,6 @@ Velvet_Red
 [END_SKINS]
 
 [pagani_zonda_r]
-acracers00_ARES
-acracers02_2FastYSoSerious
-acracers03_RacerX
-acracers05_TheOldPeculiar
-acracers07_Hayabusa
-acracers08_Eber
-acracers09_luxdroid
-acracers101_ZioYuri
-acracers12_ollybadger
-acracers13_Midlander
-acracers17_Kade
-acracers23_Xtr3meNZer
-acracers33_WhosOnTheThrone
-acracers365_Tactical
-acracers37_decaturdiciple
-acracers40_Toilailee
-acracers45_Donnie
-acracers47_Geargrinder
-acracers64_strangelyBrown
-acracers650_ranzar
-acracers66_Ragequit
-acracers69_Belcar
-acracers75_Formula2K
-acracers76_zelimper
-acracers777_Buyo
-acracers77_Stoner
-acracers79_Zombie
-acracers81_verymetall
-acracers83_Mojo
-acracers89_rikster
-acracers92_TrenchcoatNinja
-acracers93_Safferson
 default
 Kunos Racing
 Kunos_Racing
