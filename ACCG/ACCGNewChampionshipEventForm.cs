@@ -164,6 +164,33 @@ namespace ACCG
                 temp_event.ambient_temperature = tkbAmbientTemperature.Value;
                 temp_event.time = tkbTime.Value;
                 temp_event.track = cbTrack.SelectedItem.ToString();
+
+                if (temp_event.track.CompareTo("nurb_nordschleife") == 0)
+                {
+                    temp_event.track = "ks_nordschleife";
+                    temp_event.track_layout = "nordschleife";
+                }
+                else if (temp_event.track.CompareTo("nurb_endurance") == 0)
+                {
+                    temp_event.track = "ks_nordschleife";
+                    temp_event.track_layout = "endurance";
+                }
+                else if (temp_event.track.CompareTo("nurb_touristenfahrten") == 0)
+                {
+                    temp_event.track = "ks_nordschleife";
+                    temp_event.track_layout = "touristenfahrten";
+                }
+                else if (temp_event.track.CompareTo("vallelunga") == 0)
+                {
+                    temp_event.track = "vallelunga";
+                    temp_event.track_layout = "extended_circuit";
+                }
+                else if (temp_event.track.CompareTo("vallelunga_club") == 0)
+                {
+                    temp_event.track = "vallelunga";
+                    temp_event.track_layout = "club_circuit";
+                }
+
                 temp_event.numberOfCars = tkbNumberOfCars.Value;
                 temp_event.penalties = ckbPenalties.Checked;
                 temp_event.dynamic_track_preset = tkbTrackCondition.Value;
@@ -290,6 +317,34 @@ namespace ACCG
             }
                         
         }
+
+        private void tkbWeather_Scroll(object sender, EventArgs e)
+        {
+            switch (tkbWeather.Value)
+            {
+                case 1:
+                    lblWeatherValue.Text = "Heavy fog";
+                    break;
+                case 2:
+                    lblWeatherValue.Text = "Light fog";
+                    break;
+                case 3:
+                    lblWeatherValue.Text = "";
+                    break;
+                case 4:
+                    lblWeatherValue.Text = "Mid clear";
+                    break;
+                case 5:
+                    lblWeatherValue.Text = "";
+                    break;
+                case 6:
+                    lblWeatherValue.Text = "";
+                    break;
+                case 7:
+                    lblWeatherValue.Text = "Heavy clouds";
+                    break;
+            }
+        }      
 
         private void tkbTrackCondition_Scroll(object sender, EventArgs e)
         {
@@ -484,6 +539,8 @@ namespace ACCG
         private void tkbTime_MouseEnter(object sender, EventArgs e)
         {
             tltTimeTrackbar.Show("This control still broken with mouse, please use arrow keys!", tkbTime, 5000);
-        }             
+        }
+
+               
     }
 }

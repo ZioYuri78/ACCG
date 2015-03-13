@@ -48,9 +48,9 @@ namespace ACCG
             accg_series_list = accg_resource.LoadACCGSeries(accg_series_file_name);
 
             // Sync resources
-            //time_stamp = DateTime.Now;
-            //accg_log.WriteLog("SYSTEM", time_stamp + ": Sync resources");            
-            //accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
+            time_stamp = DateTime.Now;
+            accg_log.WriteLog("SYSTEM", time_stamp + ": Sync resources");            
+            accg_resource.Sync(accg_cars_file_name, accg_tracks_file_name);
                                                                    
             // Populating Cars list   
             time_stamp = DateTime.Now;

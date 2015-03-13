@@ -62,11 +62,11 @@ namespace ACCG
             this.grbAmbient = new System.Windows.Forms.GroupBox();
             this.grbTrack = new System.Windows.Forms.GroupBox();
             this.lblTrackConditionValue = new System.Windows.Forms.Label();
-            this.lblTrackTemperatureValue = new System.Windows.Forms.Label();
+            this.lblWeatherValue = new System.Windows.Forms.Label();
             this.tkbTrackCondition = new System.Windows.Forms.TrackBar();
-            this.tkbTrackTemperature = new System.Windows.Forms.TrackBar();
+            this.tkbWeather = new System.Windows.Forms.TrackBar();
             this.lblTrackCondition = new System.Windows.Forms.Label();
-            this.lblTrackTemperature = new System.Windows.Forms.Label();
+            this.lblWeather = new System.Windows.Forms.Label();
             this.grbSessions = new System.Windows.Forms.GroupBox();
             this.grbSessionRace = new System.Windows.Forms.GroupBox();
             this.grbSessionQualifying = new System.Windows.Forms.GroupBox();
@@ -95,7 +95,7 @@ namespace ACCG
             this.grbAmbient.SuspendLayout();
             this.grbTrack.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTrackCondition)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbWeather)).BeginInit();
             this.grbSessions.SuspendLayout();
             this.grbSessionRace.SuspendLayout();
             this.grbSessionQualifying.SuspendLayout();
@@ -366,11 +366,11 @@ namespace ACCG
             // grbTrack
             // 
             this.grbTrack.Controls.Add(this.lblTrackConditionValue);
-            this.grbTrack.Controls.Add(this.lblTrackTemperatureValue);
+            this.grbTrack.Controls.Add(this.lblWeatherValue);
             this.grbTrack.Controls.Add(this.tkbTrackCondition);
-            this.grbTrack.Controls.Add(this.tkbTrackTemperature);
+            this.grbTrack.Controls.Add(this.tkbWeather);
             this.grbTrack.Controls.Add(this.lblTrackCondition);
-            this.grbTrack.Controls.Add(this.lblTrackTemperature);
+            this.grbTrack.Controls.Add(this.lblWeather);
             this.grbTrack.Location = new System.Drawing.Point(12, 324);
             this.grbTrack.Name = "grbTrack";
             this.grbTrack.Size = new System.Drawing.Size(263, 124);
@@ -387,14 +387,13 @@ namespace ACCG
             this.lblTrackConditionValue.TabIndex = 5;
             this.lblTrackConditionValue.Text = "Fast";
             // 
-            // lblTrackTemperatureValue
+            // lblWeatherValue
             // 
-            this.lblTrackTemperatureValue.AutoSize = true;
-            this.lblTrackTemperatureValue.Location = new System.Drawing.Point(208, 23);
-            this.lblTrackTemperatureValue.Name = "lblTrackTemperatureValue";
-            this.lblTrackTemperatureValue.Size = new System.Drawing.Size(33, 13);
-            this.lblTrackTemperatureValue.TabIndex = 4;
-            this.lblTrackTemperatureValue.Text = "33 °C";
+            this.lblWeatherValue.AutoSize = true;
+            this.lblWeatherValue.Location = new System.Drawing.Point(208, 23);
+            this.lblWeatherValue.Name = "lblWeatherValue";
+            this.lblWeatherValue.Size = new System.Drawing.Size(0, 13);
+            this.lblWeatherValue.TabIndex = 4;
             // 
             // tkbTrackCondition
             // 
@@ -406,16 +405,17 @@ namespace ACCG
             this.tkbTrackCondition.Value = 4;
             this.tkbTrackCondition.Scroll += new System.EventHandler(this.tkbTrackCondition_Scroll);
             // 
-            // tkbTrackTemperature
+            // tkbWeather
             // 
-            this.tkbTrackTemperature.Enabled = false;
-            this.tkbTrackTemperature.Location = new System.Drawing.Point(81, 20);
-            this.tkbTrackTemperature.Maximum = 40;
-            this.tkbTrackTemperature.Minimum = 10;
-            this.tkbTrackTemperature.Name = "tkbTrackTemperature";
-            this.tkbTrackTemperature.Size = new System.Drawing.Size(121, 45);
-            this.tkbTrackTemperature.TabIndex = 7;
-            this.tkbTrackTemperature.Value = 33;
+            this.tkbWeather.Enabled = false;
+            this.tkbWeather.Location = new System.Drawing.Point(81, 20);
+            this.tkbWeather.Maximum = 7;
+            this.tkbWeather.Minimum = 1;
+            this.tkbWeather.Name = "tkbWeather";
+            this.tkbWeather.Size = new System.Drawing.Size(121, 45);
+            this.tkbWeather.TabIndex = 7;
+            this.tkbWeather.Value = 1;
+            this.tkbWeather.Scroll += new System.EventHandler(this.tkbWeather_Scroll);
             // 
             // lblTrackCondition
             // 
@@ -426,14 +426,14 @@ namespace ACCG
             this.lblTrackCondition.TabIndex = 1;
             this.lblTrackCondition.Text = "Condition";
             // 
-            // lblTrackTemperature
+            // lblWeather
             // 
-            this.lblTrackTemperature.AutoSize = true;
-            this.lblTrackTemperature.Location = new System.Drawing.Point(6, 23);
-            this.lblTrackTemperature.Name = "lblTrackTemperature";
-            this.lblTrackTemperature.Size = new System.Drawing.Size(67, 13);
-            this.lblTrackTemperature.TabIndex = 0;
-            this.lblTrackTemperature.Text = "Temperature";
+            this.lblWeather.AutoSize = true;
+            this.lblWeather.Location = new System.Drawing.Point(6, 23);
+            this.lblWeather.Name = "lblWeather";
+            this.lblWeather.Size = new System.Drawing.Size(48, 13);
+            this.lblWeather.TabIndex = 0;
+            this.lblWeather.Text = "Weather";
             // 
             // grbSessions
             // 
@@ -633,7 +633,7 @@ namespace ACCG
             this.grbTrack.ResumeLayout(false);
             this.grbTrack.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTrackCondition)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbTrackTemperature)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbWeather)).EndInit();
             this.grbSessions.ResumeLayout(false);
             this.grbSessionRace.ResumeLayout(false);
             this.grbSessionRace.PerformLayout();
@@ -678,11 +678,11 @@ namespace ACCG
         private GroupBox grbAmbient;
         private GroupBox grbTrack;
         private Label lblTrackCondition;
-        private Label lblTrackTemperature;
+        private Label lblWeather;
         private TrackBar tkbTrackCondition;
-        private TrackBar tkbTrackTemperature;
+        private TrackBar tkbWeather;
         private Label lblTrackConditionValue;
-        private Label lblTrackTemperatureValue;
+        private Label lblWeatherValue;
         private GroupBox grbSessions;
         private GroupBox grbSessionRace;
         private GroupBox grbSessionQualifying;

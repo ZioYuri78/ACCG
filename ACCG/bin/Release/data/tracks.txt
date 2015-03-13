@@ -2,6 +2,9 @@ drag1000
 drag400
 drift
 imola
+nurb_nordschleife
+nurb_endurance
+nurb_touristenfahrten
 magione
 monza
 monza66
@@ -14,4 +17,4 @@ silverstone-national
 spa
 trento-bondone
 vallelunga
-vallelunga-club
+vallelunga_club

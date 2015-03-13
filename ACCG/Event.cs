@@ -16,10 +16,12 @@ namespace ACCG
         public string name { get; set; }
         public string description { get; set; }
         public int ambient_temperature { get; set; }
+        public string weather { get; set; }
         public int time { get; set; }
         public bool practice { get; set; }  // Only for championship events
         public bool qualifying { get; set; }    // Only for championship events
         public string track { get; set; }
+        public string track_layout { get; set; }
         public int numberOfCars { get; set; }   // Only for single events (quick race) or campionship events
         public int numberOfLaps { get; set; }   // Only for single events (quick race)
         public int start_position { get; set; } // Only for single events (quick race)

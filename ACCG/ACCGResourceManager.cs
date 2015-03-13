@@ -428,8 +428,35 @@ namespace ACCG
 
                 foreach (string track in ac_tracks)
                 {
-                    ACCGMainForm.accg_log.WriteLog("SYNC", "TRACK: " + track.Substring(track.LastIndexOf(@"\") + 1));                    
-                    temp_tracks_list.Add(track.Substring(track.LastIndexOf(@"\") + 1));
+                      
+              
+                    // Ring layouts
+                    String track_name = track.Substring(track.LastIndexOf(@"\") + 1);
+                    if ( track_name.CompareTo("ks_nordschleife") == 0)
+                    {
+                        ACCGMainForm.accg_log.WriteLog("SYNC", "TRACK: nurb_nordschleife");    
+                        temp_tracks_list.Add("nurb_nordschleife");
+                        ACCGMainForm.accg_log.WriteLog("SYNC", "TRACK: nurb_endurance");    
+                        temp_tracks_list.Add("nurb_endurance");
+                        ACCGMainForm.accg_log.WriteLog("SYNC", "TRACK: nurb_touristenfahrten");    
+                        temp_tracks_list.Add("nurb_touristenfahrten");
+                    }
+                    else if(track_name.CompareTo("vallelunga") == 0)
+                    {
+                        ACCGMainForm.accg_log.WriteLog("SYNC", "TRACK: vallelunga");
+                        temp_tracks_list.Add("vallelunga");
+                        ACCGMainForm.accg_log.WriteLog("SYNC", "TRACK: vallelunga club");
+                        temp_tracks_list.Add("vallelunga_club");
+                    }
+                    else 
+                    {
+
+                        ACCGMainForm.accg_log.WriteLog("SYNC", "TRACK: " + track.Substring(track.LastIndexOf(@"\") + 1));    
+                        temp_tracks_list.Add(track.Substring(track.LastIndexOf(@"\") + 1));
+
+                    }
+
+                    
                 }
 
                 SaveTracks(_tracks_file_name, temp_tracks_list);

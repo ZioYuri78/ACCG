@@ -445,7 +445,34 @@ namespace ACCG
                 temp_event.description = tbDescription.Text;
                 temp_event.ambient_temperature = tkbAmbientTemperature.Value;
                 temp_event.time = tkbTime.Value;
-                temp_event.track = cbTrack.SelectedItem.ToString();                                        
+                temp_event.track = cbTrack.SelectedItem.ToString();          
+                
+                if (temp_event.track.CompareTo("nurb_nordschleife") == 0)
+                {
+                    temp_event.track = "ks_nordschleife";
+                    temp_event.track_layout = "nordschleife";
+                }
+                else if(temp_event.track.CompareTo("nurb_endurance") == 0)
+                {
+                    temp_event.track = "ks_nordschleife";
+                    temp_event.track_layout = "endurance";
+                }
+                else if (temp_event.track.CompareTo("nurb_touristenfahrten") == 0)
+                {
+                    temp_event.track = "ks_nordschleife";
+                    temp_event.track_layout = "touristenfahrten";
+                }
+                else if (temp_event.track.CompareTo("vallelunga") == 0)
+                {
+                    temp_event.track = "vallelunga";
+                    temp_event.track_layout = "extended_circuit";
+                }
+                else if(temp_event.track.CompareTo("vallelunga_club") == 0)
+                {
+                    temp_event.track = "vallelunga";
+                    temp_event.track_layout = "club_circuit";
+                }
+              
                 temp_event.dynamic_track_preset = tkbTrackCondition.Value;
 
                 temp_event.event_car = event_car;
