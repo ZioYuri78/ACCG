@@ -466,6 +466,40 @@ namespace ACCG
                 rtbEventsInfo.AppendText("Description: " + current_selected_event.description + "\n");
                 rtbEventsInfo.AppendText("Ambient temperature: " + current_selected_event.ambient_temperature + "\n");
 
+                string weather = "";
+                switch (current_selected_event.weather)
+                {
+                    case 1:
+                        weather = "1_heavy_fog";
+                        break;
+
+                    case 2:
+                        weather = "2_light_fog";
+                        break;
+
+                    case 3:
+                        weather = "3_clear";
+                        break;
+
+                    case 4:
+                        weather = "4_mid_clear";
+                        break;
+
+                    case 5:
+                        weather = "5_light_clouds";
+                        break;
+
+                    case 6:
+                        weather = "6_mid_clouds";
+                        break;
+
+                    case 7:
+                        weather = "7_heavy_clouds";
+                        break;
+                }
+
+                rtbEventsInfo.AppendText("Weather: " + weather + "\n");
+
                 foreach (KeyValuePair<string, int> pair in ACCGMainForm.time_table)
                 {
                     if (pair.Value == current_selected_event.time)//Convert.ToInt32(current_selected_event.time))
@@ -486,6 +520,7 @@ namespace ACCG
                 }
 
                 rtbEventsInfo.AppendText("Track: " + current_selected_event.track + "\n");
+                rtbEventsInfo.AppendText("Layout: " + current_selected_event.track_layout + "\n");
 
                 if (temp_series.isSingleEvents)
                 {

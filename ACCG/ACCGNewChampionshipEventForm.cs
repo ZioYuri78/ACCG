@@ -52,7 +52,19 @@ namespace ACCG
                 tkbAmbientTemperature_Scroll(sender, e);
                 
                 tkbTime.Value = current_selected_event.time;
-                tkbTime_Scroll(sender, e);                
+                tkbTime_Scroll(sender, e);
+
+                if (current_selected_event.weather != 0)
+                {
+                    tkbWeather.Value = current_selected_event.weather;
+                }
+                else
+                {
+                    tkbWeather.Value = 3;
+                }
+                
+                
+                tkbWeather_Scroll(sender, e);
 
                 tkbTrackCondition.Value = current_selected_event.dynamic_track_preset;
                 tkbTrackCondition_Scroll(sender, e);               
@@ -75,7 +87,37 @@ namespace ACCG
 
                 tkbQualifyingDuration_Scroll(sender, e);
 
-                cbTrack.Text = current_selected_event.track;
+                if (current_selected_event.track.CompareTo("ks_nordschleife") == 0)
+                {
+                    if (current_selected_event.track_layout.CompareTo("nordschleife") == 0)
+                    {
+                        cbTrack.Text = "nurb_nordschleife";
+                    }
+                    else if (current_selected_event.track_layout.CompareTo("endurance") == 0)
+                    {
+                        cbTrack.Text = "nurb_endurance";
+                    }
+                    else if (current_selected_event.track_layout.CompareTo("touristenfahrten") == 0)
+                    {
+                        cbTrack.Text = "nurb_touristenfahrten";
+                    }
+
+                }
+                else if (current_selected_event.track.CompareTo("vallelunga") == 0)
+                {
+                    if (current_selected_event.track_layout.CompareTo("extended_circuit") == 0)
+                    {
+                        cbTrack.Text = "vallelunga";
+                    }
+                    else if (current_selected_event.track_layout.CompareTo("club_circuit") == 0)
+                    {
+                        cbTrack.Text = "vallelunga_club";
+                    }
+                }
+                else
+                {
+                    cbTrack.Text = current_selected_event.track;
+                }
 
                 tkbNumberOfCars.Value = current_selected_event.numberOfCars;
                 tkbNumberOfCars_Scroll(sender, e);
@@ -100,6 +142,9 @@ namespace ACCG
 
                     tkbTime.Value = temp_event.time;
                     tkbTime_Scroll(sender, e);
+
+                    tkbWeather.Value = temp_event.weather;
+                    tkbWeather_Scroll(sender, e);
 
                     tkbTrackCondition.Value = temp_event.dynamic_track_preset;
                     tkbTrackCondition_Scroll(sender, e);
@@ -193,6 +238,7 @@ namespace ACCG
 
                 temp_event.numberOfCars = tkbNumberOfCars.Value;
                 temp_event.penalties = ckbPenalties.Checked;
+                temp_event.weather = tkbWeather.Value;
                 temp_event.dynamic_track_preset = tkbTrackCondition.Value;
                                 
                 // Sessions of the event                                
@@ -323,25 +369,25 @@ namespace ACCG
             switch (tkbWeather.Value)
             {
                 case 1:
-                    lblWeatherValue.Text = "Heavy fog";
+                    lblWeatherValue.Text = "Heavy\nfog";
                     break;
                 case 2:
-                    lblWeatherValue.Text = "Light fog";
+                    lblWeatherValue.Text = "Light\nfog";
                     break;
                 case 3:
-                    lblWeatherValue.Text = "";
+                    lblWeatherValue.Text = "Clear";
                     break;
                 case 4:
-                    lblWeatherValue.Text = "Mid clear";
+                    lblWeatherValue.Text = "Mid\nclear";
                     break;
                 case 5:
-                    lblWeatherValue.Text = "";
+                    lblWeatherValue.Text = "Light\nclouds";
                     break;
                 case 6:
-                    lblWeatherValue.Text = "";
+                    lblWeatherValue.Text = "Mid\nclouds";
                     break;
                 case 7:
-                    lblWeatherValue.Text = "Heavy clouds";
+                    lblWeatherValue.Text = "Heavy\nclouds";
                     break;
             }
         }      
@@ -514,6 +560,9 @@ namespace ACCG
             tkbTime_Scroll(sender, e);
 
             cbTrack.Text = ACCGMainForm.ac_tracks_list[0];
+
+            tkbWeather.Value = 3;
+            tkbWeather_Scroll(sender, e);
 
             tkbTrackCondition.Value = 4;
             tkbTrackCondition_Scroll(sender, e);

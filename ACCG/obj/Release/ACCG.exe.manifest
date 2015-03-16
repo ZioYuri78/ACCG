@@ -4,7 +4,7 @@
   <description asmv2:iconFile="icon_smug.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ACCG" version="0.7.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="ACCG" version="0.7.1.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="ACCG.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="231896">
-      <assemblyIdentity name="ACCG" version="0.7.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACCG.exe" size="234456">
+      <assemblyIdentity name="ACCG" version="0.7.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LJpqAkzZQUqee8pkZsUa+rIDdxwNen9zymsYEQGEgsc=</dsig:DigestValue>
+        <dsig:DigestValue>tHPDLZZi0b/Mrqrbygo0IMokvruyHTF6srvTmNq9pSU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -392,8 +392,9 @@ namespace ACCG
             this.lblWeatherValue.AutoSize = true;
             this.lblWeatherValue.Location = new System.Drawing.Point(208, 23);
             this.lblWeatherValue.Name = "lblWeatherValue";
-            this.lblWeatherValue.Size = new System.Drawing.Size(0, 13);
+            this.lblWeatherValue.Size = new System.Drawing.Size(31, 13);
             this.lblWeatherValue.TabIndex = 4;
+            this.lblWeatherValue.Text = "Clear";
             // 
             // tkbTrackCondition
             // 
@@ -407,14 +408,13 @@ namespace ACCG
             // 
             // tkbWeather
             // 
-            this.tkbWeather.Enabled = false;
             this.tkbWeather.Location = new System.Drawing.Point(81, 20);
             this.tkbWeather.Maximum = 7;
             this.tkbWeather.Minimum = 1;
             this.tkbWeather.Name = "tkbWeather";
             this.tkbWeather.Size = new System.Drawing.Size(121, 45);
             this.tkbWeather.TabIndex = 7;
-            this.tkbWeather.Value = 1;
+            this.tkbWeather.Value = 3;
             this.tkbWeather.Scroll += new System.EventHandler(this.tkbWeather_Scroll);
             // 
             // lblTrackCondition

@@ -758,6 +758,43 @@ namespace ACCG
                                 }
                             }
 
+                            if (line.Contains("[WEATHER]"))
+                            {
+                                line = sr.ReadLine();
+                                splitted = line.Split('=', ';');
+
+                                switch (splitted[1])
+                                {
+                                    case "1_heavy_fog":
+                                        temp_event.weather = 1;
+                                        break;
+
+                                    case "2_light_fog":
+                                        temp_event.weather = 2;
+                                        break;
+
+                                    case "3_clear":
+                                        temp_event.weather = 3;
+                                        break;
+
+                                    case "4_mid_clear":
+                                        temp_event.weather = 4;
+                                        break;
+
+                                    case "5_light_clouds":
+                                        temp_event.weather = 5;
+                                        break;
+
+                                    case "6_mid_clouds":
+                                        temp_event.weather = 6;
+                                        break;
+
+                                    case "7_heavy_clouds":
+                                        temp_event.weather = 7;
+                                        break;
+                                }
+                            }
+
                             if (line.Contains("[DYNAMIC_TRACK]"))
                             {
                                 line = sr.ReadLine();
@@ -798,16 +835,28 @@ namespace ACCG
                                         case "TRACK":                                            
                                             try
                                             {
-                                                string temp_track = ACCGMainForm.ac_tracks_list.Find(x => x == splitted[1].ToLower());                                                 
+
+                                                string temp_track = "";
+
+                                                if (splitted[1].CompareTo("ks_nordschleife") == 0)
+                                                {
+                                                    // do nothing
+                                                }
+                                                else
+                                                {
+                                                    temp_track = ACCGMainForm.ac_tracks_list.Find(x => x == splitted[1].ToLower());                                                 
+                                                }
+                                                
  
                                                 if(temp_track != null && temp_track != "")
-                                                {
+                                                {                                                    
+
                                                     temp_event.track = temp_track;
                                                 }
                                                 else
                                                 {                                                                                                        
-                                                    MessageBox.Show("Missing " + splitted[1] + " track mod");                                                    
-                                                    return null;
+                                                    //MessageBox.Show("Missing " + splitted[1] + " track mod");                                                    
+                                                    //return null;
                                                 }
                                                 
                                             }
@@ -818,6 +867,62 @@ namespace ACCG
                                                 MessageBox.Show("Missing " + splitted[1] + " track mod");
                                                 return null;
                                             }                                            
+                                            break;
+
+                                        case "CONFIG_TRACK":
+                                            try
+                                            {
+                                                string temp_main_track = "";
+                                                string temp_track_layout = "";
+
+                                                if (splitted[1].CompareTo("nordschleife") == 0)
+                                                {
+                                                    temp_main_track = ACCGMainForm.ac_tracks_list.Find(x => x == "nurb_nordschleife");
+                                                    temp_track_layout = "nordschleife";
+                                                }
+                                                else if(splitted[1].CompareTo("endurance") == 0)
+                                                {
+                                                    temp_main_track = ACCGMainForm.ac_tracks_list.Find(x => x == "nurb_endurance");
+                                                    temp_track_layout = "endurance";
+                                                }
+                                                else if (splitted[1].CompareTo("touristenfahrten") == 0)
+                                                {
+                                                    temp_main_track = ACCGMainForm.ac_tracks_list.Find(x => x == "nurb_touristenfahrten");
+                                                    temp_track_layout = "touristenfahrten";
+                                                }
+                                                else if (splitted[1].CompareTo("extended_circuit") == 0)
+                                                {
+                                                    temp_main_track = ACCGMainForm.ac_tracks_list.Find(x => x == "vallelunga");
+                                                    temp_track_layout = "extended_circuit";
+                                                }
+                                                else if (splitted[1].CompareTo("club_circuit") == 0)
+                                                {
+                                                    temp_main_track = ACCGMainForm.ac_tracks_list.Find(x => x == "vallelunga_club");
+                                                    temp_track_layout = "club_circuit";
+                                                }
+
+                                                if (temp_main_track != null && temp_main_track != "")
+                                                {
+
+                                                    temp_event.track = temp_main_track;
+                                                    temp_event.track_layout = temp_track_layout;
+                                                }
+                                                else
+                                                {
+                                                    //MessageBox.Show("Missing " + splitted[1] + " track mod");
+                                                    //return null;
+                                                }
+                                                
+
+
+                                            }
+                                            catch (Exception exc)
+                                            {
+                                                ACCGMainForm.accg_log.WriteLog("ERROR", "The process failed: " + exc.ToString());
+                                                Console.WriteLine("The process failed: {0}", exc.ToString());
+                                                MessageBox.Show("Missing " + splitted[1] + " track mod");
+                                                return null;
+                                            }
                                             break;
 
                                         case "MODEL":
@@ -1476,7 +1581,8 @@ namespace ACCG
                                             break;
 
                                         case "REQUIRES":
-                                            temp_series.requires = splitted[1].Split(',')[0];
+                                            //temp_series.requires = splitted[1].Split(',')[0];
+                                            temp_series.requires = "";
                                             break;
 
                                         case "MODEL":

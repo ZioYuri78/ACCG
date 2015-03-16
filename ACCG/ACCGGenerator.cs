@@ -248,6 +248,38 @@ namespace ACCG
                    penalties = "0";
                }
 
+               string weather = "";
+               switch (ev.weather)
+               {
+                   case 1:
+                       weather = "1_heavy_fog";
+                       break;
+
+                   case 2:
+                       weather = "2_light_fog";
+                       break;
+
+                   case 3:
+                       weather = "3_clear";
+                       break;
+
+                   case 4:
+                       weather = "4_mid_clear";
+                       break;
+
+                   case 5:
+                       weather = "5_light_clouds";
+                       break;
+
+                   case 6:
+                       weather = "6_mid_clouds";
+                       break;
+
+                   case 7:
+                       weather = "7_heavy_clouds";
+                       break;
+               }
+
                string[] event_file_content = {
                                                  "[EVENT]",
                                                  "NAME=" + ev.name,
@@ -258,7 +290,7 @@ namespace ACCG
                                                  "AMBIENT=" + ev.ambient_temperature,
                                                  "\n",
                                                  "[WEATHER]",
-                                                 "NAME=light_clouds",// + ev.weather,
+                                                 "NAME=" + weather,
                                                  "\n",
                                                  "[DYNAMIC_TRACK]",     
                                                  "PRESET=" + ev.dynamic_track_preset,            
@@ -438,6 +470,38 @@ namespace ACCG
                    penalties = "0";
                }
 
+               string weather = "";
+               switch (ev.weather)
+               {
+                   case 1:
+                       weather = "1_heavy_fog";
+                       break;
+
+                   case 2:
+                       weather = "2_light_fog";
+                       break;
+
+                   case 3:
+                       weather = "3_clear";
+                       break;
+
+                   case 4:
+                       weather = "4_mid_clear";
+                       break;
+
+                   case 5:
+                       weather = "5_light_clouds";
+                       break;
+
+                   case 6:
+                       weather = "6_mid_clouds";
+                       break;
+
+                   case 7:
+                       weather = "7_heavy_clouds";
+                       break;
+               }
+
                string[] event_file_content = new string[0];
 
                if (ev.isQuickRace)
@@ -481,7 +545,7 @@ namespace ACCG
                                                         "ROAD=32",
                                                         "\n",
                                                         "[WEATHER]",
-                                                        "NAME=light_clouds", //+ ev.weather,
+                                                        "NAME=" + weather,
                                                         "\n",
                                                         "[DYNAMIC_TRACK]",
                                                         "PRESET=" + ev.dynamic_track_preset,
@@ -544,7 +608,7 @@ namespace ACCG
                                                         "ROAD=32",
                                                         "\n",
                                                         "[WEATHER]",
-                                                        "NAME=light_clouds",// + ev.weather,
+                                                        "NAME=" + weather,
                                                         "\n",
                                                         "[DYNAMIC_TRACK]",
                                                         "PRESET=" + ev.dynamic_track_preset,
@@ -591,7 +655,7 @@ namespace ACCG
                                                         "ROAD=33",
                                                         "\n",
                                                         "[WEATHER]",
-                                                         "NAME=light_clouds",// + ev.weather,
+                                                         "NAME=" + weather,
                                                          "\n",
                                                         "[DYNAMIC_TRACK]",
                                                         "PRESET=" + ev.dynamic_track_preset,

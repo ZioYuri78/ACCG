@@ -78,6 +78,7 @@ namespace ACCG
             _event.ambient_temperature = rnd.Next(10, 37);
             _event.time = rnd.Next(-80, 81);
             _event.track = ACCGMainForm.ac_tracks_list[rnd.Next(0, ACCGMainForm.ac_tracks_list.Count)];
+            _event.weather = rnd.Next(1, 8);
             _event.dynamic_track_preset = rnd.Next(0, 6);            
 
             if (_single_event)

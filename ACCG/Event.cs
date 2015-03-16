@@ -15,8 +15,7 @@ namespace ACCG
         public int ID { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public int ambient_temperature { get; set; }
-        public string weather { get; set; }
+        public int ambient_temperature { get; set; }        
         public int time { get; set; }
         public bool practice { get; set; }  // Only for championship events
         public bool qualifying { get; set; }    // Only for championship events
@@ -30,6 +29,7 @@ namespace ACCG
         public bool isTimeAttack { get; set; }  // Only for single events
         public bool isQuickRace { get; set; }   // Only for single events
         public bool isHotlap { get; set; }      // Only for single events
+        public int weather { get; set; }
         public int dynamic_track_preset { get; set; }
         public Bitmap previewImage { get; set; } // 250x125
         public Car event_car { get; set; }  // Only for single events
