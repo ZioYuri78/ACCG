@@ -1023,6 +1023,8 @@ namespace ACCG
                 temp_event = ACCGUtility.RandomizeEvent(temp_event, true);
             }
 
+            cbCar.Items.Clear();
+            cbTrack.Items.Clear();
             this.ACCGNewSingleEventForm_Load(sender,e);
             
         }
@@ -1038,7 +1040,7 @@ namespace ACCG
             tkbTime_Scroll(sender, e);
 
             cbTrack.Text = ACCGMainForm.ac_tracks_list[0];
-
+            
             tkbWeather.Value = 3;
             tkbWeather_Scroll(sender, e);
 

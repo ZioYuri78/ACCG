@@ -546,6 +546,8 @@ namespace ACCG
                 temp_event = ACCGUtility.RandomizeEvent(temp_event, false);
             }
 
+            
+            cbTrack.Items.Clear();
             this.NewEventForm_Load(sender, e);
         }
 

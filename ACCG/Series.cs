@@ -13,7 +13,8 @@ namespace ACCG
 
         public List<Event> events_list { get; set; }
         public List<Opponent> opponents_list { get; set; }  // Only for championship        
-        public int ID { get; set; }
+        //public int ID { get; set; }
+        public string ID { get; set; }
         public string code { get; set; }
         public string name { get; set; }
         public string description { get; set; }

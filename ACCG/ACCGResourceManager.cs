@@ -1519,8 +1519,8 @@ namespace ACCG
                 if (File.Exists(_file_path))
                 {
                     string path = Path.GetDirectoryName(_file_path);
-                    temp_series.ID = Convert.ToInt32(path.Substring(path.LastIndexOf("s") + 1));
-
+                    //temp_series.ID = Convert.ToInt32(path.Substring(path.LastIndexOf("s") + 1));
+                    temp_series.ID = path.Substring(path.LastIndexOf(@"\") + 1);
                     // Load start and preview images                                     
                     try
                     {

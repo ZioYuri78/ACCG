@@ -226,8 +226,8 @@ namespace ACCG
                 {
                     if (current_selected_series.isGenerated)
                     {
-                        string series_path = String.Format(ac_path + @"\content\career\series{0}", current_selected_series.ID);
-
+                        //string series_path = String.Format(ac_path + @"\content\career\series{0}", current_selected_series.ID);
+                        string series_path = String.Format(ac_path + @"\content\career\{0}", current_selected_series.ID);
                         try
                         {
                             if (Directory.Exists(series_path))

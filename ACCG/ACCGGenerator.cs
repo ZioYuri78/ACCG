@@ -41,9 +41,10 @@ namespace ACCG
        {
 
            this.series = _series;
-
+           
            if (!series.isGenerated)
            {
+               /*
                string[] ac_series_id_list = Directory.GetDirectories(ACCGMainForm.ac_path, "series*", SearchOption.AllDirectories);
                int[] numbers = new int[ac_series_id_list.Length];
 
@@ -57,10 +58,14 @@ namespace ACCG
                }
 
                series.ID = numbers.Max() + 1;
+               */
+               string temp_ID = "series_" + series.name.Replace(" ", "_");
+               series.ID = temp_ID.ToLower();
            }
            
 
-           this.series_path = String.Format(_path + @"\content\career\series{0}", series.ID);           
+           //this.series_path = String.Format(_path + @"\content\career\series{0}", series.ID);           
+           this.series_path = String.Format(_path + @"\content\career\{0}", series.ID);
 
            // Create the series folder           
            ACCGMainForm.accg_log.WriteLog("GEN", "series path = " + series_path, 500);           
