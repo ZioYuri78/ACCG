@@ -148,7 +148,10 @@ namespace ACCG
                                 "RANKING=" + _series.series_goals.ranking,    
                                 "TIER1=0",
                                 "TIER2=0",
-                                "TIER3=0"
+                                "TIER3=0",
+                                "\n",
+                                "; Created with Assetto Corsa Career Generator",
+                                "; http://www.racedepartment.com/downloads/accg-assetto-corsa-career-generator.4191/"
                             };
 
            try
@@ -421,7 +424,10 @@ namespace ACCG
                                 "POINTS=0",
                                 "TIER1=" + _series.series_goals.tier_1,
                                 "TIER2=" + _series.series_goals.tier_2,
-                                "TIER3=" + _series.series_goals.tier_3
+                                "TIER3=" + _series.series_goals.tier_3,
+                                "\n",
+                                "; Created with Assetto Corsa Career Generator ",
+                                "; http://www.racedepartment.com/downloads/accg-assetto-corsa-career-generator.4191/"
                             };
 
            try

@@ -1,7 +1,7 @@
-21/04/2015 17:06:14: Load settings.ini
-21/04/2015 17:06:14: Load ACCG Series list
-21/04/2015 17:06:14: Sync resources
-21/04/2015 17:06:26: Load Cars
+22/04/2015 14:07:49: Load settings.ini
+22/04/2015 14:07:49: Load ACCG Series list
+22/04/2015 14:07:49: Sync resources
+22/04/2015 14:08:00: Load Cars
 CAR: abarth500
 SKIN: black_red
 SKIN: grey_white
@@ -958,7 +958,7 @@ SKIN: scheme3
 SKIN: scheme4
 SKIN: scheme5
 SKIN: [end_skins]
-21/04/2015 17:06:37: Load Tracks
+22/04/2015 14:08:09: Load Tracks
 TRACK: drag1000
 TRACK: drag400
 TRACK: drift
